@@ -1,0 +1,86 @@
+project: cresco-worlds-fair
+date: 2026-09-26
+status: PRE_CONCEPT_LOCK
+
+phase:
+  current: USER_MARKET_EVIDENCE
+  previous:
+    - WINNING_INTELLIGENCE
+    - SIX_LLM_REVIEW
+    - DIVERGENT_IDEATION
+    - SEMANTIC_TEARDOWN
+  next:
+    - PRE_BUILD_REALITY_GATE
+    - CONCEPT_LOCK
+
+build_authorized: false
+
+baseline:
+  repo: https://github.com/Faadil1/cresco
+  live: https://cresco-lac.vercel.app/
+  network: Solana Devnet
+  truth_boundary:
+    - demo_SPL_token_execution
+    - no_brokerage_claim
+    - no_custody_claim
+    - no_mainnet_claim
+    - no_real_AAPL_ownership_claim
+    - no_real_minor_securities_execution_claim
+
+worlds_fair:
+  repo: https://github.com/Faadil1/cresco-worlds-fair
+  competition_start: 2026-09-14
+  submission_deadline: 2026-10-12T23:59:00-07:00
+
+core:
+  working_problem: "How can a principal give another actor meaningful autonomy without turning one exceptional approval into broader standing authority?"
+  states:
+    - STANDING_AUTHORITY
+    - EXCEPTIONAL_AUTHORITY
+    - AUTHORITY_EVIDENCE
+    - POLICY_EVOLUTION
+  working_differentiation: POLICY_AWARE_EXCEPTIONAL_AUTHORITY
+  unresolved: true
+
+candidate_lanes:
+  treasury_crypto_ops: ACTIVE
+  agent_builders: ACTIVE
+  delegated_trading: ACTIVE
+  family_progressive_agency: HOLD_ACTIVE_RESEARCH
+  organizational_spend: HOLD_NATIVE_ADVANTAGE
+
+gates:
+  real_problem: PARTIAL
+  real_user: PARTIAL
+  five_year_durability: SUPPORTED
+  willingness_to_pay_cresco_specific: UNPROVEN
+  killer_demo: SUPPORTED
+  native_advantage: PARTIAL
+  negative_event: PARTIAL
+  competitive_residual: BLOCKED_PENDING_DISCOVERY
+
+hostile_tests:
+  squads_reconstruction: ACTIVE
+  safe_reconstruction: ACTIVE
+  sdp_reconstruction: ACTIVE
+  rfc9396_psd2: ACTIVE
+  session_shape: ACTIVE
+  feature_absorption: ACTIVE
+
+next_actions:
+  - complete_semantic_teardown
+  - run_treasury_discovery
+  - run_agent_builder_discovery
+  - run_delegated_trading_discovery
+  - classify_exception_shape
+  - define_stale_policy_semantics
+  - rerun_reality_gate
+
+do_not_do:
+  - build_new_features_before_concept_lock
+  - claim_bounded_delegation_is_novel
+  - claim_exact_payment_consent_is_novel
+  - claim_universal_semantic_action_binding_is_already_implemented
+  - pivot_to_generic_agent_wallet
+  - default_to_family_by_inertia
+  - default_to_ai_due_to_trend

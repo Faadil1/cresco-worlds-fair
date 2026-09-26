@@ -18,6 +18,7 @@ Can existing authorization systems reconstruct CRESCO closely enough that CRESCO
 | Turnkey | signing policies | Yes | policy deny / co-approval | human-agent consensus | signing request evaluated against policy | policy configuration | Is CRESCO only orchestration above Turnkey? |
 | Sanction | policy + immutable revision | Yes | approve / escalate / deny | human approval → one-use grant | identical retry required; field mismatch refused; exact context retained; evidence replay | policy revision | **Very close reconstruction: what remains beyond explicit Policy Diff / capital-path semantics?** |
 | Session.money | scoped session | Yes | session/cap boundary | human approves bounded session | session enforcement | create new session | Do users prefer envelope over exact action? |
+| Primer Vault | trading policy + commissioned agent | Yes | hard reject or escalation | human review for policy-compliant trades | re-quote + current-policy re-check + pending expiry + duplicate-safe approval | edit policy | Can CRESCO own true exception-to-policy rather than review-within-policy? |
 | RFC 9396 | authorization_details | within consent | outside consent denied | detailed consent | implementation dependent | re-consent | Does single-use + lineage add enough value? |
 
 ## Reconstruction Test
@@ -171,3 +172,39 @@ If existing systems already provide adequate:
 - clear audit lineage
 
 and users do not value Policy Diff / explicit exceptional-authority lineage, then CRESCO’s current primitive is a feature rather than a company.
+
+
+## Primer Vault — Trading reconstruction update
+
+Primer Vault materially narrows the Trading residual.
+
+Public code shows:
+- per-trade max, daily volume and max slippage are hard policy rejects;
+- human approval does not visibly override these hard caps;
+- human review applies to trades that remain policy-valid but need review;
+- approval re-quotes and re-applies the current policy;
+- tightened policy while pending rejects;
+- pending trades reserve daily volume;
+- duplicate approval does not execute twice.
+
+Therefore the relevant CRESCO distinction is no longer “human approval for risky trades.”
+
+It is:
+
+> **exception-to-policy vs review-within-policy**
+
+Potential CRESCO residual:
+
+```
+Standing soft cap = $100
+$140 legitimate trade
+→ normal path REFUSE
+→ principal grants bounded exceptional authority
+→ execute once
+→ standing cap remains $100
+```
+
+Status:
+**CONCRETE COMPETITIVE RESIDUAL / USER VALUE UNPROVEN.**
+
+See `research/PRIMER-VAULT-DELTA.md`.

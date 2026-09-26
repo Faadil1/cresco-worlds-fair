@@ -280,6 +280,7 @@ The following are **prior art / adjacent systems**, not enemies to dismiss:
 - Privy agent policies;
 - Crossmint agent wallets;
 - Session.money scoped spending sessions;
+- Sanction agent authorization plane (one-use exact grants + immutable policy revisions + evidence replay);
 - OAuth 2.0 Rich Authorization Requests (RFC 9396);
 - PSD2 dynamic linking;
 - macaroons / capability attenuation;
@@ -422,8 +423,22 @@ Critical threats:
 - Turnkey;
 - SDP;
 - Session.money;
+- Sanction;
 - wallet incumbents;
 - fast feature absorption.
+
+**Current evidence update (2026-09-26): HIGH COMPETITIVE RISK.**
+
+Sanction publicly documents a very close reconstruction of the agentic CRESCO path:
+- approve / escalate / deny;
+- human approval that mints a one-use grant;
+- exact same request required on retry;
+- field mismatch refusal;
+- immutable policy revisions;
+- exact evaluated context persisted;
+- replayable decision evidence.
+
+Therefore `exact request + human escalation + one-use grant + policy lineage` is no longer a sufficient residual for the Agent lane. Agentic CRESCO must prove an additional valuable layer such as explicit Policy Diff / minimal exceptional authority, capital-path enforcement semantics, cross-provider portability, or a vertical workflow incumbents do not already solve.
 
 ### D. Family Progressive Agency
 
@@ -590,9 +605,59 @@ Only after that:
 **NO NEW PRODUCT BUILD YET.**
 
 Next work:
-1. complete semantic teardown against SDP / Squads / Safe / Turnkey / Session.money;
+1. complete semantic teardown against SDP / Squads / Safe / Turnkey / Session.money / Sanction;
 2. run Treasury / Agent Builder / Delegated Trading discovery;
-3. classify exception shape;
+3. classify exception shape from real events;
 4. determine stale-policy semantics;
-5. rerun PRE-BUILD REALITY GATE;
-6. Concept Lock only if evidence supports it.
+5. identify any residual that survives the Sanction reconstruction;
+6. rerun PRE-BUILD REALITY GATE;
+7. Concept Lock only if evidence supports it.
+
+## 18. Public Discovery Update — 2026-09-26
+
+This section records public behavioral evidence. It is **not** a substitute for interviews.
+
+### Organizational spend
+
+Ramp supports temporary increases that revert automatically to the original standing limit. A public user requested custom expiry dates because multi-cycle temporary needs otherwise require repeated increases or a “permanent” increase that must later be manually reduced.
+
+Implication:
+- some real workflows prefer a **parametric temporary envelope** rather than exact-action authorization;
+- forgotten rollback / permission drift is observable operational pain.
+
+A Canadian OSFI audit also documented transactions above acquisition-card thresholds where temporary increases were allowed but evidence of required approvals could not be demonstrated.
+
+Implication:
+- approval lineage / evidence is a real operational requirement.
+
+### Treasury
+
+Squads already provides standing delegated authority through Spending Limits. Public MetaDAO code configures monthly Squads spending limits for operating teams.
+
+Implication:
+- delegated treasury autonomy is real, not theoretical;
+- the unresolved workflow is what teams do when a legitimate transaction exceeds that standing authority.
+
+### Agent builders
+
+Sanction proves that exact one-use escalation semantics already exist outside CRESCO.
+
+Implication:
+- Agentic Authority survives only if direct discovery finds a residual beyond one-use exact grants and policy evidence.
+
+Session.money makes the competing product bet that a human should approve a bounded **session** (duration + cap + scope), not a single exact action.
+
+Implication:
+- Exception Shape Test is now critical.
+
+### Delegated trading
+
+European algorithmic-trading rules explicitly require procedures for specific trades blocked by pre-trade controls but still intended for submission. Overrides must be temporary, exceptional, risk-verified and authorized by a designated person.
+
+Implication:
+- the CRESCO decision-lattice problem shape is strongly validated in a mature financial domain;
+- the remaining question is whether existing OMS/EMS/risk systems already solve it sufficiently well.
+
+See:
+- `research/PUBLIC-EVIDENCE-2026-09-26.md`
+- `research/DISCOVERY-TARGETS.md`

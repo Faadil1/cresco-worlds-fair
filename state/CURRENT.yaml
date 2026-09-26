@@ -43,11 +43,20 @@ core:
   unresolved: true
 
 candidate_lanes:
-  treasury_crypto_ops: ACTIVE
-  agent_builders: ACTIVE
-  delegated_trading: ACTIVE
-  family_progressive_agency: HOLD_ACTIVE_RESEARCH
-  organizational_spend: HOLD_NATIVE_ADVANTAGE
+  treasury_crypto_ops:
+    status: ACTIVE
+    public_signal: STANDING_DELEGATION_PROVEN_EXCEPTION_WORKFLOW_UNKNOWN
+  agent_builders:
+    status: HIGH_COMPETITIVE_RISK
+    public_signal: SANCTION_ALREADY_PROVES_ONE_USE_EXACT_ESCALATION_AND_POLICY_EVIDENCE
+  delegated_trading:
+    status: ACTIVE_HIGH_SIGNAL
+    public_signal: SPECIFIC_TEMPORARY_EXCEPTION_PATTERN_REGULATORILY_VALIDATED
+  family_progressive_agency:
+    status: HOLD_ACTIVE_RESEARCH
+  organizational_spend:
+    status: ANALOGUE_HIGH_SIGNAL
+    public_signal: TEMPORARY_ENVELOPE_AND_APPROVAL_EVIDENCE_PAIN_OBSERVED
 
 gates:
   real_problem: PARTIAL
@@ -57,29 +66,39 @@ gates:
   killer_demo: SUPPORTED
   native_advantage: PARTIAL
   negative_event: PARTIAL
-  competitive_residual: BLOCKED_PENDING_DISCOVERY
+  competitive_residual: BLOCKED_PENDING_DIRECT_DISCOVERY
+
+public_evidence:
+  agent_exact_one_use_precedent: PROVEN_SANCTION
+  agent_scoped_session_precedent: PROVEN_SESSION_MONEY
+  treasury_standing_delegation: PROVEN_SQUADS_METADAO
+  org_spend_temporary_envelope: PROVEN_RAMP
+  org_spend_approval_evidence_gap: PROVEN_OSFI_AUDIT
+  trading_specific_temporary_override_pattern: PROVEN_REGULATORY_REQUIREMENT
 
 hostile_tests:
   squads_reconstruction: ACTIVE
   safe_reconstruction: ACTIVE
   sdp_reconstruction: ACTIVE
+  sanction_reconstruction: CRITICAL
   rfc9396_psd2: ACTIVE
   session_shape: ACTIVE
   feature_absorption: ACTIVE
 
 next_actions:
-  - complete_semantic_teardown
-  - run_treasury_discovery
-  - run_agent_builder_discovery
-  - run_delegated_trading_discovery
-  - classify_exception_shape
+  - interview_or_contact_sanction_and_session_money_builders
+  - interview_squads_treasury_operators
+  - interview_delegated_trading_operators
+  - classify_exception_shape_from_real_events
   - define_stale_policy_semantics
+  - identify_residual_after_sanction
   - rerun_reality_gate
 
 do_not_do:
   - build_new_features_before_concept_lock
   - claim_bounded_delegation_is_novel
   - claim_exact_payment_consent_is_novel
+  - claim_one_use_human_escalation_is_novel
   - claim_universal_semantic_action_binding_is_already_implemented
   - pivot_to_generic_agent_wallet
   - default_to_family_by_inertia

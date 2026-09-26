@@ -719,3 +719,71 @@ Implication:
 See:
 - `research/PUBLIC-EVIDENCE-2026-09-26.md`
 - `research/DISCOVERY-TARGETS.md`
+
+
+## 19. Negative-Event + Killer-Demo Update — 2026-09-26
+
+Two lanes now have causal incident mappings and bounded demo specifications.
+
+### Delegated Trading
+
+Primary negative event:
+- Knight Capital 2012 automated-routing incident;
+- >4M executions, >397M shares, >$460M loss;
+- SEC findings included inadequate controls immediately before market submission and inadequate aggregate capital-threshold controls.
+
+CRESCO relevance:
+- supports the case for an independent capital-path Mandate;
+- current CRESCO already has max action/period notional, per-asset rules, Pyth validation, pause/revoke, period counters and atomic execution state;
+- CRESCO must NOT claim it would have prevented the full Knight incident.
+
+Killer-demo thesis:
+> The strategy can trade by itself, but crossing one risk boundary does not give it broader future authority.
+
+Required proof sequence:
+1. two in-bound autonomous actions;
+2. one legitimate out-of-bound action;
+3. Policy Diff;
+4. exceptional authority;
+5. meaningful mutation refusal;
+6. exact/bounded action executes;
+7. exception consumed;
+8. replay refuses;
+9. standing Mandate unchanged;
+10. stale-Mandate negative path.
+
+### Treasury Intent
+
+Primary negative event:
+- Bybit / Safe incident, 21 Feb 2025;
+- roughly $1.5B stolen after signers were deceived by a compromised/spoofed transaction representation.
+
+CRESCO relevance:
+- proves that exact-action hashing alone is not sufficient when the signer is shown false semantics;
+- a Treasury direction therefore requires trusted/independent semantic decoding and binding between reviewed semantics and executed bytes.
+
+Killer-demo thesis:
+> A signer’s approval is only valid for the transaction semantics they independently verified — not whatever a compromised interface puts underneath the button.
+
+Required proof sequence:
+1. normal standing authority;
+2. legitimate exceptional payment;
+3. Policy Diff;
+4. principal authorization;
+5. compromised UI / transaction semantic mismatch;
+6. HARD REFUSE;
+7. legitimate bytes restored;
+8. atomic execute + consume;
+9. replay refusal;
+10. standing authority unchanged.
+
+### Current collision
+
+- Delegated Trading: best continuity with current CRESCO architecture and strongest natural Pyth/Solana role.
+- Treasury Intent: strongest human-readable security demo, but requires more new architecture and a trusted semantic verifier.
+- Demo quality does not decide Concept Lock.
+
+See:
+- `research/NEGATIVE-EVENT-MAP.md`
+- `research/KILLER-DEMO-SPECS.md`
+- `research/TECH-FEASIBILITY-DELEGATED-CAPITAL.md`

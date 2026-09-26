@@ -17,13 +17,14 @@ Working hypothesis:
 Teams need a way to handle legitimate actions outside standing treasury authority without silently turning the exception into future standing authority.
 
 Current status:
-- Real Problem: PARTIAL
+- Real Problem: PASS category-level
 - Real User: PASS category-level
 - 5-Year Durability: PASS
 - WTP for CRESCO semantics: UNPROVEN
-- Killer Demo: STRONG
+- Killer Demo: EXCELLENT
 - Native Advantage: STRONG/PARTIAL
-- Negative Event: STRONG category-level
+- Negative Event: PASS — Bybit/Safe mapped causally
+- Technical Feasibility: PARTIAL — requires trusted semantic verification
 - Competitive Residual: BLOCKED
 
 Must prove:
@@ -63,14 +64,16 @@ Working hypothesis:
 Trading systems need bounded delegated capital plus explicit, policy-aware override semantics for exceptional trades.
 
 Current status:
-- Real Problem: PASS category-level
-- Real User: PASS
+- Real Problem: PASS
+- Real User: PASS category-level
 - 5-Year Durability: PASS
-- WTP: SUPPORTED category-level
-- Killer Demo: VERY STRONG
+- WTP: SUPPORTED category-level / CRESCO-specific UNPROVEN
+- Killer Demo: EXCELLENT
 - Native Advantage: VERY STRONG
-- Negative Event: SUPPORTED
+- Negative Event: PASS — Knight Capital mapped causally
+- Technical Feasibility: PASS for a bounded one-venue vertical
 - Competitive Residual: UNPROVEN
+- Direct Pull: PENDING
 
 Must prove:
 - recurring legitimate trades blocked by risk limits;
@@ -187,3 +190,79 @@ A lane can be proposed for Concept Lock only when:
 Until then:
 
 **BUILD_AUTHORIZED = FALSE**
+
+
+## Reality Gate Rerun — 2026-09-26
+
+### Delegated Trading
+
+Passed:
+- REAL PROBLEM — mature, repeated risk-control domain;
+- REAL USER — allocator / strategy operator / risk owner is legible;
+- 5-YEAR DURABILITY — trading risk control predates current AI/crypto cycles;
+- KILLER DEMO — mechanism can be shown in ~90 seconds;
+- NATIVE ADVANTAGE — onchain capital path, Pyth, atomic authority+execution;
+- NEGATIVE EVENT — Knight Capital provides a verified failure pattern;
+- TECHNICAL FEASIBILITY — current CRESCO can be extended vertically without a rewrite.
+
+Still blocked:
+- CRESCO-specific WTP;
+- real operator exception-shape distribution;
+- acceptable override latency;
+- stale-policy expectation;
+- competitive residual vs OMS/RMS;
+- at least two operators wanting to trial.
+
+Gate result:
+**SURVIVES / CONCEPT LOCK BLOCKED ON DIRECT EVIDENCE.**
+
+### Treasury Intent
+
+Passed:
+- REAL PROBLEM — high-consequence signing / delegated treasury risk;
+- REAL USER — treasury operator / signer / policy owner is legible;
+- 5-YEAR DURABILITY — durable treasury/security problem;
+- KILLER DEMO — extremely legible;
+- NEGATIVE EVENT — Bybit/Safe provides a verified failure class.
+
+Still blocked:
+- CRESCO-specific WTP;
+- trusted semantic verification architecture;
+- competitive residual vs Safe/Squads/security tooling;
+- direct operator pull;
+- exception-shape distribution;
+- stale-policy semantics.
+
+Gate result:
+**SURVIVES / CONCEPT LOCK BLOCKED ON PRODUCT DELTA + DIRECT EVIDENCE.**
+
+### Agent Builders
+
+New evidence:
+Sanction already covers one-use exact grants, mismatch refusal, policy revisions and evidence replay; Session.money covers scoped sessions.
+
+Gate result:
+**SURVIVES ONLY CONDITIONALLY.**
+
+The generic Agent lane is removed from lead consideration unless discovery proves value in:
+- stale-policy invalidation;
+- atomic exception + onchain capital execution;
+- Policy Diff/minimal exceptional delta;
+- trusted semantics;
+- another vertical-specific residual.
+
+### Build authorization
+
+Still:
+
+**BUILD_AUTHORIZED = FALSE**
+
+Allowed:
+- discovery;
+- evidence collection;
+- technical feasibility spikes;
+- demo specification;
+- architecture comparison.
+
+Not allowed:
+- product feature implementation that silently chooses a wedge.

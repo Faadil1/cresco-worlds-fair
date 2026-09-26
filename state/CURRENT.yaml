@@ -59,13 +59,15 @@ candidate_lanes:
     public_signal: TEMPORARY_ENVELOPE_AND_APPROVAL_EVIDENCE_PAIN_OBSERVED
 
 gates:
-  real_problem: PARTIAL
-  real_user: PARTIAL
+  real_problem: SUPPORTED
+  real_user: CATEGORY_LEVEL_SUPPORTED
   five_year_durability: SUPPORTED
   willingness_to_pay_cresco_specific: UNPROVEN
-  killer_demo: SUPPORTED
-  native_advantage: PARTIAL
-  negative_event: PARTIAL
+  killer_demo: STRONG
+  native_advantage: STRONG_FOR_TRADING_PARTIAL_FOR_TREASURY
+  negative_event: PROVEN_FOR_TRADING_AND_TREASURY
+  technical_feasibility_trading: PASS_BOUNDED_VERTICAL
+  technical_feasibility_treasury: PARTIAL_REQUIRES_TRUSTED_SEMANTICS
   competitive_residual: BLOCKED_PENDING_DIRECT_DISCOVERY
 
 public_evidence:
@@ -86,8 +88,9 @@ hostile_tests:
   feature_absorption: ACTIVE
 
 next_actions:
-  - run_delegated_capital_technical_feasibility_spike
-  - interview_or_contact_sanction_and_session_money_builders
+  - monitor_first_outreach_wave_responses
+  - continue_public_evidence_and_operator_targeting
+  - interview_sanction_and_session_money_builders
   - interview_squads_treasury_operators
   - interview_delegated_trading_operators
   - classify_exception_shape_from_real_events

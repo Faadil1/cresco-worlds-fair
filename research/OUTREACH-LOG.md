@@ -9,7 +9,7 @@ Date: 2026-09-26
 | 2 | Agent / Exception Shape | Session.money / LazorKit builders | dev-support@lazor.sh (route request) · Telegram @sessionmoney_wallet · X @session_money | SENT_EMAIL_ROUTE_REQUEST | 2026-09-26 · Gmail msg `1a0dcb665d774859` | — | — | — |
 | 3 | Treasury | Sean Ganser / Squads | sean@sqds.io | SENT | 2026-09-26 · Gmail msg `1a0dcb6fb33edf82` | — | — | — |
 | 4 | Trading | Ellipsis Labs / Phoenix | founders@ellipsislabs.xyz | SENT | 2026-09-26 · Gmail msg `1a0dcb705a1c80f3` | — | — | — |
-| 5 | Trading | Ergonia operators | hr@ergonia.io / public team channels | READY | — | — | — | — |
+| 5 | Trading | Ergonia Trading | hr@ergonia.io | SENT | 2026-09-26 · Gmail msg `1a0dd9d9840be3ba` | — | — | — |
 
 ## Message purposes
 
@@ -68,3 +68,11 @@ Only concrete workflow evidence from a response/interview may update:
 - COMPETITIVE_RESIDUAL;
 - PULL;
 - CONCEPT_LOCK readiness.
+
+| 6 | Trading / Competitor Discovery | Primer Systems / Vault | dev@primer.systems | SENT | 2026-09-26 · Gmail msg `1a0dda01073a93bd` | — | — | — |
+
+### Primer Systems
+Purpose:
+- test what happens when a legitimate trade exceeds a hard per-trade cap;
+- determine whether operators want exact one-trade exception vs policy edit / temporary envelope;
+- understand why some Vault rules are hard rejects and others escalate.

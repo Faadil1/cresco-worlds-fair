@@ -16,6 +16,7 @@ Can existing authorization systems reconstruct CRESCO closely enough that CRESCO
 | Squads | Spending Limit | Yes | limit exceeded → normal transaction path | Vault Transaction + Proposal | proposal tied to transaction; stale mechanism | Config Transaction | Can this fully reconstruct CRESCO? |
 | Safe | Spending Limit / allowance | Yes | out of allowance → Safe transaction | threshold-approved transaction | Safe transaction semantics; nonce | modify allowance/module | Is exact-once just standard multisig? |
 | Turnkey | signing policies | Yes | policy deny / co-approval | human-agent consensus | signing request evaluated against policy | policy configuration | Is CRESCO only orchestration above Turnkey? |
+| Sanction | policy + immutable revision | Yes | approve / escalate / deny | human approval → one-use grant | identical retry required; field mismatch refused; exact context retained; evidence replay | policy revision | **Very close reconstruction: what remains beyond explicit Policy Diff / capital-path semantics?** |
 | Session.money | scoped session | Yes | session/cap boundary | human approves bounded session | session enforcement | create new session | Do users prefer envelope over exact action? |
 | RFC 9396 | authorization_details | within consent | outside consent denied | detailed consent | implementation dependent | re-consent | Does single-use + lineage add enough value? |
 
@@ -33,12 +34,30 @@ nonce / stale checks
 separate configuration transaction
 ```
 
+Sanction makes the Agent-lane reconstruction even stronger:
+
+```
+standing policy
+→ exact request
+→ escalate
+→ human approve
+→ one-use grant
+→ retry identical request
+→ mismatch refusal
+→ immutable policy revision + stored evaluated context
+→ replayable evidence
+```
+
 Therefore the following are **not sufficient differentiation**:
 - spend limits;
 - one-time allowances;
 - exact proposals;
+- one-use human grants;
+- exact retry requirement;
 - versioning;
+- policy revisions;
 - audit logs;
+- stored evaluated context;
 - stale authorization;
 - replay protection in isolation.
 
@@ -53,7 +72,7 @@ Boundary violation
   ↕
 Policy Diff
   ↕
-Exceptional authority derived from vN
+Minimal exceptional authority derived from vN
   ↕
 Execution evidence
   ↕
@@ -73,7 +92,15 @@ POST-EXECUTION AUTHORITY:
 what remains afterward
 ```
 
-Status: **UNPROVEN**.
+Potential residual dimensions that still require proof:
+- explicit violated-policy dimension set;
+- minimal exceptional delta computation;
+- onchain/capital-path enforcement of that delta;
+- domain-specific stale-policy semantics;
+- cross-provider portability;
+- trusted semantic representation of what the principal actually saw.
+
+Status: **UNPROVEN / NARROWED FURTHER BY SANCTION**.
 
 ## Current implementation truth
 
@@ -86,6 +113,14 @@ The Stocklana CRESCO path already binds the one-time path to:
 - one successful use.
 
 It does not yet prove arbitrary semantic binding across recipient / program / calldata / venue / slippage / fee payer for generalized transactions.
+
+## Public behavioral evidence affecting exception shape
+
+### Ramp
+Public product behavior and forum requests show users want temporary increases that automatically revert, including custom-duration temporary authority. This is evidence that some real workflows prefer a **temporary envelope** rather than exact-action authorization.
+
+### Trading
+European algorithmic-trading rules explicitly require temporary, exceptional, risk-verified authorization for specific blocked trades. This validates the decision-lattice problem shape, but not CRESCO's competitive residual.
 
 ## Required Teardown Questions
 
@@ -109,6 +144,14 @@ It does not yet prove arbitrary semantic binding across recipient / program / ca
 - Can policies + consensus approvals model the whole lifecycle?
 - Is a transaction approval explicitly linked to violated policy dimensions?
 - What information is preserved for audit?
+
+### Sanction
+- Does it compute the exact policy delta that caused escalation?
+- Is the one-use grant explicitly derived from a policy revision?
+- Does a policy change invalidate a pending/approved grant?
+- Is the grant bound to a minimal authority delta or simply the repeated request context?
+- What customer behavior drove one-use grants instead of sessions?
+- Does it enforce at the actual capital execution layer or as an authorization plane the caller must respect?
 
 ### Session.money
 - When do users prefer a scoped session over one exact action?

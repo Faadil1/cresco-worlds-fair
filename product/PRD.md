@@ -613,6 +613,64 @@ Next work:
 6. rerun PRE-BUILD REALITY GATE;
 7. Concept Lock only if evidence supports it.
 
+## 18.1 Sanction residual update — 2026-09-26
+
+Further code inspection narrowed the Agent-lane residual again.
+
+### Stale-policy semantics
+
+Sanction’s public grant-consumption path visibly checks:
+- grant identity / owner;
+- status;
+- expiry;
+- exact resource/request match;
+- optional execution-token limits.
+
+In the inspected path, no explicit comparison against the **current policy revision** is visible at grant redemption.
+
+CRESCO’s current Mandate nonce semantics invalidate authorization material after a standing-authority transition.
+
+This creates a concrete discovery question:
+
+> If an exception is approved under policy vN and the standing policy becomes vN+1 before execution, should that exception still work?
+
+Status:
+**TECHNICAL DIFFERENCE OBSERVED / CORRECT PRODUCT SEMANTIC UNPROVEN.**
+
+### Authorization attempt vs atomic capital execution
+
+Sanction explicitly documents that a consumed grant authorizes **one attempt**, not proof of downstream completion. A failed downstream action does not restore the grant.
+
+CRESCO’s current Solana path consumes its one-time allowance in the same transaction as the controlled token movement; failed execution rolls back state atomically.
+
+Potential residual:
+
+> For onchain capital, exceptional authority and execution can settle atomically.
+
+Status:
+**REAL ARCHITECTURAL DIFFERENCE / CUSTOMER VALUE UNPROVEN.**
+
+### Consequence for Agentic direction
+
+Agentic CRESCO is not allowed to Concept Lock around:
+- one-use grants;
+- exact retry;
+- human escalation;
+- policy revisions;
+- audit evidence.
+
+It must instead validate at least one materially valuable residual:
+- stale-policy invalidation semantics;
+- atomic exception + capital execution;
+- complete Policy Diff / minimal exceptional delta;
+- trusted semantic representation;
+- cross-provider/onchain enforcement that users materially prefer.
+
+See:
+- `research/SANCTION-DELTA.md`
+- `research/OUTREACH-PACK.md`
+- `research/OUTREACH-LOG.md`
+
 ## 18. Public Discovery Update — 2026-09-26
 
 This section records public behavioral evidence. It is **not** a substitute for interviews.

@@ -787,3 +787,53 @@ See:
 - `research/NEGATIVE-EVENT-MAP.md`
 - `research/KILLER-DEMO-SPECS.md`
 - `research/TECH-FEASIBILITY-DELEGATED-CAPITAL.md`
+
+
+## 20. Primer + TradFi Override Update — 2026-09-26
+
+### Primer Vault
+
+Primer Vault's public trading implementation reconstructs most generic delegated-trading control:
+- commissioned agent identity;
+- independent re-quote;
+- per-trade / daily limits;
+- slippage / price-impact controls;
+- human approval;
+- pending expiry;
+- re-quote and current-policy re-evaluation at approval;
+- duplicate-safe approval;
+- onchain trade execution.
+
+Important semantic residual:
+Primer's human approval is **review within current standing policy**. Hard limits such as per-trade max, daily volume and max slippage reject; approval does not visibly mint authority beyond those limits.
+
+CRESCO's current one-time allowance can instead authorize a selected soft-boundary action beyond the normal standing action cap while leaving the Mandate unchanged.
+
+Status:
+**REAL COMPETITIVE DIFFERENCE / PRODUCT VALUE UNPROVEN.**
+
+### TradFi prior art
+
+Specific temporary trade overrides are established institutional practice and regulatory requirement in some jurisdictions.
+
+Therefore CRESCO must not claim novelty for:
+- one-trade risk override;
+- risk-manager approval;
+- temporary exceptional permission.
+
+Potential novelty/value must come from applying those semantics to:
+- machine-delegated onchain capital;
+- explicit Mandate / exceptional-authority state;
+- atomic exception consumption + execution;
+- verifiable lineage;
+- delegate-native discovery and request flow.
+
+### Current working company hypothesis
+
+> **Delegated Capital Authority for autonomous onchain strategies.**
+
+This is still a hypothesis, not Concept Lock.
+
+See:
+- `research/PRIMER-VAULT-DELTA.md`
+- `research/CONCEPT-COLLISION-V3.md`

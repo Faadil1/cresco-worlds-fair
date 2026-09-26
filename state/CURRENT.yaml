@@ -51,7 +51,7 @@ candidate_lanes:
     public_signal: SANCTION_ALREADY_PROVES_ONE_USE_EXACT_ESCALATION_AND_POLICY_EVIDENCE
   delegated_trading:
     status: LEADING_EVIDENCE_LANE_NOT_LOCKED
-    public_signal: SPECIFIC_TEMPORARY_EXCEPTION_PATTERN_REGULATORILY_VALIDATED
+    public_signal: TRUE_EXCEPTION_TO_POLICY_RESIDUAL_SURVIVES_PRIMER_RECONSTRUCTION
   family_progressive_agency:
     status: HOLD_ACTIVE_RESEARCH
   organizational_spend:
@@ -86,10 +86,12 @@ hostile_tests:
   rfc9396_psd2: ACTIVE
   session_shape: ACTIVE
   feature_absorption: ACTIVE
+  primer_vault_reconstruction: CRITICAL_RESIDUAL_FOUND
 
 next_actions:
   - monitor_first_outreach_wave_responses
   - continue_public_evidence_and_operator_targeting
+  - validate_exception_to_policy_residual_with_primer_and_trading_operators
   - interview_sanction_and_session_money_builders
   - interview_squads_treasury_operators
   - interview_delegated_trading_operators

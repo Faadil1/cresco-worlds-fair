@@ -837,3 +837,36 @@ This is still a hypothesis, not Concept Lock.
 See:
 - `research/PRIMER-VAULT-DELTA.md`
 - `research/CONCEPT-COLLISION-V3.md`
+
+
+## 21. Trading Boundary Taxonomy — 2026-09-26
+
+Delegated Trading must not treat every risk failure as exceptionable.
+
+Working boundary classes:
+- **HARD** — no exception path;
+- **UNKNOWN_FAIL_CLOSED** — evidence unavailable/invalid;
+- **SOFT_EXACT** — one exact exceptional action may be authorized;
+- **SOFT_ENVELOPE** — bounded temporary authority, only if discovery requires it;
+- **EVOLVABLE_ONLY** — standing Mandate may change through explicit vN → vN+1 transition, not Allow Once.
+
+Leading soft-boundary candidate:
+- per-trade notional.
+
+Leading hard-boundary candidates:
+- revoked/paused authority;
+- wrong delegate;
+- unsupported/unparseable execution path;
+- invalid critical evidence.
+
+Important unresolved question:
+How should exceptional execution affect standing period counters?
+
+Possible models:
+- count exceptional execution against standing period usage;
+- keep a separate exceptional ledger;
+- dimension-specific accounting.
+
+No model is locked before operator discovery.
+
+See `research/TRADING-BOUNDARY-TAXONOMY.md`.

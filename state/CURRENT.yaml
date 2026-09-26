@@ -44,13 +44,13 @@ core:
 
 candidate_lanes:
   treasury_crypto_ops:
-    status: ACTIVE
+    status: SECONDARY_HIGH_VALUE
     public_signal: STANDING_DELEGATION_PROVEN_EXCEPTION_WORKFLOW_UNKNOWN
   agent_builders:
     status: HIGH_COMPETITIVE_RISK
     public_signal: SANCTION_ALREADY_PROVES_ONE_USE_EXACT_ESCALATION_AND_POLICY_EVIDENCE
   delegated_trading:
-    status: ACTIVE_HIGH_SIGNAL
+    status: LEADING_EVIDENCE_LANE_NOT_LOCKED
     public_signal: SPECIFIC_TEMPORARY_EXCEPTION_PATTERN_REGULATORILY_VALIDATED
   family_progressive_agency:
     status: HOLD_ACTIVE_RESEARCH
@@ -86,6 +86,7 @@ hostile_tests:
   feature_absorption: ACTIVE
 
 next_actions:
+  - run_delegated_capital_technical_feasibility_spike
   - interview_or_contact_sanction_and_session_money_builders
   - interview_squads_treasury_operators
   - interview_delegated_trading_operators

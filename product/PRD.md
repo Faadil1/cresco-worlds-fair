@@ -1,0 +1,598 @@
+# CRESCO Product Requirements — Crypto World’s Fair
+
+Version: 0.1-discovery  
+Status: **PRE-CONCEPT-LOCK / COLLABORATIVE SOURCE OF TRUTH**  
+Date: 2026-09-26
+
+## 1. Purpose
+
+This PRD coordinates the World’s Fair evolution of CRESCO.
+
+It is intentionally written **before Concept Lock**. It records what must remain invariant, what is proven by the Stocklana baseline, which company directions remain alive, which claims are still hypotheses, and what evidence is required before implementation expands.
+
+This document is expected to evolve. Material changes must be explicit and reviewable rather than silently introduced through code.
+
+## 2. Mission
+
+Determine what company CRESCO should become for Crypto World’s Fair without assuming that the Stocklana family-finance framing is the final market.
+
+The working problem is:
+
+> **How can a principal give another actor meaningful autonomy without turning one exceptional approval into broader standing authority?**
+
+A more precise system statement:
+
+> **CRESCO governs the lifecycle of delegated authority when an autonomous action reaches a standing boundary.**
+
+## 3. Baseline vs World’s Fair Delta
+
+### CRESCO BASELINE — Stocklana
+
+Canonical source:
+- https://github.com/Faadil1/cresco
+- https://cresco-lac.vercel.app/
+
+The baseline already proves:
+- Solana Devnet program-controlled demo SPL-token execution;
+- in-bound execution without guardian approval;
+- capital-path refusal when the standing boundary is exceeded;
+- versioned Mandates / nonces;
+- stale authorization refusal after Mandate change;
+- one-time exception path;
+- mutation refusal for the current exact-action model;
+- single-use consumption and replay refusal;
+- Pyth-derived price / notional enforcement;
+- explicit separation between learning/evidence and authority;
+- fail-closed handling of stale/unknown evidence;
+- ALLOW / REFUSE / PENDING / UNKNOWN semantics.
+
+Truth boundary:
+- Devnet;
+- demo SPL-token execution;
+- no brokerage claim;
+- no custody claim;
+- no mainnet claim;
+- no real AAPL ownership claim;
+- no real minor securities execution claim.
+
+### CRESCO WORLD’S FAIR DELTA
+
+This repository must prove the delta from the baseline:
+- company / market selection;
+- user evidence;
+- competitive residual;
+- refined authority model;
+- exact role of Solana;
+- economic mechanism;
+- distribution hypothesis;
+- differentiated killer demo;
+- any new implementation;
+- runtime evidence;
+- final submission narrative.
+
+Do not rewrite Stocklana history to make the World’s Fair story look cleaner.
+
+## 4. Current Product Thesis
+
+CRESCO separates four distinct concepts:
+
+### 4.1 Standing Authority
+
+What the delegate may normally do without synchronous principal approval.
+
+Examples:
+- allowed asset;
+- allowed action;
+- destination / venue scope;
+- per-action amount;
+- per-period amount;
+- expiry;
+- market / risk conditions.
+
+### 4.2 Exceptional Authority
+
+Additional authority granted for an action that crossed a standing boundary.
+
+Current baseline form:
+- exact request;
+- one successful use;
+- bound to current Mandate lineage;
+- mutation refusal;
+- replay refusal;
+- standing Mandate unchanged.
+
+The future exception shape is **not yet locked**. Discovery must determine whether real users need:
+- exact-action capability;
+- parametric temporary capability;
+- scoped session;
+- full co-sign/proposal;
+- permanent widening.
+
+### 4.3 Authority Evidence
+
+Information that may inform future authority decisions.
+
+Examples:
+- learning progress;
+- historical success;
+- P&L;
+- risk score;
+- oracle evidence;
+- agent evaluation;
+- exception frequency;
+- reputation.
+
+Invariant:
+
+> **Evidence may inform authority. Evidence never becomes authority by itself.**
+
+### 4.4 Policy Evolution
+
+An explicit authorized transition that changes future standing authority.
+
+Example:
+
+```
+Mandate v7
+→ authorized policy transition
+→ Mandate v8
+```
+
+An exception is not Policy Evolution.
+
+## 5. Uncompromising Core Invariants
+
+These are preserved across all candidate markets unless Concept Lock explicitly proves that one is invalid:
+
+1. Standing authority is explicit and versioned.
+2. The delegate may act autonomously inside standing authority.
+3. Boundary violations fail closed.
+4. Proposal/request is not authority.
+5. Some boundaries may be hard and non-exceptionable.
+6. Soft boundaries may support an exceptional-authority path.
+7. An exception never implicitly mutates standing authority.
+8. Material mutation of a bound action invalidates its authorization.
+9. Consumed one-time authorization cannot be replayed.
+10. A standing-policy change is a separate authorized transition.
+11. Old authorization material must not silently survive incompatible policy evolution.
+12. Evidence, learning, profit, reputation or model confidence never auto-widens authority.
+13. Market/risk evidence may restrict execution but never grants authority on its own.
+14. The UI is not the enforcement boundary.
+15. UNKNOWN is not success.
+16. REAL FAILURE > FAKE SUCCESS.
+
+## 6. Hard vs Soft Boundaries — Working Model
+
+Not every REFUSE should create an escalation path.
+
+### HARD INVARIANT
+
+Cannot be overridden through a delegate-originated exception request.
+
+Examples to test:
+- revoked Mandate;
+- prohibited/sanctioned destination;
+- invalid signer;
+- stale/unknown critical evidence;
+- unsupported program / asset where execution is forbidden.
+
+### SOFT BOUNDARY
+
+May permit exceptional authority.
+
+Examples to test:
+- amount exceeds normal per-action limit;
+- approved vendor invoice exceeds normal budget;
+- temporary slippage / risk deviation;
+- new but trusted destination requiring principal review.
+
+### EVOLVABLE POLICY
+
+A principal may explicitly change future standing authority through a new Mandate version.
+
+## 7. Policy Diff — Differentiation Hypothesis
+
+The strongest current residual hypothesis is **policy-aware exceptional authority**.
+
+Instead of only returning ALLOW/DENY, CRESCO may formally compute:
+
+```
+Standing Mandate vN
+        ↓
+Requested Action
+        ↓
+Policy Diff
+        ↓
+Which dimensions violated vN?
+        ↓
+Minimal exceptional authority
+        ↓
+Principal decision
+        ↓
+Execution + evidence
+        ↓
+Standing Mandate remains vN
+```
+
+Example:
+
+```
+Mandate v7:
+asset      USDC
+recipient  Vendor A
+max amount $500
+
+Requested:
+asset      USDC        ✓
+recipient  Vendor A    ✓
+amount     $640        ✕
+
+Policy Diff:
+amount = +$140 beyond standing authority
+```
+
+Potential value:
+- explainable boundary;
+- explicit relationship between normal and exceptional authority;
+- auditable exceptional delta;
+- clearer stale-policy semantics;
+- possible cross-provider portability.
+
+**Status: UNPROVEN DIFFERENTIATION HYPOTHESIS.**
+
+## 8. Current Technical Baseline Limitation
+
+The Stocklana implementation proves exactness for its current execution model. It does **not yet prove a universal semantic action hash** over arbitrary financial transactions.
+
+Current exactness includes:
+- request identity / request hash;
+- execution asset / mint;
+- action type in hosted state;
+- current Mandate nonce;
+- exact Pyth-derived approved notional;
+- one successful use;
+- replay refusal.
+
+Future directions such as treasury or arbitrary agent transactions may require canonical action semantics including, when applicable:
+- recipient;
+- chain;
+- program / contract;
+- instruction / method;
+- calldata / arguments;
+- asset;
+- amount;
+- venue;
+- slippage;
+- expiry;
+- fee payer;
+- oracle/risk context.
+
+Do not claim this generalized binding until implemented and proven.
+
+## 9. Competitive Reality
+
+The following are **prior art / adjacent systems**, not enemies to dismiss:
+- Solana Spend Permissions / allowances;
+- Solana Developer Platform wallet policies;
+- Squads Spending Limits + Vault Transactions + Proposals;
+- Safe allowances / multisig transactions;
+- Turnkey policy engine / delegated access / human-agent consensus;
+- Privy agent policies;
+- Crossmint agent wallets;
+- Session.money scoped spending sessions;
+- OAuth 2.0 Rich Authorization Requests (RFC 9396);
+- PSD2 dynamic linking;
+- macaroons / capability attenuation;
+- JIT / PAM / break-glass access;
+- corporate-card spend controls.
+
+Current conclusion:
+- bounded delegation is not novel;
+- spending caps are not novel;
+- exact payment consent is not novel;
+- transaction proposals are not novel;
+- versioned policies are not novel;
+- replay protection is not novel in isolation.
+
+The unresolved question is whether CRESCO’s combination of:
+- standing-policy lineage;
+- boundary explanation / Policy Diff;
+- exceptional-authority issuance;
+- mutation/replay semantics;
+- explicit separation from Policy Evolution;
+- execution-path evidence
+
+is sufficiently valuable and sufficiently distinct to support a product/company.
+
+## 10. Hostile Reconstruction Tests
+
+CRESCO must survive these before Concept Lock.
+
+### Squads Test
+
+Can CRESCO be reconstructed with:
+
+```
+Spending Limit
++
+Vault Transaction
++
+Proposal
++
+Config Transaction
+```
+
+If yes, identify the residual value precisely.
+
+### Safe Test
+
+Can:
+
+```
+Allowance module
++
+exact Safe transaction
++
+nonce
++
+guard/module logic
+```
+
+reproduce CRESCO sufficiently?
+
+### SDP Test
+
+Do:
+- immutable policy revisions;
+- operation snapshots;
+- approval_required;
+- approval requests;
+- payload/idempotency fingerprints
+
+already implement enough of the lifecycle?
+
+### RFC 9396 / PSD2 Test
+
+Does rich transaction consent + dynamic linking + single-use implementation reduce CRESCO to an implementation convention?
+
+### Session Test
+
+Do users prefer a scoped temporary envelope/session to an exact exceptional action?
+
+### Feature Absorption Test
+
+If an incumbent adds:
+
+```
+approveExactOnce(action)
+```
+
+does CRESCO still have independent value?
+
+## 11. Candidate Company Directions
+
+No direction is locked.
+
+### A. Treasury Intent / Authority
+
+High-consequence delegated treasury actions.
+
+Potential value:
+- policy-aware exception;
+- trusted semantic representation;
+- exact authorization lineage;
+- replay/mutation handling;
+- audit.
+
+Critical warning:
+exact-action binding does not prevent an incident where the principal is deceived into authorizing the malicious action itself. A treasury concept may require independent semantic decoding / trusted display binding.
+
+### B. Delegated Trading / Capital Mandates
+
+Principal allocates capital to a trader/bot under standing risk parameters.
+
+Potential rules:
+- assets;
+- venues;
+- notional;
+- exposure;
+- slippage;
+- Pyth conditions;
+- period limits;
+- drawdown;
+- hard/soft risk boundaries.
+
+Critical questions:
+- exception latency;
+- existing OMS/risk override quality;
+- exact vs parametric exception shape.
+
+### C. Agentic Financial Authority
+
+Not “another agent wallet.”
+
+Potential value:
+- authority lifecycle around existing wallet/signing infra;
+- boundary negotiation;
+- Policy Diff;
+- explicit exceptional authority;
+- cross-provider semantics.
+
+Critical threats:
+- Turnkey;
+- SDP;
+- Session.money;
+- wallet incumbents;
+- fast feature absorption.
+
+### D. Family Progressive Agency
+
+Current baseline narrative remains active as:
+- possible product;
+- UX laboratory;
+- most legible principal/delegate explanation.
+
+Not yet proven as the commercial wedge.
+
+### E. Organizational Spend / Procurement
+
+Commercially intuitive:
+- legitimate out-of-policy expense;
+- exact/temporary exception;
+- preserve normal employee budget.
+
+Critical weakness for World’s Fair:
+- weak blockchain-native advantage unless a real composability or settlement requirement is found.
+
+## 12. Discovery Lanes
+
+### Treasury / Crypto Ops
+
+Research question:
+
+> What actually happens after a legitimate treasury transaction hits a standing spending/policy boundary?
+
+Evidence required:
+- recent real event;
+- current workaround;
+- frequency;
+- approver;
+- whether standing authority changes;
+- exact vs temporary-envelope preference;
+- stale-policy behavior;
+- measurable cost/risk.
+
+### Agent Builders
+
+Research question:
+
+> When an agent needs a legitimate action outside normal wallet policy, what authority object should be issued?
+
+Test:
+- exact action;
+- scoped session;
+- cap increase;
+- co-sign;
+- policy change;
+- no escalation.
+
+Also test:
+- actions under cap that still should not be authorized;
+- acceptable escalation latency.
+
+### Delegated Trading
+
+Research question:
+
+> How are legitimate trades that fail pre-trade limits handled today, and what override semantics are actually required?
+
+Test:
+- exact trade;
+- temporary risk envelope;
+- automated risk sentinel;
+- human approval;
+- time sensitivity;
+- stale exception after risk-policy changes.
+
+## 13. PRE-BUILD REALITY GATE
+
+Every candidate must prove:
+
+### REAL PROBLEM
+A recurring, observed workflow—not a theoretical security story.
+
+### REAL USER
+A clearly identifiable principal/delegate pair and buyer.
+
+### 5-YEAR DURABILITY
+The problem survives current crypto/AI fashion cycles.
+
+### WILLINGNESS TO PAY
+Evidence specific to the mechanism/workflow, not only category TAM.
+
+### KILLER DEMO
+A short demo where the advantage is understandable without long explanation.
+
+### NATIVE ADVANTAGE
+Solana/onchain execution materially improves the product.
+
+### NEGATIVE EVENT
+At least one concrete, real, verifiable failure with:
+
+1. positive signal/opportunity;
+2. concrete negative event;
+3. observable impact;
+4. design implication;
+5. CRESCO response.
+
+### COMPETITIVE RESIDUAL
+Incumbent primitives do not already solve the workflow sufficiently.
+
+## 14. Concept Lock Entry Criteria
+
+A direction may enter Concept Lock only when all are true:
+
+- multiple target users independently describe recurring boundary events;
+- current workaround has measurable friction/risk/cost;
+- exception shape is understood;
+- decline / exception / evolve decision lattice maps to real behavior;
+- stale-policy semantics are understood;
+- competitive residual survives teardown;
+- native advantage is tangible;
+- at least two credible target users/builders want to try the approach.
+
+## 15. Concept Lock Output — Required
+
+When the gate passes, this PRD must be updated to include:
+- selected wedge;
+- primary principal/delegate pair;
+- buyer;
+- verified negative event;
+- current workaround;
+- economic mechanism;
+- competitive residual;
+- exact exception shape;
+- hard/soft boundary model;
+- Solana-native advantage;
+- distribution;
+- killer demo;
+- MVP / non-goals;
+- technical requirements;
+- evidence plan;
+- kill criteria.
+
+Then set:
+
+`Status: CONCEPT-LOCKED`
+
+Only after that:
+- Technical Reality Check;
+- Backend Engineering Intelligence;
+- Demo-First Architecture;
+- Build.
+
+## 16. Collaboration Rules
+
+1. This PRD is the coordination source of truth.
+2. Do not silently change the wedge through implementation.
+3. Do not convert a hypothesis into a claim without evidence.
+4. Do not force Family, Agentic, Treasury or Trading because of sunk work.
+5. Do not constrain divergent product thinking by current permissions, deployment convenience or deadline.
+6. Deadline affects sequencing after Concept Lock, not the ambition of the concept.
+7. Collaborator latency must not block deadline-critical execution once a direction is locked.
+8. Every material product decision must preserve a short rationale and evidence.
+9. Public README/submission claims must be strictly weaker than or equal to runtime evidence.
+10. Keep private collaborator notes / exploratory strategy out of the public submission surface when they do not help judges or users.
+
+## 17. Current Decision
+
+**NO CONCEPT LOCK.**  
+**NO NEW PRODUCT BUILD YET.**
+
+Next work:
+1. complete semantic teardown against SDP / Squads / Safe / Turnkey / Session.money;
+2. run Treasury / Agent Builder / Delegated Trading discovery;
+3. classify exception shape;
+4. determine stale-policy semantics;
+5. rerun PRE-BUILD REALITY GATE;
+6. Concept Lock only if evidence supports it.

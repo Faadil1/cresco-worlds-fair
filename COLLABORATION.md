@@ -2,6 +2,8 @@
 
 ## Source of truth
 
+New collaborator? Start with `docs/COLLABORATOR-ONBOARDING.md`.
+
 Read these before changing product direction:
 
 1. `product/PRD.md`

@@ -1,15 +1,39 @@
 # Discovery Outreach Log
 
-Status: FIRST_WAVE_SENT  
-Date: 2026-09-26
+Status: FIRST_RESPONSE_RECEIVED  
+Date: 2026-09-27
 
 | Priority | Lane | Target | Contact surface | Status | Sent | Response | Interview | Evidence |
 |---|---|---|---|---|---|---|---|---|
-| 1 | Agent | Eric Lovold / Sanction | eric@getsanction.com | SENT | 2026-09-26 · Gmail msg `1a0dcb57aee19742` | — | — | — |
+| 1 | Agent / Competitor Discovery | Eric Lovold / Sanction | eric@getsanction.com | RESPONDED | 2026-09-26 · Gmail msg `1a0dcb57aee19742` | 2026-09-27 · Positive response; open to 15-min call | TO_SCHEDULE | Founder/expert evidence only; Sanction still early |
 | 2 | Agent / Exception Shape | Session.money / LazorKit builders | dev-support@lazor.sh (route request) · Telegram @sessionmoney_wallet · X @session_money | SENT_EMAIL_ROUTE_REQUEST | 2026-09-26 · Gmail msg `1a0dcb665d774859` | — | — | — |
 | 3 | Treasury | Sean Ganser / Squads | sean@sqds.io | SENT | 2026-09-26 · Gmail msg `1a0dcb6fb33edf82` | — | — | — |
 | 4 | Trading | Ellipsis Labs / Phoenix | founders@ellipsislabs.xyz | SENT | 2026-09-26 · Gmail msg `1a0dcb705a1c80f3` | — | — | — |
 | 5 | Trading | Ergonia Trading | hr@ergonia.io | SENT | 2026-09-26 · Gmail msg `1a0dd9d9840be3ba` | — | — | — |
+| 6 | Trading / Competitor Discovery | Primer Systems / Vault | dev@primer.systems | SENT | 2026-09-26 · Gmail msg `1a0dda01073a93bd` | — | — | — |
+
+## Eric Lovold / Sanction — response note
+
+Eric accepted a 15-minute conversation and explicitly framed what he can provide:
+- Sanction is still early;
+- he can share design decisions;
+- he can share what they are learning through testing;
+- he cannot yet claim established user patterns;
+- the approval → execution gap is one of the areas they are actively examining.
+
+Interpretation:
+- HIGH-VALUE expert/competitor discovery;
+- NOT customer validation;
+- NOT evidence of willingness to pay;
+- NOT evidence that a recurring user workflow is established.
+
+Interview focus:
+1. policy change after approval but before grant redemption;
+2. one-use grant vs temporary session;
+3. attempt vs completion semantics;
+4. whether Policy Diff/minimal authority delta matters;
+5. whether enforcement should sit at the execution/capital path;
+6. what Sanction intentionally does not solve.
 
 ## Message purposes
 
@@ -45,34 +69,31 @@ Run the Trading Reality Gate:
 - stale-policy semantics;
 - value of atomic onchain override + execution.
 
+### Primer Systems
+Test:
+- what happens when a legitimate trade exceeds a hard per-trade cap;
+- exact one-trade exception vs policy edit / temporary envelope;
+- why some Vault rules are hard rejects while others escalate.
+
 ## Status values
 
 - READY
 - SENT
 - SENT_EMAIL_ROUTE_REQUEST
 - RESPONDED
+- TO_SCHEDULE
 - SCHEDULED
 - INTERVIEWED
 - NO_RESPONSE
 - DECLINED
 
-Do not mark RESPONDED/INTERVIEWED without a real interaction.
-
 ## Evidence rule
 
-An outreach being sent is **not** customer validation.
+An outreach being sent or accepted is **not** customer validation.
 
-Only concrete workflow evidence from a response/interview may update:
+Only concrete workflow evidence may update:
 - REAL_PROBLEM;
 - EXCEPTION_SHAPE;
 - COMPETITIVE_RESIDUAL;
 - PULL;
 - CONCEPT_LOCK readiness.
-
-| 6 | Trading / Competitor Discovery | Primer Systems / Vault | dev@primer.systems | SENT | 2026-09-26 · Gmail msg `1a0dda01073a93bd` | — | — | — |
-
-### Primer Systems
-Purpose:
-- test what happens when a legitimate trade exceeds a hard per-trade cap;
-- determine whether operators want exact one-trade exception vs policy edit / temporary envelope;
-- understand why some Vault rules are hard rejects and others escalate.

@@ -1,5 +1,5 @@
 project: cresco-worlds-fair
-date: 2026-09-26
+date: 2026-09-28
 status: PRE_CONCEPT_LOCK
 
 phase:
@@ -109,3 +109,30 @@ do_not_do:
   - pivot_to_generic_agent_wallet
   - default_to_family_by_inertia
   - default_to_ai_due_to_trend
+
+
+conditional_gateway_registry:
+  file: governance/GATEWAY-REGISTRY.yaml
+  allowed_statuses:
+    - ACTIVE
+    - N/A
+    - BLOCKED
+    - PROVEN
+  re_evaluate_on:
+    - scope_change
+    - architecture_change
+    - runtime_change
+    - sponsor_dependency_change
+    - evidence_state_change
+    - submission_state_change
+  product_depth_rule: governance/PRODUCT-DEPTH-LIVE-REALITY-v1.2.1.md
+  reality_ledger: governance/REALITY-LEDGER.md
+  rule: "No gate may be silently skipped."
+
+current_promotion_state:
+  concept_lock: BLOCKED
+  build_authorized: false
+  live_core_loop: BLOCKED
+  world_fair_public_runtime: BLOCKED
+  judge_self_serve: BLOCKED
+  submission_lock: BLOCKED

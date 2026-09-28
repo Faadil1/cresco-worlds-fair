@@ -1,0 +1,330 @@
+version: "1.0"
+project: "cresco-worlds-fair"
+date: "2026-09-28"
+status_values:
+  - ACTIVE
+  - N/A
+  - BLOCKED
+  - PROVEN
+
+rules:
+  - "Every registered gate must always have an explicit status."
+  - "N/A means currently not applicable, never forgotten."
+  - "Re-evaluate the registry whenever scope, architecture, runtime, sponsor dependency, evidence state, or submission state changes."
+  - "A dependent but unproven gateway is BLOCKED, never implied PASS."
+  - "A gate may be PROVEN only when cited evidence actually exists and matches the demonstrated commit/runtime."
+  - "Do not weaken or bypass validators to obtain promotion."
+
+registry:
+  - id: CORE_LIFECYCLE
+    name: "QUALIFY → DECIDE → DESIGN → DELIVER → AUDIT → EXPAND"
+    status: ACTIVE
+    activates_when: "All builds"
+    condition: "Macro lifecycle remains explicit across the full project."
+
+  - id: JUDGED_BUILD_CYCLE
+    name: "RUBRIC → PAIN → PROBLEM → NEGATIVE EVENT → DIFFERENTIATOR → EXECUTION → LIVE DEPTH → EVIDENCE → STORY → DEMO → Q&A"
+    status: ACTIVE
+    activates_when: "Hackathons / judged builds"
+    condition: "No stage silently skipped."
+
+  - id: PRE_BUILD_REALITY
+    name: "Pre-Build Reality Gate"
+    status: ACTIVE
+    activates_when: "All concepts before Concept Lock"
+    condition: "Real problem, real user, negative event, observable impact, durability, willingness-to-pay signal, killer demo, native advantage."
+
+  - id: COMPETITIVE_NOVELTY_KILL
+    name: "Competitive Novelty / Kill Gate"
+    status: ACTIVE
+    activates_when: "Before Concept Lock"
+    condition: "Actively search nearby products, repos, papers, standards, submissions and prior winners."
+    evidence:
+      - "docs/SEMANTIC-TEARDOWN.md"
+      - "research/CONCEPT-COLLISION-V3.md"
+      - "research/SANCTION-DELTA.md"
+      - "research/PRIMER-VAULT-DELTA.md"
+
+  - id: CONCEPT_COMPRESSION
+    name: "Concept Compression & Validation"
+    status: ACTIVE
+    activates_when: "Before Concept Lock"
+    condition: "Compress problem, user, mechanism, differentiator, native advantage, killer demo and kill criteria into a coherent concept."
+
+  - id: TECHNICAL_REALITY
+    name: "Technical Reality Check"
+    status: N/A
+    activates_when: "After Concept Lock"
+    condition: "Architecture genuinely feasible; claims match implementation reality."
+
+  - id: BACKEND_ENGINEERING_INTELLIGENCE
+    name: "Backend Engineering Intelligence"
+    status: N/A
+    activates_when: "After Concept Lock and Technical Reality Check"
+    condition: "SCALE ON EVIDENCE, NOT POSSIBILITY."
+
+  - id: TRUTH_BOUNDARY
+    name: "Truth Boundary Gate"
+    status: ACTIVE
+    activates_when: "All builds"
+    condition: "Use OBSERVED / INFERRED / UNKNOWN; no false PASS; missing evidence → UNKNOWN."
+    evidence:
+      - "product/PRD.md"
+      - "docs/BASELINE-DELTA.md"
+
+  - id: NEGATIVE_PATH
+    name: "Negative Path Gate"
+    status: ACTIVE
+    activates_when: "All builds"
+    condition: "REFUSE / ABSTAIN / REVIEW / UNKNOWN when evidence or authority is insufficient."
+
+  - id: NEGATIVE_EVENT
+    name: "Negative Event Gate"
+    status: PROVEN
+    activates_when: "All builds; mandatory for judged builds"
+    condition: "Concrete verified failure + observable impact + design implication + product response."
+    evidence:
+      - "research/NEGATIVE-EVENT-MAP.md"
+
+  - id: EVIDENCE_INTEGRITY
+    name: "Evidence Integrity Gate"
+    status: ACTIVE
+    activates_when: "All builds"
+    condition: "Correct labels: LIVE / LOCAL / LOCAL_STUB / PRESEEDED / SIMULATED / PARTIAL / NOT_IMPLEMENTED."
+
+  - id: PRODUCT_DEPTH_LIVE_REALITY
+    name: "Product Depth & Live Reality v1.2.1"
+    status: ACTIVE
+    activates_when: "All product/build/hackathon workflows"
+    condition: "Vertical Slice is entry point, not Definition of Done; live claims require load-bearing live integration and real consequence."
+    evidence:
+      - "governance/PRODUCT-DEPTH-LIVE-REALITY-v1.2.1.md"
+      - "governance/REALITY-LEDGER.md"
+
+  - id: RUNTIME_COMMIT_BINDING
+    name: "Runtime / Commit Binding Gate"
+    status: ACTIVE
+    activates_when: "As soon as any runtime exists"
+    condition: "Runtime proof must bind to the actual demonstrated commit."
+    evidence:
+      - "docs/BASELINE-DELTA.md"
+
+  - id: PUBLIC_RUNTIME
+    name: "Public Runtime Gate"
+    status: N/A
+    activates_when: "World’s Fair runtime exists"
+    condition: "Public runtime must be reachable and consistent with the claimed build."
+
+  - id: PRE_LAUNCH_SHIP
+    name: "Universal Pre-Launch / Ship Assurance"
+    status: N/A
+    activates_when: "Before shipping a live build"
+    condition: "PRE_LAUNCH_CODE_OK → DEPLOY → LIVE_RUNTIME_CHECK → CRITICAL_PATH_PASS → PROOF_CAPTURED → SHIP."
+
+  - id: DETERMINISTIC_DEMO
+    name: "Deterministic Demo Gate"
+    status: N/A
+    activates_when: "Before recording"
+    condition: "Canonical run, negative path, recovery/fallback, no fragile hidden dependency."
+
+  - id: DISTINCTIVENESS_ESCALATION
+    name: "Distinctiveness Escalation — FUNCTIONAL ≠ FINISHED"
+    status: N/A
+    activates_when: "Mandatory before Demo Lock / Submission Lock"
+    condition: "Agency, closed loop, second act, consequential memory, counter-case, signature moment, hard-to-copy advantage, simple demo-proven sentence; avoid feature bloat."
+
+  - id: OUTSIDER_BREAK
+    name: "Outsider Break Test"
+    status: N/A
+    activates_when: "After live build, before Demo Lock"
+    condition: "External person can run/break critical path without builder coaching."
+
+  - id: JUDGE_PERFORMANCE_ASSURANCE
+    name: "Judge Performance Assurance"
+    status: N/A
+    activates_when: "Before submission"
+    condition: "Signature behavior, signature moment, Judge Memory Sentence, hostile Q&A."
+
+  - id: SUBMISSION_INTEGRITY
+    name: "Submission Integrity Gate"
+    status: ACTIVE
+    activates_when: "Any competition"
+    condition: "Repo, proofs, runtime, video, README, claims, licenses and rules stay mutually consistent."
+
+  - id: RULES_ELIGIBILITY
+    name: "Rules / Eligibility Gate"
+    status: ACTIVE
+    activates_when: "Competitions / grants / sponsor programs"
+    condition: "Official rules, eligibility, deadline, required artifacts and prohibited claims verified."
+
+  - id: SPONSOR_NATIVE_ADVANTAGE
+    name: "Sponsor / Ecosystem Native Advantage Gate"
+    status: ACTIVE
+    activates_when: "Hackathon or sponsor ecosystem"
+    condition: "Sponsor/ecosystem usage must be load-bearing where claimed, not decorative."
+
+  - id: DATA_PROVENANCE_FRESHNESS
+    name: "Data Provenance / Freshness Gate"
+    status: ACTIVE
+    activates_when: "External data, oracles, market evidence, datasets"
+    condition: "Provenance, freshness, timestamp and failure semantics explicit."
+
+  - id: EXTERNAL_DEPENDENCY_FAILURE
+    name: "External Dependency / Failure Gate"
+    status: ACTIVE
+    activates_when: "Any load-bearing external service or protocol"
+    condition: "Dependency failure mode, fallback/refusal behavior and clean-room assumptions tested."
+
+  - id: HUMAN_ACTION_BOUNDARY
+    name: "Human Action Boundary Gate"
+    status: ACTIVE
+    activates_when: "Protected approvals, signings, submissions or irreversible actions"
+    condition: "Human-protected actions remain explicit checkpoints; automation must not silently cross them."
+
+  - id: SECURITY_SECRETS
+    name: "Security / Secrets Gate"
+    status: ACTIVE
+    activates_when: "All builds with credentials, wallets, APIs or deployment secrets"
+    condition: "No secrets in repo/client bundle/logs; least necessary permissions."
+
+  - id: IP_LICENSE_ORIGINALITY
+    name: "IP / License / Originality Gate"
+    status: ACTIVE
+    activates_when: "All judged/public builds"
+    condition: "Assets, fonts, code, datasets and references have compatible licenses/provenance; originality claims remain honest."
+
+  - id: OBSERVABILITY_REPRODUCIBILITY
+    name: "Observability / Reproducibility Gate"
+    status: ACTIVE
+    activates_when: "All builds after executable proof exists"
+    condition: "Receipts, logs, setup, reproducibility and self-serve verification exist for material claims."
+
+  - id: DEMO_ENVIRONMENT
+    name: "Demo Environment Gate"
+    status: N/A
+    activates_when: "Once World’s Fair demo runtime exists"
+    condition: "Known network/accounts/state; stable deterministic demo environment; explicit fallback."
+
+  - id: ACCESSIBILITY_RESPONSIVE
+    name: "Accessibility / Responsive Gate"
+    status: N/A
+    activates_when: "Once new user-facing World’s Fair UI exists"
+    condition: "Responsive critical paths, keyboard/contrast/readability where applicable."
+
+  - id: PERFORMANCE_LATENCY
+    name: "Performance / Latency Gate"
+    status: ACTIVE
+    activates_when: "When latency materially affects the product"
+    condition: "Latency budgets and execution timing tested where authority/trading decisions are time-sensitive."
+
+  - id: GATEWAY_NANOPAYMENTS
+    name: "Gateway / Nanopayments"
+    status: N/A
+    activates_when: "Transactional monetization / micropayment rail"
+    condition: "Real rail or explicitly simulated."
+
+  - id: X402
+    name: "x402"
+    status: N/A
+    activates_when: "Machine-to-machine payment / paid unlock"
+    condition: "No success claim without requirements/payment → verify → settle → HTTP 200/unlock plus relevant references and receipts."
+
+  - id: WALLETS
+    name: "Wallets"
+    status: ACTIVE
+    activates_when: "Blockchain identity or value involved"
+    condition: "Network, address, signer, environment and evidence stay coherent."
+
+  - id: CONTRACTS
+    name: "Contracts"
+    status: ACTIVE
+    activates_when: "Smart contracts / onchain programs"
+    condition: "Deployment, network, address, calls and receipts verifiable."
+
+  - id: APP_KIT_EXTERNAL_PLATFORM
+    name: "App Kit / External Platform Integration"
+    status: N/A
+    activates_when: "Sponsor/ecosystem explicitly requires it"
+    condition: "Real demonstrable integration, not mention-only."
+
+  - id: LIVE_GATEWAY_PROMOTION
+    name: "LIVE_GATEWAY Promotion Gate"
+    status: N/A
+    activates_when: "Core value depends on a live external gateway"
+    condition: "LOCAL_STUB cannot be promoted as live; live gateway proof is prerequisite to live-settlement claims."
+
+  - id: FINAL_SNAPSHOT_HANDOVER_POSTMORTEM
+    name: "Final Snapshot / CURRENT / HANDOVER / Post-mortem"
+    status: N/A
+    activates_when: "End of cycle / milestone / submission"
+    condition: "Real project state, limitations, evidence and next steps preserved."
+
+  - id: POST_SUBMISSION_INTEGRITY
+    name: "Post-Submission Integrity Gate"
+    status: N/A
+    activates_when: "After submission"
+    condition: "No silent runtime/routing/claim drift; corrections recorded canonically."
+
+  - id: FROZEN_SUBMITTED_PROJECT_RULE
+    name: "Frozen / Submitted Project Protection"
+    status: ACTIVE
+    activates_when: "Any project or milestone already frozen/submitted"
+    condition: "No silent retrofit; explicit reopening required."
+
+product_depth_subchecks:
+  live_core_loop: BLOCKED
+  load_bearing_integration: BLOCKED
+  real_consequence: BLOCKED
+  representative_success_scenario: BLOCKED
+  representative_negative_scenario: BLOCKED
+  representative_boundary_scenario: BLOCKED
+  representative_recovery_scenario: BLOCKED
+  failure_recovery: BLOCKED
+  real_user_surface: BLOCKED
+  external_user_operator_evidence: BLOCKED
+  time_to_first_value: BLOCKED
+  operational_economics_when_material: BLOCKED
+  shared_product_core: ACTIVE
+  reality_ledger: ACTIVE
+  observability_receipts: BLOCKED
+  judge_operator_self_serve: BLOCKED
+  setup_reproducibility: BLOCKED
+  clean_room_external_dependency_failure: BLOCKED
+  post_vertical_slice_depth_gap_review: N/A
+
+promotion_rules:
+  x402:
+    required_chain:
+      - "requirements/payment"
+      - "verify"
+      - "settle"
+      - "HTTP 200/unlock"
+    rule: "LOCAL_STUB is design/demo evidence only and never LIVE_GATEWAY."
+  live_gateway:
+    rule: "If core product value depends on a real external gateway, that gateway must be proven before promotion as live."
+    allowed_unproven_labels:
+      - LOCAL_VERIFIED
+      - SIMULATED
+      - PARTIAL
+  product_depth:
+    rule: "Technical Proof ≠ Live Product Integration. Replay/static/captured evidence alone cannot satisfy a Live Core Loop claim."
+  traction:
+    rule: "One external trial ≠ adoption. Organic usage excludes scripted activity used to inflate traction."
+  depth:
+    rule: "Depth ≠ feature count. Polish cannot compensate for weak product reality."
+
+authority_boundaries:
+  HOI: "pre-lock intelligence advisory"
+  PBPD: "production through BUILD_CANDIDATE_READY"
+  Project_Finisher: "terminal assurance"
+  protected_human_actions: "remain human checkpoints"
+
+propagation_note:
+  date: "2026-09-28"
+  central_faadil_agent_system: "v1.2.1 PROMOTED_ACTIVE"
+  HOI_main: "v1.2.1 active"
+  Project_Finisher_main: "v1.2.1 active"
+  PBPD_PR_90: "implemented but not promoted to main because required validate check could not run due to GitHub Actions quota"
+  interpretation_rule: "Representative jobs with steps NONE/null and no logs are not validator assertion failures."
+  validator_rule: "Never bypass or weaken validators to force merge."
+  project_rule: "Apply v1.2.1 explicitly even while PBPD CORE-18 main awaits quota restoration."

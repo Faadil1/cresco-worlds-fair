@@ -10,9 +10,12 @@ Read these in order:
 1. `README.md`
 2. `product/PRD.md`
 3. `state/CURRENT.yaml`
-4. `research/CONCEPT-COLLISION-V3.md`
-5. `research/TRADING-BOUNDARY-TAXONOMY.md`
-6. `docs/REALITY-GATE.md`
+4. `governance/GATEWAY-REGISTRY.yaml`
+5. `governance/PRODUCT-DEPTH-LIVE-REALITY-v1.2.1.md`
+6. `governance/REALITY-LEDGER.md`
+7. `research/CONCEPT-COLLISION-V3.md`
+8. `research/TRADING-BOUNDARY-TAXONOMY.md`
+9. `docs/REALITY-GATE.md`
 
 The PRD is the collaborative source of truth.
 
@@ -257,3 +260,16 @@ Review the current leading lane and answer:
 5. What product/company direction would you preserve or challenge before Concept Lock?
 
 Post findings in the relevant GitHub issue and amend the PRD only when evidence warrants it.
+
+
+## 13. Gateway rule
+
+Every build stage uses the Conditional Gateway Registry.
+
+A gate must never be silently omitted. It must always be one of:
+
+`ACTIVE` / `N/A` / `BLOCKED` / `PROVEN`
+
+`N/A` means “not currently applicable,” not “forgotten.”
+
+Any scope, architecture, runtime, sponsor, evidence or submission change triggers a registry re-evaluation.

@@ -1,0 +1,51 @@
+# CRESCO Reality Ledger
+
+Date: 2026-09-28  
+Status: ACTIVE
+
+## Purpose
+
+Keep product claims weaker than or equal to actual evidence.
+
+Allowed evidence labels:
+- LIVE
+- LOCAL
+- LOCAL_STUB
+- PRESEEDED
+- SIMULATED
+- PARTIAL
+- NOT_IMPLEMENTED
+
+Truth labels:
+- OBSERVED
+- INFERRED
+- UNKNOWN
+
+## Current World’s Fair reality
+
+| Claim / capability | Truth | Evidence state | Current note |
+|---|---|---|---|
+| Stocklana baseline Solana Devnet capital-path proof exists | OBSERVED | LIVE/BASELINE | Proven in original CRESCO repo/runtime; not equivalent to World’s Fair live product |
+| Standing vs exceptional authority semantics exist in baseline | OBSERVED | LOCAL/LIVE-BASELINE | Exact one-time allowance path exists for current specialized action model |
+| World’s Fair final wedge selected | UNKNOWN | NOT_IMPLEMENTED | Pre-Concept-Lock |
+| Delegated Capital Authority is validated by users | UNKNOWN | PARTIAL | Public research + outreach only; direct operator evidence incomplete |
+| World’s Fair Live Core Loop exists | UNKNOWN | NOT_IMPLEMENTED | Blocked before Concept Lock/build |
+| Load-bearing World’s Fair trading integration exists | UNKNOWN | NOT_IMPLEMENTED | Technical feasibility only |
+| Real operator consequence exists | UNKNOWN | NOT_IMPLEMENTED | Not yet proven |
+| Organic adoption exists | UNKNOWN | NOT_IMPLEMENTED | Outreach/interviews do not equal adoption |
+| x402 is part of CRESCO | UNKNOWN | N/A | Not currently in scope |
+| LIVE_GATEWAY settlement exists | UNKNOWN | N/A | No load-bearing external payment gateway in current scope |
+| New World’s Fair public runtime exists | UNKNOWN | NOT_IMPLEMENTED | No World’s Fair runtime yet |
+| Judge self-serve World’s Fair flow exists | UNKNOWN | NOT_IMPLEMENTED | Not yet built |
+| Runtime/commit binding for World’s Fair build exists | UNKNOWN | NOT_IMPLEMENTED | No new runtime yet |
+
+## Rule
+
+Any future claim must add:
+- exact evidence location;
+- commit/runtime binding where relevant;
+- truth label;
+- evidence state;
+- known limitation.
+
+Missing evidence → **UNKNOWN**, never silent PASS.

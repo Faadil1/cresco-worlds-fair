@@ -870,3 +870,44 @@ Possible models:
 No model is locked before operator discovery.
 
 See `research/TRADING-BOUNDARY-TAXONOMY.md`.
+
+
+## 22. Conditional Gateway Registry — Mandatory
+
+CRESCO World’s Fair is governed by:
+
+- `governance/GATEWAY-REGISTRY.yaml`
+- `governance/PRODUCT-DEPTH-LIVE-REALITY-v1.2.1.md`
+- `governance/REALITY-LEDGER.md`
+
+Every gate must always have an explicit status:
+
+`ACTIVE` / `N/A` / `BLOCKED` / `PROVEN`
+
+A gate cannot disappear because the current phase does not need it yet.
+
+`N/A` means currently not applicable and must be re-evaluated when scope, architecture, runtime, sponsor dependencies, evidence state or submission state changes.
+
+Product Depth & Live Reality v1.2.1 is active throughout the project:
+- Vertical Slice ≠ Definition of Done.
+- Technical Proof ≠ Live Product Integration.
+- Static/replayed evidence alone cannot satisfy a Live Core Loop claim.
+- Real product depth requires load-bearing integration, real consequence, representative success/negative/boundary/recovery paths, real-user/operator evidence, observability/receipts, reproducibility and a Post-Vertical-Slice Depth Gap Review.
+- One external trial ≠ adoption.
+- Organic usage excludes scripted traction.
+- Depth ≠ feature count.
+- Heavy polish cannot compensate for weak product reality.
+
+Promotion order remains:
+
+```
+REAL PROBLEM
+→ NATIVE MECHANISM
+→ LIVE INTEGRATION
+→ PRODUCT DEPTH
+→ REAL USER / OPERATOR LOOP
+→ REAL CONSEQUENCE
+→ EVIDENCE & OBSERVABILITY
+→ UX / DESIGN
+→ SUBMISSION PACKAGING
+```

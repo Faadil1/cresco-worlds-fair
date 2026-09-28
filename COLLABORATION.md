@@ -8,9 +8,12 @@ Read these before changing product direction:
 
 1. `product/PRD.md`
 2. `state/CURRENT.yaml`
-3. `docs/BASELINE-DELTA.md`
-4. `docs/SEMANTIC-TEARDOWN.md`
-5. `docs/REALITY-GATE.md`
+3. `governance/GATEWAY-REGISTRY.yaml`
+4. `governance/PRODUCT-DEPTH-LIVE-REALITY-v1.2.1.md`
+5. `governance/REALITY-LEDGER.md`
+6. `docs/BASELINE-DELTA.md`
+7. `docs/SEMANTIC-TEARDOWN.md`
+8. `docs/REALITY-GATE.md`
 
 ## Current phase
 
@@ -65,3 +68,18 @@ Do not expose:
 ## Canonical rule
 
 **Real failure > fake success.**
+
+
+## Registry discipline
+
+Every material change must re-evaluate `governance/GATEWAY-REGISTRY.yaml`.
+
+No gate may disappear because it is inconvenient or not yet applicable.
+
+Use only:
+- `ACTIVE`
+- `N/A`
+- `BLOCKED`
+- `PROVEN`
+
+A dependent-but-unproven gate is `BLOCKED`, not implied PASS.

@@ -87,3 +87,20 @@ See:
 - [docs/BASELINE-DELTA.md](docs/BASELINE-DELTA.md)
 - [docs/SEMANTIC-TEARDOWN.md](docs/SEMANTIC-TEARDOWN.md)
 - [docs/REALITY-GATE.md](docs/REALITY-GATE.md)
+
+
+## Conditional Gateway Registry
+
+Every CRESCO World’s Fair stage is governed by the canonical Conditional Gateway Registry:
+
+- `governance/GATEWAY-REGISTRY.yaml`
+- `governance/PRODUCT-DEPTH-LIVE-REALITY-v1.2.1.md`
+- `governance/REALITY-LEDGER.md`
+
+Every registered gate must always be explicitly marked:
+
+`ACTIVE` / `N/A` / `BLOCKED` / `PROVEN`
+
+`N/A` means not currently applicable — never forgotten.
+
+The registry must be re-evaluated whenever scope, architecture, runtime, sponsor dependency, evidence state or submission state changes.

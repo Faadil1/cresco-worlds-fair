@@ -1,5 +1,5 @@
 project: cresco-worlds-fair
-date: 2026-09-28
+date: 2026-09-29
 status: PRE_CONCEPT_LOCK
 
 phase:
@@ -47,8 +47,8 @@ candidate_lanes:
     status: SECONDARY_HIGH_VALUE
     public_signal: STANDING_DELEGATION_PROVEN_EXCEPTION_WORKFLOW_UNKNOWN
   agent_builders:
-    status: HIGH_COMPETITIVE_RISK
-    public_signal: SANCTION_ALREADY_PROVES_ONE_USE_EXACT_ESCALATION_AND_POLICY_EVIDENCE
+    status: HIGH_COMPETITIVE_RISK_EXECUTION_LAYER_RESIDUAL_SURVIVES
+    public_signal: SANCTION_GOVERNS_AUTHORIZATION_BUT_EXPLICITLY_STOPS_BEFORE_FIDUCIARY_EXECUTION
   delegated_trading:
     status: LEADING_EVIDENCE_LANE_NOT_LOCKED
     public_signal: TRUE_EXCEPTION_TO_POLICY_RESIDUAL_SURVIVES_PRIMER_RECONSTRUCTION
@@ -82,7 +82,7 @@ hostile_tests:
   squads_reconstruction: ACTIVE
   safe_reconstruction: ACTIVE
   sdp_reconstruction: ACTIVE
-  sanction_reconstruction: CRITICAL
+  sanction_reconstruction: INTERVIEWED_RESIDUAL_REFINED
   rfc9396_psd2: ACTIVE
   session_shape: ACTIVE
   feature_absorption: ACTIVE
@@ -92,7 +92,8 @@ next_actions:
   - monitor_first_outreach_wave_responses
   - continue_public_evidence_and_operator_targeting
   - validate_exception_to_policy_residual_with_primer_and_trading_operators
-  - interview_sanction_and_session_money_builders
+  - follow_up_with_eric_for_operator_referrals_and_future_synthesis
+  - interview_session_money_builders
   - interview_squads_treasury_operators
   - interview_delegated_trading_operators
   - classify_exception_shape_from_real_events
@@ -136,3 +137,22 @@ current_promotion_state:
   world_fair_public_runtime: BLOCKED
   judge_self_serve: BLOCKED
   submission_lock: BLOCKED
+
+
+direct_discovery:
+  sanction_interview:
+    date: 2026-09-29
+    participant: Eric Lovold
+    evidence_type: FOUNDER_COMPETITOR_EXPERT
+    customer_validation: false
+    key_findings:
+      stale_approval_concern: PROVEN_FOUNDER_SIGNAL
+      explicit_revocation_invalidates: SUPPORTED
+      hardening_policy_may_invalidate: SUPPORTED_NOT_LOCKED
+      action_drift_concern: PROVEN_FOUNDER_SIGNAL
+      unknown_outcome_duplicate_risk: PROVEN_FOUNDER_SIGNAL
+      atomic_execution_value: UNKNOWN
+      full_policy_diff_value: UNKNOWN
+      sanction_fiduciary_execution_scope: EXPLICITLY_OUT_OF_SCOPE
+      layered_authority: SUPPORTED_FOUNDER_VIEW
+      technical_collaboration_offer: OBSERVED

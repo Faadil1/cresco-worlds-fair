@@ -1,6 +1,6 @@
 version: "1.0"
 project: "cresco-worlds-fair"
-date: "2026-09-28"
+date: "2026-09-29"
 status_values:
   - ACTIVE
   - N/A
@@ -43,6 +43,7 @@ registry:
       - "docs/SEMANTIC-TEARDOWN.md"
       - "research/CONCEPT-COLLISION-V3.md"
       - "research/SANCTION-DELTA.md"
+      - "research/INTERVIEW-SANCTION-2026-09-29.md"
       - "research/PRIMER-VAULT-DELTA.md"
 
   - id: CONCEPT_COMPRESSION
@@ -328,3 +329,29 @@ propagation_note:
   interpretation_rule: "Representative jobs with steps NONE/null and no logs are not validator assertion failures."
   validator_rule: "Never bypass or weaken validators to force merge."
   project_rule: "Apply v1.2.1 explicitly even while PBPD CORE-18 main awaits quota restoration."
+
+
+direct_discovery_evidence:
+  sanction_founder_interview:
+    status: PROVEN
+    evidence: "research/INTERVIEW-SANCTION-2026-09-29.md"
+    classification: "FOUNDER / COMPETITOR / EXPERT DISCOVERY"
+    can_satisfy_customer_validation: false
+    findings:
+      stale_approval_concern: PROVEN
+      action_drift_concern: PROVEN
+      unknown_outcome_duplicate_risk: PROVEN
+      sanction_fiduciary_execution_out_of_scope: PROVEN
+      atomic_execution_user_value: BLOCKED
+      full_policy_diff_user_value: BLOCKED
+      operator_pull: BLOCKED
+
+gate_rerun_2026_09_29:
+  competitive_novelty_kill: ACTIVE
+  pre_build_reality: ACTIVE
+  truth_boundary: ACTIVE
+  evidence_integrity: ACTIVE
+  external_user_operator_evidence: BLOCKED
+  willingness_to_pay_cresco_specific: BLOCKED
+  concept_lock: BLOCKED
+  build_authorized: false

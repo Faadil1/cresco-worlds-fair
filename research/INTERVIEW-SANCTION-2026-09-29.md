@@ -182,3 +182,57 @@ Transcribe and analyze the Zoom continuation, then:
 4. rerun Agent-lane kill/save test;
 5. rerun relevant Conditional Gateway Registry entries;
 6. update PRD only if evidence materially changes the product thesis.
+
+
+## Zoom continuation — Whisper partial retrieval
+
+Source file:
+- `New Recording 10.m4a`
+- duration reported by Whisper: 16m19s
+- transcription job: completed
+- current connector retrieval: only first ~60s returned
+- evidence status: PARTIAL / DO NOT TREAT AS FULL ZOOM TRANSCRIPT
+
+### New signal 1 — deployment path clarification
+
+Eric asked whether CRESCO connects to a physical/digital bank and how that relationship works.
+
+Faadil clarified the current intended sequence:
+- start on Solana for the crypto/World’s Fair context;
+- broader bank-account integration is only a possible future expansion if the product grows.
+
+Classification:
+**OBSERVED DISCUSSION / CURRENT PRODUCT FRAMING**
+
+Truth boundary:
+- do not imply current bank integration;
+- current direction remains Solana-first;
+- bank connectivity remains hypothetical future scope.
+
+### New signal 2 — Eric volunteered technical help
+
+Eric explicitly offered to help if the team needs assistance figuring something out or wants him to work on something in the repo.
+
+Classification:
+**FOUNDER RELATIONSHIP / COLLABORATION SIGNAL**
+
+Interpretation:
+- meaningful relationship signal;
+- potentially valuable expert/technical collaboration;
+- NOT customer validation;
+- NOT adoption;
+- NOT willingness to pay;
+- NOT evidence that Sanction endorses the final CRESCO product direction.
+
+### Evidence-integrity note
+
+Do not finalize the Sanction interview synthesis from this partial Zoom retrieval.
+
+The following remain UNKNOWN until the full Zoom transcript is accessible:
+- stale-policy semantics discussion;
+- atomic authorization + execution discussion;
+- unknown-outcome handling;
+- minimum approval-time explanation;
+- what Sanction deliberately does not solve;
+- operator-side referrals;
+- any concrete critique Eric gave after seeing CRESCO architecture/product.

@@ -97,3 +97,22 @@ Only concrete workflow evidence may update:
 - COMPETITIVE_RESIDUAL;
 - PULL;
 - CONCEPT_LOCK readiness.
+
+
+| 7 | Wallet / Execution | Fordefi | sales@fordefi.com | SENT | 2026-09-29 · Gmail msg `1a0edfeca61d0e57` | — | — | Test exact exception vs policy edit / temporary limit |
+| 8 | Trading Operator | Keyrock | info@keyrock.eu | SENT | 2026-09-29 · Gmail msg `1a0edfed4682fdc3` | — | — | Direct operator workflow after legitimate risk/policy breach |
+| 9 | Solana Institutional / Curator | Kamino | institutions@kamino.com | SENT | 2026-09-29 · Gmail msg `1a0edfedf9d84195` | — | — | Test mandate update vs temporary / one-off exception |
+
+## Wave 2 — post-Sanction
+
+### Fordefi
+Core question:
+What happens when a legitimate transaction breaches a standing policy limit but the team still wants that exact transaction to execute?
+
+### Keyrock
+Core question:
+What does a real trading desk do after a legitimate action hits a wallet/risk/notional/approval boundary?
+
+### Kamino
+Core question:
+If a curator wants an action outside the current risk mandate without permanently changing the mandate, what is the operating model?

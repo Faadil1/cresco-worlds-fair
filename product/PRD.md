@@ -911,3 +911,72 @@ REAL PROBLEM
 → UX / DESIGN
 → SUBMISSION PACKAGING
 ```
+
+
+## 23. Sanction Founder Interview Update — 2026-09-29
+
+A founder/competitor discovery interview with Eric Lovold materially sharpened the Sanction boundary.
+
+### Confirmed concerns
+
+Eric identified:
+- stale approvals;
+- action drift between what was approved and what executes;
+- unknown downstream outcomes;
+- duplicate-retry risk;
+- authority consumption without successful downstream effect.
+
+Important conceptual distinction:
+
+> **Approved ≠ done.**
+
+### Stale-policy nuance
+
+Eric supports explicit revocation invalidating an outstanding approval and indicated that a new hard restriction/freeze should probably block an earlier approval.
+
+He did **not** establish that every policy revision should invalidate every outstanding grant.
+
+Therefore CRESCO must keep stale semantics explicit rather than assuming one universal rule.
+
+### Atomicity
+
+The interview did **not** validate that users or Sanction want authorization consumption + external execution as one atomic state transition.
+
+CRESCO's onchain atomicity remains:
+- technically real;
+- potentially useful;
+- commercially unproven.
+
+### Policy Diff
+
+The interview reinforced the importance of clear variables, finite rules and visible scope.
+
+It did **not** prove that approvers want a full multi-dimensional Policy Diff at decision time.
+
+### Sanction product boundary
+
+Eric was explicit that Sanction:
+- does not pass money;
+- does not aim to be the fiduciary execution layer;
+- is governance / decision infrastructure;
+- wants to be a ledger, not a bank.
+
+This materially sharpens the CRESCO residual:
+
+> **CRESCO should not compete as another generic authorization ledger.**
+
+A stronger hypothesis is:
+
+> **Execution-bound delegated capital authority**, where the governed capital path itself enforces standing and exceptional authority.
+
+This remains a hypothesis.
+
+### Relationship signal
+
+Eric offered technical help, possible repo review/contribution, future idea exchange and referrals.
+
+Treat this as a valuable founder/community relationship, not customer validation or adoption.
+
+See:
+- `research/INTERVIEW-SANCTION-2026-09-29.md`
+- `research/SANCTION-DELTA.md`

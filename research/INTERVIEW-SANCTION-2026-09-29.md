@@ -1,238 +1,457 @@
 # Sanction Interview — Eric Lovold — 2026-09-29
 
-Status: INTERVIEWED / PARTIAL RECORD INGESTED  
+Status: INTERVIEWED / FULL RECORD SYNTHESIZED  
 Evidence type: FOUNDER / COMPETITOR / EXPERT DISCOVERY  
 Customer validation: NO
 
 ## Sources
 
-1. Google Meet transcript / Gemini notes:
+1. Google Meet transcript / Gemini notes
    - title: `CRESCO Research — Sanction Approval-to-Execution - 2026/09/29 10:59 EDT - Notes par Gemini (Anglais)`
-   - source: user-provided Google Doc
    - coverage: approximately first 10m58s
-   - caution: machine-generated transcript contains obvious ASR errors and must not be treated as verbatim ground truth.
+   - caveat: machine-generated transcript contains ASR errors.
 
-2. Zoom continuation:
+2. Zoom continuation
    - source: user-provided `New Recording 10.m4a`
    - duration: ~16m19s
-   - status: AUDIO PRESENT / TRANSCRIPT PENDING
-   - note: recording did not begin at the very start of the overall meeting.
+   - user supplied full speaker-separated transcript.
 
-3. Sanction pre-read:
+3. Sanction pre-read
    - `sanction-approval-to-execution-pre-read.pdf`
-   - current implementation/test evidence, not production customer study.
+   - implementation/testing evidence, not a production customer study.
 
 ## Evidence boundary
 
-Eric was open, collaborative and positive about the CRESCO problem.
+Eric is the founder/builder of Sanction and was open, collaborative and positive about CRESCO.
 
-That is useful qualitative founder feedback, but it is **not**:
-- customer demand;
+This interview can establish:
+- Sanction design intent;
+- observed product behavior;
+- founder reasoning;
+- open technical/product questions;
+- explicit non-goals;
+- relationship/collaboration signals.
+
+It cannot establish:
+- CRESCO customer demand;
 - willingness to pay;
 - adoption;
-- proof that CRESCO's current wedge is correct;
-- proof that users prefer exact grants;
-- proof of a unique moat.
+- recurring operator behavior;
+- user preference for exact vs session exceptions;
+- a moat.
 
-Classify statements from this interview as:
+Use:
+- OBSERVED_PRODUCT_BEHAVIOR
 - ERIC_DESIGN_DECISION
 - TESTING_SIGNAL
 - FOUNDER_REACTION
-- OBSERVED_PRODUCT_BEHAVIOR
+- RELATIONSHIP_SIGNAL
 - INFERENCE
 - UNKNOWN
 
-## Google Meet portion — observed
+---
 
-### 1. CRESCO framing landed
+## 1. CRESCO framing was understood
 
-Faadil explained the original CRESCO parent/child pattern:
+Faadil explained the original CRESCO model:
 - parent sets a standing boundary;
-- child acts independently inside it;
+- child acts independently within it;
 - action beyond the boundary is blocked;
-- parent may approve the specific exception without permanently changing the rules.
+- parent may authorize a specific exception without permanently changing standing rules.
 
-Eric understood the financial/authority framing and mapped it conceptually to finite / temporal / one-off authorization patterns.
+Eric understood the authority framing and related it to finite / temporal / one-off authorization structures.
 
 Classification:
-**FOUNDER_REACTION / CONCEPT COMPREHENSION**
+**FOUNDER_REACTION / CONCEPT_COMPREHENSION**
 
-### 2. Eric sees one-off / temporal authorization as structurally aligned
+This is useful external comprehension evidence, not customer validation.
+
+---
+
+## 2. Sanction sees finite / temporal / one-off authority as a natural shape
 
 Eric said that finite, temporal and one-off structures are similar to how Sanction is structured because the requests are finite.
 
-Do not overread this as:
-- user preference;
-- market validation;
-- proof that CRESCO should use exact-once everywhere.
+He also demonstrated an escalation flow in the Sanction UX with a threshold breach and a time-bounded one-use grant.
 
 Classification:
-**ERIC_DESIGN_DECISION / STRUCTURAL ANALOGY**
+**ERIC_DESIGN_DECISION / OBSERVED_PRODUCT_BEHAVIOR**
 
-### 3. Sanction's intended role is an approval point
+Do not infer:
+- that exact-once is the preferred market shape;
+- that sessions are inferior;
+- that CRESCO should lock exact-once everywhere.
 
-Eric described Sanction as something that should be able to act as an approval point across actions.
+---
 
-He demonstrated the UX panel with an escalation caused by a threshold breach and a time-limited one-use grant.
+## 3. Stale approvals are a real concern
 
-Classification:
-**OBSERVED_PRODUCT_BEHAVIOR / ERIC_DESIGN_DECISION**
+Faadil asked what should happen when:
+- a grant is approved under one policy state;
+- the standing policy changes before redemption.
 
-### 4. Sanction is building approval surfaces around messaging / operations
+Eric's response:
+- he would not silently rewrite the approval;
+- revalidation / rewriting the ticket is something he would need to reason through;
+- if a parent adds a hard restriction or freeze, he would probably block the earlier approval;
+- he said the change should belong in redemption;
+- explicit revocation should invalidate for sure.
 
-Eric described ongoing work including:
-- Slack webhook integration;
-- provider-specific credential control;
-- policy packs;
-- approval / denial administration;
-- logs / vault-style evidence;
-- hash-chain style evidence/logging concepts.
+Important nuance:
+Eric did **not** state that every policy revision should invalidate every grant.
 
-Exact implementation maturity should be verified separately before making claims.
-
-Classification:
-**ERIC_PRODUCT_ROADMAP / OBSERVED_DEMO**
-
-### 5. Eric asked where CRESCO places the approval boundary
-
-This is an important product-design question Eric surfaced directly:
-
-> Where does approval happen in the UX / experience?
-
-Faadil explained that the original parent/child context requires additional caution and that the team is actively reviewing existing systems before locking the architecture.
-
-Implication:
-CRESCO still needs an explicit answer for:
-- where boundary evaluation occurs;
-- where the principal receives the request;
-- what is trusted at the approval surface;
-- what final executor re-checks;
-- what is merely UX versus load-bearing enforcement.
+The useful design distinction is therefore likely:
+- compatible/non-material change;
+- tightening/hard restriction/freeze;
+- explicit revocation.
 
 Classification:
-**EXPERT QUESTION / OPEN PRODUCT REQUIREMENT**
+**ERIC_DESIGN_REASONING / TESTING_SIGNAL**
 
-### 6. Eric's positive reaction
+### CRESCO implication
 
-Eric described the project as a cool idea / good problem to solve.
+CRESCO's current blanket nonce-staleness rule is safe but may be more rigid than necessary for some future verticals.
 
-Evidence interpretation:
-- useful external comprehension signal;
-- useful relationship signal;
-- NOT customer validation;
-- NOT product pull.
+Do not weaken it yet.
+
+Discovery question becomes:
+
+> Which standing-authority changes are materially incompatible with an outstanding exception?
+
+Potential future semantics:
+- ALL_REVISION_STALE;
+- HARDENING_ONLY_STALE;
+- RELEVANT_DIMENSION_STALE;
+- EXPLICIT_REVOKE_ONLY;
+- REEVALUATE_AT_REDEMPTION.
+
+No choice is locked.
+
+---
+
+## 4. Eric named three approval → execution failure classes
+
+### A. Stale approval
+
+Policy, revocation or authority state may change before the approved action executes.
+
+### B. Action drift
+
+The action actually performed can differ from the action the human thought they approved.
+
+Eric's example:
+an agent might be approved to spend a fixed amount on one design task, while the money is actually consumed by something materially different.
+
+This directly reinforces:
+- exact semantic binding;
+- trusted action representation;
+- mutation refusal;
+- execution-time validation.
+
+### C. Unknown outcome / duplicate risk
+
+An action can succeed while the response is lost.
+
+Blind retry can duplicate the action.
+
+Eric also highlighted the inverse:
+- authority can be consumed;
+- downstream execution can fail;
+- the grant is used but the intended effect did not happen.
+
+His framing:
+
+> Do not mistake approved for done.
 
 Classification:
-**FOUNDER_REACTION**
+**ERIC_DESIGN_REASONING / FAILURE-MODE CONFIRMATION**
 
-## What this segment does NOT answer yet
+### CRESCO implication
 
-The Google Meet portion does not resolve the critical research questions:
+The distinction between:
+- approval;
+- authority consumption;
+- execution;
+- observed completion
 
-- which policy changes should invalidate an outstanding grant;
-- exact semantics of approval under vN followed by policy vN+1;
-- what Eric thinks about atomic authorization + execution when executor control exists;
-- safest behavior after consumed authorization + unknown downstream outcome;
-- minimum approval-time explanation vs audit-only evidence;
-- what Sanction deliberately chooses not to solve;
-- referrals to operator-side interview targets.
+is material.
 
-These may exist in the Zoom continuation and must be extracted before final synthesis.
+This strongly supports keeping a formal execution-state model and recovery path.
 
-## Interim impact on CRESCO
+---
 
-### Agent lane
-No promotion.
+## 5. Recovery after consumed authority + uncertain outcome remains partly ambiguous
 
-Sanction remains a major competitive reconstruction.
+Eric said during the failure-mode discussion that recovery would need **fresh authority** while ensuring the action is not repeated.
 
-### Standing vs exceptional authority
-Still survives as a useful conceptual distinction.
+Later, when asked whether the safest behavior is reconciliation, never automatic retry, or asking for a new approval, the exchange became linguistically inconsistent:
+- Eric first said he would not ask for a new one;
+- then after Faadil restated “ask for a new approval,” Eric answered yes.
 
-### Exact grant
-No new user preference evidence.
+Because those two statements conflict, do not encode a definitive product rule from this exchange.
 
-### Policy Diff
-No new demand evidence in the Meet segment.
+Safe conclusion:
+- blind automatic retry is dangerous;
+- duplicate prevention matters;
+- recovery needs explicit review/reconciliation;
+- fresh authority may be required;
+- exact UX/authorization semantics remain UNKNOWN.
 
-### Atomic execution residual
-Not resolved in the Meet segment.
+Classification:
+**AMBIGUOUS / REVIEW_REQUIRED**
 
-### Real User / WTP
-Still unproven.
+---
 
-## Conditional Gateway impact
+## 6. Atomic authorization + execution was NOT validated
 
+Faadil asked whether, if Sanction controlled the final executor, Eric would ideally want grant consumption and the external effect to become one atomic transition.
+
+Eric did not answer this directly.
+
+He instead discussed:
+- how Sanction may be configured over time;
+- high-stakes real-time decisions;
+- large numbers of agents;
+- budget/control problems;
+- a concrete Anthropic billing-limit experience.
+
+Therefore:
+
+**Atomic execution remains a CRESCO technical residual, but Eric did not validate its desirability.**
+
+Do not write:
+- “Eric wants atomic execution.”
+- “Sanction plans atomic settlement.”
+- “The interview validated CRESCO atomicity.”
+
+Classification:
+**UNKNOWN**
+
+---
+
+## 7. Eric gave a concrete personal boundary event
+
+Eric described waking up to an Anthropic notification that a $50 charge could not be processed after an agent had hit a limit / budget wall.
+
+He used this as an example of why he wants control over autonomous agent spending.
+
+This is a concrete founder/operator-adjacent anecdote, but:
+- it is one person's experience;
+- it is not Sanction customer data;
+- it is not CRESCO WTP evidence.
+
+Classification:
+**FOUNDER PERSONAL NEGATIVE EVENT**
+
+Potential relevance:
+- budget boundaries around autonomous agents are real in Eric's own workflow;
+- the need for control is not purely hypothetical.
+
+Do not promote REAL_USER/WTP from this anecdote.
+
+---
+
+## 8. Minimum approval explanation is still not resolved
+
+Faadil asked for the smallest explanation an approver needs.
+
+Eric emphasized:
+- clear preset variables;
+- clear rules;
+- finite/specific policies;
+- scoped agent clearances;
+- visibility into which policies/credentials/gateways apply.
+
+He showed the agent roster / policy configuration surface.
+
+However, he did not answer whether an approver needs:
+- a complete Policy Diff;
+- one fired rule;
+- only action/consequence;
+- a richer audit trail after the decision.
+
+Therefore:
+**Policy Diff demand remains UNPROVEN.**
+
+The safer product hypothesis is:
+
+> Decision-time explanation should be minimal and decision-relevant; richer policy evidence can remain available for audit.
+
+Classification:
+**PARTIAL SIGNAL / DEMAND UNKNOWN**
+
+---
+
+## 9. Sanction's explicit non-goal is the strongest interview finding
+
+Faadil asked what Sanction deliberately chooses not to solve.
+
+Eric answered clearly:
+- Sanction is not solving actual fiduciary execution;
+- it does not pass money;
+- financial transfer is out of scope;
+- Sanction wants to be governance;
+- Sanction is about decisions, some of which may be financial;
+- it wants to be a ledger, not a bank.
+
+This is a direct boundary between Sanction and a possible CRESCO capital-path product.
+
+Classification:
+**ERIC_EXPLICIT_PRODUCT_BOUNDARY**
+
+### CRESCO implication
+
+The generic Agent Authorization lane remains crowded.
+
+But a narrower residual becomes stronger:
+
+> **Execution-bound delegated capital authority**, where CRESCO is not only the approval ledger but also controls the governed capital path.
+
+This is not automatically a company or moat.
+
+It is, however, a cleaner adjacency than “another agent authorization plane.”
+
+---
+
+## 10. Eric sees room for layered authority
+
+Faadil asked whether parts of the authorization lifecycle belong at:
+- executor;
+- wallet;
+- capital layer.
+
+Eric said he likes the direction and sees room for different layers of authority/governance as Sanction gets configured.
+
+He described a future where a team leader could govern many people/agents/tools through a common authorization plan.
+
+This supports the idea that authorization may be layered rather than owned entirely by one product.
+
+Classification:
+**FOUNDER_ARCHITECTURE_VIEW**
+
+Do not treat it as:
+- endorsement of CRESCO architecture;
+- proof that a separate capital layer will sell;
+- proof of integration demand.
+
+---
+
+## 11. Relationship / collaboration signal is unusually strong
+
+Eric:
+- offered to help figure out technical problems;
+- offered to take passes on a repo;
+- asked to meet Faadil's partner;
+- said connections should be made;
+- offered to think of operator-side / dev-shop referrals;
+- invited future idea exchange;
+- said he would send follow-up thoughts.
+
+Classification:
+**RELATIONSHIP_SIGNAL / POTENTIAL TECHNICAL COLLABORATION**
+
+This is strategically useful.
+
+It is not:
+- customer validation;
+- adoption;
+- a partnership agreement;
+- a commitment to contribute code.
+
+---
+
+# Claim-by-claim interview result
+
+| Question | Result | Confidence |
+|---|---|---|
+| Are stale approvals a real concern? | YES | HIGH |
+| Should explicit revocation kill outstanding approval? | YES | HIGH |
+| Should every policy revision kill approval? | NO EVIDENCE | UNKNOWN |
+| Should hard freeze/restriction override earlier approval? | Eric says probably yes | MEDIUM |
+| Is action drift a real concern? | YES | HIGH |
+| Can lost outcomes make retry dangerous? | YES | HIGH |
+| Can authority be consumed without successful effect? | YES | HIGH |
+| Is blind retry safe? | NO | HIGH |
+| Exact recovery semantics/new approval? | Transcript internally ambiguous | UNKNOWN |
+| Does Eric want atomic authorization+execution? | Not answered | UNKNOWN |
+| Does approver need a full Policy Diff? | Not established | UNKNOWN |
+| Is Sanction intended to move money? | NO | HIGH |
+| Is Sanction governance/ledger rather than bank? | YES | HIGH |
+| Does Eric see layered authority as plausible? | YES | MEDIUM |
+| Did Eric validate CRESCO customer demand? | NO | HIGH |
+| Did Eric offer further technical/community help? | YES | HIGH |
+
+---
+
+# Agent-lane kill/save test after interview
+
+## What was weakened
+
+Generic positioning such as:
+- “authorization for AI agents”;
+- “human approvals for autonomous agents”;
+- “one-use grants”;
+- “policy governance”;
+- “agent spend controls”
+
+remains poor territory for CRESCO because Sanction directly occupies it.
+
+## What survived more clearly
+
+### 1. Execution-bound capital authority
+Sanction explicitly does not want to be the fiduciary execution layer.
+
+### 2. Stale-authority semantics
+Sanction acknowledges this as a real design concern, though the correct semantic is not settled.
+
+### 3. Action integrity
+Binding approval to the actual executed action matters.
+
+### 4. Completion/recovery state
+Approved ≠ consumed ≠ executed ≠ observed complete.
+
+### 5. Layered authority
+A governance plane and a capital execution layer can plausibly coexist.
+
+## What remains unproven
+
+- that users will pay for this separation;
+- that onchain atomicity is materially valuable;
+- that operators want CRESCO rather than a wallet/module feature;
+- that exact exceptions beat sessions/envelopes;
+- that Policy Diff matters at decision time.
+
+---
+
+# Conditional Gateway rerun
+
+- CORE_LIFECYCLE: ACTIVE
+- JUDGED_BUILD_CYCLE: ACTIVE
 - PRE_BUILD_REALITY: ACTIVE
 - COMPETITIVE_NOVELTY_KILL: ACTIVE
+- CONCEPT_COMPRESSION: ACTIVE
 - TRUTH_BOUNDARY: ACTIVE
+- NEGATIVE_PATH: ACTIVE
 - EVIDENCE_INTEGRITY: ACTIVE
 - PRODUCT_DEPTH_LIVE_REALITY: ACTIVE
 - external_user_operator_evidence: BLOCKED
+- willingness_to_pay_cresco_specific: BLOCKED
 - concept_lock: BLOCKED
 - build_authorized: false
 
-## Next action
+No gate is promoted solely because this founder interview was positive.
 
-Transcribe and analyze the Zoom continuation, then:
+---
 
-1. merge Meet + Zoom + pre-read;
-2. produce a claim-by-claim evidence table;
-3. update `research/SANCTION-DELTA.md`;
-4. rerun Agent-lane kill/save test;
-5. rerun relevant Conditional Gateway Registry entries;
-6. update PRD only if evidence materially changes the product thesis.
+# Recommended next actions
 
-
-## Zoom continuation — Whisper partial retrieval
-
-Source file:
-- `New Recording 10.m4a`
-- duration reported by Whisper: 16m19s
-- transcription job: completed
-- current connector retrieval: only first ~60s returned
-- evidence status: PARTIAL / DO NOT TREAT AS FULL ZOOM TRANSCRIPT
-
-### New signal 1 — deployment path clarification
-
-Eric asked whether CRESCO connects to a physical/digital bank and how that relationship works.
-
-Faadil clarified the current intended sequence:
-- start on Solana for the crypto/World’s Fair context;
-- broader bank-account integration is only a possible future expansion if the product grows.
-
-Classification:
-**OBSERVED DISCUSSION / CURRENT PRODUCT FRAMING**
-
-Truth boundary:
-- do not imply current bank integration;
-- current direction remains Solana-first;
-- bank connectivity remains hypothetical future scope.
-
-### New signal 2 — Eric volunteered technical help
-
-Eric explicitly offered to help if the team needs assistance figuring something out or wants him to work on something in the repo.
-
-Classification:
-**FOUNDER RELATIONSHIP / COLLABORATION SIGNAL**
-
-Interpretation:
-- meaningful relationship signal;
-- potentially valuable expert/technical collaboration;
-- NOT customer validation;
-- NOT adoption;
-- NOT willingness to pay;
-- NOT evidence that Sanction endorses the final CRESCO product direction.
-
-### Evidence-integrity note
-
-Do not finalize the Sanction interview synthesis from this partial Zoom retrieval.
-
-The following remain UNKNOWN until the full Zoom transcript is accessible:
-- stale-policy semantics discussion;
-- atomic authorization + execution discussion;
-- unknown-outcome handling;
-- minimum approval-time explanation;
-- what Sanction deliberately does not solve;
-- operator-side referrals;
-- any concrete critique Eric gave after seeing CRESCO architecture/product.
+1. Treat Eric as a high-value expert/collaborator relationship.
+2. Send the promised synthesis after a few more interviews.
+3. Ask for the operator/dev-shop referrals he offered.
+4. Continue Squads / Primer / Ellipsis / Ergonia / Session discovery.
+5. Test the strongest residual directly:
+   - governance/authorization plane
+   - vs execution-bound capital authority.
+6. Ask operators:
+   > Who owns the final authority at execution time, and what happens if approval becomes stale before capital moves?
+7. Do not Concept Lock until at least two operator-side workflows confirm material pain and trial interest.

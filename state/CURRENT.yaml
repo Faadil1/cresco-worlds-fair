@@ -156,3 +156,18 @@ direct_discovery:
       sanction_fiduciary_execution_scope: EXPLICITLY_OUT_OF_SCOPE
       layered_authority: SUPPORTED_FOUNDER_VIEW
       technical_collaboration_offer: OBSERVED
+
+
+decision_checkpoint:
+  date: 2026-10-01
+  reason: "Wait for outreach responses before deciding next CRESCO direction."
+  until_then:
+    - no_concept_lock
+    - no_new_product_build
+    - monitor_outreach_only
+  thursday_decision_options:
+    - CONTINUE_DISCOVERY
+    - LOCK
+    - KILL
+    - HOLD
+    - BUILD_WITH_VALIDATION_GAP

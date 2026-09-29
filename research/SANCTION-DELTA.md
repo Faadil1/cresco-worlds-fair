@@ -171,3 +171,100 @@ Kill the generic Agent lane if:
 - Sanction/Turnkey/Session-style control planes already satisfy the workflow.
 
 Only keep Agentic as a lead wedge if discovery shows a recurring problem around one of these residuals.
+
+
+## Founder interview update — 2026-09-29
+
+Eric Lovold confirmed several important design concerns directly.
+
+### Stale approval is a real concern
+
+Eric identified stale approvals as one of the approval→execution failure modes.
+
+His current reasoning:
+- do not silently rewrite an approval;
+- explicit revocation should invalidate;
+- a newly added hard restriction/freeze should probably block earlier approval;
+- the relevant change should be considered at redemption.
+
+He did **not** say every policy revision should invalidate every grant.
+
+CRESCO implication:
+current nonce-bound invalidation is safe, but future vertical-specific semantics may need to distinguish incompatible/hardening changes from irrelevant policy edits.
+
+### Action drift is a real concern
+
+Eric explicitly raised the case where the action that executes is not materially the action the human thought they approved.
+
+This strengthens the importance of:
+- exact semantic binding;
+- trusted representation;
+- mutation refusal;
+- execution-time verification.
+
+### Unknown outcome and duplicate retry are real concerns
+
+Eric described:
+- action succeeds but response is lost;
+- blind retry duplicates the effect;
+- grant/authority is consumed but execution fails.
+
+His key conceptual distinction:
+**approved is not done.**
+
+Recovery semantics were not completely clear in the transcript, so do not overstate the exact rule.
+
+### Atomicity remains unvalidated
+
+When asked whether authorization consumption and final execution should ideally be atomic if Sanction controlled the executor, Eric did not answer directly.
+
+Therefore:
+**CRESCO atomic exception + capital execution remains a technically real residual whose user value is still unproven.**
+
+### Policy Diff remains unvalidated
+
+Eric emphasized clear variables, finite/specific policies and agent scopes, but did not establish that a full multi-dimensional Policy Diff is needed at approval time.
+
+Status:
+**EXPLAINABILITY IMPORTANT / FULL POLICY DIFF DEMAND UNKNOWN.**
+
+### Sanction explicitly stops before fiduciary execution
+
+This is the strongest confirmed product-boundary finding.
+
+Eric said Sanction:
+- does not pass money;
+- is not solving fiduciary execution;
+- wants to be governance;
+- wants to be a ledger, not a bank.
+
+Potential CRESCO residual therefore becomes cleaner:
+
+> **Execution-bound delegated capital authority, not another authorization ledger.**
+
+This does not establish customer demand or moat.
+
+### Layered authority is plausible
+
+Eric said he sees room for different layers of authority/governance.
+
+This supports architectural coexistence between:
+- Sanction-like governance/authorization;
+- wallet/executor/capital-layer enforcement.
+
+Again, this is founder architecture reasoning, not market validation.
+
+### Relationship signal
+
+Eric offered:
+- technical help;
+- possible repo review/contribution;
+- introductions/referrals;
+- future idea exchange;
+- interest in meeting the collaborator.
+
+Treat as:
+**HIGH-VALUE RELATIONSHIP SIGNAL / NOT CUSTOMER VALIDATION.**
+
+See:
+`research/INTERVIEW-SANCTION-2026-09-29.md`

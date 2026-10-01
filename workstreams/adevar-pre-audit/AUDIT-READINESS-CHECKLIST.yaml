@@ -1,4 +1,4 @@
-version: "1.1"
+version: "1.2"
 workstream: ADEVAR_PRE_AUDIT
 date: "2026-10-01"
 status: ACTIVE
@@ -43,6 +43,8 @@ existing_baseline:
   commit: "0eb10dd8352bba69b9717d0d62d89794c9e384cc"
   evidence_class: HISTORICAL_TECHNICAL_PROOF_DEVNET
   cresco_program: "ABjE6V5q9VbD3CAHDXxvztY5kXQmDXHRcEP1kZ4KSSfk"
+  world_fair_delta_present_on_main: false
+  world_fair_delta_present_on_other_active_code_branch: false
 
 eligibility:
   solana_rust_project:
@@ -65,15 +67,60 @@ package:
   threat_model:
     status: PROVEN
     path: "workstreams/adevar-pre-audit/THREAT-MODEL.md"
+  baseline_security_review:
+    status: PROVEN
+    path: "workstreams/adevar-pre-audit/BASELINE-SECURITY-REVIEW-2026-10-01.md"
   submission_draft:
     status: PROVEN
     path: "workstreams/adevar-pre-audit/SUBMISSION-DRAFT.md"
+
+baseline_review_results:
+  H_01_charter_max_bounded_notional:
+    status: CONFIRMED_SEMANTIC_CONFIGURATION_GAP
+    confirmed_exploitable_vulnerability: false
+    note: "Stored but no downstream enforcement use found."
+  H_02_exception_vs_period_policy:
+    status: CONFIRMED_BASELINE_ENFORCEMENT_GAP
+    confirmed_exploitable_vulnerability: "CONDITIONAL_ON_INTENDED_PERIOD_SEMANTICS"
+    note: "Exceptional Pyth path updates period counters but does not enforce equivalent period amount/notional caps before transfer."
+  H_03_exact_action_binding:
+    status: CONFIRMED_BASELINE_UNDER_BINDING
+    confirmed_exploitable_vulnerability: "TRUE_RELATIVE_TO_CLAIMED_UNIVERSAL_EXACT_ACTION_SEMANTICS"
+    note: "request_hash is supplied/equality-checked, not reconstructed from runtime action fields on-chain."
+  H_04_lifecycle_states:
+    status: PARTIAL_SEMANTIC_DEFENSE_IN_DEPTH_GAP
+    direct_capital_escape_found: false
+    note: "Capital paths fail closed, but review/stage-transition paths do not uniformly check status/expiry."
+  H_05_token_extensions:
+    status: CONFIRMED_UNRESTRICTED_EXTENSION_SURFACE
+    current_demo_exploit_proven: false
+    note: "TokenInterface accepts Token/Token-2022; no explicit supported-extension policy found."
+  H_06_pyth_parser_equivalence:
+    status: NO_DIRECT_MISMATCH_FOUND_CONTINUE_SPECIALIST_REVIEW
+    confirmed_vulnerability: false
+    note: "Same pyth_message slice is passed to verification CPI and parser; custom parser assumptions remain audit scope."
+  H_07_orca_constrained_cpi:
+    status: BLOCKED_NOT_IMPLEMENTED
+  H_08_slippage_output_mutation:
+    status: BLOCKED_NOT_IMPLEMENTED
+  H_09_arbitrary_cpi_regression:
+    status: BLOCKED_NOT_IMPLEMENTED
+  H_10_atomic_consumption_retry:
+    status: BLOCKED_NOT_IMPLEMENTED
+
+must_fix_or_resolve_before_final_audit_freeze:
+  - "H-02: preserve period policy under one-use per-action exception unless primary canon explicitly changes semantics."
+  - "H-03: canonical TradeActionV0 semantic binding must be reconstructed/checked on-chain."
+  - "H-01: enforce or explicitly deprecate max_bounded_notional."
+  - "H-04: make paused/revoked/expired stage-transition semantics explicit."
+  - "H-05: constrain or explicitly support Token-2022 extension behavior."
+  - "H-06: retain Pyth parser/CPI specialist review."
 
 final_audit_binding:
   target_repo: "Faadil1/cresco"
   commit_sha:
     status: BLOCKED
-    reason: "World's Fair TradeActionV0/Orca implementation not frozen."
+    reason: "World's Fair TradeActionV0/Orca implementation not yet present or frozen."
   cresco_program_id:
     status: REVERIFY_AT_FREEZE
   orca_program_id:
@@ -88,53 +135,21 @@ final_audit_binding:
 security_review:
   authority_escape: ACTIVE
   stale_nonce_replay: ACTIVE
-  trade_action_canonicalization: ACTIVE
-  exact_exception_binding: ACTIVE
-  period_policy_under_exception: ACTIVE
-  lifecycle_state_consistency: ACTIVE
-  constrained_orca_cpi: ACTIVE
-  arbitrary_cpi_regression: ACTIVE
-  pool_mint_account_substitution: ACTIVE
-  slippage_min_output_deadline_binding: ACTIVE
-  pyth_verified_bytes_parser_equivalence: ACTIVE
+  trade_action_canonicalization: BLOCKED_NOT_IMPLEMENTED
+  exact_exception_binding: BASELINE_GAP_CONFIRMED__WORLD_FAIR_FIX_REQUIRED
+  period_policy_under_exception: BASELINE_GAP_CONFIRMED__WORLD_FAIR_FIX_REQUIRED
+  lifecycle_state_consistency: PARTIAL_BASELINE_GAP
+  constrained_orca_cpi: BLOCKED_NOT_IMPLEMENTED
+  arbitrary_cpi_regression: BLOCKED_NOT_IMPLEMENTED
+  pool_mint_account_substitution: BLOCKED_NOT_IMPLEMENTED
+  slippage_min_output_deadline_binding: BLOCKED_NOT_IMPLEMENTED
+  pyth_verified_bytes_parser_equivalence: ACTIVE_NO_DIRECT_BASELINE_MISMATCH
   pyth_freshness_confidence_feed: ACTIVE
   arithmetic_rounding_overflow: ACTIVE
-  token_extension_semantics: ACTIVE
+  token_extension_semantics: BASELINE_SURFACE_CONFIRMED
   failure_atomicity: ACTIVE
   retry_idempotency: ACTIVE
   unknown_outcome_truth: ACTIVE
-
-candidate_hypotheses:
-  H_01_charter_max_bounded_notional:
-    status: REVIEW_HYPOTHESIS
-    confirmed_vulnerability: false
-  H_02_exception_vs_period_policy:
-    status: HIGH_PRIORITY_REVIEW
-    confirmed_vulnerability: false
-  H_03_trade_action_hash_completeness:
-    status: HIGH_PRIORITY_REVIEW
-    confirmed_vulnerability: false
-  H_04_lifecycle_states:
-    status: REVIEW_HYPOTHESIS
-    confirmed_vulnerability: false
-  H_05_token_extensions:
-    status: REVIEW_HYPOTHESIS
-    confirmed_vulnerability: false
-  H_06_pyth_parser_equivalence:
-    status: HIGH_PRIORITY_REVIEW
-    confirmed_vulnerability: false
-  H_07_orca_constrained_cpi:
-    status: HIGH_PRIORITY_REVIEW
-    confirmed_vulnerability: false
-  H_08_slippage_output_mutation:
-    status: HIGH_PRIORITY_REVIEW
-    confirmed_vulnerability: false
-  H_09_arbitrary_cpi_regression:
-    status: HIGH_PRIORITY_REVIEW
-    confirmed_vulnerability: false
-  H_10_atomic_consumption_retry:
-    status: HIGH_PRIORITY_REVIEW
-    confirmed_vulnerability: false
 
 required_final_scenarios:
   standing_success_1: BLOCKED_UNTIL_IMPLEMENTED
@@ -160,14 +175,15 @@ submission:
   final_submit: PENDING_HUMAN_ACTION
 
 truth_rules:
-  - "Review hypotheses are not confirmed vulnerabilities."
+  - "Internal baseline review is not an Adevar audit or production security certification."
+  - "Review hypotheses and confirmed baseline gaps must stay separated from unimplemented World Fair code."
   - "Devnet proof is not production evidence."
   - "Do not claim mainnet, custody, brokerage, institutional adoption, WTP, audited security, or real customer capital."
   - "No arbitrary CPI."
   - "Adevar does not alter Concept Lock or Colosseum scope."
   - "Known limitations and material unresolved findings remain disclosed."
 
-exact_next_gate: ADEVAR_SECURITY_PREAUDIT_PACKAGE_REVIEW
+exact_next_gate: ADEVAR_WAIT_FOR_WORLDS_FAIR_CODE_DELTA
 exact_next_action: >-
-  Track the live TradeActionV0 + constrained Orca implementation as it lands in the shared CRESCO core,
-  then rerun H-01 through H-10 against the exact code and freeze the final audit commit.
+  As soon as TradeActionV0 + constrained Orca code lands in Faadil1/cresco, diff it against the baseline,
+  verify H-02/H-03 remediation first, then execute H-07 through H-10 and freeze the final audit commit.

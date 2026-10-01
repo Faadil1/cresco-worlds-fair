@@ -201,7 +201,7 @@ reference_intelligence:
     pipeline_status: CLASSIFIED
     adoption_status: REFERENCE_ONLY
     auto_adoption: false
-    project_decision: PENDING
+    project_decision: SEPARATE_WORKSTREAM_NO_COLOSSEUM_SCOPE_EFFECT
 
 rule_lifecycle:
   decision: NO_CHANGE

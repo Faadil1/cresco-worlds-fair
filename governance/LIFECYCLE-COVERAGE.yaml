@@ -180,3 +180,100 @@ rule_lifecycle:
 cross_project_learning:
   decision: NO_CHANGE
   reason: "No post-mortem or multi-project evidence justifies a system-level generalization from CRESCO yet."
+
+
+competitive_judge_cycle:
+  RUBRIC:
+    status: SATISFIED
+    evidence: "research/OFFICIAL-RULES-2026-10-01.md"
+  PAIN:
+    status: SATISFIED
+    note: "Category-level pain supported; direct operator recurrence remains a Pre-Build Reality blocker."
+  PROBLEM:
+    status: SATISFIED
+    note: "Working problem is explicit but final wedge is not locked."
+  NEGATIVE_EVENT:
+    status: SATISFIED
+    evidence: "research/NEGATIVE-EVENT-MAP.md"
+  DIFFERENTIATOR:
+    status: UNKNOWN
+    note: "Execution-bound delegated capital authority is the strongest residual hypothesis but lacks direct operator pull."
+  EXECUTION:
+    status: NOT_APPLICABLE_WITH_REASON
+    reason: "No authorized World’s Fair product build yet."
+  LIVE_DEPTH:
+    status: MISSING
+    note: "No World’s Fair live vertical slice."
+  EVIDENCE:
+    status: SATISFIED
+    note: "Discovery evidence exists; live-product evidence remains missing and is separately tracked."
+  STORY:
+    status: NOT_APPLICABLE_WITH_REASON
+    reason: "Not at Demo/Submission lock."
+  DEMO:
+    status: NOT_APPLICABLE_WITH_REASON
+    reason: "No locked World’s Fair product to demo."
+  Q_AND_A:
+    status: NOT_APPLICABLE_WITH_REASON
+    reason: "Not at terminal judge-assurance stage."
+
+product_reality_packet:
+  applicable: true
+  owner_now: "HOI / existing product owner during pre-lock"
+  packet_status: partial
+  proof_classes_present:
+    - TECHNICAL_PROOF_BASELINE
+    - BEHAVIOR_PROOF_BASELINE
+    - FOUNDER_COMPETITOR_EXPERT_DISCOVERY
+  live_core_loop_status: missing
+  load_bearing_integration_status: missing
+  real_consequence_status: missing
+  representative_scenario_depth_status: missing
+  failure_recovery_status: missing
+  external_user_or_operator_evidence_status: missing
+  time_to_first_value_status: not_applicable_with_reason
+  time_to_first_value_reason: "No selected World’s Fair product surface yet."
+  operational_economics_status: not_applicable_with_reason
+  operational_economics_reason: "No selected paid/core execution loop yet."
+  shared_product_core_status: not_applicable_with_reason
+  shared_product_core_reason: "No multiple World’s Fair product surfaces exist yet."
+  reality_ledger_status: satisfied
+  post_vertical_slice_depth_gap_review_status: not_applicable_with_reason
+  post_vertical_slice_depth_gap_review_reason: "No first live World’s Fair vertical slice exists."
+  observability_receipt_status: missing
+  judge_or_operator_self_serve_status: missing
+  unresolved_production_gap:
+    - "No selected World’s Fair wedge"
+    - "No live World’s Fair core loop"
+    - "No direct operator validation"
+    - "No current runtime/commit/deployment binding"
+  claim_overreach:
+    - "Do not upgrade Stocklana baseline into World’s Fair LIVE."
+    - "Do not describe execution-bound capital authority as validated user value."
+
+engineering_quality:
+  triggered: false
+  owner_now: none
+  provider: none
+  provider_authority: NONE
+  receipt_status: not_applicable
+  regression_status: not_applicable
+  protected_contracts_status: not_applicable
+  unresolved_material_findings: []
+  score_only_pass_attempted: false
+
+runtime_coordination:
+  coordinator: none
+  canonical_authority: NONE
+  required_repo_access: not_applicable
+  access_gaps: []
+
+duplicate_or_authority_conflicts: []
+
+next_handoff:
+  from: "HOI / existing pre-lock owner"
+  to: "Human owner"
+  required_output: "Explicit choice: continue direct-operator discovery OR authorize BUILD_WITH_VALIDATION_GAP; no silent Concept Lock."
+
+protected_human_decision_required: true
+terminal_transition_allowed: false

@@ -6,14 +6,17 @@ New collaborator? Start with `docs/COLLABORATOR-ONBOARDING.md`.
 
 Read these before changing product direction:
 
-1. `product/PRD.md`
-2. `state/CURRENT.yaml`
-3. `governance/GATEWAY-REGISTRY.yaml`
-4. `governance/PRODUCT-DEPTH-LIVE-REALITY-v1.2.1.md`
-5. `governance/REALITY-LEDGER.md`
-6. `docs/BASELINE-DELTA.md`
-7. `docs/SEMANTIC-TEARDOWN.md`
-8. `docs/REALITY-GATE.md`
+1. `state/CURRENT.yaml`
+2. `state/HANDOVER.yaml`
+3. `product/PRD.md`
+4. `governance/LIFECYCLE-COVERAGE.yaml`
+5. `governance/GATEWAY-REGISTRY.yaml`
+6. `governance/EVIDENCE-GRAPH.yaml`
+7. `governance/REALITY-LEDGER.md`
+8. `governance/PRODUCT-DEPTH-LIVE-REALITY-v1.2.1.md`
+9. `docs/BASELINE-DELTA.md`
+10. `docs/SEMANTIC-TEARDOWN.md`
+11. `docs/REALITY-GATE.md`
 
 ## Current phase
 

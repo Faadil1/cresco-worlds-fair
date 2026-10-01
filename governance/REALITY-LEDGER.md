@@ -1,6 +1,6 @@
 # CRESCO Reality Ledger
 
-Date: 2026-09-28  
+Date: 2026-10-01  
 Status: ACTIVE
 
 ## Purpose
@@ -38,6 +38,11 @@ Truth labels:
 | New World’s Fair public runtime exists | UNKNOWN | NOT_IMPLEMENTED | No World’s Fair runtime yet |
 | Judge self-serve World’s Fair flow exists | UNKNOWN | NOT_IMPLEMENTED | Not yet built |
 | Runtime/commit binding for World’s Fair build exists | UNKNOWN | NOT_IMPLEMENTED | No new runtime yet |
+| System Control Plane v1 reconciled into this active project | OBSERVED | LOCAL | Adopted prospectively on 2026-10-01; not backdated |
+| Lifecycle coverage manifest exists | OBSERVED | LOCAL | `governance/LIFECYCLE-COVERAGE.yaml` |
+| Claim→Runtime→Evidence Graph exists | OBSERVED | PARTIAL | Bounded pre-lock graph; baseline exact commit/deployment edge remains unresolved |
+| Product Exploitation Loop is active now | OBSERVED | N/A | PENDING / not triggered until first live World’s Fair vertical slice |
+| Adevar pre-audit reference is adopted product scope | OBSERVED | N/A | False; currently CLASSIFIED / REFERENCE_ONLY in central Reference Intelligence inbox |
 
 ## Rule
 

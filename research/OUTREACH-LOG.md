@@ -116,3 +116,15 @@ What does a real trading desk do after a legitimate action hits a wallet/risk/no
 ### Kamino
 Core question:
 If a curator wants an action outside the current risk mandate without permanently changing the mandate, what is the operating model?
+
+
+### Eric follow-up sent 2026-10-01
+
+- Recipient: `eric@getsanction.com`
+- Gmail message: `1a0f72edf6f95418`
+- Purpose:
+  - thank him for the Sanction/CRESCO conversation;
+  - reference the governance/ledger vs execution-layer distinction;
+  - ask for the operator/dev-shop introductions he mentioned;
+  - invite any additional follow-up thoughts after seeing CRESCO.
+- Tone: light follow-up, no pressure, no pitch.

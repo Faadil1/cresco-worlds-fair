@@ -366,3 +366,37 @@ No silent lock is permitted.
 ### Exact next action
 
 Obtain representative operator evidence for the surviving execution-bound delegated-capital hypothesis, or ask the human owner for an explicit build-with-validation-gap override before Concept Lock/build.
+
+
+## Human Override Exercised — 2026-10-01
+
+Observed checkpoint:
+no new operator reply arrived beyond the existing Eric/Sanction evidence.
+
+Human instruction:
+**advance to the next step if there is no reply.**
+
+Result:
+`BUILD_WITH_VALIDATION_GAP` was explicitly exercised.
+
+This does not change the evidence classification:
+- direct operator evidence remains BLOCKED/MISSING;
+- WTP/pull remains BLOCKED/MISSING;
+- adoption remains unproven.
+
+It authorizes progression through:
+- Concept Lock;
+- Technical Reality Check;
+- Backend Engineering Intelligence;
+- bounded implementation specification;
+- Demo-First Architecture;
+- bounded World’s Fair build.
+
+Selected concept:
+**execution-bound delegated capital authority for Solana**, initial delegated-trading vertical.
+
+Selected v1 adapter:
+**Orca Whirlpools devnet**.
+
+Current exact next gate:
+**BUILD__FIRST_LIVE_VERTICAL_SLICE**

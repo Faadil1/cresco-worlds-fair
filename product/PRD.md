@@ -1161,3 +1161,57 @@ Build remains **NOT AUTHORIZED** until Backend Engineering Intelligence and Demo
 
 Exact next action:
 select one Solana execution venue/adapter, define `TradeActionV0`, constrain CPI/program/account semantics, verify a safe test environment, and produce the implementation-ready Demo-First Architecture.
+
+
+## 28. Backend Engineering Intelligence — 2026-10-01
+
+Selected v1 execution adapter:
+**Orca Whirlpools on Solana Devnet.**
+
+Why:
+- real devnet deployment;
+- explicit on-chain CPI integration surface;
+- current Orca repository uses Anchor 0.32.1, matching the historical CRESCO program;
+- official devnet pools/tokens exist;
+- a swap is enough real action to make CRESCO’s authority semantics load-bearing without introducing an order-book or arbitrary-DeFi platform.
+
+Canonical artifact:
+`technical/BACKEND-ENGINEERING-INTELLIGENCE-2026-10-01.md`
+
+Initial pool candidate:
+- devUSDC/devUSDT;
+- Orca devnet pool `63cMwvN8eoaD39os9bKP8brmA7Xtov9VxahnPufWCSdg`.
+
+Runtime liquidity/availability remains to be proven before live promotion.
+
+## 29. Bounded Implementation Specification
+
+Canonical artifact:
+`spec/WORLDS-FAIR-V1-IMPLEMENTATION-SPEC.md`
+
+V1:
+- `SWAP_EXACT_IN`;
+- deterministic `TradeActionV0`;
+- constrained Orca program/pool/account semantics;
+- approval-gated real devnet write;
+- shared product core;
+- no arbitrary CPI.
+
+## 30. Demo-First Architecture
+
+Canonical artifact:
+`technical/DEMO-FIRST-ARCHITECTURE-2026-10-01.md`
+
+The judge-facing path begins with real autonomous action, reaches the soft boundary quickly, demonstrates exact exceptional authority, mutation refusal, atomic execution/consumption, replay refusal and unchanged standing authority.
+
+## 31. Build authorization
+
+Status:
+**AUTHORIZED — BOUNDED WORLD’S FAIR V1 ONLY.**
+
+Build authorization does not remove the operator-validation gap.
+
+Exact next gate:
+**BUILD__FIRST_LIVE_VERTICAL_SLICE**
+
+After the first real end-to-end slice works, Product Reality v1.3 requires the Product Exploitation Loop before terminal polish.

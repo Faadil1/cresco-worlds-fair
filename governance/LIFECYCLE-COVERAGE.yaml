@@ -69,10 +69,10 @@ capabilities:
     evidence_pointer: "product/PRD.md"
 
   - capability: spec_kit_or_equivalent_bounded_specification
-    owner: spec_kit
-    status: MISSING
-    evidence_pointer: none
-    reconstruction_note: "Now triggered because Concept Lock is complete and implementation planning begins."
+    owner: spec_kit_or_equivalent
+    status: SATISFIED
+    evidence_pointer: "spec/WORLDS-FAIR-V1-IMPLEMENTATION-SPEC.md"
+    reconstruction_note: "Satisfied by an equivalent bounded implementation specification; Spec Kit is not treated as a mandatory named tool."
 
   - capability: production_owner
     owner: PBPD
@@ -145,15 +145,15 @@ capabilities:
     not_applicable_reason: "Project remains active."
 
 missing:
-  - "Spec Kit or equivalent bounded implementation specification after Concept Lock."
+  - "First live World’s Fair vertical slice."
+  - "Engineering Quality Assurance receipt once material code changes begin."
   - "Direct representative operator evidence remains a preserved validation gap."
   - "CRESCO-specific willingness-to-pay or equivalent pull signal remains a preserved validation gap."
   - "At least two credible target users/operators willing to test remains a preserved validation gap."
 
 triggered_but_unresolved:
-  - "Spec Kit / bounded implementation specification"
-  - "BACKEND_ENGINEERING_INTELLIGENCE"
-  - "DEMO_FIRST_ARCHITECTURE"
+  - "BUILD__FIRST_LIVE_VERTICAL_SLICE"
+  - "ENGINEERING_QUALITY_ASSURANCE on material code touch"
   - "Competitive Novelty / Kill monitoring remains active"
   - "Direct operator evidence remains an explicit validation gap"
 
@@ -284,8 +284,8 @@ duplicate_or_authority_conflicts: []
 
 next_handoff:
   from: "PBPD / current product owner"
-  to: "Spec Kit or equivalent bounded architecture/specification"
-  required_output: "Implementation-ready one-venue architecture and task/spec package preserving truth boundaries and validation gaps."
+  to: "PBPD / authorized implementation owner"
+  required_output: "First live Orca-devnet vertical slice plus real-path receipts; then activate Product Exploitation Loop."
 
 protected_human_decision_required: false
 terminal_transition_allowed: false

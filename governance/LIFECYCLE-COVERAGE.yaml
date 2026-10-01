@@ -3,8 +3,8 @@ project: "cresco-worlds-fair"
 date: "2026-10-01"
 project_type: "HACKATHON_PRODUCT"
 lifecycle_status: "ACTIVE"
-product_state: "PRE_CONCEPT_LOCK"
-current_owner: "HOI / existing human authority for pre-lock decision"
+product_state: "CONCEPT_LOCKED_WITH_VALIDATION_GAP"
+current_owner: "PBPD / authorized implementation planning owner after Technical Reality Check"
 terminal_completeness_allowed: false
 
 source_of_truth:
@@ -14,10 +14,10 @@ source_of_truth:
   project_repository: "Faadil1/cresco-worlds-fair"
   project_branch: "main"
 
-exact_next_gate: "PRE_BUILD_REALITY_GATE__DIRECT_OPERATOR_EVIDENCE"
+exact_next_gate: "BACKEND_ENGINEERING_INTELLIGENCE__VENUE_ADAPTER_SELECTION"
 exact_next_action: >-
-  Obtain representative operator evidence for the surviving execution-bound delegated-capital hypothesis,
-  or require an explicit human override before any Concept Lock/build proceeds with the validation gap.
+  Select one Solana execution venue/adapter, define TradeActionV0 and constrained CPI/account semantics,
+  then converge the implementation-ready Demo-First Architecture before build authorization.
 
 capabilities:
   - capability: faadil_system_router
@@ -70,13 +70,17 @@ capabilities:
 
   - capability: spec_kit_or_equivalent_bounded_specification
     owner: spec_kit
-    status: NOT_APPLICABLE_WITH_REASON
-    not_applicable_reason: "No Concept Lock or authorized consequential build yet."
+    status: MISSING
+    evidence_pointer: none
+    reconstruction_note: "Now triggered because Concept Lock is complete and implementation planning begins."
 
   - capability: production_owner
     owner: PBPD
-    status: NOT_APPLICABLE_WITH_REASON
-    not_applicable_reason: "Build authorization is false before Concept Lock."
+    status: SATISFIED
+    evidence_pointer:
+      - "product/CONCEPT-LOCK-2026-10-01.md"
+      - "technical/TECHNICAL-REALITY-CHECK-2026-10-01.md"
+    reconstruction_note: "PBPD becomes active for architecture/build planning after Concept Lock; build execution remains gated."
 
   - capability: evidence_and_evaluation
     owner: existing_product_owner
@@ -141,17 +145,25 @@ capabilities:
     not_applicable_reason: "Project remains active."
 
 missing:
-  - "Direct representative operator evidence sufficient for the project-specific Pre-Build Reality Gate."
-  - "CRESCO-specific willingness-to-pay or equivalent pull signal."
-  - "At least two credible target users/operators willing to test, per current project Reality Gate."
+  - "Spec Kit or equivalent bounded implementation specification after Concept Lock."
+  - "Direct representative operator evidence remains a preserved validation gap."
+  - "CRESCO-specific willingness-to-pay or equivalent pull signal remains a preserved validation gap."
+  - "At least two credible target users/operators willing to test remains a preserved validation gap."
 
 triggered_but_unresolved:
-  - "PRE_BUILD_REALITY_GATE"
-  - "COMPETITIVE_NOVELTY_KILL monitoring"
-  - "CONCEPT_COMPRESSION"
-  - "Reference Intelligence item adevar_pre_audit_credits_cwf_2026 remains REFERENCE_ONLY."
+  - "Spec Kit / bounded implementation specification"
+  - "BACKEND_ENGINEERING_INTELLIGENCE"
+  - "DEMO_FIRST_ARCHITECTURE"
+  - "Competitive Novelty / Kill monitoring remains active"
+  - "Direct operator evidence remains an explicit validation gap"
 
-human_overrides: []
+human_overrides:
+  - id: BUILD_WITH_VALIDATION_GAP_2026_10_01
+    status: PROVEN
+    scope: "Allows progression past blocked direct-market-evidence gate without converting missing evidence to PASS."
+    evidence_pointer:
+      - "state/CURRENT.yaml"
+      - "state/HANDOVER.yaml"
 reconstructed_artifacts: []
 
 product_depth_and_live_reality:
@@ -196,11 +208,11 @@ competitive_judge_cycle:
     status: SATISFIED
     evidence: "research/NEGATIVE-EVENT-MAP.md"
   DIFFERENTIATOR:
-    status: UNKNOWN
-    note: "Execution-bound delegated capital authority is the strongest residual hypothesis but lacks direct operator pull."
+    status: SATISFIED
+    note: "Locked as execution-bound delegated capital authority; market desirability remains validation-gap bounded."
   EXECUTION:
-    status: NOT_APPLICABLE_WITH_REASON
-    reason: "No authorized World’s Fair product build yet."
+    status: MISSING
+    reason: "Implementation has not begun; architecture/spec is the next gate."
   LIVE_DEPTH:
     status: MISSING
     note: "No World’s Fair live vertical slice."
@@ -219,7 +231,7 @@ competitive_judge_cycle:
 
 product_reality_packet:
   applicable: true
-  owner_now: "HOI / existing product owner during pre-lock"
+  owner_now: "PBPD / existing product owner after Concept Lock"
   packet_status: partial
   proof_classes_present:
     - TECHNICAL_PROOF_BASELINE
@@ -271,9 +283,9 @@ runtime_coordination:
 duplicate_or_authority_conflicts: []
 
 next_handoff:
-  from: "HOI / existing pre-lock owner"
-  to: "Human owner"
-  required_output: "Explicit choice: continue direct-operator discovery OR authorize BUILD_WITH_VALIDATION_GAP; no silent Concept Lock."
+  from: "PBPD / current product owner"
+  to: "Spec Kit or equivalent bounded architecture/specification"
+  required_output: "Implementation-ready one-venue architecture and task/spec package preserving truth boundaries and validation gaps."
 
-protected_human_decision_required: true
+protected_human_decision_required: false
 terminal_transition_allowed: false

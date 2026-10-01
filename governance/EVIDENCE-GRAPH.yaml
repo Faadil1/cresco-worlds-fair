@@ -47,11 +47,13 @@ claims:
       prevents this graph from upgrading it into a current World’s Fair live claim.
 
   - claim_id: WORLD_FAIR_FINAL_WEDGE_SELECTED
-    statement: "CRESCO has selected its final World’s Fair company wedge."
+    statement: "CRESCO has selected its World’s Fair company wedge."
     evidence_class: BEHAVIOR_PROOF
-    truth_state: UNKNOWN
-    graph_status: MISSING
-    reason: "PRE_CONCEPT_LOCK."
+    truth_state: OBSERVED
+    graph_status: COMPLETE
+    artifact_pointer: "product/CONCEPT-LOCK-2026-10-01.md"
+    commit: "be3dd0ec6df28fdf947644bb4cf046d952b3c3fe"
+    note: "Internal product decision complete; does not imply market validation."
 
   - claim_id: WORLD_FAIR_LIVE_CORE_LOOP
     statement: "The selected World’s Fair CRESCO wedge has a live core loop."
@@ -79,3 +81,14 @@ rules:
   - "Any future sponsor-native, transactional, reliability/recovery or judge-facing material claim must add the full causal path."
   - "Missing commit→deployment or execution→receipt edges keep the claim PARTIAL/MISSING/UNKNOWN."
   - "Replay may support reproducibility but cannot replace a claimed live execution."
+
+
+  - claim_id: WORLD_FAIR_TECHNICAL_REALITY
+    statement: "The locked delegated-capital vertical is technically feasible as a bounded extension of the existing CRESCO Solana program."
+    evidence_class: TECHNICAL_PROOF
+    truth_state: OBSERVED
+    graph_status: COMPLETE
+    artifact_pointer: "technical/TECHNICAL-REALITY-CHECK-2026-10-01.md"
+    source_commit: "Faadil1/cresco@0eb10dd8352bba69b9717d0d62d89794c9e384cc"
+    project_commit: "6797eb7865707f4af319193b0345ead87eb1446f5"
+    limitation: "Does not prove a live trading venue integration or operator demand."

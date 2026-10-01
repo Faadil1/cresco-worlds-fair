@@ -1,11 +1,13 @@
-version: "1.0"
+version: "1.1"
 project: "cresco-worlds-fair"
-date: "2026-09-29"
+date: "2026-10-01"
 status_values:
-  - ACTIVE
-  - N/A
-  - BLOCKED
   - PROVEN
+  - ACTIVE
+  - BLOCKED
+  - PENDING
+  - N/A
+  - UNKNOWN
 
 rules:
   - "Every registered gate must always have an explicit status."
@@ -94,13 +96,18 @@ registry:
     condition: "Correct labels: LIVE / LOCAL / LOCAL_STUB / PRESEEDED / SIMULATED / PARTIAL / NOT_IMPLEMENTED."
 
   - id: PRODUCT_DEPTH_LIVE_REALITY
-    name: "Product Depth & Live Reality v1.2.1"
+    name: "Product Reality / Integration-First Product Exploitation v1.3"
     status: ACTIVE
-    activates_when: "All product/build/hackathon workflows"
-    condition: "Vertical Slice is entry point, not Definition of Done; live claims require load-bearing live integration and real consequence."
+    activates_when: "All material product/build/hackathon workflows from this material touch forward"
+    condition: "Vertical Slice is entry point, not Definition of Done; real action and live integration outrank proof-only artifacts."
     evidence:
       - "governance/PRODUCT-DEPTH-LIVE-REALITY-v1.2.1.md"
       - "governance/REALITY-LEDGER.md"
+      - "governance/LIFECYCLE-COVERAGE.yaml"
+      - "state/CURRENT.yaml"
+    canonical_policy: "Faadil1/faadil-agent-system/PRODUCT-REALITY-POLICY.yaml@1.3.0"
+    adoption_date: "2026-10-01"
+    no_backdating: true
 
   - id: RUNTIME_COMMIT_BINDING
     name: "Runtime / Commit Binding Gate"
@@ -272,6 +279,80 @@ registry:
     activates_when: "Any project or milestone already frozen/submitted"
     condition: "No silent retrofit; explicit reopening required."
 
+  - id: SYSTEM_CONTROL_PLANE_RECONCILIATION
+    name: "System Control Plane v1 reconciliation"
+    status: PROVEN
+    activates_when: "Active project next material touch"
+    condition: "Central CURRENT/HANDOVER and project canonical state reconciled without backdating."
+    evidence:
+      - "state/CURRENT.yaml"
+      - "state/HANDOVER.yaml"
+
+  - id: PROJECT_LIFECYCLE_COVERAGE
+    name: "Project Lifecycle Completeness Coverage"
+    status: PROVEN
+    activates_when: "All material projects"
+    condition: "Mandatory and triggered capabilities are explicitly resolved; missing capabilities cannot be hidden."
+    evidence:
+      - "governance/LIFECYCLE-COVERAGE.yaml"
+
+  - id: CLAIM_RUNTIME_EVIDENCE_GRAPH
+    name: "Claim → Runtime → Evidence Graph"
+    status: ACTIVE
+    activates_when: "Material live, sponsor-native, transactional, reliability/recovery or judge-facing claim"
+    condition: "Required causal edges remain explicit; missing edges keep claims PARTIAL/MISSING/UNKNOWN."
+    evidence:
+      - "governance/EVIDENCE-GRAPH.yaml"
+    current_state: "Baseline graph PARTIAL; World’s Fair live claims MISSING."
+
+  - id: REFERENCE_INTELLIGENCE_PIPELINE
+    name: "Reference Intelligence Pipeline"
+    status: ACTIVE
+    activates_when: "Material external reference matches current decision domain"
+    condition: "Reference presence is advisory only; adoption requires verification and existing-owner decision."
+    evidence:
+      - "state/CURRENT.yaml"
+    current_reference:
+      id: "adevar_pre_audit_credits_cwf_2026"
+      state: "CLASSIFIED / REFERENCE_ONLY"
+
+  - id: RULE_LIFECYCLE
+    name: "Rule Lifecycle / anti-over-systemization"
+    status: ACTIVE
+    activates_when: "A project lesson is proposed as a durable rule"
+    condition: "Allowed decisions include NO_CHANGE / KEEP / MERGE_RULES / RELAX / RETIRE."
+    current_decision: NO_CHANGE
+
+  - id: CROSS_PROJECT_LEARNING
+    name: "Cross-Project Learning"
+    status: N/A
+    activates_when: "Post-mortem or comparable multi-project evidence exists"
+    condition: "No single project/interview result becomes a universal rule."
+    not_applicable_reason: "CRESCO remains active and no multi-project generalization is being proposed."
+
+  - id: ENGINEERING_QUALITY_ASSURANCE
+    name: "Engineering Quality Assurance"
+    status: N/A
+    activates_when: "Active code-bearing World’s Fair build or other canonical trigger"
+    condition: "Triggered code projects require bounded quality assurance plus regression evidence and receipt."
+    not_applicable_reason: "No authorized code-bearing World’s Fair build exists yet; historical Stocklana baseline is not silently retrofitted."
+
+  - id: PRODUCT_EXPLOITATION_LOOP
+    name: "Post-Vertical-Slice Product Exploitation Loop"
+    status: PENDING
+    activates_when: "First live World’s Fair vertical slice exists after authorized Concept Lock"
+    condition: "Continue coherent depth while marginal product value/differentiation justifies cost, risk and deadline."
+    pending_reason: "No selected World’s Fair wedge has a live vertical slice yet."
+
+  - id: PROJECT_STATE_CONTINUITY
+    name: "CURRENT / HANDOVER continuity"
+    status: PROVEN
+    activates_when: "All active material projects"
+    condition: "Canonical project state and exact next handoff are written to GitHub."
+    evidence:
+      - "state/CURRENT.yaml"
+      - "state/HANDOVER.yaml"
+
 product_depth_subchecks:
   live_core_loop: BLOCKED
   load_bearing_integration: BLOCKED
@@ -291,7 +372,7 @@ product_depth_subchecks:
   judge_operator_self_serve: BLOCKED
   setup_reproducibility: BLOCKED
   clean_room_external_dependency_failure: BLOCKED
-  post_vertical_slice_depth_gap_review: N/A
+  post_vertical_slice_depth_gap_review: PENDING
 
 promotion_rules:
   x402:
@@ -355,3 +436,26 @@ gate_rerun_2026_09_29:
   willingness_to_pay_cresco_specific: BLOCKED
   concept_lock: BLOCKED
   build_authorized: false
+
+
+reconciliation_2026_10_01:
+  project_lifecycle_status: ACTIVE
+  product_state: PRE_CONCEPT_LOCK
+  exact_next_gate: PRE_BUILD_REALITY_GATE__DIRECT_OPERATOR_EVIDENCE
+  exact_next_action: "Obtain representative operator evidence or require explicit human BUILD_WITH_VALIDATION_GAP override before Concept Lock/build."
+  last_explicit_proven_gate: NEGATIVE_EVENT
+  founder_competitor_discovery:
+    sanction_interview: PROVEN
+    customer_validation: false
+  pre_build_reality: ACTIVE
+  direct_operator_evidence: BLOCKED
+  willingness_to_pay_cresco_specific: BLOCKED
+  concept_lock: BLOCKED
+  build_authorized: false
+  world_fair_live_core_loop: BLOCKED
+  evidence_graph: ACTIVE
+  evidence_graph_world_fair_live_claims: MISSING
+  product_exploitation_loop: PENDING
+  reference_intelligence_adevar: PENDING
+  rule_lifecycle_decision: NO_CHANGE
+  cross_project_learning: N/A

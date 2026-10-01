@@ -8,7 +8,9 @@ This repository is intentionally **pre-Concept-Lock**. It must not silently coll
 
 ## Current status
 
-**Phase:** Divergent Ideation → Semantic Teardown → User/Market Evidence → PRE-BUILD REALITY GATE
+**Lifecycle:** ACTIVE  
+**Product state:** PRE-CONCEPT-LOCK  
+**Current gate:** PRE-BUILD REALITY GATE — direct operator evidence
 
 **No product build is authorized yet.**
 
@@ -84,6 +86,9 @@ No mainnet, custody, brokerage, tokenized-equity ownership, user traction, custo
 See:
 - [product/PRD.md](product/PRD.md)
 - [state/CURRENT.yaml](state/CURRENT.yaml)
+- [state/HANDOVER.yaml](state/HANDOVER.yaml)
+- [governance/LIFECYCLE-COVERAGE.yaml](governance/LIFECYCLE-COVERAGE.yaml)
+- [governance/EVIDENCE-GRAPH.yaml](governance/EVIDENCE-GRAPH.yaml)
 - [docs/BASELINE-DELTA.md](docs/BASELINE-DELTA.md)
 - [docs/SEMANTIC-TEARDOWN.md](docs/SEMANTIC-TEARDOWN.md)
 - [docs/REALITY-GATE.md](docs/REALITY-GATE.md)

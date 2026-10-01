@@ -1,7 +1,7 @@
 project: cresco-worlds-fair
 date: 2026-10-01
 status: ACTIVE
-product_status: PRE_CONCEPT_LOCK
+product_status: CONCEPT_LOCKED_WITH_VALIDATION_GAP
 source_of_truth: GITHUB
 
 system_reconciliation:
@@ -32,7 +32,7 @@ system_reconciliation:
     handover: state/HANDOVER.yaml
 
 phase:
-  current: PRE_BUILD_REALITY_GATE
+  current: BACKEND_ENGINEERING_INTELLIGENCE
   previous:
     - WINNING_INTELLIGENCE
     - SIX_LLM_REVIEW
@@ -42,14 +42,15 @@ phase:
     - SANCTION_FOUNDER_INTERVIEW
     - SYSTEM_RECONCILIATION
   next:
-    - CONCEPT_LOCK
-    - PRD_V1_LOCKED
-    - TECHNICAL_REALITY_CHECK
+    - DEMO_FIRST_ARCHITECTURE
+    - BUILD_AUTHORIZATION
+    - BUILD
 
-exact_next_gate: PRE_BUILD_REALITY_GATE__DIRECT_OPERATOR_EVIDENCE
+exact_next_gate: BACKEND_ENGINEERING_INTELLIGENCE__VENUE_ADAPTER_SELECTION
 exact_next_action: >-
-  Obtain representative operator evidence for the surviving execution-bound delegated-capital hypothesis,
-  or require an explicit human override before any Concept Lock/build proceeds with the validation gap.
+  Select the single Solana execution venue/adapter for the locked delegated-capital vertical,
+  define TradeActionV0 and constrained CPI/account semantics, and produce the implementation-ready
+  Demo-First Architecture without widening into arbitrary CPI.
 
 build_authorized: false
 terminal_completeness_allowed: false
@@ -118,16 +119,17 @@ gates:
   real_problem: SUPPORTED
   real_user: CATEGORY_LEVEL_SUPPORTED
   five_year_durability: SUPPORTED
-  willingness_to_pay_cresco_specific: BLOCKED
+  willingness_to_pay_cresco_specific: BLOCKED_VALIDATION_GAP_PRESERVED
   killer_demo: STRONG
   native_advantage: STRONG_FOR_TRADING_PARTIAL_FOR_TREASURY
   negative_event: PROVEN
   technical_feasibility_trading: PROVEN_BOUNDED_VERTICAL
   technical_feasibility_treasury: PARTIAL_REQUIRES_TRUSTED_SEMANTICS
   competitive_residual: ACTIVE_REFINED_NOT_LOCKED
-  direct_operator_evidence: BLOCKED
-  operator_trial_interest: BLOCKED
-  concept_lock: BLOCKED
+  direct_operator_evidence: BLOCKED_VALIDATION_GAP_PRESERVED
+  operator_trial_interest: BLOCKED_VALIDATION_GAP_PRESERVED
+  concept_lock: PROVEN_WITH_HUMAN_VALIDATION_GAP_OVERRIDE
+  technical_reality_check: PROVEN_BOUNDED_DELTA
 
 public_evidence:
   agent_exact_one_use_precedent: PROVEN_SANCTION
@@ -253,3 +255,43 @@ workstream_separation:
     may_change_colosseum_concept_lock: false
     may_change_colosseum_build_scope: false
     note: "Adevar remains a separate submission/security workstream and must not distract this thread from Colosseum."
+
+
+human_override:
+  id: BUILD_WITH_VALIDATION_GAP_2026_10_01
+  date: 2026-10-01
+  status: PROVEN
+  user_instruction: "If there is no response, advance to the next step."
+  condition_observed: "No new operator replies beyond Eric at the checkpoint."
+  effect:
+    - allow_concept_lock_with_validation_gap
+    - allow_progression_to_technical_reality_and_architecture
+  does_not_imply:
+    - direct_operator_evidence_pass
+    - willingness_to_pay_pass
+    - adoption
+    - market_validation
+    - terminal_readiness
+
+concept_lock:
+  status: PROVEN
+  type: LOCKED_WITH_VALIDATION_GAP
+  artifact: product/CONCEPT-LOCK-2026-10-01.md
+  selected_vertical: DELEGATED_TRADING_CAPITAL_MANDATES
+  product_definition: EXECUTION_BOUND_DELEGATED_CAPITAL_AUTHORITY_FOR_SOLANA
+  primary_soft_boundary: PER_ACTION_NOTIONAL
+  primary_hard_boundary: UNSUPPORTED_OR_UNPARSABLE_EXECUTION_ADAPTER
+  v1_exception_shape: EXACT_ONE_USE
+  v1_stale_rule: ANY_MANDATE_NONCE_CHANGE_INVALIDATES_EXCEPTION
+  validation_gap_preserved: true
+
+technical_reality_check:
+  status: PROVEN
+  verdict: PASS_WITH_BOUNDED_DELTA
+  artifact: technical/TECHNICAL-REALITY-CHECK-2026-10-01.md
+  highest_safe_action_tier: APPROVAL_GATED_WRITE
+  required_delta:
+    - one_explicit_trade_action
+    - one_constrained_solana_venue_adapter
+    - semantic_action_binding
+    - no_arbitrary_CPI

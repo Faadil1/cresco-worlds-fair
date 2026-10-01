@@ -332,3 +332,32 @@ build_authorization:
     - devnet_only_initially
     - no_mainnet_or_institutional_adoption_claim
     - no_arbitrary_CPI
+
+
+implementation_status:
+  date: 2026-10-01
+  source_repository: Faadil1/cresco
+  branch: feature/worlds-fair-orca-v1
+  pull_request: 11
+  pull_request_status: DRAFT
+  latest_known_source_commit: 6b5208feb63e884b0f1b78616dd7c305ef1c2959
+  first_live_vertical_slice:
+    status: ACTIVE
+    live_proven: false
+    devnet_proof_workflow: worlds-fair-orca-devnet-proof
+    workflow_run: 36940666647
+    current_state: IN_PROGRESS
+  engineering_quality:
+    triggered: true
+    initial_real_failure:
+      status: OBSERVED
+      issue: "unresolved import anchor_lang::solana_program::hash"
+      repair: "migrated to split solana-sha256-hasher crate"
+    post_repair_compile:
+      rust_program_check: PROVEN_PASS
+      node_regression: PROVEN_PASS
+      anchor_sbf_build: PROVEN_PASS
+    receipt: PENDING_LIVE_SLICE_STABILIZATION
+  source_truth_corrections:
+    - "Orca sqrt_price_limit=0 is a valid no-explicit-limit sentinel; the first draft incorrectly rejected zero and was repaired from primary Orca source."
+  rule: "Do not promote FIRST_LIVE_VERTICAL_SLICE until the real Orca Devnet execution workflow produces a bound receipt."

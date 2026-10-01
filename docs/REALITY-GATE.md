@@ -266,3 +266,103 @@ Allowed:
 
 Not allowed:
 - product feature implementation that silently chooses a wedge.
+
+
+## Reality Gate Rerun — 2026-10-01
+
+Trigger:
+- planned Thursday checkpoint reached;
+- full Sanction founder interview synthesized;
+- second outreach wave sent;
+- no new operator replies beyond Eric as of the checkpoint;
+- current System Control Plane v1 and Product Reality v1.3 reconciled.
+
+### New evidence since 2026-09-26
+
+PROVEN:
+- Sanction founder/expert interview confirms stale approvals, action drift and unknown-outcome/duplicate-retry as real design concerns.
+- Sanction explicitly positions itself as governance/ledger rather than fiduciary execution.
+- The architectural residual therefore sharpens toward execution-bound delegated capital authority.
+
+NOT PROVEN:
+- operator/customer pull for CRESCO;
+- CRESCO-specific willingness to pay;
+- preferred exception shape;
+- operator stale-policy expectation;
+- material value of atomic exception-consume + execution;
+- two credible target operators willing to test.
+
+### Lane status
+
+#### Delegated Trading
+
+Status:
+**SURVIVES / LEADING EVIDENCE LANE / CONCEPT LOCK BLOCKED.**
+
+Reason:
+- strongest native Solana fit;
+- bounded technical feasibility exists;
+- Primer reconstruction leaves an exception-to-policy residual;
+- Sanction interview sharpens the governance-vs-execution boundary;
+- direct representative operator evidence is still missing.
+
+#### Treasury / Crypto Ops
+
+Status:
+**SURVIVES / SECONDARY HIGH VALUE / CONCEPT LOCK BLOCKED.**
+
+Reason:
+- high-consequence problem and strong killer demo;
+- trusted semantic verification remains a major product delta;
+- direct operator pull remains missing.
+
+#### Agent Builders
+
+Status:
+**CONDITIONAL / HIGH COMPETITIVE RISK.**
+
+Reason:
+- generic authorization is heavily reconstructed by Sanction/Turnkey/Session-style systems;
+- only execution-layer/capital-path residual remains interesting;
+- no direct user pull has promoted it.
+
+#### Family Progressive Agency
+
+Status:
+**HOLD AS ORIGINAL PRODUCT / UX LABORATORY.**
+
+No new evidence promotes it to commercial lead.
+
+### Gate result
+
+`PRE_BUILD_REALITY_GATE = BLOCKED`
+
+Blockers:
+- direct representative operator evidence;
+- CRESCO-specific pull/WTP;
+- at least two credible target operators willing to test;
+- exception-shape distribution;
+- stale-policy expectation;
+- atomic-execution operator value.
+
+### Allowed next paths
+
+1. **CONTINUE_DISCOVERY**
+   - obtain direct operator evidence;
+   - preserve build_authorized=false.
+
+2. **EXPLICIT HUMAN BUILD_WITH_VALIDATION_GAP OVERRIDE**
+   - allowed only as an explicit human decision;
+   - does not convert missing evidence into PASS;
+   - Concept Lock and PRD must record the validation gap;
+   - all later claims remain truth-bounded.
+
+No silent lock is permitted.
+
+### Exact next gate
+
+**PRE_BUILD_REALITY_GATE__DIRECT_OPERATOR_EVIDENCE**
+
+### Exact next action
+
+Obtain representative operator evidence for the surviving execution-bound delegated-capital hypothesis, or ask the human owner for an explicit build-with-validation-gap override before Concept Lock/build.

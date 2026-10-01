@@ -1,7 +1,7 @@
 # CRESCO Product Requirements — Crypto World’s Fair
 
-Version: 0.2-discovery-reconciled  
-Status: **PRE-CONCEPT-LOCK / COLLABORATIVE SOURCE OF TRUTH**  
+Version: 1.0-locked-with-validation-gap  
+Status: **CONCEPT LOCKED WITH VALIDATION GAP / LIVING PRD**  
 Date: 2026-10-01
 
 ## 1. Purpose
@@ -1074,3 +1074,90 @@ Still unproven:
 - material value of atomic exception-consume + execution.
 
 No Concept Lock is earned from the reconciliation itself.
+
+
+## 25. Concept Lock — 2026-10-01
+
+The direct-operator checkpoint produced no new replies beyond Eric/Sanction. The human owner explicitly instructed the project to advance if no reply arrived.
+
+This creates a **BUILD_WITH_VALIDATION_GAP** path.
+
+The validation gap remains visible:
+- direct operator evidence: MISSING/BLOCKED;
+- CRESCO-specific WTP/pull: MISSING/BLOCKED;
+- two credible target operators willing to test: MISSING;
+- operator exception-shape distribution: MISSING;
+- operator stale-policy preference: MISSING;
+- atomic execution desirability: MISSING.
+
+These are not converted into PASS.
+
+### Locked World’s Fair product direction
+
+**CRESCO = execution-bound delegated capital authority for Solana.**
+
+Initial vertical:
+**Delegated Trading / Capital Mandates.**
+
+Primary user roles:
+- principal / allocator;
+- delegated trading strategy/operator;
+- risk owner for exceptional authority.
+
+Core job:
+
+> Let a delegated strategy act autonomously inside standing risk limits while allowing a principal to authorize a bounded exceptional trade without turning that exception into broader future authority.
+
+Canonical lock artifact:
+`product/CONCEPT-LOCK-2026-10-01.md`
+
+### V1 bounded semantics
+
+- one supported Solana execution adapter/venue;
+- one explicit trade-like action;
+- SOFT boundary: per-action/per-trade notional;
+- HARD boundary: unsupported or unparseable execution adapter/action;
+- exception: exact, one-use;
+- mutation invalidates;
+- replay refuses;
+- any Mandate nonce/version change invalidates the prior exception in v1;
+- standing Mandate remains unchanged by the exception;
+- exceptional execution still updates the relevant period counters;
+- Pyth evidence may restrict/refuse but never grant authority;
+- no arbitrary CPI.
+
+The exact-one-use and all-revision-stale semantics are bounded v1 choices, not universal market claims.
+
+## 26. Technical Reality Check — 2026-10-01
+
+Verdict:
+**PASS_WITH_BOUNDED_DELTA**
+
+Canonical artifact:
+`technical/TECHNICAL-REALITY-CHECK-2026-10-01.md`
+
+Observed reusable baseline:
+- versioned Mandate/nonce;
+- active/paused/revoked authority state;
+- notional policies and per-asset rules;
+- Pyth Lazer verification in the capital path;
+- one-use AllowanceReceipt;
+- request/hash and exact-notional checks;
+- stale authorization refusal;
+- token movement, counter mutation and allowance consumption in one Solana transaction.
+
+Missing bounded implementation delta:
+- real trade-like action semantics;
+- one selected venue/program adapter;
+- base/quote and action parameter binding;
+- constrained CPI/account semantics;
+- semantic mutation tests.
+
+Build remains **NOT AUTHORIZED** until Backend Engineering Intelligence and Demo-First Architecture converge the exact execution adapter and implementation contract.
+
+## 27. Exact next gate
+
+**BACKEND_ENGINEERING_INTELLIGENCE__VENUE_ADAPTER_SELECTION**
+
+Exact next action:
+select one Solana execution venue/adapter, define `TradeActionV0`, constrain CPI/program/account semantics, verify a safe test environment, and produce the implementation-ready Demo-First Architecture.

@@ -117,3 +117,10 @@ handover:
     - no_read_only_fallback_only_for_demo_convenience
     - no_evidence_artifact_as_primary_product_engine
     - no_claim_upgrade_without_runtime_evidence_edges
+
+
+  workstream_scope:
+    this_project_thread: COLOSSEUM_ONLY
+    adevar_pre_audit: SEPARATE_CONVERSATION_WORKSTREAM
+    shared_product_core: CRESCO
+    rule: "Adevar may consume the same product evidence later but does not steer Colosseum concept selection or build scope."

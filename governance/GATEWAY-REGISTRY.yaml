@@ -32,7 +32,7 @@ registry:
 
   - id: PRE_BUILD_REALITY
     name: "Pre-Build Reality Gate"
-    status: ACTIVE
+    status: BLOCKED
     activates_when: "All concepts before Concept Lock"
     condition: "Real problem, real user, negative event, observable impact, durability, willingness-to-pay signal, killer demo, native advantage."
 
@@ -50,19 +50,38 @@ registry:
 
   - id: CONCEPT_COMPRESSION
     name: "Concept Compression & Validation"
-    status: ACTIVE
+    status: PROVEN
     activates_when: "Before Concept Lock"
     condition: "Compress problem, user, mechanism, differentiator, native advantage, killer demo and kill criteria into a coherent concept."
 
+  - id: CONCEPT_LOCK
+    name: "Concept Lock"
+    status: PROVEN
+    activates_when: "After concept compression and explicit human product decision"
+    condition: "Locked scope must preserve unresolved validation gaps rather than converting them to PASS."
+    evidence:
+      - "product/CONCEPT-LOCK-2026-10-01.md"
+      - "product/PRD.md"
+    validation_gap: true
+
+  - id: HUMAN_BUILD_WITH_VALIDATION_GAP_OVERRIDE
+    name: "Human Build-With-Validation-Gap Override"
+    status: PROVEN
+    activates_when: "Human explicitly instructs progression despite unresolved non-safety market evidence"
+    condition: "Allows progression without reclassifying missing evidence."
+    evidence:
+      - "state/CURRENT.yaml"
+      - "state/HANDOVER.yaml"
+
   - id: TECHNICAL_REALITY
     name: "Technical Reality Check"
-    status: N/A
+    status: PROVEN
     activates_when: "After Concept Lock"
     condition: "Architecture genuinely feasible; claims match implementation reality."
 
   - id: BACKEND_ENGINEERING_INTELLIGENCE
     name: "Backend Engineering Intelligence"
-    status: N/A
+    status: ACTIVE
     activates_when: "After Concept Lock and Technical Reality Check"
     condition: "SCALE ON EVIDENCE, NOT POSSIBILITY."
 
@@ -440,7 +459,9 @@ gate_rerun_2026_09_29:
   evidence_integrity: ACTIVE
   external_user_operator_evidence: BLOCKED
   willingness_to_pay_cresco_specific: BLOCKED
-  concept_lock: BLOCKED
+  concept_lock: PROVEN_WITH_VALIDATION_GAP
+  technical_reality: PROVEN
+  backend_engineering_intelligence: ACTIVE
   build_authorized: false
 
 

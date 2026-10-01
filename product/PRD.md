@@ -1,8 +1,8 @@
 # CRESCO Product Requirements — Crypto World’s Fair
 
-Version: 0.1-discovery  
+Version: 0.2-discovery-reconciled  
 Status: **PRE-CONCEPT-LOCK / COLLABORATIVE SOURCE OF TRUTH**  
-Date: 2026-09-26
+Date: 2026-10-01
 
 ## 1. Purpose
 
@@ -980,3 +980,97 @@ Treat this as a valuable founder/community relationship, not customer validation
 See:
 - `research/INTERVIEW-SANCTION-2026-09-29.md`
 - `research/SANCTION-DELTA.md`
+
+
+## 24. System Control Plane Reconciliation — 2026-10-01
+
+This project has now been reconciled against the current canonical system in
+`Faadil1/faadil-agent-system` on `main`.
+
+This adoption begins **2026-10-01**. It is not backdated.
+
+### Project status
+
+- lifecycle: **ACTIVE**
+- product state: **PRE-CONCEPT-LOCK**
+- build authorization: **FALSE**
+- exact next gate: **PRE_BUILD_REALITY_GATE__DIRECT_OPERATOR_EVIDENCE**
+- terminal completeness: **FALSE**
+
+### Newly active project-level control artifacts
+
+- `state/HANDOVER.yaml`
+- `governance/LIFECYCLE-COVERAGE.yaml`
+- `governance/EVIDENCE-GRAPH.yaml`
+- reconciled `governance/GATEWAY-REGISTRY.yaml`
+
+### Product Reality v1.3
+
+Central `PRODUCT-REALITY-POLICY.yaml@1.3.0` now governs future material touches.
+
+Preserved laws include:
+
+- Vertical Slice = entry point, not Definition of Done.
+- Technical Proof ≠ Live Product Integration.
+- PRODUCT VALUE + REAL ACTION > proof artifacts.
+- Evidence is exhaust of real product behavior, not the primary engine.
+- Live mode is primary; replay/deterministic evidence is secondary/fallback.
+- Read-only is not the default when a safe, value-creating real action is feasible.
+- After the first live World’s Fair vertical slice, run the Product Exploitation Loop while marginal product value, differentiation, integration depth, real consequence or resilience justifies cost/risk/deadline.
+
+### Product Exploitation Loop status
+
+**PENDING / NOT TRIGGERED.**
+
+Reason:
+the historical Stocklana baseline is not silently reclassified as the first live vertical slice of the not-yet-selected World’s Fair wedge.
+
+The loop activates only after:
+1. Concept Lock;
+2. build authorization;
+3. first live World’s Fair vertical slice.
+
+### Evidence Graph
+
+A bounded project graph now exists at `governance/EVIDENCE-GRAPH.yaml`.
+
+It preserves:
+- historical Stocklana proof at its real class;
+- missing commit/deployment edges as missing;
+- World’s Fair live claims as MISSING until a real runtime exists;
+- operator-value hypotheses as UNKNOWN until direct evidence exists.
+
+### Reference Intelligence
+
+The Adevar Labs pre-audit-credit listing supplied during this project has been routed into the central Reference Intelligence inbox as:
+
+`adevar_pre_audit_credits_cwf_2026`
+
+State:
+- pipeline: CLASSIFIED
+- adoption: REFERENCE_ONLY
+- authority: NONE
+
+No product direction, security claim or side-track participation is implied by registration.
+
+### Rule Lifecycle / Cross-project learning
+
+Decision:
+**NO_CHANGE.**
+
+This reconciliation does not create a new universal rule. The Eric/Sanction interview remains one project-specific expert signal, not a cross-project law.
+
+### Exact unresolved product question
+
+The strongest current residual remains:
+
+> Can CRESCO create valuable **execution-bound delegated capital authority** that sits below or beside a governance/authorization plane, preserving standing authority while allowing bounded exceptional authority at the actual capital path?
+
+Still unproven:
+- operator pull;
+- CRESCO-specific willingness to pay;
+- exact vs temporary/session exception preference;
+- stale-policy semantics by operator;
+- material value of atomic exception-consume + execution.
+
+No Concept Lock is earned from the reconciliation itself.

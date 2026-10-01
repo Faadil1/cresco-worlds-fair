@@ -14,7 +14,7 @@ handover:
     Chat memory is routing context only.
 
   lifecycle_status: ACTIVE
-  product_status: PRE_CONCEPT_LOCK
+  product_status: CONCEPT_LOCKED_WITH_VALIDATION_GAP
   build_authorized: false
   terminal_completeness_allowed: false
 
@@ -37,15 +37,21 @@ handover:
       but it is not a customer-validation gate and does not satisfy operator pull or WTP.
 
   current_gate:
-    id: PRE_BUILD_REALITY_GATE__DIRECT_OPERATOR_EVIDENCE
-    status: BLOCKED
+    id: BACKEND_ENGINEERING_INTELLIGENCE__VENUE_ADAPTER_SELECTION
+    status: ACTIVE
     blockers:
-      - direct_representative_operator_evidence
-      - CRESCO_specific_pull_or_WTP
-      - at_least_two_credible_target_users_or_operators_willing_to_test
-      - exception_shape_distribution
-      - stale_policy_expectation
-      - atomic_execution_operator_value
+      - selected_single_solana_execution_adapter
+      - implementation_ready_TradeActionV0
+      - constrained_CPI_and_account_semantics
+      - devnet_or_safe_test_environment_feasibility
+
+  preserved_validation_gaps:
+    - direct_representative_operator_evidence
+    - CRESCO_specific_pull_or_WTP
+    - at_least_two_credible_target_users_or_operators_willing_to_test
+    - exception_shape_distribution
+    - stale_policy_operator_preference
+    - atomic_execution_operator_value
 
   current_hypothesis:
     statement: >-
@@ -105,10 +111,10 @@ handover:
     interpretation: "Neutral; not negative market evidence."
     external_send_boundary: HUMAN_PROTECTED_ACTION
 
-  exact_next_gate: PRE_BUILD_REALITY_GATE__DIRECT_OPERATOR_EVIDENCE
+  exact_next_gate: BACKEND_ENGINEERING_INTELLIGENCE__VENUE_ADAPTER_SELECTION
   exact_next_action: >-
-    Obtain representative operator evidence for the execution-bound delegated-capital hypothesis,
-    or ask the human owner for an explicit BUILD_WITH_VALIDATION_GAP override before Concept Lock/build.
+    Select one Solana execution venue/adapter, define TradeActionV0 plus constrained CPI/account semantics,
+    then converge the Demo-First Architecture before build authorization.
 
   prohibited_shortcuts:
     - no_silent_concept_lock
@@ -124,3 +130,23 @@ handover:
     adevar_pre_audit: SEPARATE_CONVERSATION_WORKSTREAM
     shared_product_core: CRESCO
     rule: "Adevar may consume the same product evidence later but does not steer Colosseum concept selection or build scope."
+
+
+  human_override:
+    id: BUILD_WITH_VALIDATION_GAP_2026_10_01
+    status: PROVEN
+    reason: "No new operator replies; human explicitly instructed the project to advance."
+    truth_rule: "Missing operator evidence remains missing and cannot be described as passed."
+
+  concept_lock:
+    status: PROVEN
+    artifact: product/CONCEPT-LOCK-2026-10-01.md
+    selected_vertical: DELEGATED_TRADING_CAPITAL_MANDATES
+    product: EXECUTION_BOUND_DELEGATED_CAPITAL_AUTHORITY_FOR_SOLANA
+    validation_gap_preserved: true
+
+  technical_reality_check:
+    status: PROVEN
+    verdict: PASS_WITH_BOUNDED_DELTA
+    artifact: technical/TECHNICAL-REALITY-CHECK-2026-10-01.md
+    build_authorized: false

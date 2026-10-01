@@ -32,7 +32,7 @@ system_reconciliation:
     handover: state/HANDOVER.yaml
 
 phase:
-  current: BACKEND_ENGINEERING_INTELLIGENCE
+  current: BUILD
   previous:
     - WINNING_INTELLIGENCE
     - SIX_LLM_REVIEW
@@ -42,17 +42,17 @@ phase:
     - SANCTION_FOUNDER_INTERVIEW
     - SYSTEM_RECONCILIATION
   next:
-    - DEMO_FIRST_ARCHITECTURE
-    - BUILD_AUTHORIZATION
-    - BUILD
+    - FIRST_LIVE_VERTICAL_SLICE
+    - PRODUCT_EXPLOITATION_LOOP
+    - LIVE_DEPTH
 
-exact_next_gate: BACKEND_ENGINEERING_INTELLIGENCE__VENUE_ADAPTER_SELECTION
+exact_next_gate: BUILD__FIRST_LIVE_VERTICAL_SLICE
 exact_next_action: >-
-  Select the single Solana execution venue/adapter for the locked delegated-capital vertical,
-  define TradeActionV0 and constrained CPI/account semantics, and produce the implementation-ready
-  Demo-First Architecture without widening into arbitrary CPI.
+  Implement the locked Orca-devnet TradeActionV0 vertical in the shared CRESCO product core:
+  standing-authority swap, soft-notional refusal, exact one-use exception, constrained Orca CPI,
+  mutation/stale/replay/hard-boundary failures, and real-path receipts.
 
-build_authorized: false
+build_authorized: true
 terminal_completeness_allowed: false
 
 baseline:
@@ -294,4 +294,41 @@ technical_reality_check:
     - one_explicit_trade_action
     - one_constrained_solana_venue_adapter
     - semantic_action_binding
+    - no_arbitrary_CPI
+
+
+backend_engineering_intelligence:
+  status: PROVEN
+  artifact: technical/BACKEND-ENGINEERING-INTELLIGENCE-2026-10-01.md
+  selected_adapter: ORCA_WHIRLPOOLS_DEVNET
+  program_id: whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc
+  initial_pool_candidate: 63cMwvN8eoaD39os9bKP8brmA7Xtov9VxahnPufWCSdg
+  pair: devUSDC_devUSDT
+  fallback_pool: 3KBZiL2g8C7tiJ32hTv5v3KM7aK9htpqTw4cTXz1HvPt
+  fallback_pair: SOL_devUSDC
+  runtime_viability_check_required: true
+
+bounded_specification:
+  status: PROVEN
+  artifact: spec/WORLDS-FAIR-V1-IMPLEMENTATION-SPEC.md
+  equivalent_to_spec_kit_for_current_bounded_scope: true
+
+demo_first_architecture:
+  status: PROVEN
+  artifact: technical/DEMO-FIRST-ARCHITECTURE-2026-10-01.md
+
+build_authorization:
+  status: PROVEN
+  date: 2026-10-01
+  basis:
+    - explicit_human_BUILD_WITH_VALIDATION_GAP_override
+    - concept_lock_PROVEN
+    - technical_reality_PROVEN
+    - backend_engineering_intelligence_PROVEN
+    - bounded_specification_PROVEN
+    - demo_first_architecture_PROVEN
+  truth_boundary:
+    - operator_validation_gap_remains
+    - devnet_only_initially
+    - no_mainnet_or_institutional_adoption_claim
     - no_arbitrary_CPI

@@ -81,9 +81,34 @@ registry:
 
   - id: BACKEND_ENGINEERING_INTELLIGENCE
     name: "Backend Engineering Intelligence"
-    status: ACTIVE
+    status: PROVEN
     activates_when: "After Concept Lock and Technical Reality Check"
     condition: "SCALE ON EVIDENCE, NOT POSSIBILITY."
+
+  - id: DEMO_FIRST_ARCHITECTURE
+    name: "Demo-First Architecture"
+    status: PROVEN
+    activates_when: "After Technical Reality Check and before consequential build"
+    condition: "Build plan proves the locked mechanism with real action, negative path, receipts and bounded scope."
+    evidence:
+      - "technical/DEMO-FIRST-ARCHITECTURE-2026-10-01.md"
+      - "spec/WORLDS-FAIR-V1-IMPLEMENTATION-SPEC.md"
+
+  - id: BUILD_AUTHORIZATION
+    name: "Build Authorization"
+    status: PROVEN
+    activates_when: "Before consequential implementation"
+    condition: "Concept Lock, Technical Reality, bounded specification and human authority are explicit."
+    evidence:
+      - "state/CURRENT.yaml"
+      - "state/HANDOVER.yaml"
+      - "product/CONCEPT-LOCK-2026-10-01.md"
+
+  - id: FIRST_LIVE_VERTICAL_SLICE
+    name: "First Live World’s Fair Vertical Slice"
+    status: ACTIVE
+    activates_when: "Build begins"
+    condition: "Real devnet user flow exercises the locked Orca/CRESCO capital path; replay alone is insufficient."
 
   - id: TRUTH_BOUNDARY
     name: "Truth Boundary Gate"
@@ -461,8 +486,10 @@ gate_rerun_2026_09_29:
   willingness_to_pay_cresco_specific: BLOCKED
   concept_lock: PROVEN_WITH_VALIDATION_GAP
   technical_reality: PROVEN
-  backend_engineering_intelligence: ACTIVE
-  build_authorized: false
+  backend_engineering_intelligence: PROVEN
+  demo_first_architecture: PROVEN
+  build_authorized: true
+  first_live_vertical_slice: ACTIVE
 
 
 reconciliation_2026_10_01:

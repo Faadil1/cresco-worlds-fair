@@ -91,3 +91,28 @@ Frozen or submitted projects are not silently retrofitted. Reopening requires an
 - Representative jobs with `steps: NONE/null` and no logs must not be interpreted as validator assertion failures.
 - Validators must never be bypassed or weakened to obtain a merge.
 - CRESCO applies v1.2.1 explicitly regardless of PBPD quota state.
+
+
+## Reconciliation note — 2026-10-01
+
+This file remains the historical project adoption of Product Depth & Live Reality v1.2.1.
+
+From **2026-10-01 forward**, the authoritative central policy is:
+
+`Faadil1/faadil-agent-system/PRODUCT-REALITY-POLICY.yaml@1.3.0`
+
+and the active rollout is:
+
+`Faadil1/faadil-agent-system/state/PRODUCT-DEPTH-LIVE-REALITY-ACTIVE-ROLLOUT.yaml`
+
+New v1.3 requirements apply prospectively from this material touch and are not backdated.
+
+Additional active principles include:
+- PRODUCT_VALUE_AND_REAL_ACTION_OUTRANK_PROOF_ARTIFACTS;
+- EVIDENCE_IS_EXHAUST_OF_REAL_PRODUCT_BEHAVIOR_NOT_THE_PRIMARY_ENGINE;
+- LIVE_PRODUCT_MODE_IS_PRIMARY__REPLAY_IS_SECONDARY_FALLBACK;
+- READ_ONLY_IS_FALLBACK_NOT_DEFAULT_WHEN_SAFE_VALUE_CREATING_REAL_ACTION_IS_FEASIBLE;
+- the post-vertical-slice Product Exploitation Loop;
+- explicit consideration of the highest safe justified action tier.
+
+If this historical local document conflicts with the current central policy, the central policy governs the conflict domain.

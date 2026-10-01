@@ -15,7 +15,7 @@ handover:
 
   lifecycle_status: ACTIVE
   product_status: CONCEPT_LOCKED_WITH_VALIDATION_GAP
-  build_authorized: false
+  build_authorized: true
   terminal_completeness_allowed: false
 
   reconciliation:
@@ -37,13 +37,13 @@ handover:
       but it is not a customer-validation gate and does not satisfy operator pull or WTP.
 
   current_gate:
-    id: BACKEND_ENGINEERING_INTELLIGENCE__VENUE_ADAPTER_SELECTION
+    id: BUILD__FIRST_LIVE_VERTICAL_SLICE
     status: ACTIVE
     blockers:
-      - selected_single_solana_execution_adapter
-      - implementation_ready_TradeActionV0
-      - constrained_CPI_and_account_semantics
-      - devnet_or_safe_test_environment_feasibility
+      - implementation_of_TradeActionV0
+      - constrained_Orca_devnet_CPI
+      - live_success_boundary_negative_and_recovery_proofs
+      - real_path_receipts_and_commit_runtime_binding
 
   preserved_validation_gaps:
     - direct_representative_operator_evidence
@@ -111,10 +111,10 @@ handover:
     interpretation: "Neutral; not negative market evidence."
     external_send_boundary: HUMAN_PROTECTED_ACTION
 
-  exact_next_gate: BACKEND_ENGINEERING_INTELLIGENCE__VENUE_ADAPTER_SELECTION
+  exact_next_gate: BUILD__FIRST_LIVE_VERTICAL_SLICE
   exact_next_action: >-
-    Select one Solana execution venue/adapter, define TradeActionV0 plus constrained CPI/account semantics,
-    then converge the Demo-First Architecture before build authorization.
+    Implement the Orca-devnet TradeActionV0 path in the shared CRESCO core and prove the first real
+    end-to-end vertical slice before triggering the Product Exploitation Loop.
 
   prohibited_shortcuts:
     - no_silent_concept_lock
@@ -150,3 +150,23 @@ handover:
     verdict: PASS_WITH_BOUNDED_DELTA
     artifact: technical/TECHNICAL-REALITY-CHECK-2026-10-01.md
     build_authorized: false
+
+
+  backend_engineering_intelligence:
+    status: PROVEN
+    selected_adapter: ORCA_WHIRLPOOLS_DEVNET
+    artifact: technical/BACKEND-ENGINEERING-INTELLIGENCE-2026-10-01.md
+
+  bounded_specification:
+    status: PROVEN
+    artifact: spec/WORLDS-FAIR-V1-IMPLEMENTATION-SPEC.md
+
+  demo_first_architecture:
+    status: PROVEN
+    artifact: technical/DEMO-FIRST-ARCHITECTURE-2026-10-01.md
+
+  build_authorization:
+    status: PROVEN
+    scope: "Bounded one-venue World’s Fair vertical only"
+    validation_gap_preserved: true
+    arbitrary_CPI_forbidden: true

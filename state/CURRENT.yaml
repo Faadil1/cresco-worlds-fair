@@ -242,3 +242,14 @@ do_not_do:
   - upgrade_historical_baseline_proof_to_world_fair_live_product
   - treat_reference_presence_as_adoption
   - treat_no_reply_as_negative_market_evidence
+
+
+workstream_separation:
+  date: 2026-10-01
+  primary_thread_scope: COLOSSEUM_CRYPTO_WORLDS_FAIR
+  adevar_pre_audit:
+    status: SEPARATE_CONVERSATION_WORKSTREAM
+    product_codebase: SAME_CRESCO_CORE
+    may_change_colosseum_concept_lock: false
+    may_change_colosseum_build_scope: false
+    note: "Adevar remains a separate submission/security workstream and must not distract this thread from Colosseum."

@@ -164,6 +164,12 @@ registry:
     status: ACTIVE
     activates_when: "Competitions / grants / sponsor programs"
     condition: "Official rules, eligibility, deadline, required artifacts and prohibited claims verified."
+    evidence:
+      - "research/OFFICIAL-RULES-2026-10-01.md"
+    current_state:
+      official_rules_primary_source: PROVEN
+      entrant_specific_eligibility: UNKNOWN
+      submission_deadline: "2026-10-12T23:59:00-07:00"
 
   - id: SPONSOR_NATIVE_ADVANTAGE
     name: "Sponsor / Ecosystem Native Advantage Gate"

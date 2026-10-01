@@ -1,0 +1,119 @@
+handover:
+  protocol_version: 1
+  project: cresco-worlds-fair
+  date: 2026-10-01
+  source_of_truth: GitHub
+  repository: Faadil1/cresco-worlds-fair
+  branch: main
+
+  resume_rule: >-
+    Read state/CURRENT.yaml first, then this HANDOVER, then product/PRD.md,
+    governance/LIFECYCLE-COVERAGE.yaml, governance/GATEWAY-REGISTRY.yaml,
+    governance/EVIDENCE-GRAPH.yaml and governance/REALITY-LEDGER.md.
+    For global policy, read Faadil1/faadil-agent-system main CURRENT/HANDOVER and the control-plane policies.
+    Chat memory is routing context only.
+
+  lifecycle_status: ACTIVE
+  product_status: PRE_CONCEPT_LOCK
+  build_authorized: false
+  terminal_completeness_allowed: false
+
+  reconciliation:
+    adopted_at: 2026-10-01
+    no_backdating: true
+    central_control_plane: SYSTEM_CONTROL_PLANE_V1_ACTIVE
+    product_reality: INTEGRATION_FIRST_PRODUCT_EXPLOITATION_V1_3_ACTIVE
+    evidence_graph: ACTIVE_BOUNDED
+    reference_intelligence: ACTIVE_ADVISORY
+    rule_lifecycle_decision: NO_CHANGE
+    cross_project_learning_decision: NO_CHANGE
+
+  last_proven_gate:
+    id: NEGATIVE_EVENT
+    status: PROVEN
+    evidence: research/NEGATIVE-EVENT-MAP.md
+    note: >-
+      The Sanction founder interview is also PROVEN as founder/competitor/expert discovery,
+      but it is not a customer-validation gate and does not satisfy operator pull or WTP.
+
+  current_gate:
+    id: PRE_BUILD_REALITY_GATE__DIRECT_OPERATOR_EVIDENCE
+    status: BLOCKED
+    blockers:
+      - direct_representative_operator_evidence
+      - CRESCO_specific_pull_or_WTP
+      - at_least_two_credible_target_users_or_operators_willing_to_test
+      - exception_shape_distribution
+      - stale_policy_expectation
+      - atomic_execution_operator_value
+
+  current_hypothesis:
+    statement: >-
+      CRESCO may be strongest as execution-bound delegated capital authority rather than another generic
+      authorization ledger, preserving standing authority while issuing bounded exceptional authority.
+    truth_state: INFERRED
+    confidence: "promising but not concept-locked"
+    primary_residual_source:
+      - research/SANCTION-DELTA.md
+      - research/INTERVIEW-SANCTION-2026-09-29.md
+      - research/PRIMER-VAULT-DELTA.md
+
+  product_reality:
+    world_fair_live_vertical_slice: MISSING
+    product_exploitation_loop: PENDING_NOT_TRIGGERED
+    reason: "The Stocklana baseline is historical proof, not the selected World’s Fair product."
+    future_trigger: "First live World’s Fair vertical slice after authorized Concept Lock."
+
+  evidence_graph:
+    file: governance/EVIDENCE-GRAPH.yaml
+    baseline_graph_status: PARTIAL
+    world_fair_live_claim_status: MISSING
+    next_update_trigger:
+      - Concept Lock
+      - first live integration
+      - sponsor-native claim
+      - transactional/recovery claim
+      - demo/submission claim
+
+  reference_intelligence:
+    adevar_pre_audit_credits_cwf_2026:
+      status: CLASSIFIED_REFERENCE_ONLY
+      central_inbox: Faadil1/faadil-agent-system/reference_intelligence/INBOX.yaml
+      adoption: PENDING
+      note: "Useful security/pre-audit opportunity; it does not alter product scope or create a new gate by itself."
+
+  official_rules:
+    verified_at: 2026-10-01
+    source: https://colosseum.com/legal/Crypto%20World%27s%20Fair%20Hackathon%20Rules.pdf
+    deadline: 2026-10-12T23:59:00-07:00
+    judging:
+      - Functionality
+      - Potential Impact
+      - Novelty
+      - UX
+      - Open-source
+      - Business Plan
+    relevant_constraints:
+      - one_team_per_entrant
+      - one_project_submission_per_team
+      - content_in_English
+      - Solana_track_requires_integration_with_Solana
+
+  outreach:
+    checkpoint: 2026-10-01
+    result: "No new operator replies beyond Eric as of checkpoint."
+    interpretation: "Neutral; not negative market evidence."
+    external_send_boundary: HUMAN_PROTECTED_ACTION
+
+  exact_next_gate: PRE_BUILD_REALITY_GATE__DIRECT_OPERATOR_EVIDENCE
+  exact_next_action: >-
+    Obtain representative operator evidence for the execution-bound delegated-capital hypothesis,
+    or ask the human owner for an explicit BUILD_WITH_VALIDATION_GAP override before Concept Lock/build.
+
+  prohibited_shortcuts:
+    - no_silent_concept_lock
+    - no_world_fair_live_claim_from_stocklana_baseline
+    - no_reference_to_canonical_auto_promotion
+    - no_read_only_fallback_only_for_demo_convenience
+    - no_evidence_artifact_as_primary_product_engine
+    - no_claim_upgrade_without_runtime_evidence_edges

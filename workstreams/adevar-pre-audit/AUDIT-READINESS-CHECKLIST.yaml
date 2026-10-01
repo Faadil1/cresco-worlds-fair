@@ -1,0 +1,173 @@
+version: "1.1"
+workstream: ADEVAR_PRE_AUDIT
+date: "2026-10-01"
+status: ACTIVE
+authority: NONE
+product_scope_effect: NONE
+
+adevar_listing:
+  url: "https://superteam.fun/earn/listing/pre-audit-credits-adevarlabs"
+  closes: "2026-10-12"
+  winner_announcement_by: "2026-10-27"
+  reward:
+    recipients: 5
+    in_kind_value_usd_each: 4000
+  published_criteria:
+    - codebase_complexity_and_architectural_clarity
+    - team_technical_readiness_and_repository_completeness
+    - potential_ecosystem_impact_and_launch_readiness
+
+canonical_state:
+  primary_repo: "Faadil1/cresco-worlds-fair"
+  product_status: CONCEPT_LOCKED_WITH_VALIDATION_GAP
+  phase: BUILD
+  build_authorized: true
+  exact_next_gate: BUILD__FIRST_LIVE_VERTICAL_SLICE
+  selected_vertical: DELEGATED_TRADING_CAPITAL_MANDATES
+  product: EXECUTION_BOUND_DELEGATED_CAPITAL_AUTHORITY_FOR_SOLANA
+  validation_gap_preserved: true
+
+locked_v1:
+  action: SWAP_EXACT_IN
+  venue: ORCA_WHIRLPOOLS_DEVNET
+  orca_program: "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc"
+  primary_pool_candidate: "63cMwvN8eoaD39os9bKP8brmA7Xtov9VxahnPufWCSdg"
+  pair: devUSDC_devUSDT
+  exception: EXACT_ONE_USE
+  soft_boundary: PER_ACTION_NOTIONAL
+  hard_boundary: UNSUPPORTED_PROGRAM_POOL_OR_UNPARSABLE_SEMANTICS
+  arbitrary_cpi: FORBIDDEN
+
+existing_baseline:
+  repo: "Faadil1/cresco"
+  commit: "0eb10dd8352bba69b9717d0d62d89794c9e384cc"
+  evidence_class: HISTORICAL_TECHNICAL_PROOF_DEVNET
+  cresco_program: "ABjE6V5q9VbD3CAHDXxvztY5kXQmDXHRcEP1kZ4KSSfk"
+
+eligibility:
+  solana_rust_project:
+    status: PROVEN
+  colosseum_submission_completed:
+    status: BLOCKED
+    reason: "Required by Adevar eligibility and not yet completed."
+  global_listing:
+    status: PROVEN
+  entrant_specific_account_checks:
+    status: PENDING_HUMAN_ACTION
+
+package:
+  pre_audit_scope:
+    status: PROVEN
+    path: "workstreams/adevar-pre-audit/PRE-AUDIT-SCOPE.md"
+  security_invariants:
+    status: PROVEN
+    path: "workstreams/adevar-pre-audit/SECURITY-INVARIANTS.md"
+  threat_model:
+    status: PROVEN
+    path: "workstreams/adevar-pre-audit/THREAT-MODEL.md"
+  submission_draft:
+    status: PROVEN
+    path: "workstreams/adevar-pre-audit/SUBMISSION-DRAFT.md"
+
+final_audit_binding:
+  target_repo: "Faadil1/cresco"
+  commit_sha:
+    status: BLOCKED
+    reason: "World's Fair TradeActionV0/Orca implementation not frozen."
+  cresco_program_id:
+    status: REVERIFY_AT_FREEZE
+  orca_program_id:
+    status: LOCKED_EXPECTED
+  pool:
+    status: REVERIFY_RUNTIME_VIABILITY
+  deployment_identity:
+    status: BLOCKED_UNTIL_LIVE_SLICE
+  ci_runs:
+    status: BLOCKED_UNTIL_FINAL_COMMIT
+
+security_review:
+  authority_escape: ACTIVE
+  stale_nonce_replay: ACTIVE
+  trade_action_canonicalization: ACTIVE
+  exact_exception_binding: ACTIVE
+  period_policy_under_exception: ACTIVE
+  lifecycle_state_consistency: ACTIVE
+  constrained_orca_cpi: ACTIVE
+  arbitrary_cpi_regression: ACTIVE
+  pool_mint_account_substitution: ACTIVE
+  slippage_min_output_deadline_binding: ACTIVE
+  pyth_verified_bytes_parser_equivalence: ACTIVE
+  pyth_freshness_confidence_feed: ACTIVE
+  arithmetic_rounding_overflow: ACTIVE
+  token_extension_semantics: ACTIVE
+  failure_atomicity: ACTIVE
+  retry_idempotency: ACTIVE
+  unknown_outcome_truth: ACTIVE
+
+candidate_hypotheses:
+  H_01_charter_max_bounded_notional:
+    status: REVIEW_HYPOTHESIS
+    confirmed_vulnerability: false
+  H_02_exception_vs_period_policy:
+    status: HIGH_PRIORITY_REVIEW
+    confirmed_vulnerability: false
+  H_03_trade_action_hash_completeness:
+    status: HIGH_PRIORITY_REVIEW
+    confirmed_vulnerability: false
+  H_04_lifecycle_states:
+    status: REVIEW_HYPOTHESIS
+    confirmed_vulnerability: false
+  H_05_token_extensions:
+    status: REVIEW_HYPOTHESIS
+    confirmed_vulnerability: false
+  H_06_pyth_parser_equivalence:
+    status: HIGH_PRIORITY_REVIEW
+    confirmed_vulnerability: false
+  H_07_orca_constrained_cpi:
+    status: HIGH_PRIORITY_REVIEW
+    confirmed_vulnerability: false
+  H_08_slippage_output_mutation:
+    status: HIGH_PRIORITY_REVIEW
+    confirmed_vulnerability: false
+  H_09_arbitrary_cpi_regression:
+    status: HIGH_PRIORITY_REVIEW
+    confirmed_vulnerability: false
+  H_10_atomic_consumption_retry:
+    status: HIGH_PRIORITY_REVIEW
+    confirmed_vulnerability: false
+
+required_final_scenarios:
+  standing_success_1: BLOCKED_UNTIL_IMPLEMENTED
+  standing_success_2: BLOCKED_UNTIL_IMPLEMENTED
+  soft_boundary_refusal: BLOCKED_UNTIL_IMPLEMENTED
+  exception_grant: BLOCKED_UNTIL_IMPLEMENTED
+  mutation_refusal: BLOCKED_UNTIL_IMPLEMENTED
+  exact_exception_success: BLOCKED_UNTIL_IMPLEMENTED
+  replay_refusal: BLOCKED_UNTIL_IMPLEMENTED
+  stale_nonce_refusal: BLOCKED_UNTIL_IMPLEMENTED
+  hard_program_refusal: BLOCKED_UNTIL_IMPLEMENTED
+  hard_pool_refusal: BLOCKED_UNTIL_IMPLEMENTED
+  pyth_failure: BLOCKED_UNTIL_IMPLEMENTED
+  orca_failure_rollback: BLOCKED_UNTIL_IMPLEMENTED
+  unknown_confirmation_not_success: BLOCKED_UNTIL_IMPLEMENTED
+
+submission:
+  superteam_form: PENDING_HUMAN_ACTION
+  colosseum_submission_url: BLOCKED
+  final_project_link: BLOCKED_UNTIL_FREEZE
+  follow_adevarlabs_x: PENDING_HUMAN_ACTION
+  required_x_post: PENDING_HUMAN_ACTION
+  final_submit: PENDING_HUMAN_ACTION
+
+truth_rules:
+  - "Review hypotheses are not confirmed vulnerabilities."
+  - "Devnet proof is not production evidence."
+  - "Do not claim mainnet, custody, brokerage, institutional adoption, WTP, audited security, or real customer capital."
+  - "No arbitrary CPI."
+  - "Adevar does not alter Concept Lock or Colosseum scope."
+  - "Known limitations and material unresolved findings remain disclosed."
+
+exact_next_gate: ADEVAR_SECURITY_PREAUDIT_PACKAGE_REVIEW
+exact_next_action: >-
+  Track the live TradeActionV0 + constrained Orca implementation as it lands in the shared CRESCO core,
+  then rerun H-01 through H-10 against the exact code and freeze the final audit commit.

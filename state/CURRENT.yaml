@@ -1,24 +1,64 @@
 project: cresco-worlds-fair
-date: 2026-09-29
-status: PRE_CONCEPT_LOCK
+date: 2026-10-01
+status: ACTIVE
+product_status: PRE_CONCEPT_LOCK
+source_of_truth: GITHUB
+
+system_reconciliation:
+  status: PROVEN
+  adopted_at: 2026-10-01
+  no_backdating: true
+  central_repository: Faadil1/faadil-agent-system
+  central_branch: main
+  central_current_version: 0.1.48-system-control-plane-v1-active
+  central_current_sha: b302dc689d493be565941813a3a755885a8c96bc
+  central_handover_sha: b17e8f10a869714ce5bd42d54efe2542e1ec4328
+  policies_active_from_this_material_touch:
+    - SYSTEM_CONTROL_PLANE_V1
+    - PRODUCT_REALITY_AND_PRODUCTION_EVIDENCE_V1_3
+    - INTEGRATION_FIRST_MAXIMUM_PRODUCT_EXPLOITATION_V1_3
+    - PROJECT_LIFECYCLE_COMPLETENESS
+    - CLAIM_RUNTIME_EVIDENCE_GRAPH
+    - REFERENCE_INTELLIGENCE_PIPELINE
+    - RULE_LIFECYCLE
+    - CROSS_PROJECT_LEARNING
+    - CONDITIONAL_GATEWAY_REGISTRY
+    - ADAPTIVE_SYSTEM_LEARNING
+  project_artifacts:
+    lifecycle_coverage: governance/LIFECYCLE-COVERAGE.yaml
+    evidence_graph: governance/EVIDENCE-GRAPH.yaml
+    gateway_registry: governance/GATEWAY-REGISTRY.yaml
+    reality_ledger: governance/REALITY-LEDGER.md
+    handover: state/HANDOVER.yaml
 
 phase:
-  current: USER_MARKET_EVIDENCE
+  current: PRE_BUILD_REALITY_GATE
   previous:
     - WINNING_INTELLIGENCE
     - SIX_LLM_REVIEW
     - DIVERGENT_IDEATION
     - SEMANTIC_TEARDOWN
+    - USER_MARKET_EVIDENCE
+    - SANCTION_FOUNDER_INTERVIEW
+    - SYSTEM_RECONCILIATION
   next:
-    - PRE_BUILD_REALITY_GATE
     - CONCEPT_LOCK
+    - PRD_V1_LOCKED
+    - TECHNICAL_REALITY_CHECK
+
+exact_next_gate: PRE_BUILD_REALITY_GATE__DIRECT_OPERATOR_EVIDENCE
+exact_next_action: >-
+  Obtain representative operator evidence for the surviving execution-bound delegated-capital hypothesis,
+  or require an explicit human override before any Concept Lock/build proceeds with the validation gap.
 
 build_authorized: false
+terminal_completeness_allowed: false
 
 baseline:
   repo: https://github.com/Faadil1/cresco
   live: https://cresco-lac.vercel.app/
   network: Solana Devnet
+  evidence_class: HISTORICAL_TECHNICAL_PROOF
   truth_boundary:
     - demo_SPL_token_execution
     - no_brokerage_claim
@@ -26,11 +66,24 @@ baseline:
     - no_mainnet_claim
     - no_real_AAPL_ownership_claim
     - no_real_minor_securities_execution_claim
+  world_fair_upgrade_forbidden: true
 
 worlds_fair:
   repo: https://github.com/Faadil1/cresco-worlds-fair
-  competition_start: 2026-09-14
+  competition_start: 2026-09-14T06:00:00-07:00
   submission_deadline: 2026-10-12T23:59:00-07:00
+  official_rules: https://colosseum.com/legal/Crypto%20World%27s%20Fair%20Hackathon%20Rules.pdf
+  official_rules_verified: 2026-10-01
+  official_judging_dimensions:
+    - FUNCTIONALITY
+    - POTENTIAL_IMPACT
+    - NOVELTY
+    - UX
+    - OPEN_SOURCE
+    - BUSINESS_PLAN
+  track:
+    selected: SOLANA
+    rule: "Solana track prizes require integration with the Solana blockchain."
 
 core:
   working_problem: "How can a principal give another actor meaningful autonomy without turning one exceptional approval into broader standing authority?"
@@ -39,8 +92,11 @@ core:
     - EXCEPTIONAL_AUTHORITY
     - AUTHORITY_EVIDENCE
     - POLICY_EVOLUTION
-  working_differentiation: POLICY_AWARE_EXCEPTIONAL_AUTHORITY
+  working_differentiation: EXECUTION_BOUND_POLICY_AWARE_EXCEPTIONAL_AUTHORITY
   unresolved: true
+  latest_residual: >-
+    A governance/authorization plane may coexist with a separate execution-bound capital authority layer;
+    whether that layer has sufficient operator value remains unproven.
 
 candidate_lanes:
   treasury_crypto_ops:
@@ -62,13 +118,16 @@ gates:
   real_problem: SUPPORTED
   real_user: CATEGORY_LEVEL_SUPPORTED
   five_year_durability: SUPPORTED
-  willingness_to_pay_cresco_specific: UNPROVEN
+  willingness_to_pay_cresco_specific: BLOCKED
   killer_demo: STRONG
   native_advantage: STRONG_FOR_TRADING_PARTIAL_FOR_TREASURY
-  negative_event: PROVEN_FOR_TRADING_AND_TREASURY
-  technical_feasibility_trading: PASS_BOUNDED_VERTICAL
+  negative_event: PROVEN
+  technical_feasibility_trading: PROVEN_BOUNDED_VERTICAL
   technical_feasibility_treasury: PARTIAL_REQUIRES_TRUSTED_SEMANTICS
-  competitive_residual: BLOCKED_PENDING_DIRECT_DISCOVERY
+  competitive_residual: ACTIVE_REFINED_NOT_LOCKED
+  direct_operator_evidence: BLOCKED
+  operator_trial_interest: BLOCKED
+  concept_lock: BLOCKED
 
 public_evidence:
   agent_exact_one_use_precedent: PROVEN_SANCTION
@@ -78,73 +137,13 @@ public_evidence:
   org_spend_approval_evidence_gap: PROVEN_OSFI_AUDIT
   trading_specific_temporary_override_pattern: PROVEN_REGULATORY_REQUIREMENT
 
-hostile_tests:
-  squads_reconstruction: ACTIVE
-  safe_reconstruction: ACTIVE
-  sdp_reconstruction: ACTIVE
-  sanction_reconstruction: INTERVIEWED_RESIDUAL_REFINED
-  rfc9396_psd2: ACTIVE
-  session_shape: ACTIVE
-  feature_absorption: ACTIVE
-  primer_vault_reconstruction: CRITICAL_RESIDUAL_FOUND
-
-next_actions:
-  - monitor_first_outreach_wave_responses
-  - continue_public_evidence_and_operator_targeting
-  - validate_exception_to_policy_residual_with_primer_and_trading_operators
-  - follow_up_with_eric_for_operator_referrals_and_future_synthesis
-  - interview_session_money_builders
-  - interview_squads_treasury_operators
-  - interview_delegated_trading_operators
-  - classify_exception_shape_from_real_events
-  - define_stale_policy_semantics
-  - identify_residual_after_sanction
-  - rerun_reality_gate
-
-do_not_do:
-  - build_new_features_before_concept_lock
-  - claim_bounded_delegation_is_novel
-  - claim_exact_payment_consent_is_novel
-  - claim_one_use_human_escalation_is_novel
-  - claim_universal_semantic_action_binding_is_already_implemented
-  - pivot_to_generic_agent_wallet
-  - default_to_family_by_inertia
-  - default_to_ai_due_to_trend
-
-
-conditional_gateway_registry:
-  file: governance/GATEWAY-REGISTRY.yaml
-  allowed_statuses:
-    - ACTIVE
-    - N/A
-    - BLOCKED
-    - PROVEN
-  re_evaluate_on:
-    - scope_change
-    - architecture_change
-    - runtime_change
-    - sponsor_dependency_change
-    - evidence_state_change
-    - submission_state_change
-  product_depth_rule: governance/PRODUCT-DEPTH-LIVE-REALITY-v1.2.1.md
-  reality_ledger: governance/REALITY-LEDGER.md
-  rule: "No gate may be silently skipped."
-
-current_promotion_state:
-  concept_lock: BLOCKED
-  build_authorized: false
-  live_core_loop: BLOCKED
-  world_fair_public_runtime: BLOCKED
-  judge_self_serve: BLOCKED
-  submission_lock: BLOCKED
-
-
 direct_discovery:
   sanction_interview:
     date: 2026-09-29
     participant: Eric Lovold
     evidence_type: FOUNDER_COMPETITOR_EXPERT
     customer_validation: false
+    status: PROVEN
     key_findings:
       stale_approval_concern: PROVEN_FOUNDER_SIGNAL
       explicit_revocation_invalidates: SUPPORTED
@@ -157,17 +156,89 @@ direct_discovery:
       layered_authority: SUPPORTED_FOUNDER_VIEW
       technical_collaboration_offer: OBSERVED
 
-
-decision_checkpoint:
+outreach_checkpoint:
   date: 2026-10-01
-  reason: "Wait for outreach responses before deciding next CRESCO direction."
-  until_then:
-    - no_concept_lock
-    - no_new_product_build
-    - monitor_outreach_only
-  thursday_decision_options:
-    - CONTINUE_DISCOVERY
-    - LOCK
-    - KILL
-    - HOLD
-    - BUILD_WITH_VALIDATION_GAP
+  result: NO_NEW_OPERATOR_REPLIES_BEYOND_ERIC
+  interpretation: NEUTRAL_NON_VALIDATING
+  protected_action_note: "Any new external outreach send remains a human-authorized action."
+
+hostile_tests:
+  squads_reconstruction: ACTIVE
+  safe_reconstruction: ACTIVE
+  sdp_reconstruction: ACTIVE
+  sanction_reconstruction: PROVEN_RESIDUAL_REFINED
+  rfc9396_psd2: ACTIVE
+  session_shape: ACTIVE
+  feature_absorption: ACTIVE
+  primer_vault_reconstruction: PROVEN_RESIDUAL_FOUND
+
+product_reality:
+  central_policy: Faadil1/faadil-agent-system/PRODUCT-REALITY-POLICY.yaml@1.3.0
+  local_v1_2_1_doc: governance/PRODUCT-DEPTH-LIVE-REALITY-v1.2.1.md
+  adoption_status: ACTIVE_FROM_2026_10_01
+  world_fair_live_vertical_slice: MISSING
+  product_exploitation_loop: PENDING_NOT_TRIGGERED
+  reason: "No selected World’s Fair wedge has a live vertical slice yet."
+  highest_safe_action_tier: PENDING_CONCEPT_LOCK
+  live_core_loop: MISSING
+  load_bearing_integration: MISSING
+  real_consequence: MISSING
+  external_user_operator_evidence: MISSING
+  judge_operator_self_serve: MISSING
+  post_vertical_slice_depth_gap_review: N/A_NOT_YET_TRIGGERED
+
+evidence_graph:
+  file: governance/EVIDENCE-GRAPH.yaml
+  status: ACTIVE_BOUNDED
+  baseline_claim_graph: PARTIAL
+  world_fair_live_claims: MISSING
+  rule: "No missing causal edge may be upgraded into LIVE/PROVEN."
+
+reference_intelligence:
+  policy: Faadil1/faadil-agent-system/REFERENCE-INTELLIGENCE-POLICY.yaml
+  adevar_pre_audit:
+    reference_id: adevar_pre_audit_credits_cwf_2026
+    pipeline_status: CLASSIFIED
+    adoption_status: REFERENCE_ONLY
+    auto_adoption: false
+    project_decision: PENDING
+
+rule_lifecycle:
+  decision: NO_CHANGE
+  reason: "No new universal rule is created by this reconciliation or by the Eric interview."
+
+cross_project_learning:
+  decision: NO_CHANGE
+  reason: "CRESCO has not reached post-mortem and no multi-project generalization is justified."
+
+conditional_gateway_registry:
+  file: governance/GATEWAY-REGISTRY.yaml
+  allowed_statuses:
+    - PROVEN
+    - ACTIVE
+    - BLOCKED
+    - PENDING
+    - N/A
+    - UNKNOWN
+  re_evaluate_on:
+    - scope_change
+    - architecture_change
+    - runtime_change
+    - sponsor_dependency_change
+    - evidence_state_change
+    - submission_state_change
+    - central_policy_change
+  rule: "No gate may be silently skipped."
+
+do_not_do:
+  - build_new_features_before_concept_lock_without_explicit_human_override
+  - claim_bounded_delegation_is_novel
+  - claim_exact_payment_consent_is_novel
+  - claim_one_use_human_escalation_is_novel
+  - claim_universal_semantic_action_binding_is_already_implemented
+  - pivot_to_generic_agent_wallet
+  - default_to_family_by_inertia
+  - default_to_ai_due_to_trend
+  - upgrade_historical_baseline_proof_to_world_fair_live_product
+  - treat_reference_presence_as_adoption
+  - treat_no_reply_as_negative_market_evidence

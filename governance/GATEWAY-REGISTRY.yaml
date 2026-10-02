@@ -106,7 +106,7 @@ registry:
 
   - id: FIRST_LIVE_VERTICAL_SLICE
     name: "First Live World’s Fair Vertical Slice"
-    status: ACTIVE
+    status: BLOCKED
     activates_when: "Build begins"
     condition: "Real devnet user flow exercises the locked Orca/CRESCO capital path; replay alone is insufficient."
 
@@ -513,3 +513,19 @@ reconciliation_2026_10_01:
   reference_intelligence_adevar: PENDING
   rule_lifecycle_decision: NO_CHANGE
   cross_project_learning: N/A
+
+
+runtime_blocker_2026_10_02:
+  gate: FIRST_LIVE_VERTICAL_SLICE
+  status: BLOCKED
+  code: WORLD_FAIR_DEVNET_DEPLOY_BLOCKED_EXTERNAL_FUNDING
+  evidence:
+    workflow_run: 37021918279
+    required_lamports: 2941880160
+    observed_wallet_lamports: 2177150056
+    shortfall_lamports: 764730104
+  safe_attempts:
+    public_devnet_airdrop: RATE_LIMITED
+    devnet_pow_faucet: EMPTY
+    exact_max_len_deploy: INSUFFICIENT_TO_CLEAR_BLOCKER
+  protected_human_action_required_for_next_option: true

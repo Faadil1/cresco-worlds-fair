@@ -19,13 +19,13 @@ Product state: **FIRST_LIVE_VERTICAL_SLICE**
 ## Canonical live-proof run
 
 - Workflow: `worlds-fair-orca-devnet-proof`
-- Run: `37027681883`
-- Job: `110906920596`
+- Run: `37037374212`
+- Job: `110938798095`
 - Result: **SUCCESS**
 - Artifact: `worlds-fair-orca-v1-runtime-receipt`
-- Artifact ID: `11236741164`
-- Artifact digest: `sha256:e8297306e3ae68f5f8649d544e3dc257429c90802a2bfebac43cfc979a7d5d34`
-- PR head verified by the run: `f42a7c6ebefe8df474bdc33895f6ed62fe4498ff`
+- Artifact ID: `11240747626`
+- Artifact digest: `sha256:9981020726439b4271dcb6c584d160ccdfc4c161458d8e191a025a9a17b65350`
+- PR head verified by the run: `e419d514d0367a5f92761ac034b3046e62980e57`
 - Receipt `GITHUB_SHA` / PR merge ref: `b7365c93e8940237d46c7a6331303dddd06cc2e5`
 
 The workflow's receipt validator returned:
@@ -97,3 +97,13 @@ It does **not** prove:
 - customer adoption.
 
 Vertical Slice is an entry point, not Definition of Done.
+
+## Bit-level runtime binding
+
+The strengthened run rebuilt the CRESCO program for the reused Program ID and dumped the actual on-chain program bytes.
+
+- local rebuild SHA-256: `084a3f7aad8a5772d773816579f5d2b98542c4b966dbb0dd7c60cb397db21f61`
+- on-chain dump SHA-256: `084a3f7aad8a5772d773816579f5d2b98542c4b966dbb0dd7c60cb397db21f61`
+- verdict: `WORLD_FAIR_RUNTIME_COMMIT_BINDING=PASS`
+
+The same run then repeated the complete live CRESCO→Orca slice and receipt validation successfully.

@@ -1,10 +1,10 @@
 version: "1.0"
 project: "cresco-worlds-fair"
-date: "2026-10-01"
+date: "2026-10-02"
 project_type: "HACKATHON_PRODUCT"
 lifecycle_status: "ACTIVE"
-product_state: "CONCEPT_LOCKED_WITH_VALIDATION_GAP"
-current_owner: "PBPD / authorized implementation planning owner after Technical Reality Check"
+product_state: "FIRST_LIVE_VERTICAL_SLICE_PROVEN_WITH_VALIDATION_GAP"
+current_owner: "PBPD / Product Exploitation owner"
 terminal_completeness_allowed: false
 
 source_of_truth:
@@ -14,10 +14,10 @@ source_of_truth:
   project_repository: "Faadil1/cresco-worlds-fair"
   project_branch: "main"
 
-exact_next_gate: "BACKEND_ENGINEERING_INTELLIGENCE__VENUE_ADAPTER_SELECTION"
+exact_next_gate: "PRODUCT_EXPLOITATION_LOOP__REAL_USER_SURFACE_AND_SHARED_CORE"
 exact_next_action: >-
-  Select one Solana execution venue/adapter, define TradeActionV0 and constrained CPI/account semantics,
-  then converge the implementation-ready Demo-First Architecture before build authorization.
+  Build a judge/operator-usable World’s Fair surface backed by the same live CRESCO→Orca core,
+  then prove self-serve, fresh-environment and dependency-failure behavior before demo lock.
 
 capabilities:
   - capability: faadil_system_router
@@ -93,8 +93,11 @@ capabilities:
 
   - capability: engineering_quality_assurance
     owner: PBPD_or_authorized_implementation_owner
-    status: NOT_APPLICABLE_WITH_REASON
-    not_applicable_reason: "World’s Fair delta repository has no authorized code-bearing product build yet; historical Stocklana baseline is not silently retrofitted."
+    status: SATISFIED
+    evidence_pointer:
+      - "evidence/engineering/WORLDS-FAIR-ORCA-V1-ENGINEERING-QUALITY-2026-10-02.md"
+      - "evidence/runtime/FIRST-LIVE-VERTICAL-SLICE-2026-10-02.md"
+    reconstruction_note: "Bounded v1 quality is proven for the live-slice head; this capability re-triggers on every material code change."
 
   - capability: trace_design_experience_assurance
     owner: TRACE
@@ -126,8 +129,11 @@ capabilities:
 
   - capability: post_build_reconciliation
     owner: PBPD
-    status: NOT_APPLICABLE_WITH_REASON
-    not_applicable_reason: "No World’s Fair product build yet."
+    status: SATISFIED
+    evidence_pointer:
+      - "product/POST-VERTICAL-SLICE-DEPTH-GAP-REVIEW-2026-10-02.md"
+      - "state/CURRENT.yaml"
+    reconstruction_note: "First post-build reconciliation completed; Product Exploitation Loop is active."
 
   - capability: project_finisher
     owner: project_finisher
@@ -136,8 +142,11 @@ capabilities:
 
   - capability: protected_human_action
     owner: human
-    status: NOT_APPLICABLE_WITH_REASON
-    not_applicable_reason: "No current protected submission/deploy/pay/sign action is being requested."
+    status: SATISFIED
+    evidence_pointer:
+      - "state/CURRENT.yaml"
+      - "state/HANDOVER.yaml"
+    reconstruction_note: "Authorized CI-only Devnet program closure was explicitly bounded to one Program ID and later proven executed."
 
   - capability: post_mortem_and_learning
     owner: existing_owner
@@ -145,15 +154,18 @@ capabilities:
     not_applicable_reason: "Project remains active."
 
 missing:
-  - "First live World’s Fair vertical slice."
-  - "Engineering Quality Assurance receipt once material code changes begin."
+  - "Judge/operator self-serve World’s Fair product surface."
+  - "Shared World’s Fair API/service layer over the same live core."
+  - "Fresh-environment reproducibility and stable demo reset strategy."
   - "Direct representative operator evidence remains a preserved validation gap."
   - "CRESCO-specific willingness-to-pay or equivalent pull signal remains a preserved validation gap."
   - "At least two credible target users/operators willing to test remains a preserved validation gap."
 
 triggered_but_unresolved:
-  - "BUILD__FIRST_LIVE_VERTICAL_SLICE"
-  - "ENGINEERING_QUALITY_ASSURANCE on material code touch"
+  - "PRODUCT_EXPLOITATION_LOOP__REAL_USER_SURFACE_AND_SHARED_CORE"
+  - "RUNTIME_COMMIT_BINDING binary-hash hardening"
+  - "DEMO_ENVIRONMENT / judge self-serve"
+  - "ENGINEERING_QUALITY_ASSURANCE re-triggers on material code touch"
   - "Competitive Novelty / Kill monitoring remains active"
   - "Direct operator evidence remains an explicit validation gap"
 
@@ -170,9 +182,10 @@ product_depth_and_live_reality:
   central_policy: "Faadil1/faadil-agent-system/PRODUCT-REALITY-POLICY.yaml@1.3.0"
   adoption: "ACTIVE_FROM_2026-10-01_MATERIAL_TOUCH"
   no_backdating: true
-  world_fair_live_vertical_slice_exists: false
-  product_exploitation_loop: "PENDING_NOT_TRIGGERED"
-  reason: "The Stocklana baseline is historical proof and does not count as the first live vertical slice of the not-yet-selected World’s Fair wedge."
+  world_fair_live_vertical_slice_exists: true
+  product_exploitation_loop: "ACTIVE"
+  reason: "The World’s Fair CRESCO→Orca Devnet vertical slice is now proven; the Product Exploitation Loop is required before terminal polish."
+  depth_gap_review: "product/POST-VERTICAL-SLICE-DEPTH-GAP-REVIEW-2026-10-02.md"
 
 evidence_graph:
   file: "governance/EVIDENCE-GRAPH.yaml"
@@ -214,8 +227,8 @@ competitive_judge_cycle:
     status: MISSING
     reason: "Implementation has not begun; architecture/spec is the next gate."
   LIVE_DEPTH:
-    status: MISSING
-    note: "No World’s Fair live vertical slice."
+    status: IN_PROGRESS
+    note: "First live vertical slice is proven; depth expansion now targets real-user surface, shared core, self-serve and reproducibility."
   EVIDENCE:
     status: SATISFIED
     note: "Discovery evidence exists; live-product evidence remains missing and is separately tracked."
@@ -237,41 +250,44 @@ product_reality_packet:
     - TECHNICAL_PROOF_BASELINE
     - BEHAVIOR_PROOF_BASELINE
     - FOUNDER_COMPETITOR_EXPERT_DISCOVERY
-  live_core_loop_status: missing
-  load_bearing_integration_status: missing
-  real_consequence_status: missing
-  representative_scenario_depth_status: missing
-  failure_recovery_status: missing
-  external_user_or_operator_evidence_status: missing
-  time_to_first_value_status: not_applicable_with_reason
-  time_to_first_value_reason: "No selected World’s Fair product surface yet."
+  live_core_loop_status: proven_devnet
+  load_bearing_integration_status: proven_orca_pyth
+  real_consequence_status: proven_devnet_state_and_rollback
+  representative_scenario_depth_status: proven_for_first_slice
+  failure_recovery_status: proven_orca_rollback
+  external_user_or_operator_evidence_status: missing_validation_gap_preserved
+  time_to_first_value_status: missing
+  time_to_first_value_reason: "No judge/operator self-serve World’s Fair product surface yet."
   operational_economics_status: not_applicable_with_reason
   operational_economics_reason: "No selected paid/core execution loop yet."
-  shared_product_core_status: not_applicable_with_reason
-  shared_product_core_reason: "No multiple World’s Fair product surfaces exist yet."
+  shared_product_core_status: partial
+  shared_product_core_reason: "On-chain core is shared; the existing web/API surface is still baseline-family oriented and must expose the World’s Fair live path."
   reality_ledger_status: satisfied
-  post_vertical_slice_depth_gap_review_status: not_applicable_with_reason
-  post_vertical_slice_depth_gap_review_reason: "No first live World’s Fair vertical slice exists."
-  observability_receipt_status: missing
+  post_vertical_slice_depth_gap_review_status: satisfied_active
+  post_vertical_slice_depth_gap_review_reason: "Triggered and recorded after first live slice."
+  observability_receipt_status: satisfied_for_live_slice
   judge_or_operator_self_serve_status: missing
   unresolved_production_gap:
-    - "No selected World’s Fair wedge"
-    - "No live World’s Fair core loop"
-    - "No direct operator validation"
-    - "No current runtime/commit/deployment binding"
+    - "No judge/operator self-serve World’s Fair product surface"
+    - "No shared World’s Fair API/service layer over the live core"
+    - "Fresh-environment reproducibility/reset strategy not yet proven"
+    - "Direct operator validation remains missing"
+    - "Bit-level runtime binary hash binding is being hardened"
   claim_overreach:
     - "Do not upgrade Stocklana baseline into World’s Fair LIVE."
     - "Do not describe execution-bound capital authority as validated user value."
 
 engineering_quality:
-  triggered: false
-  owner_now: none
-  provider: none
-  provider_authority: NONE
-  receipt_status: not_applicable
-  regression_status: not_applicable
-  protected_contracts_status: not_applicable
-  unresolved_material_findings: []
+  triggered: true
+  owner_now: PBPD_or_authorized_implementation_owner
+  provider: GitHub_Actions_plus_live_runtime
+  provider_authority: EVIDENCE_ONLY
+  receipt_status: proven_bounded_v1
+  receipt: "evidence/engineering/WORLDS-FAIR-ORCA-V1-ENGINEERING-QUALITY-2026-10-02.md"
+  regression_status: pass_at_live_proof_head
+  protected_contracts_status: pass_for_bounded_v1
+  unresolved_material_findings:
+    - "Re-run quality assurance after each material Product Exploitation code change."
   score_only_pass_attempted: false
 
 runtime_coordination:
@@ -283,9 +299,9 @@ runtime_coordination:
 duplicate_or_authority_conflicts: []
 
 next_handoff:
-  from: "PBPD / current product owner"
-  to: "PBPD / authorized implementation owner"
-  required_output: "First live Orca-devnet vertical slice plus real-path receipts; then activate Product Exploitation Loop."
+  from: "PBPD / live-slice implementation owner"
+  to: "PBPD / Product Exploitation owner"
+  required_output: "Judge/operator-usable World’s Fair surface on the shared live core, plus self-serve/reproducibility evidence."
 
 protected_human_decision_required: false
 terminal_transition_allowed: false

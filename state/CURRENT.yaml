@@ -432,12 +432,22 @@ implementation_progress:
     closure_verification: PASS
     execution_note: "Authorized CI cleanup completed successfully and was verified by the dedicated GitHub Actions run."
   blocked_or_active:
-    - runtime_commit_binary_hash_binding_hardening
     - real_user_judge_surface
     - shared_product_core_api_for_worlds_fair
     - judge_operator_self_serve
     - fresh_environment_reproducibility
     - direct_operator_validation_gap
+  runtime_commit_binding:
+    status: PROVEN
+    verified_at: 2026-10-02
+    verification_run: 37037374212
+    verification_job: 110938798095
+    source_head: e419d514d0367a5f92761ac034b3046e62980e57
+    runtime_program_id: 7pgPuPZSUUtFcvFtVGmS3piCE1bHY35kjb14vct9v45Z
+    local_program_sha256: 084a3f7aad8a5772d773816579f5d2b98542c4b966dbb0dd7c60cb397db21f61
+    onchain_program_sha256: 084a3f7aad8a5772d773816579f5d2b98542c4b966dbb0dd7c60cb397db21f61
+    verdict: BIT_IDENTICAL_PASS
+
   product_exploitation:
     status: ACTIVE
     artifact: product/POST-VERTICAL-SLICE-DEPTH-GAP-REVIEW-2026-10-02.md

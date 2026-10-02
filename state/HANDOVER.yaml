@@ -111,6 +111,14 @@ handover:
     interpretation: "Neutral; not negative market evidence."
     external_send_boundary: HUMAN_PROTECTED_ACTION
 
+  devnet_cleanup_authorization:
+    status: AUTHORIZED_NOT_EXECUTED
+    authorized_at: 2026-10-02
+    program_id: "6fo7kPmWAZg6XgLASv1e21rSiGnXQexk6dg2ja1uZyAi"
+    action: "Irreversible Solana Devnet program close with --bypass-warning solely to reclaim CI-only ephemeral rent."
+    scope_boundary: "No public/baseline CRESCO program and no other Program ID is authorized."
+    execution_note: "Authorization is proven; actual close remains unproven until an on-chain/CI receipt exists."
+
   exact_next_gate: BUILD__FIRST_LIVE_VERTICAL_SLICE
   exact_next_action: >-
     Implement the Orca-devnet TradeActionV0 path in the shared CRESCO core and prove the first real

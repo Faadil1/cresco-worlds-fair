@@ -38,7 +38,7 @@ Truth labels:
 | Technical Reality Check for locked World’s Fair vertical | OBSERVED | LOCAL | PASS_WITH_BOUNDED_DELTA; no venue integration built yet |
 | New World’s Fair on-chain runtime exists | OBSERVED | LIVE | Solana Devnet program `7pgPuPZSUUtFcvFtVGmS3piCE1bHY35kjb14vct9v45Z`; not yet a judge-facing public product surface |
 | Judge self-serve World’s Fair flow exists | UNKNOWN | NOT_IMPLEMENTED | Next P0 in Product Exploitation Loop; current proof is CI/harness-driven |
-| Runtime/commit binding for World’s Fair build exists | OBSERVED | PARTIAL | Deployment-source and verifier-source equivalence is proven; bit-level on-chain binary hash comparison is being hardened |
+| Runtime/commit binding for World’s Fair build exists | OBSERVED | LIVE/PROVEN | Local rebuild and on-chain program dump are bit-identical: SHA-256 `084a3f7aad8a5772d773816579f5d2b98542c4b966dbb0dd7c60cb397db21f61`, run `37037374212` |
 | System Control Plane v1 reconciled into this active project | OBSERVED | LOCAL | Adopted prospectively on 2026-10-01; not backdated |
 | Lifecycle coverage manifest exists | OBSERVED | LOCAL | `governance/LIFECYCLE-COVERAGE.yaml` |
 | Claim→Runtime→Evidence Graph exists | OBSERVED | LIVE/PARTIAL | World’s Fair live core loop is bound to runtime/run/receipt; historical baseline edge remains partial and binary hash hardening is active |

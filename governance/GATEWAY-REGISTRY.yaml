@@ -161,13 +161,17 @@ registry:
 
   - id: RUNTIME_COMMIT_BINDING
     name: "Runtime / Commit Binding Gate"
-    status: ACTIVE
+    status: PROVEN
     activates_when: "As soon as any runtime exists"
     condition: "Runtime proof must bind to the actual demonstrated commit."
     evidence:
       - "evidence/runtime/FIRST-LIVE-VERTICAL-SLICE-2026-10-02.md"
       - "governance/EVIDENCE-GRAPH.yaml"
-    current_state: "Deployment-source→runtime and source-equivalence edges are proven; bit-level on-chain binary SHA-256 binding is being hardened."
+    current_state: "PROVEN: local rebuild and on-chain program dump are bit-identical at SHA-256 084a3f7aad8a5772d773816579f5d2b98542c4b966dbb0dd7c60cb397db21f61."
+    verification_run: 37037374212
+    verification_job: 110938798095
+    source_head: "e419d514d0367a5f92761ac034b3046e62980e57"
+    runtime_program_id: "7pgPuPZSUUtFcvFtVGmS3piCE1bHY35kjb14vct9v45Z"
 
   - id: PUBLIC_RUNTIME
     name: "Public Runtime Gate"

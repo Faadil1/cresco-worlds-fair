@@ -112,12 +112,18 @@ handover:
     external_send_boundary: HUMAN_PROTECTED_ACTION
 
   devnet_cleanup_authorization:
-    status: AUTHORIZED_NOT_EXECUTED
+    status: PROVEN_EXECUTED
     authorized_at: 2026-10-02
     program_id: "6fo7kPmWAZg6XgLASv1e21rSiGnXQexk6dg2ja1uZyAi"
     action: "Irreversible Solana Devnet program close with --bypass-warning solely to reclaim CI-only ephemeral rent."
     scope_boundary: "No public/baseline CRESCO program and no other Program ID is authorized."
-    execution_note: "Authorization is proven; actual close remains unproven until an on-chain/CI receipt exists."
+    execution_run_id: 37025843893
+    execution_job_id: 110900139584
+    authority_check: PASS
+    reclaimed_lamports: 2853314160
+    wallet_balance_after_lamports: 5030464216
+    closure_verification: PASS
+    execution_note: "Authorized CI cleanup completed and is verified by the dedicated GitHub Actions run."
 
   exact_next_gate: BUILD__FIRST_LIVE_VERTICAL_SLICE
   exact_next_action: >-

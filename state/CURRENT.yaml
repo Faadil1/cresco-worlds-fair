@@ -1,7 +1,7 @@
 project: cresco-worlds-fair
-date: 2026-10-01
+date: 2026-10-02
 status: ACTIVE
-product_status: CONCEPT_LOCKED_WITH_VALIDATION_GAP
+product_status: FIRST_LIVE_VERTICAL_SLICE_PROVEN_WITH_VALIDATION_GAP
 source_of_truth: GITHUB
 
 system_reconciliation:
@@ -32,7 +32,7 @@ system_reconciliation:
     handover: state/HANDOVER.yaml
 
 phase:
-  current: BUILD
+  current: PRODUCT_EXPLOITATION_LOOP
   previous:
     - WINNING_INTELLIGENCE
     - SIX_LLM_REVIEW
@@ -41,15 +41,19 @@ phase:
     - USER_MARKET_EVIDENCE
     - SANCTION_FOUNDER_INTERVIEW
     - SYSTEM_RECONCILIATION
-  next:
+    - BUILD
     - FIRST_LIVE_VERTICAL_SLICE
-    - PRODUCT_EXPLOITATION_LOOP
+  next:
+    - REAL_USER_SURFACE_AND_SHARED_CORE
     - LIVE_DEPTH
+    - DEMO_ENVIRONMENT
+    - JUDGE_SELF_SERVE
 
-exact_next_gate: BUILD__FIRST_LIVE_VERTICAL_SLICE
+exact_next_gate: PRODUCT_EXPLOITATION_LOOP__REAL_USER_SURFACE_AND_SHARED_CORE
 exact_next_action: >-
-  Resolve the external Solana Devnet deployment-funding blocker, then rerun the real CRESCO→Orca
-  live-slice workflow and require a PASS receipt before activating Product Exploitation Loop.
+  Turn the proven CRESCO→Orca Devnet mechanism into a judge/operator-usable World’s Fair surface backed
+  by the same live authority/execution core, while hardening runtime/commit binding and preserving the
+  unresolved operator-validation gap.
 
 build_authorized: true
 terminal_completeness_allowed: false
@@ -177,22 +181,23 @@ product_reality:
   central_policy: Faadil1/faadil-agent-system/PRODUCT-REALITY-POLICY.yaml@1.3.0
   local_v1_2_1_doc: governance/PRODUCT-DEPTH-LIVE-REALITY-v1.2.1.md
   adoption_status: ACTIVE_FROM_2026_10_01
-  world_fair_live_vertical_slice: MISSING
-  product_exploitation_loop: PENDING_NOT_TRIGGERED
-  reason: "No selected World’s Fair wedge has a live vertical slice yet."
-  highest_safe_action_tier: PENDING_CONCEPT_LOCK
-  live_core_loop: MISSING
-  load_bearing_integration: MISSING
-  real_consequence: MISSING
-  external_user_operator_evidence: MISSING
-  judge_operator_self_serve: MISSING
-  post_vertical_slice_depth_gap_review: N/A_NOT_YET_TRIGGERED
+  world_fair_live_vertical_slice: PROVEN
+  product_exploitation_loop: ACTIVE
+  reason: "First real CRESCO→Orca World’s Fair vertical slice passed on Solana Devnet; vertical slice is the entry point, not Definition of Done."
+  highest_safe_action_tier: APPROVAL_GATED_WRITE
+  live_core_loop: PROVEN_DEVNET
+  load_bearing_integration: PROVEN_ORCA_AND_PYTH
+  real_consequence: PROVEN_DEVNET_STATE_CHANGE_AND_ROLLBACK
+  external_user_operator_evidence: MISSING_VALIDATION_GAP_PRESERVED
+  judge_operator_self_serve: MISSING_NEXT_P0
+  post_vertical_slice_depth_gap_review: PROVEN_ACTIVE
+  post_vertical_slice_depth_gap_review_artifact: product/POST-VERTICAL-SLICE-DEPTH-GAP-REVIEW-2026-10-02.md
 
 evidence_graph:
   file: governance/EVIDENCE-GRAPH.yaml
   status: ACTIVE_BOUNDED
   baseline_claim_graph: PARTIAL
-  world_fair_live_claims: MISSING
+  world_fair_live_claims: PROVEN_WITH_RUNTIME_BINDING_HARDENING_ACTIVE
   rule: "No missing causal edge may be upgraded into LIVE/PROVEN."
 
 reference_intelligence:
@@ -339,13 +344,19 @@ implementation_status:
   branch: feature/worlds-fair-orca-v1
   pull_request: 11
   pull_request_status: DRAFT
-  latest_known_source_commit: 6b5208feb63e884b0f1b78616dd7c305ef1c2959
+  latest_known_source_commit: 9f0aba49f99cd114437a30e48ca5f63b39eb6bff
   first_live_vertical_slice:
-    status: ACTIVE
-    live_proven: false
+    status: PROVEN
+    live_proven: true
     devnet_proof_workflow: worlds-fair-orca-devnet-proof
-    workflow_run: 36940666647
-    current_state: IN_PROGRESS
+    workflow_run: 37027681883
+    workflow_job: 110906920596
+    verified_head: f42a7c6ebefe8df474bdc33895f6ed62fe4498ff
+    runtime_program_id: 7pgPuPZSUUtFcvFtVGmS3piCE1bHY35kjb14vct9v45Z
+    artifact_id: 11236741164
+    artifact_digest: sha256:e8297306e3ae68f5f8649d544e3dc257429c90802a2bfebac43cfc979a7d5d34
+    receipt: evidence/runtime/FIRST-LIVE-VERTICAL-SLICE-2026-10-02.md
+    current_state: PASS
   engineering_quality:
     triggered: true
     initial_real_failure:
@@ -356,19 +367,20 @@ implementation_status:
       rust_program_check: PROVEN_PASS
       node_regression: PROVEN_PASS
       anchor_sbf_build: PROVEN_PASS
-    receipt: PENDING_LIVE_SLICE_STABILIZATION
+    receipt: PROVEN_BOUNDED_BY_PASSING_CI_AND_LIVE_RECEIPT
   source_truth_corrections:
     - "Orca sqrt_price_limit=0 is a valid no-explicit-limit sentinel; the first draft incorrectly rejected zero and was repaired from primary Orca source."
   rule: "Do not promote FIRST_LIVE_VERTICAL_SLICE until the real Orca Devnet execution workflow produces a bound receipt."
 
 
 implementation_progress:
-  status: BLOCKED_EXTERNAL_DEVNET_FUNDING
+  status: FIRST_LIVE_VERTICAL_SLICE_PROVEN__PRODUCT_EXPLOITATION_ACTIVE
   updated_at: 2026-10-02
   code_repository: Faadil1/cresco
   branch: feature/worlds-fair-orca-v1
   pull_request: 11
-  current_head: 783ba885addd7926bc0028e56340833d13c973c5
+  current_head: 9f0aba49f99cd114437a30e48ca5f63b39eb6bff
+  live_proof_verified_head: f42a7c6ebefe8df474bdc33895f6ed62fe4498ff
   proven:
     - rust_program_check_PASS
     - node_test_PASS
@@ -377,11 +389,25 @@ implementation_progress:
     - orca_exact_input_quote_verified
     - anchor_SBF_build_PASS
     - SBF_stack_safety_guard_ACTIVE
+    - live_CRESCO_to_Orca_standing_swaps_PASS
+    - soft_notional_boundary_REFUSE_PASS
+    - exact_one_use_exception_EXECUTE_PASS
+    - semantic_mutation_REFUSE_PASS
+    - replay_REFUSE_PASS
+    - hard_unsupported_program_REFUSE_PASS
+    - missing_pyth_evidence_REFUSE_PASS
+    - Orca_failure_rollback_PASS
+    - stale_authority_REFUSE_PASS
+    - runtime_receipt_VALID_PASS
   runtime_observed:
-    prior_ephemeral_program_deploy: PARTIAL_PROOF_ONLY
-    current_live_slice: NOT_PROVEN
-  current_blocker:
+    prior_ephemeral_program_deploy: PROVEN_RUNTIME_SOURCE
+    current_live_slice: PROVEN
+    runtime_program_id: 7pgPuPZSUUtFcvFtVGmS3piCE1bHY35kjb14vct9v45Z
+    live_proof_run: 37027681883
+    live_proof_artifact: 11236741164
+  resolved_blocker:
     code: WORLD_FAIR_DEVNET_DEPLOY_BLOCKED_EXTERNAL_FUNDING
+    status: RESOLVED
     run_id: 37021918279
     required_lamports: 2941880160
     observed_wallet_lamports: 2177150056
@@ -406,8 +432,14 @@ implementation_progress:
     closure_verification: PASS
     execution_note: "Authorized CI cleanup completed successfully and was verified by the dedicated GitHub Actions run."
   blocked_or_active:
-    - first_live_cresco_to_orca_vertical_slice
-    - runtime_receipt
-    - commit_runtime_binding
-    - engineering_quality_receipt
-  truth_boundary: "No FIRST_LIVE_VERTICAL_SLICE claim until the workflow returns PASS with a real receipt."
+    - runtime_commit_binary_hash_binding_hardening
+    - real_user_judge_surface
+    - shared_product_core_api_for_worlds_fair
+    - judge_operator_self_serve
+    - fresh_environment_reproducibility
+    - direct_operator_validation_gap
+  product_exploitation:
+    status: ACTIVE
+    artifact: product/POST-VERTICAL-SLICE-DEPTH-GAP-REVIEW-2026-10-02.md
+    next_gate: PRODUCT_EXPLOITATION_LOOP__REAL_USER_SURFACE_AND_SHARED_CORE
+  truth_boundary: "FIRST_LIVE_VERTICAL_SLICE is proven on Solana Devnet. This does not imply mainnet, production custody, institutional trading, audited security, operator demand, WTP, or adoption."

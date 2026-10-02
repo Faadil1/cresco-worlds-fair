@@ -114,7 +114,13 @@ claims:
       source_equivalence: >-
         Compare deployment_source_head..verifier_head changes only the proof harness and workflow;
         no programs/keys/** or on-chain program source changed.
-      binary_hash_hardening: ACTIVE
+      binary_hash_hardening: PROVEN
+      binary_binding_run: 37037374212
+      binary_binding_job: 110938798095
+      binary_binding_source_head: "e419d514d0367a5f92761ac034b3046e62980e57"
+      local_program_sha256: "084a3f7aad8a5772d773816579f5d2b98542c4b966dbb0dd7c60cb397db21f61"
+      onchain_program_sha256: "084a3f7aad8a5772d773816579f5d2b98542c4b966dbb0dd7c60cb397db21f61"
+      bit_identical: true
     deployment:
       status: COMPLETE
       environment: "Solana Devnet"
@@ -122,6 +128,7 @@ claims:
       deployment_source_run: 37021918279
       deployment_state: "live reusable devnet runtime"
     limitation: >-
+      The runtime binary is bit-identical to the rebuild at source head e419d514d0367a5f92761ac034b3046e62980e57.
       This proves the bounded Devnet mechanism, not mainnet readiness, audited production security,
       institutional trading, operator demand, WTP or adoption.
 

@@ -1,13 +1,13 @@
-version: "1.0"
+version: "1.1"
 project: "cresco-worlds-fair"
-date: "2026-10-01"
+date: "2026-10-02"
 policy: "Faadil1/faadil-agent-system/EVIDENCE-GRAPH-POLICY.yaml@1.0.0"
-status: "ACTIVE_BOUNDED_PRE_CONCEPT_LOCK"
+status: "ACTIVE_WORLD_FAIR_LIVE"
 authority: NONE
 
 purpose: >-
   Trace material live/transactional claims without upgrading historical Stocklana proof
-  into World’s Fair product evidence. Missing causal edges remain explicit.
+  beyond its evidence class. Missing causal edges remain explicit.
 
 claims:
   - claim_id: STOCKLANA_BASELINE_SOLANA_CAPITAL_PATH
@@ -55,34 +55,6 @@ claims:
     commit: "be3dd0ec6df28fdf947644bb4cf046d952b3c3fe"
     note: "Internal product decision complete; does not imply market validation."
 
-  - claim_id: WORLD_FAIR_LIVE_CORE_LOOP
-    statement: "The selected World’s Fair CRESCO wedge has a live core loop."
-    evidence_class: PRODUCTION_EVIDENCE
-    truth_state: UNKNOWN
-    graph_status: MISSING
-    reason: "No World’s Fair product build/runtime exists yet."
-
-  - claim_id: WORLD_FAIR_EXECUTION_BOUND_CAPITAL_AUTHORITY_VALUE
-    statement: "Execution-bound delegated capital authority has validated operator value."
-    evidence_class: OUTCOME_PROOF
-    truth_state: UNKNOWN
-    graph_status: MISSING
-    reason: "Sanction founder interview sharpens the architectural residual but is not operator/customer validation."
-
-  - claim_id: WORLD_FAIR_ATOMIC_EXCEPTION_EXECUTION_VALUE
-    statement: "Atomic exception consumption + capital execution is materially valuable to target operators."
-    evidence_class: OUTCOME_PROOF
-    truth_state: UNKNOWN
-    graph_status: UNKNOWN
-    reason: "Technically plausible residual; Eric did not validate its desirability."
-
-rules:
-  - "No baseline edge is silently upgraded to current World’s Fair LIVE."
-  - "Any future sponsor-native, transactional, reliability/recovery or judge-facing material claim must add the full causal path."
-  - "Missing commit→deployment or execution→receipt edges keep the claim PARTIAL/MISSING/UNKNOWN."
-  - "Replay may support reproducibility but cannot replace a claimed live execution."
-
-
   - claim_id: WORLD_FAIR_TECHNICAL_REALITY
     statement: "The locked delegated-capital vertical is technically feasible as a bounded extension of the existing CRESCO Solana program."
     evidence_class: TECHNICAL_PROOF
@@ -91,4 +63,105 @@ rules:
     artifact_pointer: "technical/TECHNICAL-REALITY-CHECK-2026-10-01.md"
     source_commit: "Faadil1/cresco@0eb10dd8352bba69b9717d0d62d89794c9e384cc"
     project_commit: "6797eb7865707f4af319193b0345ead87eb1446f5"
-    limitation: "Does not prove a live trading venue integration or operator demand."
+    limitation: "Technical feasibility alone does not prove operator demand."
+
+  - claim_id: WORLD_FAIR_LIVE_CORE_LOOP
+    statement: "The selected World’s Fair CRESCO wedge has a real Solana Devnet core loop with execution-bound delegated capital authority."
+    evidence_class: PRODUCTION_EVIDENCE
+    truth_state: OBSERVED
+    graph_status: COMPLETE
+    scenario:
+      scenario_id: CRESCO_ORCA_V1_LIVE
+      scenario_type: SUCCESS_BOUNDARY_NEGATIVE_RECOVERY
+      preconditions: "Protected Devnet principal, CRESCO World’s Fair program, Orca devUSDC/devUSDT pool, Pyth Lazer evidence."
+      expected_consequence: >-
+        Standing swaps execute; soft boundary refuses; exact one-use exception executes without widening
+        standing authority; mutation/replay/hard/evidence/stale paths refuse; Orca failure rolls back.
+    runtime_execution:
+      status: LIVE
+      network: "solana-devnet"
+      program_id: "7pgPuPZSUUtFcvFtVGmS3piCE1bHY35kjb14vct9v45Z"
+      workflow_run: 37027681883
+      workflow_job: 110906920596
+    dependencies:
+      - dependency_id: SOLANA_DEVNET
+        role: "execution and state"
+        live_or_stub: LIVE
+        load_bearing: true
+      - dependency_id: ORCA_WHIRLPOOLS
+        role: "swap execution venue"
+        program_id: "whirLbMiicVdio4qvUfM5KAg6Ct8VwpYzGff3uctyCc"
+        pool: "63cMwvN8eoaD39os9bKP8brmA7Xtov9VxahnPufWCSdg"
+        live_or_stub: LIVE_DEVNET
+        load_bearing: true
+      - dependency_id: PYTH_LAZER
+        role: "market/notional evidence; authority effect NONE"
+        feed_id: 7
+        live_or_stub: LIVE
+        load_bearing: true
+    receipt_or_telemetry:
+      status: COMPLETE
+      artifact_pointer: "evidence/runtime/FIRST-LIVE-VERTICAL-SLICE-2026-10-02.md"
+      github_artifact_id: 11236741164
+      github_artifact_digest: "sha256:e8297306e3ae68f5f8649d544e3dc257429c90802a2bfebac43cfc979a7d5d34"
+      validator: "WORLD_FAIR_ORCA_RECEIPT_VALID=PASS"
+    commit:
+      status: COMPLETE
+      repository: "Faadil1/cresco"
+      deployment_source_head: "783ba885addd7926bc0028e56340833d13c973c5"
+      verifier_head: "f42a7c6ebefe8df474bdc33895f6ed62fe4498ff"
+      verifier_merge_sha_in_receipt: "b7365c93e8940237d46c7a6331303dddd06cc2e5"
+      source_equivalence: >-
+        Compare deployment_source_head..verifier_head changes only the proof harness and workflow;
+        no programs/keys/** or on-chain program source changed.
+      binary_hash_hardening: ACTIVE
+    deployment:
+      status: COMPLETE
+      environment: "Solana Devnet"
+      deployment_identity: "7pgPuPZSUUtFcvFtVGmS3piCE1bHY35kjb14vct9v45Z"
+      deployment_source_run: 37021918279
+      deployment_state: "live reusable devnet runtime"
+    limitation: >-
+      This proves the bounded Devnet mechanism, not mainnet readiness, audited production security,
+      institutional trading, operator demand, WTP or adoption.
+
+  - claim_id: WORLD_FAIR_ATOMIC_EXCEPTION_ROLLBACK
+    statement: "A failed Orca execution does not consume the one-use exceptional authority or mutate CRESCO period counters."
+    evidence_class: PRODUCTION_EVIDENCE
+    truth_state: OBSERVED
+    graph_status: COMPLETE
+    scenario:
+      scenario_id: ORCA_FAILURE_ROLLBACK
+      scenario_type: RECOVERY
+      trigger: "Impossible min-output threshold."
+      observed_refusal: "AmountOutBelowMinimum"
+      allowance_consumed: false
+      counters_changed: false
+    runtime_execution:
+      status: LIVE
+      workflow_run: 37027681883
+      program_id: "7pgPuPZSUUtFcvFtVGmS3piCE1bHY35kjb14vct9v45Z"
+    receipt_or_telemetry:
+      status: COMPLETE
+      artifact_pointer: "evidence/runtime/FIRST-LIVE-VERTICAL-SLICE-2026-10-02.md"
+
+  - claim_id: WORLD_FAIR_EXECUTION_BOUND_CAPITAL_AUTHORITY_VALUE
+    statement: "Execution-bound delegated capital authority has validated operator value."
+    evidence_class: OUTCOME_PROOF
+    truth_state: UNKNOWN
+    graph_status: MISSING
+    reason: "The mechanism is live, but direct representative operator/customer validation remains missing."
+
+  - claim_id: WORLD_FAIR_ATOMIC_EXCEPTION_EXECUTION_VALUE
+    statement: "Atomic exception consumption + capital execution is materially valuable to target operators."
+    evidence_class: OUTCOME_PROOF
+    truth_state: UNKNOWN
+    graph_status: UNKNOWN
+    reason: "Atomic behavior is technically proven; operator desirability is still unvalidated."
+
+rules:
+  - "No baseline edge is silently upgraded to current World’s Fair LIVE."
+  - "Any sponsor-native, transactional, reliability/recovery or judge-facing material claim must add the full causal path."
+  - "Missing commit→deployment or execution→receipt edges keep the claim PARTIAL/MISSING/UNKNOWN."
+  - "Replay may support reproducibility but cannot replace a claimed live execution."
+  - "Technical mechanism proof never upgrades operator value, WTP or adoption claims."

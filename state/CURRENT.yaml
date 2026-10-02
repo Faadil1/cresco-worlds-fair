@@ -48,9 +48,8 @@ phase:
 
 exact_next_gate: BUILD__FIRST_LIVE_VERTICAL_SLICE
 exact_next_action: >-
-  Implement the locked Orca-devnet TradeActionV0 vertical in the shared CRESCO product core:
-  standing-authority swap, soft-notional refusal, exact one-use exception, constrained Orca CPI,
-  mutation/stale/replay/hard-boundary failures, and real-path receipts.
+  Resolve the external Solana Devnet deployment-funding blocker, then rerun the real CRESCO→Orca
+  live-slice workflow and require a PASS receipt before activating Product Exploitation Loop.
 
 build_authorized: true
 terminal_completeness_allowed: false
@@ -364,28 +363,39 @@ implementation_status:
 
 
 implementation_progress:
-  status: ACTIVE
+  status: BLOCKED_EXTERNAL_DEVNET_FUNDING
   updated_at: 2026-10-02
   code_repository: Faadil1/cresco
   branch: feature/worlds-fair-orca-v1
   pull_request: 11
-  current_head: a8bc358de4311acf5e5a587b8bc316fa1805c451
+  current_head: 783ba885addd7926bc0028e56340833d13c973c5
   proven:
     - rust_program_check_PASS
     - node_test_PASS
     - orca_devnet_discovery_PASS
     - orca_devnet_pool_pair_verified
     - orca_exact_input_quote_verified
-  partial:
-    - ephemeral_worlds_fair_program_devnet_deployment_observed_in_prior_live-proof_runs
+    - anchor_SBF_build_PASS
+    - SBF_stack_safety_guard_ACTIVE
+  runtime_observed:
+    prior_ephemeral_program_deploy: PARTIAL_PROOF_ONLY
+    current_live_slice: NOT_PROVEN
+  current_blocker:
+    code: WORLD_FAIR_DEVNET_DEPLOY_BLOCKED_EXTERNAL_FUNDING
+    run_id: 37021918279
+    required_lamports: 2941880160
+    observed_wallet_lamports: 2177150056
+    shortfall_lamports: 764730104
+    faucet_airdrops: RATE_LIMITED
+    devnet_pow_faucet: EMPTY
+    exact_max_len_attempt: DID_NOT_REDUCE_REQUIRED_BALANCE_ENOUGH
+  protected_human_action:
+    status: PENDING
+    option: "Close prior CI-only ephemeral program 6fo7kPmWAZg6XgLASv1e21rSiGnXQexk6dg2ja1uZyAi with --bypass-warning to reclaim Devnet rent."
+    consequence: "Irreversible for that ephemeral Program ID; does not touch the public CRESCO baseline."
   blocked_or_active:
     - first_live_cresco_to_orca_vertical_slice
     - runtime_receipt
     - commit_runtime_binding
     - engineering_quality_receipt
-  last_negative_runtime_findings:
-    - "Initial live-proof script syntax error was fixed and added to syntax checks."
-    - "Pyth Lazer feed discovery changed to current pyth_lazer_id field."
-    - "Earlier funding assumption was too high for available devUSDC; proof was right-sized."
-    - "SBF stack overflow warning triggered a code reduction + CI hard-fail rule."
-  truth_boundary: "No FIRST_LIVE_VERTICAL_SLICE claim until the live proof workflow returns PASS with receipt."
+  truth_boundary: "No FIRST_LIVE_VERTICAL_SLICE claim until the workflow returns PASS with a real receipt."

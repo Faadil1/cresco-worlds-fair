@@ -1,7 +1,7 @@
 handover:
   protocol_version: 1
   project: cresco-worlds-fair
-  date: 2026-10-01
+  date: 2026-10-02
   source_of_truth: GitHub
   repository: Faadil1/cresco-worlds-fair
   branch: main
@@ -14,7 +14,7 @@ handover:
     Chat memory is routing context only.
 
   lifecycle_status: ACTIVE
-  product_status: CONCEPT_LOCKED_WITH_VALIDATION_GAP
+  product_status: FIRST_LIVE_VERTICAL_SLICE_PROVEN_WITH_VALIDATION_GAP
   build_authorized: true
   terminal_completeness_allowed: false
 
@@ -29,21 +29,22 @@ handover:
     cross_project_learning_decision: NO_CHANGE
 
   last_proven_gate:
-    id: NEGATIVE_EVENT
+    id: BUILD__FIRST_LIVE_VERTICAL_SLICE
     status: PROVEN
-    evidence: research/NEGATIVE-EVENT-MAP.md
+    evidence: evidence/runtime/FIRST-LIVE-VERTICAL-SLICE-2026-10-02.md
     note: >-
-      The Sanction founder interview is also PROVEN as founder/competitor/expert discovery,
-      but it is not a customer-validation gate and does not satisfy operator pull or WTP.
+      Real Solana Devnet CRESCO→Orca execution passed standing, soft-boundary, exact-exception,
+      mutation, replay, hard-boundary, evidence-failure, rollback and stale-authority scenarios.
 
   current_gate:
-    id: BUILD__FIRST_LIVE_VERTICAL_SLICE
+    id: PRODUCT_EXPLOITATION_LOOP__REAL_USER_SURFACE_AND_SHARED_CORE
     status: ACTIVE
     blockers:
-      - implementation_of_TradeActionV0
-      - constrained_Orca_devnet_CPI
-      - live_success_boundary_negative_and_recovery_proofs
-      - real_path_receipts_and_commit_runtime_binding
+      - judge_operator_usable_worlds_fair_surface
+      - shared_worlds_fair_api_service_over_same_live_core
+      - stable_demo_environment_without_repeated_program_deploy
+      - runtime_commit_binary_hash_binding_hardening
+      - fresh_environment_reproducibility
 
   preserved_validation_gaps:
     - direct_representative_operator_evidence
@@ -58,27 +59,29 @@ handover:
       CRESCO may be strongest as execution-bound delegated capital authority rather than another generic
       authorization ledger, preserving standing authority while issuing bounded exceptional authority.
     truth_state: INFERRED
-    confidence: "promising but not concept-locked"
+    confidence: "mechanism technically proven on Devnet; operator value remains unvalidated"
     primary_residual_source:
       - research/SANCTION-DELTA.md
       - research/INTERVIEW-SANCTION-2026-09-29.md
       - research/PRIMER-VAULT-DELTA.md
 
   product_reality:
-    world_fair_live_vertical_slice: MISSING
-    product_exploitation_loop: PENDING_NOT_TRIGGERED
-    reason: "The Stocklana baseline is historical proof, not the selected World’s Fair product."
-    future_trigger: "First live World’s Fair vertical slice after authorized Concept Lock."
+    world_fair_live_vertical_slice: PROVEN
+    product_exploitation_loop: ACTIVE
+    live_receipt: evidence/runtime/FIRST-LIVE-VERTICAL-SLICE-2026-10-02.md
+    depth_gap_review: product/POST-VERTICAL-SLICE-DEPTH-GAP-REVIEW-2026-10-02.md
+    highest_safe_action_tier: APPROVAL_GATED_WRITE
+    next_depth_target: REAL_USER_SURFACE_AND_SHARED_CORE
 
   evidence_graph:
     file: governance/EVIDENCE-GRAPH.yaml
     baseline_graph_status: PARTIAL
-    world_fair_live_claim_status: MISSING
+    world_fair_live_claim_status: PROVEN_WITH_RUNTIME_BINDING_HARDENING_ACTIVE
     next_update_trigger:
-      - Concept Lock
-      - first live integration
-      - sponsor-native claim
-      - transactional/recovery claim
+      - runtime_binary_hash_binding
+      - real_user_surface
+      - judge_self_serve
+      - fresh_environment_reproducibility
       - demo/submission claim
 
   reference_intelligence:
@@ -125,10 +128,25 @@ handover:
     closure_verification: PASS
     execution_note: "Authorized CI cleanup completed and is verified by the dedicated GitHub Actions run."
 
-  exact_next_gate: BUILD__FIRST_LIVE_VERTICAL_SLICE
+  first_live_vertical_slice:
+    status: PROVEN
+    receipt: evidence/runtime/FIRST-LIVE-VERTICAL-SLICE-2026-10-02.md
+    runtime_program_id: "7pgPuPZSUUtFcvFtVGmS3piCE1bHY35kjb14vct9v45Z"
+    workflow_run: 37027681883
+    workflow_job: 110906920596
+    verified_head: "f42a7c6ebefe8df474bdc33895f6ed62fe4498ff"
+    artifact_id: 11236741164
+    artifact_digest: "sha256:e8297306e3ae68f5f8649d544e3dc257429c90802a2bfebac43cfc979a7d5d34"
+    truth_boundary: "Devnet mechanism proof only; no mainnet, audited production security, operator demand, WTP or adoption claim."
+
+  product_exploitation_loop:
+    status: ACTIVE
+    depth_gap_review: product/POST-VERTICAL-SLICE-DEPTH-GAP-REVIEW-2026-10-02.md
+
+  exact_next_gate: PRODUCT_EXPLOITATION_LOOP__REAL_USER_SURFACE_AND_SHARED_CORE
   exact_next_action: >-
-    Implement the Orca-devnet TradeActionV0 path in the shared CRESCO core and prove the first real
-    end-to-end vertical slice before triggering the Product Exploitation Loop.
+    Build a judge/operator-usable World’s Fair surface backed by the same live CRESCO→Orca core,
+    harden runtime/commit binding, and prove fresh-environment/self-serve behavior before demo lock.
 
   prohibited_shortcuts:
     - no_silent_concept_lock

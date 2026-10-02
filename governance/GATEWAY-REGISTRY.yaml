@@ -528,4 +528,12 @@ runtime_blocker_2026_10_02:
     public_devnet_airdrop: RATE_LIMITED
     devnet_pow_faucet: EMPTY
     exact_max_len_deploy: INSUFFICIENT_TO_CLEAR_BLOCKER
-  protected_human_action_required_for_next_option: true
+  protected_human_action_required_for_next_option: false
+  human_authorization:
+    status: PROVEN
+    authorized_at: 2026-10-02
+    program_id: "6fo7kPmWAZg6XgLASv1e21rSiGnXQexk6dg2ja1uZyAi"
+    action: "close with --bypass-warning to reclaim Devnet rent"
+    scope_boundary: "this Program ID only; public/baseline CRESCO and all other Program IDs excluded"
+    execution_status: NOT_EXECUTED
+    promotion_rule: "Do not mark FIRST_LIVE_VERTICAL_SLICE or cleanup PASS until a real runtime/on-chain receipt proves execution."

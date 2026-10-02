@@ -390,9 +390,14 @@ implementation_progress:
     devnet_pow_faucet: EMPTY
     exact_max_len_attempt: DID_NOT_REDUCE_REQUIRED_BALANCE_ENOUGH
   protected_human_action:
-    status: PENDING
-    option: "Close prior CI-only ephemeral program 6fo7kPmWAZg6XgLASv1e21rSiGnXQexk6dg2ja1uZyAi with --bypass-warning to reclaim Devnet rent."
+    status: AUTHORIZED
+    authorized_at: 2026-10-02
+    authorized_program_id: "6fo7kPmWAZg6XgLASv1e21rSiGnXQexk6dg2ja1uZyAi"
+    authorized_action: "Close this CI-only ephemeral Solana Devnet program with --bypass-warning to reclaim Devnet rent and continue the CRESCO→Orca live slice."
+    scope_boundary: "Authorization applies only to this Program ID; no public/baseline CRESCO program or any other Program ID is authorized."
     consequence: "Irreversible for that ephemeral Program ID; does not touch the public CRESCO baseline."
+    execution_status: NOT_EXECUTED
+    execution_note: "Human authorization is proven. The connected GitHub write path refused an auto-executing irreversible workflow patch, so no close transaction has been represented as executed."
   blocked_or_active:
     - first_live_cresco_to_orca_vertical_slice
     - runtime_receipt

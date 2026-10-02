@@ -349,12 +349,12 @@ implementation_status:
     status: PROVEN
     live_proven: true
     devnet_proof_workflow: worlds-fair-orca-devnet-proof
-    workflow_run: 37027681883
-    workflow_job: 110906920596
-    verified_head: f42a7c6ebefe8df474bdc33895f6ed62fe4498ff
+    workflow_run: 37037374212
+    workflow_job: 110938798095
+    verified_head: e419d514d0367a5f92761ac034b3046e62980e57
     runtime_program_id: 7pgPuPZSUUtFcvFtVGmS3piCE1bHY35kjb14vct9v45Z
-    artifact_id: 11236741164
-    artifact_digest: sha256:e8297306e3ae68f5f8649d544e3dc257429c90802a2bfebac43cfc979a7d5d34
+    artifact_id: 11240747626
+    artifact_digest: sha256:9981020726439b4271dcb6c584d160ccdfc4c161458d8e191a025a9a17b65350
     receipt: evidence/runtime/FIRST-LIVE-VERTICAL-SLICE-2026-10-02.md
     current_state: PASS
   engineering_quality:
@@ -380,7 +380,7 @@ implementation_progress:
   branch: feature/worlds-fair-orca-v1
   pull_request: 11
   current_head: 9f0aba49f99cd114437a30e48ca5f63b39eb6bff
-  live_proof_verified_head: f42a7c6ebefe8df474bdc33895f6ed62fe4498ff
+  live_proof_verified_head: e419d514d0367a5f92761ac034b3046e62980e57
   proven:
     - rust_program_check_PASS
     - node_test_PASS
@@ -403,8 +403,8 @@ implementation_progress:
     prior_ephemeral_program_deploy: PROVEN_RUNTIME_SOURCE
     current_live_slice: PROVEN
     runtime_program_id: 7pgPuPZSUUtFcvFtVGmS3piCE1bHY35kjb14vct9v45Z
-    live_proof_run: 37027681883
-    live_proof_artifact: 11236741164
+    live_proof_run: 37037374212
+    live_proof_artifact: 11240747626
   resolved_blocker:
     code: WORLD_FAIR_DEVNET_DEPLOY_BLOCKED_EXTERNAL_FUNDING
     status: RESOLVED

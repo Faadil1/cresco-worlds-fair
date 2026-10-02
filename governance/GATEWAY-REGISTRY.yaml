@@ -1,6 +1,6 @@
 version: "1.1"
 project: "cresco-worlds-fair"
-date: "2026-10-01"
+date: "2026-10-02"
 status_values:
   - PROVEN
   - ACTIVE
@@ -106,9 +106,15 @@ registry:
 
   - id: FIRST_LIVE_VERTICAL_SLICE
     name: "First Live World’s Fair Vertical Slice"
-    status: BLOCKED
+    status: PROVEN
     activates_when: "Build begins"
     condition: "Real devnet user flow exercises the locked Orca/CRESCO capital path; replay alone is insufficient."
+    evidence:
+      - "evidence/runtime/FIRST-LIVE-VERTICAL-SLICE-2026-10-02.md"
+    runtime:
+      program_id: "7pgPuPZSUUtFcvFtVGmS3piCE1bHY35kjb14vct9v45Z"
+      workflow_run: 37027681883
+      artifact_id: 11236741164
 
   - id: TRUTH_BOUNDARY
     name: "Truth Boundary Gate"
@@ -159,13 +165,16 @@ registry:
     activates_when: "As soon as any runtime exists"
     condition: "Runtime proof must bind to the actual demonstrated commit."
     evidence:
-      - "docs/BASELINE-DELTA.md"
+      - "evidence/runtime/FIRST-LIVE-VERTICAL-SLICE-2026-10-02.md"
+      - "governance/EVIDENCE-GRAPH.yaml"
+    current_state: "Deployment-source→runtime and source-equivalence edges are proven; bit-level on-chain binary SHA-256 binding is being hardened."
 
   - id: PUBLIC_RUNTIME
     name: "Public Runtime Gate"
-    status: N/A
+    status: ACTIVE
     activates_when: "World’s Fair runtime exists"
     condition: "Public runtime must be reachable and consistent with the claimed build."
+    current_state: "On-chain Devnet program is reachable; judge-facing public product surface is not yet built."
 
   - id: PRE_LAUNCH_SHIP
     name: "Universal Pre-Launch / Ship Assurance"
@@ -181,13 +190,13 @@ registry:
 
   - id: DISTINCTIVENESS_ESCALATION
     name: "Distinctiveness Escalation — FUNCTIONAL ≠ FINISHED"
-    status: N/A
+    status: ACTIVE
     activates_when: "Mandatory before Demo Lock / Submission Lock"
     condition: "Agency, closed loop, second act, consequential memory, counter-case, signature moment, hard-to-copy advantage, simple demo-proven sentence; avoid feature bloat."
 
   - id: OUTSIDER_BREAK
     name: "Outsider Break Test"
-    status: N/A
+    status: ACTIVE
     activates_when: "After live build, before Demo Lock"
     condition: "External person can run/break critical path without builder coaching."
 
@@ -259,7 +268,7 @@ registry:
 
   - id: DEMO_ENVIRONMENT
     name: "Demo Environment Gate"
-    status: N/A
+    status: ACTIVE
     activates_when: "Once World’s Fair demo runtime exists"
     condition: "Known network/accounts/state; stable deterministic demo environment; explicit fallback."
 
@@ -353,7 +362,7 @@ registry:
     condition: "Required causal edges remain explicit; missing edges keep claims PARTIAL/MISSING/UNKNOWN."
     evidence:
       - "governance/EVIDENCE-GRAPH.yaml"
-    current_state: "Baseline graph PARTIAL; World’s Fair live claims MISSING."
+    current_state: "Baseline historical graph remains PARTIAL; World’s Fair live core loop is PROVEN with binary-hash binding hardening ACTIVE."
 
   - id: REFERENCE_INTELLIGENCE_PIPELINE
     name: "Reference Intelligence Pipeline"
@@ -382,17 +391,21 @@ registry:
 
   - id: ENGINEERING_QUALITY_ASSURANCE
     name: "Engineering Quality Assurance"
-    status: N/A
+    status: PROVEN
     activates_when: "Active code-bearing World’s Fair build or other canonical trigger"
     condition: "Triggered code projects require bounded quality assurance plus regression evidence and receipt."
-    not_applicable_reason: "No authorized code-bearing World’s Fair build exists yet; historical Stocklana baseline is not silently retrofitted."
+    evidence:
+      - "evidence/engineering/WORLDS-FAIR-ORCA-V1-ENGINEERING-QUALITY-2026-10-02.md"
+    re_trigger_rule: "Every material Product Exploitation code change re-activates this gate until the new head passes."
 
   - id: PRODUCT_EXPLOITATION_LOOP
     name: "Post-Vertical-Slice Product Exploitation Loop"
-    status: PENDING
+    status: ACTIVE
     activates_when: "First live World’s Fair vertical slice exists after authorized Concept Lock"
     condition: "Continue coherent depth while marginal product value/differentiation justifies cost, risk and deadline."
-    pending_reason: "No selected World’s Fair wedge has a live vertical slice yet."
+    evidence:
+      - "product/POST-VERTICAL-SLICE-DEPTH-GAP-REVIEW-2026-10-02.md"
+    current_target: "REAL_USER_SURFACE_AND_SHARED_CORE"
 
   - id: PROJECT_STATE_CONTINUITY
     name: "CURRENT / HANDOVER continuity"
@@ -404,25 +417,25 @@ registry:
       - "state/HANDOVER.yaml"
 
 product_depth_subchecks:
-  live_core_loop: BLOCKED
-  load_bearing_integration: BLOCKED
-  real_consequence: BLOCKED
-  representative_success_scenario: BLOCKED
-  representative_negative_scenario: BLOCKED
-  representative_boundary_scenario: BLOCKED
-  representative_recovery_scenario: BLOCKED
-  failure_recovery: BLOCKED
+  live_core_loop: PROVEN
+  load_bearing_integration: PROVEN
+  real_consequence: PROVEN
+  representative_success_scenario: PROVEN
+  representative_negative_scenario: PROVEN
+  representative_boundary_scenario: PROVEN
+  representative_recovery_scenario: PROVEN
+  failure_recovery: PROVEN
   real_user_surface: BLOCKED
   external_user_operator_evidence: BLOCKED
   time_to_first_value: BLOCKED
-  operational_economics_when_material: BLOCKED
-  shared_product_core: ACTIVE
+  operational_economics_when_material: ACTIVE
+  shared_product_core: PARTIAL
   reality_ledger: ACTIVE
-  observability_receipts: BLOCKED
+  observability_receipts: PROVEN
   judge_operator_self_serve: BLOCKED
-  setup_reproducibility: BLOCKED
-  clean_room_external_dependency_failure: BLOCKED
-  post_vertical_slice_depth_gap_review: PENDING
+  setup_reproducibility: ACTIVE
+  clean_room_external_dependency_failure: ACTIVE
+  post_vertical_slice_depth_gap_review: PROVEN
 
 promotion_rules:
   x402:
@@ -517,7 +530,7 @@ reconciliation_2026_10_01:
 
 runtime_blocker_2026_10_02:
   gate: FIRST_LIVE_VERTICAL_SLICE
-  status: BLOCKED
+  status: RESOLVED
   code: WORLD_FAIR_DEVNET_DEPLOY_BLOCKED_EXTERNAL_FUNDING
   evidence:
     workflow_run: 37021918279
@@ -535,5 +548,10 @@ runtime_blocker_2026_10_02:
     program_id: "6fo7kPmWAZg6XgLASv1e21rSiGnXQexk6dg2ja1uZyAi"
     action: "close with --bypass-warning to reclaim Devnet rent"
     scope_boundary: "this Program ID only; public/baseline CRESCO and all other Program IDs excluded"
-    execution_status: NOT_EXECUTED
-    promotion_rule: "Do not mark FIRST_LIVE_VERTICAL_SLICE or cleanup PASS until a real runtime/on-chain receipt proves execution."
+    execution_status: PROVEN
+    execution_run_id: 37025843893
+    authority_check: PASS
+    reclaimed_lamports: 2853314160
+    wallet_balance_after_lamports: 5030464216
+    closure_verification: PASS
+    promotion_rule: "Cleanup is proven. FIRST_LIVE_VERTICAL_SLICE was promoted only after the subsequent CRESCO→Orca runtime receipt passed."

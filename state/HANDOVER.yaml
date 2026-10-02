@@ -132,11 +132,11 @@ handover:
     status: PROVEN
     receipt: evidence/runtime/FIRST-LIVE-VERTICAL-SLICE-2026-10-02.md
     runtime_program_id: "7pgPuPZSUUtFcvFtVGmS3piCE1bHY35kjb14vct9v45Z"
-    workflow_run: 37027681883
-    workflow_job: 110906920596
-    verified_head: "f42a7c6ebefe8df474bdc33895f6ed62fe4498ff"
-    artifact_id: 11236741164
-    artifact_digest: "sha256:e8297306e3ae68f5f8649d544e3dc257429c90802a2bfebac43cfc979a7d5d34"
+    workflow_run: 37037374212
+    workflow_job: 110938798095
+    verified_head: "e419d514d0367a5f92761ac034b3046e62980e57"
+    artifact_id: 11240747626
+    artifact_digest: "sha256:9981020726439b4271dcb6c584d160ccdfc4c161458d8e191a025a9a17b65350"
     truth_boundary: "Devnet mechanism proof only; no mainnet, audited production security, operator demand, WTP or adoption claim."
 
   product_exploitation_loop:

@@ -168,7 +168,9 @@ handover:
     repair_live_run: 37085360077
     repair_live_artifact: 11260647857
     repair_evidence: evidence/runtime/HOSTED-CONFIRMATION-REPAIR-PREMERGE-2026-10-02.md
-    repair_merge_authorization: NOT_YET_GRANTED
+    repair_merge_authorization: GRANTED_EXACT_HEAD_ONLY
+    repair_authorized_head: "40abac5acfabe4b682b47a589e177fbe5340a273"
+    repair_authorized_scope: "Merge PR #12 and redeploy existing CRESCO Cloudflare Worker for World’s Fair Devnet repair only."
     scope: "CRESCO World’s Fair Worker/API + /worlds-fair frontend only; no mainnet, no new Solana program, no submission."
     prior_cleanup_authorization_reusable: false
 

@@ -476,7 +476,9 @@ implementation_progress:
     next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
 
   public_deployment_checkpoint:
-    status: AWAITING_EXPLICIT_HUMAN_AUTHORIZATION
+    status: AUTHORIZED_EXECUTION_PENDING
+    authorized_at: 2026-10-02
+    human_authorization: "oui allons y"
     source_repository: Faadil1/cresco
     source_head: cedfbb400f00f28fbe4268fde46ab68933d42e3c
     pull_request: 11
@@ -494,4 +496,5 @@ implementation_progress:
       - paid infrastructure changes
       - operator outreach
     authorization_inherited_from_devnet_cleanup: false
+    execution_status: NOT_YET_EXECUTED
   truth_boundary: "FIRST_LIVE_VERTICAL_SLICE is proven on Solana Devnet. This does not imply mainnet, production custody, institutional trading, audited security, operator demand, WTP, or adoption."

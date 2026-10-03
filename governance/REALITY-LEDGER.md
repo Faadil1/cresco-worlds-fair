@@ -340,3 +340,31 @@ A source-only follow-up repair now exists:
 - live validation: NOT AUTHORIZED.
 
 See `evidence/runtime/HOSTED-READ-RPC-RETRY-OWNERSHIP-LIVE-FAIL-PARTIAL-EFFECT-2026-10-03.md`.
+
+
+## 2026-10-03 clean replacement topology correction
+
+The first non-live follow-up repair after PR #19 used head `e56f0953b815b207be02d4928f26ca8ddcff4d03`, which was built on top of PR #19’s head.
+
+That topology is now **superseded** to avoid repeating the PR #17/#18 ancestry side effect.
+
+Canonical replacement:
+- repository: `Faadil1/cresco`;
+- branch: `fix/worlds-fair-retry-observability-v2-clean`;
+- exact head: `65a9fea6cbd0535ea867690a848bc1a50ccbe08d`;
+- base: deployed `main` at `1266756fb6a00318618daefe9db3d875387411b5`;
+- compare: 1 commit ahead / 0 behind;
+- PR: NOT OPENED;
+- root test run `37153090829`: PASS;
+- live validation: NOT AUTHORIZED / NOT RUN.
+
+The clean head reproduces the intended repair contents without PR #19 ancestry:
+- explicit CRESCO ownership of safe Solana read retries;
+- bounded transient/stale Pyth evidence retry;
+- no retry for auth/entitlement failures;
+- failure artifact persistence for diagnostic, partial receipt and runtime before/after;
+- smoke syntax check in the root test.
+
+PR #19 remains open and unmerged. No PR #19 mutation was issued.
+
+Fresh exact-head authorization is required before opening a clean replacement PR or triggering another World’s Fair Devnet 7/7 validation.

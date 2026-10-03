@@ -39,7 +39,7 @@ Truth labels:
 | New World’s Fair on-chain runtime exists | OBSERVED | LIVE | Solana Devnet program `7pgPuPZSUUtFcvFtVGmS3piCE1bHY35kjb14vct9v45Z`; not yet a judge-facing public product surface |
 | Shared World’s Fair product core exists | OBSERVED | LIVE | Reusable server-side provider executed 7/7 canonical consequences live in run `37083019145`; receipt: `evidence/runtime/WORLDS-FAIR-OPERATOR-LAB-LIVE-2026-10-02.md` |
 | Public World’s Fair v0.3 runtime GET exists | OBSERVED | LIVE | Cloudflare Worker deployment from merge `fa26ff0…` returned HTTP 200 with exact Program ID and program SHA; evidence: `HOSTED-PUBLIC-RUNTIME-FIRST-ATTEMPT-2026-10-02.md` |
-| Public World’s Fair v0.3 live POST is reliable | OBSERVED | PARTIAL / INTERMITTENT | PR #18 is merged/deployed and pre-merge exact-head 7/7 passed, but the authorized post-deploy repeatability campaign stopped on its first fresh-browser attempt after no POST response was observed within 240s. Read-only reconciliation stayed READY at nonce 12 with tracked counters/vaults unchanged. Outcome is UNKNOWN with no observable mutation on tracked invariants, not an absolute zero-effect claim. A non-live retry-ownership repair is proven at `127da0c…`. Evidence: `HOSTED-POSTDEPLOY-REPEATABILITY-CLIENT-TIMEOUT-2026-10-03.md` and `HOSTED-READ-RPC-RETRY-OWNERSHIP-PREMERGE-2026-10-03.md`. |
+| Public World’s Fair v0.3 live POST is reliable | OBSERVED | PARTIAL / INTERMITTENT | PR #18 is deployed and pre-merge exact-head 7/7 passed, but post-deploy reliability is still not repeatably proven. The browser timeout initially reconciled at nonce 12, then later shared-state evidence showed nonce 13 before PR #19 began, proving the immediate snapshot was premature. PR #19 non-live checks passed, but its single authorized live validation failed after READY and left a state-reconciled nonzero partial effect: post-failure runtime remained nonce 13 with input vault 1,300,000 after ensureReady had funded it to at least 1,500,000. Exact phase/signature remain unknown because the old smoke emitted no partial receipt. Evidence: `HOSTED-READ-RPC-RETRY-OWNERSHIP-LIVE-FAIL-PARTIAL-EFFECT-2026-10-03.md`. |
 | World’s Fair web/operator surface is publicly hosted | OBSERVED | LIVE | Full CRESCO frontend is live at `https://cresco.faadil-casecraft.workers.dev`; hosted Chromium proof reached `/worlds-fair` and observed runtime state `Ready`; evidence: `CRESCO-CLOUDFLARE-CORS-AUTH-HOSTED-PASS-2026-10-03.md` |
 | Judge self-serve World’s Fair technical flow exists | OBSERVED | PARTIAL / INTERMITTENT | A fresh Chromium run proved the complete path once, but a later manual browser run ended UNKNOWN. Treat self-serve as technically possible but not yet repeatably reliable. |
 | Runtime/commit binding for World’s Fair build exists | OBSERVED | LIVE/PROVEN | Local rebuild and on-chain program dump are bit-identical: SHA-256 `084a3f7aad8a5772d773816579f5d2b98542c4b966dbb0dd7c60cb397db21f61`, run `37037374212` |
@@ -259,7 +259,7 @@ Read-only reconciliation after the timeout observed:
 - input vault: `350000`;
 - output vault: `11348815`.
 
-Those tracked invariants were unchanged across the available pre/post read-only checkpoints. This supports **no observable mutation on the tracked invariants**, but not an absolute zero-effect claim because the timed-out POST emitted no receipt or signature set.
+Those tracked invariants were unchanged at the **immediate** post-timeout checkpoint. This observation was later superseded: PR #19 began with Mandate nonce `13` before its own canonical sequence started, showing that the timed-out POST had continued after browser loss and advanced shared Devnet state. The immediate nonce-12 snapshot must therefore not be treated as a terminal no-effect verdict.
 
 The timing defect has two layers:
 1. the browser client abort boundary is `120000 ms`;
@@ -286,3 +286,57 @@ Hosted self-serve reliability therefore remains **PARTIAL / INTERMITTENT**. Fres
 See:
 - `evidence/runtime/HOSTED-POSTDEPLOY-REPEATABILITY-CLIENT-TIMEOUT-2026-10-03.md`
 - `evidence/runtime/HOSTED-READ-RPC-RETRY-OWNERSHIP-PREMERGE-2026-10-03.md`
+
+
+## 2026-10-03 PR #19 read-retry-ownership validation failure with partial effect
+
+PR #19 was opened at exact source head `127da0c98f2860f1b285c8c651a8be6c2a0b43fa` against deployed base `1266756fb6a00318618daefe9db3d875387411b5`.
+
+Observed checks:
+- root test run `37152497599`: PASS;
+- Cloudflare Worker CI run `37152497604`: PASS;
+- single authorized World’s Fair live Devnet run `37152497520`: FAIL;
+- live job `111289071719`;
+- PR remains OPEN / UNMERGED.
+
+GitHub executed synthetic PR merge ref `e08d4f9f3e80259d7c21d1dd4c03ec064d1e240a`, composed from exact head `127da0c…` and base `1266756…`.
+
+Before `runCanonicalSequence()`, the live smoke observed:
+- runtime READY;
+- Program ID `7pgPuPZSUUtFcvFtVGmS3piCE1bHY35kjb14vct9v45Z`;
+- delegate `4VLFryH36ed8Mc7ByBMLwvtrtYMgo2hKmAicDU2oRfj7`;
+- Mandate nonce `13`.
+
+The run then failed with `WorldFairRunError`. Receipt verification was skipped, and the artifact uploader found no complete receipt file.
+
+A fresh public runtime fetch after failure observed:
+- READY on Solana Devnet;
+- Mandate version `14`;
+- Mandate nonce `13`;
+- spentThisPeriod `5000000`;
+- spentThisPeriodNotionalMicroUsd `4999871`;
+- input vault `1300000`;
+- output vault `12698674`;
+- mainnet truth flag false.
+
+The code path matters: `getPublicState({ ensure: true })` runs `ensureInputVaultFunding()` before printing READY, and that function guarantees the input vault is at least `1500000` base units. The post-failure state of `1300000` therefore proves a nonzero state delta after READY and is exactly consistent with one `200000` standing input amount. Without a persisted partial receipt or signature set, the exact transaction signature and exact failure phase remain UNKNOWN.
+
+Truth boundary:
+- “zero effects” for PR #19 is false;
+- complete 7/7 PASS is not proven;
+- exact failure phase is not proven;
+- blind replay is forbidden;
+- the earlier timeouted browser run’s immediate nonce-12 checkpoint is superseded by delayed shared-state evidence showing nonce 13 before PR #19’s sequence.
+
+A source-only follow-up repair now exists:
+- branch `fix/worlds-fair-partial-receipt-pyth-retry-v1`;
+- exact head `e56f0953b815b207be02d4928f26ca8ddcff4d03`;
+- bounded Pyth evidence retry: 4 attempts, 1-second linear base delay, transient/stale cases only;
+- auth/entitlement failures remain fail-closed with no retry;
+- live smoke now persists diagnostic, partial receipt and runtime before/after on failure;
+- smoke syntax check is part of the root test;
+- root test run `37152851105`: PASS;
+- PR: NOT OPENED;
+- live validation: NOT AUTHORIZED.
+
+See `evidence/runtime/HOSTED-READ-RPC-RETRY-OWNERSHIP-LIVE-FAIL-PARTIAL-EFFECT-2026-10-03.md`.

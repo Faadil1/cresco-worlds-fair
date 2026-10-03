@@ -206,10 +206,10 @@ handover:
 
   exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
   exact_next_action: >-
-    PR #16 is merged and both current CRESCO Cloudflare Workers are deployed with the ORCA_CONTEXT
-    read-retry repair. Post-deploy read-only checks confirm public /worlds-fair HTTP 200 and runtime
-    READY. Do not trigger new live Devnet attempts without fresh authorization. Stable hosted
-    self-serve remains PARTIAL / INTERMITTENT until the bounded repeatability campaign succeeds.
+    The post-PR16 repeatability campaign passed one fresh-browser 7/7 run, then stopped pre-write at
+    STANDING_1_QUOTE on a transient RPC failure. The bounded Orca read-backoff repair is non-live proven
+    at exact head 6af66d051493b4c3d8ce820ee4f615d5723e1ea8. Request fresh authorization before
+    opening the PR because it will trigger the real Devnet validation. Merge/redeploy remain separately protected.
 
   prohibited_shortcuts:
     - no_silent_concept_lock
@@ -355,3 +355,22 @@ handover:
       - evidence/runtime/HOSTED-ORCA-CONTEXT-READ-RETRY-PREMERGE-2026-10-03.md
       - evidence/runtime/HOSTED-ORCA-CONTEXT-READ-RETRY-LIVE-VALIDATION-PASS-2026-10-03.md
       - evidence/runtime/HOSTED-ORCA-CONTEXT-READ-RETRY-MERGE-DEPLOY-2026-10-03.md
+
+  orca_quote_read_backoff_checkpoint:
+    status: PROVEN_PREMERGE_AWAITING_EXPLICIT_LIVE_VALIDATION_AUTHORIZATION
+    branch: fix/worlds-fair-orca-quote-read-backoff-v1
+    exact_head: "6af66d051493b4c3d8ce820ee4f615d5723e1ea8"
+    triggering_repeatability_run: 37137899070
+    triggering_repeatability_attempt: 2
+    attempt_1: PASS_NONCE_10_TO_11
+    attempt_2: UNKNOWN_STANDING_1_QUOTE_TRANSIENT_RPC_ZERO_EFFECTS
+    attempt_3: NOT_EXECUTED
+    retry_profile_attempts: 6
+    retry_profile_base_delay_ms: 2000
+    root_test_run: 37142542533
+    premerge_gate_run: 37142542593
+    live_devnet_validation: NOT_YET_AUTHORIZED
+    merge_redeploy_authorization: NOT_YET_GRANTED
+    evidence:
+      - evidence/runtime/HOSTED-POSTDEPLOY-REPEATABILITY-AFTER-ORCA-RETRY-2026-10-03.md
+      - evidence/runtime/HOSTED-ORCA-QUOTE-READ-BACKOFF-PREMERGE-2026-10-03.md

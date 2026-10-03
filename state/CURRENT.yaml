@@ -51,20 +51,20 @@ phase:
 
 exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
 exact_next_action: >-
-  PR #19 exact head 127da0c98f2860f1b285c8c651a8be6c2a0b43fa remains open and unmerged after
-  root test run 37152497599 PASS, Cloudflare Worker CI run 37152497604 PASS and the single authorized
-  World’s Fair live Devnet validation run 37152497520 FAIL. The run began at Mandate nonce 13, produced
-  no complete receipt artifact and left a state-reconciled nonzero partial effect; zero-effects and blind
-  replay are forbidden. The earlier browser-timeout nonce-12 snapshot is superseded by delayed evidence
-  that shared Devnet state advanced before PR #19 began. The canonical replacement repair has now been
-  rebuilt directly from deployed main, without PR #19 ancestry, on branch
-  fix/worlds-fair-retry-observability-v2-clean at exact head
-  65a9fea6cbd0535ea867690a848bc1a50ccbe08d. It is 1 commit ahead / 0 behind main, has no PR,
-  and root test run 37153090829 passed. It preserves retry ownership, adds bounded retry only for
-  transient/stale Pyth evidence reads, and persists diagnostic + partial receipt + runtime before/after on
-  any live failure. Obtain fresh exact-head authorization before opening this clean replacement PR or
-  triggering another World’s Fair 7/7. No merge, redeploy, mainnet, repeatability rerun or PR #19 mutation
-  is authorized.
+  PR #20 at exact head 65a9fea6cbd0535ea867690a848bc1a50ccbe08d is open and unmerged.
+  Root test run 37153482193 and Cloudflare Worker CI run 37153482173 passed. The single authorized
+  operator-lab World’s Fair live Devnet validation run 37153482247 failed at STANDING_2_QUOTE after
+  STANDING_1_EXECUTE had already been confirmed. Failure artifact 11285206479 /
+  sha256:19cbf99083fb7bd69d830e466d5521855736c5adc14660b3d92793abda27076a preserves
+  diagnostic, partial progress, confirmed effect signature and runtime before/after. Confirmed effect:
+  standingAutonomy.1 signature ttsTwumZDbZGf55mHNpyhhdSshji59jLc5wYnEa1GVY88YJrTf6zke3MpzZ1DWp9esfwEGYjmLaj2dHWGdGhPXo.
+  The run moved spentThisPeriod 5000000 -> 5200000 and input vault 1500000 -> 1300000, so zero-effects
+  and blind replay are forbidden. PR #19 remains untouched. Opening PR #20 also auto-triggered
+  worlds-fair-orca-devnet-proof run 37153482170 because package.json is in that workflow path filter;
+  this second live-capable run is OUTSIDE the one-run authorization and must be cancelled before its
+  pending live-slice step. The available GitHub connector exposes no cancel mutation. Do not merge PR #20,
+  do not redeploy, do not run mainnet, do not rerun repeatability, and do not trigger any additional live
+  validation until the unintended run is resolved and a new source-only quote-read repair is prepared.
 
 build_authorized: true
 terminal_completeness_allowed: false
@@ -785,7 +785,7 @@ implementation_progress:
       - evidence/runtime/HOSTED-READ-RPC-RETRY-OWNERSHIP-LIVE-FAIL-PARTIAL-EFFECT-2026-10-03.md
 
   partial_receipt_pyth_retry_checkpoint:
-    status: PROVEN_NON_LIVE_CLEAN_REPLACEMENT_AWAITING_FRESH_EXACT_HEAD_AUTHORIZATION
+    status: LIVE_VALIDATION_FAILED_AT_STANDING_2_QUOTE_WITH_CONFIRMED_PARTIAL_EFFECT
     source_repository: Faadil1/cresco
     branch: fix/worlds-fair-retry-observability-v2-clean
     exact_head: 65a9fea6cbd0535ea867690a848bc1a50ccbe08d
@@ -804,12 +804,48 @@ implementation_progress:
     smoke_syntax_check_enabled: true
     root_test_run: 37153090829
     root_test_result: PASS
-    pull_request: NOT_OPENED
-    live_devnet_validation: NOT_AUTHORIZED
+    pull_request: 20
+    pr_state: OPEN_UNMERGED
+    pr_root_test_run: 37153482193
+    pr_root_test_result: PASS
+    pr_cloudflare_worker_ci_run: 37153482173
+    pr_cloudflare_worker_ci_result: PASS
+    pr_orca_devnet_discovery_run: 37153482180
+    pr_orca_devnet_discovery_result: PASS_READ_ONLY
+    authorized_live_devnet_validation: FAIL
+    authorized_live_run: 37153482247
+    authorized_live_job: 111291962294
+    live_starting_nonce: 13
+    exact_failure_phase: STANDING_2_QUOTE
+    exact_failure_phase_kind: READ
+    failure_class: UNKNOWN_RUNTIME
+    failure_reason_code: WORLD_FAIR_RUNTIME_FAILURE
+    failure_retry_policy: NOT_AUTOMATICALLY_RETRYABLE
+    confirmed_effect_label: standingAutonomy.1
+    confirmed_effect_signature: ttsTwumZDbZGf55mHNpyhhdSshji59jLc5wYnEa1GVY88YJrTf6zke3MpzZ1DWp9esfwEGYjmLaj2dHWGdGhPXo
+    runtime_before_spent_this_period: 5000000
+    runtime_after_spent_this_period: 5200000
+    runtime_before_input_vault: 1500000
+    runtime_after_input_vault: 1300000
+    runtime_before_output_vault: 12698674
+    runtime_after_output_vault: 12898653
+    partial_effect_truth: CONFIRMED
+    zero_effect_claim: false
+    blind_replay_allowed: false
+    failure_artifact: 11285206479
+    failure_artifact_digest: sha256:19cbf99083fb7bd69d830e466d5521855736c5adc14660b3d92793abda27076a
+    auto_triggered_second_live_capable_workflow: worlds-fair-orca-devnet-proof
+    auto_triggered_second_live_capable_run: 37153482170
+    auto_triggered_second_live_capable_job: 111291961939
+    auto_trigger_scope_status: OUTSIDE_AUTHORIZATION_MUST_CANCEL_BEFORE_LIVE_STEP
+    auto_trigger_latest_observed_step: INSTALL_ANCHOR_CLI
+    auto_trigger_live_slice_step: PENDING
+    github_connector_cancel_available: false
     merge_redeploy_authorization: NOT_GRANTED
     pr19_mutation_authorized: false
     evidence:
       - evidence/runtime/HOSTED-READ-RPC-RETRY-OWNERSHIP-LIVE-FAIL-PARTIAL-EFFECT-2026-10-03.md
+      - evidence/runtime/HOSTED-CLEAN-RETRY-OBSERVABILITY-LIVE-FAIL-STANDING2QUOTE-2026-10-03.md
 
   preflight_state_read_backoff_checkpoint:
     status: MERGED_DEPLOYED_AWAITING_POSTDEPLOY_REPEATABILITY_PROOF

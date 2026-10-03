@@ -368,3 +368,82 @@ The clean head reproduces the intended repair contents without PR #19 ancestry:
 PR #19 remains open and unmerged. No PR #19 mutation was issued.
 
 Fresh exact-head authorization is required before opening a clean replacement PR or triggering another World’s Fair Devnet 7/7 validation.
+
+
+## 2026-10-03 PR #20 clean retry/observability validation
+
+PR #20 was opened at exact head `65a9fea6cbd0535ea867690a848bc1a50ccbe08d` directly from deployed `main`.
+
+Observed checks:
+- root test `37153482193`: PASS;
+- Cloudflare Worker CI `37153482173`: PASS;
+- Orca Devnet discovery `37153482180`: PASS / read-only;
+- authorized operator-lab live run `37153482247`: FAIL;
+- live job `111291962294`.
+
+The clean failure-evidence path worked as intended.
+
+Before canonical execution:
+- READY;
+- Mandate version `14`;
+- nonce `13`;
+- spentThisPeriod `5000000`;
+- spentThisPeriodNotionalMicroUsd `4999871`;
+- input vault `1500000`;
+- output vault `12698674`.
+
+Completed phases:
+- BOOTSTRAP_READY;
+- STATE_LOAD;
+- ORCA_CONTEXT;
+- STANDING_1_MARKET_EVIDENCE;
+- STANDING_1_QUOTE;
+- STANDING_1_EXECUTE;
+- STANDING_2_MARKET_EVIDENCE.
+
+Failure:
+- phase: `STANDING_2_QUOTE`;
+- phase kind: READ;
+- class: `UNKNOWN_RUNTIME`;
+- reason: `WORLD_FAIR_RUNTIME_FAILURE`;
+- retry policy: `NOT_AUTOMATICALLY_RETRYABLE`.
+
+Confirmed effect before failure:
+- `standingAutonomy.1`;
+- signature `ttsTwumZDbZGf55mHNpyhhdSshji59jLc5wYnEa1GVY88YJrTf6zke3MpzZ1DWp9esfwEGYjmLaj2dHWGdGhPXo`.
+
+Runtime after failure:
+- READY;
+- nonce `13`;
+- spentThisPeriod `5200000`;
+- spentThisPeriodNotionalMicroUsd `5199869`;
+- input vault `1300000`;
+- output vault `12898653`.
+
+Therefore:
+- partial effect is PROVEN;
+- zero-effects is false;
+- blind replay is forbidden;
+- the new bottleneck is precisely the second Orca quote after a confirmed first swap.
+
+Failure artifact:
+- id `11285206479`;
+- digest `sha256:19cbf99083fb7bd69d830e466d5521855736c5adc14660b3d92793abda27076a`.
+
+### Authorization conflict discovered
+
+Because PR #20 also changes `package.json`, GitHub automatically triggered `worlds-fair-orca-devnet-proof` run `37153482170`.
+
+That workflow can execute a separate live Orca vertical slice on Solana Devnet. This is outside the explicit one-live-run authorization.
+
+At the latest observed checkpoint:
+- run `37153482170`: IN_PROGRESS;
+- job `111291961939`;
+- current step: Install Anchor CLI;
+- live Orca slice step: PENDING / NOT EXECUTED.
+
+The connected GitHub action set exposes no cancel-workflow mutation. Manual cancellation was requested immediately.
+
+Until that run is cancelled or otherwise terminates before its live step, no additional live action should be initiated.
+
+See `evidence/runtime/HOSTED-CLEAN-RETRY-OBSERVABILITY-LIVE-FAIL-STANDING2QUOTE-2026-10-03.md`.

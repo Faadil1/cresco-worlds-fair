@@ -206,10 +206,10 @@ handover:
 
   exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
   exact_next_action: >-
-    PR #15 exact head e868b1522c9fa28486777e3805f52a4c5d27093e passed the authorized real
-    Devnet 7/7 validation and all PR checks. Do not merge or redeploy without a fresh exact-head
-    authorization. After deployment, run multiple hosted browser attempts before restoring a stable
-    self-serve reliability claim.
+    PR #15 is merged and both current CRESCO Cloudflare Workers are deployed successfully.
+    Post-deploy read-only checks confirm public /worlds-fair HTTP 200 and runtime READY.
+    Do not trigger additional Devnet live attempts without fresh human authorization. Stable
+    hosted self-serve remains PARTIAL until multiple post-deploy browser live attempts succeed.
 
   prohibited_shortcuts:
     - no_silent_concept_lock
@@ -300,7 +300,7 @@ handover:
     evidence: evidence/runtime/HOSTED-MANUAL-INTERMITTENT-UNKNOWN-2026-10-03.md
 
   reliability_observability_repair_checkpoint:
-    status: LIVE_VALIDATED_PREMERGE_AWAITING_EXPLICIT_MERGE_REDEPLOY_AUTHORIZATION
+    status: MERGED_DEPLOYED_AWAITING_POSTDEPLOY_REPEATABILITY_PROOF
     branch: fix/worlds-fair-live-reliability-observability-v1
     exact_head: "e868b1522c9fa28486777e3805f52a4c5d27093e"
     root_test_run: 37126812481
@@ -313,5 +313,14 @@ handover:
     live_validation_digest: "sha256:2764b817a451142177bb944408bf21c0cbccb32f9668e9aa91592378d2f7e8d0"
     starting_nonce: 7
     ending_nonce: 8
-    merge_redeploy_authorization: NOT_YET_GRANTED
-    evidence: evidence/runtime/HOSTED-LIVE-RELIABILITY-OBSERVABILITY-PREMERGE-2026-10-03.md
+    merge_redeploy_authorization: CONSUMED
+    merge_commit: "0ef9dc9618d9cbdfac1e714b7349993f4292aff9"
+    backend_cloudflare_build: "a3a7d586-8392-417f-a574-744e340ee469"
+    frontend_cloudflare_build: "2b755dc6-b38e-4a75-a5d1-d91ce01104fd"
+    readonly_postdeploy_smoke_run: 37128446709
+    readonly_postdeploy_smoke_job: 111218484824
+    additional_live_devnet_run_authorized: false
+    evidence:
+      - evidence/runtime/HOSTED-LIVE-RELIABILITY-OBSERVABILITY-PREMERGE-2026-10-03.md
+      - evidence/runtime/HOSTED-LIVE-RELIABILITY-OBSERVABILITY-LIVE-VALIDATION-PASS-2026-10-03.md
+      - evidence/runtime/HOSTED-LIVE-RELIABILITY-OBSERVABILITY-MERGE-DEPLOY-2026-10-03.md

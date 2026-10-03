@@ -51,10 +51,9 @@ phase:
 
 exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
 exact_next_action: >-
-  Obtain explicit human authorization to merge PR #12 at proven head
-  40abac5acfabe4b682b47a589e177fbe5340a273 and redeploy the existing CRESCO Cloudflare Worker.
-  After publication, re-run hosted API→Solana proof. The Vercel /worlds-fair 404 remains a separate
-  unresolved deployment edge. Do not claim judge self-serve before the full hosted path is observed.
+  The hosted API→Solana path is now proven PASS after the authorized PR #12 repair deployment.
+  Next, diagnose and restore the still-missing public Vercel /worlds-fair route, then prove the
+  browser UI→public API→Solana path and clean-room judge self-serve before promoting this gate.
 
 build_authorized: true
 terminal_completeness_allowed: false
@@ -192,9 +191,9 @@ product_reality:
   external_user_operator_evidence: MISSING_VALIDATION_GAP_PRESERVED
   shared_product_core: PROVEN_LIVE
   real_user_surface_code: PROVEN_BUILD_NOT_HOSTED
-  public_hosted_world_fair_runtime: PARTIAL_READ_PROVEN_WRITE_FAILED_CLOSED
+  public_hosted_world_fair_runtime: PROVEN_LIVE_API_TO_SOLANA
   public_hosted_world_fair_frontend: MISSING_404
-  judge_operator_self_serve: BLOCKED_HOSTED_WRITE_AND_FRONTEND
+  judge_operator_self_serve: BLOCKED_FRONTEND_AND_BROWSER_PATH
   post_vertical_slice_depth_gap_review: PROVEN_ACTIVE
   post_vertical_slice_depth_gap_review_artifact: product/POST-VERTICAL-SLICE-DEPTH-GAP-REVIEW-2026-10-02.md
 
@@ -202,7 +201,7 @@ evidence_graph:
   file: governance/EVIDENCE-GRAPH.yaml
   status: ACTIVE_BOUNDED
   baseline_claim_graph: PARTIAL
-  world_fair_live_claims: PROVEN_SHARED_CORE_WITH_PUBLIC_HOSTED_EDGE_MISSING
+  world_fair_live_claims: PROVEN_HOSTED_API_TO_SOLANA_WITH_FRONTEND_EDGE_MISSING
   rule: "No missing causal edge may be upgraded into LIVE/PROVEN."
 
 reference_intelligence:
@@ -453,9 +452,8 @@ implementation_progress:
     closure_verification: PASS
     execution_note: "Authorized CI cleanup completed successfully and was verified by the dedicated GitHub Actions run."
   blocked_or_active:
-    - hosted_worlds_fair_API_write_reliability_PR12
     - public_hosted_worlds_fair_web_route_404
-    - hosted_UI_to_API_to_Solana_receipt
+    - hosted_browser_UI_to_API_to_Solana_receipt
     - judge_operator_self_serve
     - fresh_environment_reproducibility
     - direct_operator_validation_gap
@@ -489,7 +487,13 @@ implementation_progress:
     cloudflare_worker_publication: PROVEN
     cloudflare_worker_version: ab366ebc-24d5-48c1-94b8-3163bba13293
     hosted_runtime_get: PROVEN_PASS
-    hosted_runtime_post: FAIL_CLOSED_UNKNOWN_BLOCKHASH_EXPIRED
+    hosted_runtime_post: PROVEN_PASS_AFTER_PR12_REPAIR
+    hosted_api_to_solana: PROVEN_PASS
+    hosted_api_proof_run: 37084475468
+    hosted_api_proof_attempt: 3
+    hosted_api_proof_job: 111097900800
+    hosted_api_proof_artifact: 11259669023
+    hosted_api_proof_artifact_digest: sha256:b8aaf603ab494fa3b7face4135fd4e1d5d568966c4044073f3f4c615142fd499
     hosted_frontend: BLOCKED_404
     requested_scope:
       - "Promote/merge PR #11 only after human authorization."
@@ -504,7 +508,7 @@ implementation_progress:
       - paid infrastructure changes
       - operator outreach
     authorization_inherited_from_devnet_cleanup: false
-    execution_status: PARTIAL
+    execution_status: API_PUBLICATION_AND_HOSTED_LIVE_WRITE_PROVEN_FRONTEND_MISSING
     evidence: evidence/runtime/HOSTED-PUBLIC-RUNTIME-FIRST-ATTEMPT-2026-10-02.md
     repair_pull_request: 12
     repair_branch: fix/worlds-fair-hosted-confirmation-v1
@@ -514,8 +518,12 @@ implementation_progress:
     repair_live_artifact: 11260647857
     repair_live_artifact_digest: sha256:5f5400848c9ca37edbe433d08de6031e225f358a1ba725d87b330d48d19d01dd
     repair_cloudflare_bundle_run: 37085360049
-    repair_status: AUTHORIZED_FOR_EXACT_HEAD_MERGE_AND_CLOUDFLARE_REDEPLOY
+    repair_status: MERGED_DEPLOYED_AND_HOSTED_PASS
     repair_authorized_at: 2026-10-02
     repair_authorized_head: 40abac5acfabe4b682b47a589e177fbe5340a273
+    repair_merge_commit: 5645e199c93d6c158969e17727f8a87c85c95484
+    repair_cloudflare_build: 6a6199db-e2b2-4ab9-9e63-d03c88a734ec
     repair_authorized_scope: "Merge PR #12 at this exact head and redeploy the existing CRESCO Cloudflare Worker only for the World’s Fair Devnet runtime repair."
+    repair_hosted_result: PROVEN_PASS
+    repair_hosted_evidence: evidence/runtime/HOSTED-API-SOLANA-PASS-2026-10-02.md
   truth_boundary: "FIRST_LIVE_VERTICAL_SLICE is proven on Solana Devnet. This does not imply mainnet, production custody, institutional trading, audited security, operator demand, WTP, or adoption."

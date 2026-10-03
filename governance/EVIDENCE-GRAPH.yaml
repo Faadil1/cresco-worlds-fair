@@ -212,14 +212,21 @@ claims:
       github_artifact: 11259669023
       github_artifact_digest: "sha256:b8aaf603ab494fa3b7face4135fd4e1d5d568966c4044073f3f4c615142fd499"
       canonical_scenarios: 7
-    limitation: "This proves hosted API→Solana, not the still-missing hosted browser route or clean-room judge self-serve."
+    limitation: "Hosted API→Solana is proven and the browser path is now separately proven; independent external-human operator validation remains outside this technical claim."
 
   - claim_id: WORLD_FAIR_HOSTED_JUDGE_SELF_SERVE
     statement: "A judge can open the public World’s Fair surface and trigger the live CRESCO→Orca sequence without code or GitHub Actions."
     evidence_class: PRODUCTION_EVIDENCE
-    truth_state: UNKNOWN
-    graph_status: MISSING
-    reason: "Hosted API→Solana is proven live, but the public /worlds-fair browser route remains missing and the browser UI→API causal path has not yet been observed."
+    truth_state: OBSERVED
+    graph_status: COMPLETE
+    evidence:
+      workflow_run: 37124741369
+      workflow_job: 111207650592
+      artifact: 11274434523
+      artifact_digest: "sha256:ee3b8da1eeeb3a107f0a9e27b4bb5adc72484cd3dae24428cce0b1927b1dafe8"
+      artifact_pointer: "evidence/runtime/HOSTED-BROWSER-TO-SOLANA-LIVE-PASS-2026-10-03.md"
+      result: "browser-triggered 7/7 PASS; fresh state-empty browser can reach Ready runtime and live-run control"
+    limitation: "This proves technical self-serve capability, not independent external-human usage, demand, WTP or adoption."
 
   - claim_id: WORLD_FAIR_EXECUTION_BOUND_CAPITAL_AUTHORITY_VALUE
     statement: "Execution-bound delegated capital authority has validated operator value."

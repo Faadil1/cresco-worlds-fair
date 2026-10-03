@@ -206,9 +206,10 @@ handover:
 
   exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
   exact_next_action: >-
-    Repair the manual hosted UNKNOWN observed after an earlier 7/7 PASS. Add phase-aware diagnostics,
-    partial receipts, and safe signature reconciliation; then run multiple hosted browser attempts
-    before restoring a stable technical self-serve claim.
+    Reliability/observability repair is non-live proven at
+    e868b1522c9fa28486777e3805f52a4c5d27093e. Request explicit authorization before opening the PR,
+    because PR creation triggers the real Devnet provider workflow. After that live proof, require a
+    separate authorization before merge/redeploy.
 
   prohibited_shortcuts:
     - no_silent_concept_lock
@@ -297,3 +298,14 @@ handover:
     observed_nonce: 7
     effect: HOSTED_SELF_SERVE_PARTIAL__INTERMITTENT_LIVE_RUN
     evidence: evidence/runtime/HOSTED-MANUAL-INTERMITTENT-UNKNOWN-2026-10-03.md
+
+  reliability_observability_repair_checkpoint:
+    status: PROVEN_PREMERGE_AWAITING_EXPLICIT_LIVE_VALIDATION_AUTHORIZATION
+    branch: fix/worlds-fair-live-reliability-observability-v1
+    exact_head: "e868b1522c9fa28486777e3805f52a4c5d27093e"
+    root_test_run: 37126812481
+    premerge_gate_run: 37126812495
+    web_run: 37126812491
+    live_devnet_validation: NOT_YET_AUTHORIZED
+    merge_redeploy_authorization: NOT_YET_GRANTED
+    evidence: evidence/runtime/HOSTED-LIVE-RELIABILITY-OBSERVABILITY-PREMERGE-2026-10-03.md

@@ -51,9 +51,9 @@ phase:
 
 exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
 exact_next_action: >-
-  The hosted API→Solana path is now proven PASS after the authorized PR #12 repair deployment.
-  Next, diagnose and restore the still-missing public Vercel /worlds-fair route, then prove the
-  browser UI→public API→Solana path and clean-room judge self-serve before promoting this gate.
+  Extend/reconnect Vercel connector access so it includes the project/team that owns the standalone
+  frontend project cresco at cresco-lac.vercel.app. Once visible, publish Faadil1/cresco main from
+  root apps/web, verify /worlds-fair, then prove browser UI→public API→Solana and clean-room self-serve.
 
 build_authorized: true
 terminal_completeness_allowed: false
@@ -192,7 +192,7 @@ product_reality:
   shared_product_core: PROVEN_LIVE
   real_user_surface_code: PROVEN_BUILD_NOT_HOSTED
   public_hosted_world_fair_runtime: PROVEN_LIVE_API_TO_SOLANA
-  public_hosted_world_fair_frontend: MISSING_404
+  public_hosted_world_fair_frontend: BLOCKED_EXTERNAL_VERCEL_CONNECTION_VISIBILITY
   judge_operator_self_serve: BLOCKED_FRONTEND_AND_BROWSER_PATH
   post_vertical_slice_depth_gap_review: PROVEN_ACTIVE
   post_vertical_slice_depth_gap_review_artifact: product/POST-VERTICAL-SLICE-DEPTH-GAP-REVIEW-2026-10-02.md
@@ -452,7 +452,8 @@ implementation_progress:
     closure_verification: PASS
     execution_note: "Authorized CI cleanup completed successfully and was verified by the dedicated GitHub Actions run."
   blocked_or_active:
-    - public_hosted_worlds_fair_web_route_404
+    - vercel_connector_access_to_project_cresco
+    - public_hosted_worlds_fair_web_route
     - hosted_browser_UI_to_API_to_Solana_receipt
     - judge_operator_self_serve
     - fresh_environment_reproducibility
@@ -474,6 +475,17 @@ implementation_progress:
     shared_core_status: PROVEN_LIVE
     real_user_surface_code_status: PROVEN_BUILD_NOT_HOSTED
     next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
+
+  vercel_frontend_connection:
+    status: BLOCKED_EXTERNAL_CONNECTION_VISIBILITY
+    expected_project: cresco
+    expected_domain: https://cresco-lac.vercel.app
+    root_directory: apps/web
+    observed_teams:
+      - team_twDc66jGM0sPvNM4I5Huc0x7
+      - team_b8hypzENtczjR7lfxn2y8L6Q
+    direct_project_lookup: NOT_FOUND_IN_BOTH_CONNECTED_TEAMS
+    evidence: evidence/runtime/VERCEL-FRONTEND-CONNECTION-BLOCK-2026-10-02.md
 
   public_deployment_checkpoint:
     status: EXECUTED_PARTIAL_PUBLICATION

@@ -164,15 +164,20 @@ handover:
     evidence: evidence/runtime/HOSTED-PUBLIC-RUNTIME-FIRST-ATTEMPT-2026-10-02.md
     active_repair_pr: 12
     active_repair_branch: fix/worlds-fair-hosted-confirmation-v1
+    repair_proven_head: "40abac5acfabe4b682b47a589e177fbe5340a273"
+    repair_live_run: 37085360077
+    repair_live_artifact: 11260647857
+    repair_evidence: evidence/runtime/HOSTED-CONFIRMATION-REPAIR-PREMERGE-2026-10-02.md
     repair_merge_authorization: NOT_YET_GRANTED
     scope: "CRESCO World’s Fair Worker/API + /worlds-fair frontend only; no mainnet, no new Solana program, no submission."
     prior_cleanup_authorization_reusable: false
 
   exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
   exact_next_action: >-
-    Finish PR #12 reliability proof without weakening the live gate. If green, request explicit human
-    authorization to merge/redeploy the repair. Then re-run hosted API→Solana proof and separately
-    restore/publish the Vercel /worlds-fair route before any judge-self-serve promotion.
+    Request explicit human authorization to merge PR #12 at head
+    40abac5acfabe4b682b47a589e177fbe5340a273 and redeploy the existing Cloudflare Worker.
+    Then re-run the hosted API→Solana proof. Separately restore/publish the Vercel /worlds-fair
+    route, which is still HTTP 404, before any judge-self-serve promotion.
 
   prohibited_shortcuts:
     - no_silent_concept_lock

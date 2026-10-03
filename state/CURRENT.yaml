@@ -51,10 +51,10 @@ phase:
 
 exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
 exact_next_action: >-
-  Create/import a new Cloudflare Workers application for the full CRESCO frontend from Faadil1/cresco
-  main with root apps/web and Worker name cresco. Use the committed vinext runtime. Once the exact
-  public Cloudflare origin is observed, extend backend CORS to that origin while preserving the
-  historical Vercel origin, then prove browser UI→public API→Solana and clean-room self-serve.
+  The Faadil-controlled Cloudflare frontend, exact CORS, hosted demo login, and World’s Fair runtime
+  browser read are now proven. Next, with a fresh protected authorization, trigger one canonical
+  World’s Fair live sequence from the hosted browser UI, capture the browser→API→Solana receipt,
+  then perform a clean-room external judge self-serve check before promoting the gate.
 
 build_authorized: true
 terminal_completeness_allowed: false
@@ -191,10 +191,10 @@ product_reality:
   real_consequence: PROVEN_DEVNET_STATE_CHANGE_AND_ROLLBACK
   external_user_operator_evidence: MISSING_VALIDATION_GAP_PRESERVED
   shared_product_core: PROVEN_LIVE
-  real_user_surface_code: PROVEN_BUILD_NOT_HOSTED
+  real_user_surface_code: PROVEN_HOSTED_BROWSER
   public_hosted_world_fair_runtime: PROVEN_LIVE_API_TO_SOLANA
-  public_hosted_world_fair_frontend: CLOUDFLARE_MIGRATION_PROVEN_PREDEPLOY
-  judge_operator_self_serve: BLOCKED_FRONTEND_AND_BROWSER_PATH
+  public_hosted_world_fair_frontend: PROVEN_HOSTED_RUNTIME_READY
+  judge_operator_self_serve: PARTIAL_BROWSER_LIVE_SEQUENCE_AND_CLEAN_ROOM_MISSING
   post_vertical_slice_depth_gap_review: PROVEN_ACTIVE
   post_vertical_slice_depth_gap_review_artifact: product/POST-VERTICAL-SLICE-DEPTH-GAP-REVIEW-2026-10-02.md
 
@@ -202,7 +202,7 @@ evidence_graph:
   file: governance/EVIDENCE-GRAPH.yaml
   status: ACTIVE_BOUNDED
   baseline_claim_graph: PARTIAL
-  world_fair_live_claims: PROVEN_HOSTED_API_TO_SOLANA_WITH_FRONTEND_EDGE_MISSING
+  world_fair_live_claims: PROVEN_HOSTED_API_TO_SOLANA_AND_BROWSER_RUNTIME_READ
   rule: "No missing causal edge may be upgraded into LIVE/PROVEN."
 
 reference_intelligence:
@@ -453,10 +453,8 @@ implementation_progress:
     closure_verification: PASS
     execution_note: "Authorized CI cleanup completed successfully and was verified by the dedicated GitHub Actions run."
   blocked_or_active:
-    - create_full_cresco_cloudflare_workers_frontend
-    - observe_exact_new_frontend_origin
-    - extend_backend_cors_to_new_origin
     - hosted_browser_UI_to_API_to_Solana_receipt
+    - clean_room_judge_self_serve
     - judge_operator_self_serve
     - fresh_environment_reproducibility
     - direct_operator_validation_gap
@@ -479,7 +477,7 @@ implementation_progress:
     next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
 
   cloudflare_frontend_migration:
-    status: PROVEN_PREDEPLOY
+    status: PROVEN_HOSTED
     product_scope: FULL_CRESCO_NOT_MICROSITE
     source_repository: Faadil1/cresco
     migration_pr: 13
@@ -492,7 +490,13 @@ implementation_progress:
     nextjs_regression: PASS
     webkit: PASS
     dry_run_packaging: PASS
-    evidence: evidence/runtime/CRESCO-CLOUDFLARE-FRONTEND-MIGRATION-PREDEPLOY-2026-10-03.md
+    evidence:
+      - evidence/runtime/CRESCO-CLOUDFLARE-FRONTEND-MIGRATION-PREDEPLOY-2026-10-03.md
+      - evidence/runtime/CRESCO-CLOUDFLARE-CORS-AUTH-HOSTED-PASS-2026-10-03.md
+    hosted_origin: https://cresco.faadil-casecraft.workers.dev
+    hosted_browser_smoke_run: 37124397821
+    hosted_browser_smoke_artifact: 11274134281
+    hosted_browser_smoke_digest: sha256:fb2a9d53c3de6bb81247f07387b51fa80e002a98321b97fddec6bd1a1b4554db
     legacy_pages_project:
       name: cresco-visual-lab
       status: LEGACY_OBSOLETE
@@ -567,7 +571,7 @@ implementation_progress:
     repair_hosted_evidence: evidence/runtime/HOSTED-API-SOLANA-PASS-2026-10-02.md
   truth_boundary: "FIRST_LIVE_VERTICAL_SLICE is proven on Solana Devnet. This does not imply mainnet, production custody, institutional trading, audited security, operator demand, WTP, or adoption."
   cors_auth_recovery_checkpoint:
-    status: PROVEN_PREMERGE_AWAITING_EXPLICIT_HUMAN_AUTHORIZATION
+    status: MERGED_DEPLOYED_AND_HOSTED_PASS
     pull_request: 14
     exact_head: 8fcc5300dfcd86b90c27be379d96df2e7af8b879
     backend_worker: keys-api-stocklana
@@ -577,7 +581,12 @@ implementation_progress:
     cloudflare_worker_run: 37123498821
     root_regression_run: 37123497058
     evidence: evidence/runtime/CRESCO-CLOUDFLARE-CORS-AUTH-RECOVERY-PREMERGE-2026-10-03.md
-    merge_redeploy_authorization: GRANTED_EXACT_HEAD_ONLY
+    merge_redeploy_authorization: CONSUMED
+    merge_commit: f6c71177155ccd3ebeaebb1aff9897aaf1758aac
+    backend_cloudflare_build: 819f0895-5058-4159-923a-492957a80b3f
+    frontend_cloudflare_build: 7491d3f6-74bd-463d-bac6-284c9b142bd7
+    hosted_browser_result: PASS
+    hosted_browser_evidence: evidence/runtime/CRESCO-CLOUDFLARE-CORS-AUTH-HOSTED-PASS-2026-10-03.md
     authorized_at: 2026-10-03
     authorized_head: 8fcc5300dfcd86b90c27be379d96df2e7af8b879
     authorized_scope: "Merge PR #14 and redeploy the affected CRESCO Cloudflare Workers only for the new frontend CORS repair and login UX recovery."

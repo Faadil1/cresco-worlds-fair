@@ -178,7 +178,7 @@ registry:
     status: ACTIVE
     activates_when: "World’s Fair runtime exists"
     condition: "Public runtime must be reachable and consistent with the claimed build."
-    current_state: "Public v0.3 runtime GET and canonical POST are proven live on Cloudflare. The Faadil-controlled full CRESCO frontend is also publicly hosted on Cloudflare, exact CORS is proven, real demo login succeeds in Chromium, and /worlds-fair renders runtime READY. The remaining causal edge is one browser-triggered canonical live sequence plus clean-room external judge self-serve."
+    current_state: "Public CRESCO frontend, exact CORS, demo login, /worlds-fair runtime read, and browser-triggered canonical 7/7 live execution are proven on Cloudflare→Solana Devnet. Fresh-browser technical self-serve is proven; independent external-human judge/operator use is not observed."
     evidence:
       - "evidence/runtime/WORLDS-FAIR-OPERATOR-LAB-LIVE-2026-10-02.md"
       - "evidence/runtime/HOSTED-PUBLIC-RUNTIME-FIRST-ATTEMPT-2026-10-02.md"
@@ -187,6 +187,7 @@ registry:
       - "evidence/runtime/VERCEL-FRONTEND-CONNECTION-BLOCK-2026-10-02.md"
       - "evidence/runtime/CRESCO-CLOUDFLARE-FRONTEND-MIGRATION-PREDEPLOY-2026-10-03.md"
       - "evidence/runtime/CRESCO-CLOUDFLARE-CORS-AUTH-HOSTED-PASS-2026-10-03.md"
+      - "evidence/runtime/HOSTED-BROWSER-TO-SOLANA-LIVE-PASS-2026-10-03.md"
 
   - id: PRE_LAUNCH_SHIP
     name: "Universal Pre-Launch / Ship Assurance"
@@ -444,7 +445,7 @@ product_depth_subchecks:
   shared_product_core: PROVEN
   reality_ledger: ACTIVE
   observability_receipts: PROVEN_SHARED_CORE
-  judge_operator_self_serve: PARTIAL_BROWSER_LIVE_SEQUENCE_AND_CLEAN_ROOM_MISSING
+  judge_operator_self_serve: PROVEN_TECHNICAL_SELF_SERVE_EXTERNAL_HUMAN_NOT_OBSERVED
   setup_reproducibility: ACTIVE
   clean_room_external_dependency_failure: ACTIVE
   post_vertical_slice_depth_gap_review: PROVEN

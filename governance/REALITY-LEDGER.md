@@ -39,7 +39,7 @@ Truth labels:
 | New World’s Fair on-chain runtime exists | OBSERVED | LIVE | Solana Devnet program `7pgPuPZSUUtFcvFtVGmS3piCE1bHY35kjb14vct9v45Z`; not yet a judge-facing public product surface |
 | Shared World’s Fair product core exists | OBSERVED | LIVE | Reusable server-side provider executed 7/7 canonical consequences live in run `37083019145`; receipt: `evidence/runtime/WORLDS-FAIR-OPERATOR-LAB-LIVE-2026-10-02.md` |
 | Public World’s Fair v0.3 runtime GET exists | OBSERVED | LIVE | Cloudflare Worker deployment from merge `fa26ff0…` returned HTTP 200 with exact Program ID and program SHA; evidence: `HOSTED-PUBLIC-RUNTIME-FIRST-ATTEMPT-2026-10-02.md` |
-| Public World’s Fair v0.3 live POST is reliable | OBSERVED | PARTIAL / INTERMITTENT | PR #18 exact head `494818b…` passed a full 7/7 Devnet sequence under substantial 429 throttling and is now merged/deployed to both current Cloudflare Workers as merge `1266756…`. Public read-only runtime is READY at nonce 12, but post-deploy live repeatability has not yet been re-run. Evidence: `HOSTED-PREFLIGHT-STATE-READ-BACKOFF-LIVE-VALIDATION-PASS-2026-10-03.md` and `HOSTED-PREFLIGHT-STATE-READ-BACKOFF-MERGE-DEPLOY-2026-10-03.md`. |
+| Public World’s Fair v0.3 live POST is reliable | OBSERVED | PARTIAL / INTERMITTENT | PR #18 is merged/deployed and pre-merge exact-head 7/7 passed, but the authorized post-deploy repeatability campaign stopped on its first fresh-browser attempt after no POST response was observed within 240s. Read-only reconciliation stayed READY at nonce 12 with tracked counters/vaults unchanged. Outcome is UNKNOWN with no observable mutation on tracked invariants, not an absolute zero-effect claim. A non-live retry-ownership repair is proven at `127da0c…`. Evidence: `HOSTED-POSTDEPLOY-REPEATABILITY-CLIENT-TIMEOUT-2026-10-03.md` and `HOSTED-READ-RPC-RETRY-OWNERSHIP-PREMERGE-2026-10-03.md`. |
 | World’s Fair web/operator surface is publicly hosted | OBSERVED | LIVE | Full CRESCO frontend is live at `https://cresco.faadil-casecraft.workers.dev`; hosted Chromium proof reached `/worlds-fair` and observed runtime state `Ready`; evidence: `CRESCO-CLOUDFLARE-CORS-AUTH-HOSTED-PASS-2026-10-03.md` |
 | Judge self-serve World’s Fair technical flow exists | OBSERVED | PARTIAL / INTERMITTENT | A fresh Chromium run proved the complete path once, but a later manual browser run ended UNKNOWN. Treat self-serve as technically possible but not yet repeatably reliable. |
 | Runtime/commit binding for World’s Fair build exists | OBSERVED | LIVE/PROVEN | Local rebuild and on-chain program dump are bit-identical: SHA-256 `084a3f7aad8a5772d773816579f5d2b98542c4b966dbb0dd7c60cb397db21f61`, run `37037374212` |
@@ -236,3 +236,53 @@ Future protected replacement PRs should avoid stacking on an excluded open PR wh
 Hosted self-serve reliability remains **PARTIAL / INTERMITTENT** until a separately authorized post-deploy live repeatability campaign succeeds.
 
 See `evidence/runtime/HOSTED-PREFLIGHT-STATE-READ-BACKOFF-MERGE-DEPLOY-2026-10-03.md`.
+
+
+## 2026-10-03 post-deploy client-timeout finding and retry-ownership repair
+
+The separately authorized bounded post-deploy repeatability campaign was executed as run `37137899070`, attempt `3`.
+
+Observed:
+- fresh-browser attempt 1 reached the hosted World’s Fair surface and Runtime Ready;
+- after triggering the live sequence, the harness observed no POST response event within `240000 ms`;
+- the workflow stopped on that first non-PASS outcome;
+- attempts 2 and 3 were not executed;
+- no response receipt, partial receipt, or signature set was captured;
+- evidence artifact: `11284247154`;
+- artifact digest: `sha256:9441331039e847dd1c6e4036b0ad6434c575b6719ce0a800ad8aa636c542619a`.
+
+Read-only reconciliation after the timeout observed:
+- runtime: READY;
+- Mandate nonce: `12`;
+- spentThisPeriod: `3650000`;
+- spentThisPeriodNotionalMicroUsd: `3649888`;
+- input vault: `350000`;
+- output vault: `11348815`.
+
+Those tracked invariants were unchanged across the available pre/post read-only checkpoints. This supports **no observable mutation on the tracked invariants**, but not an absolute zero-effect claim because the timed-out POST emitted no receipt or signature set.
+
+The timing defect has two layers:
+1. the browser client abort boundary is `120000 ms`;
+2. safe Solana reads were layering web3.js internal 429 retries underneath CRESCO’s explicit bounded six-attempt retry.
+
+A source-only product repair now exists on `Faadil1/cresco`:
+- branch: `fix/worlds-fair-read-rpc-retry-ownership-v1`;
+- exact head: `127da0c98f2860f1b285c8c651a8be6c2a0b43fa`;
+- base main: `1266756fb6a00318618daefe9db3d875387411b5`;
+- safe reads use a dedicated connection with `disableRetryOnRateLimit: true`;
+- CRESCO’s explicit 6-attempt / 2-second-base policy is the single safe-read retry owner;
+- write-capable operations remain on the existing write connection;
+- root test run `37152132080`: PASS;
+- live validation: NOT AUTHORIZED / NOT RUN.
+
+A separate governance-harness repair exists at exact head `b95b7f847e189cc1c5048c7cd3be95a2c06bdc27`:
+- live repeatability is now `workflow_dispatch` only;
+- client/no-response timeout becomes a structured UNKNOWN;
+- read-only reconciliation is captured before exit;
+- merging the harness change itself cannot auto-trigger a live campaign.
+
+Hosted self-serve reliability therefore remains **PARTIAL / INTERMITTENT**. Fresh exact-head authorization is required before opening the product PR because that PR will trigger a real World’s Fair 7/7 Devnet validation.
+
+See:
+- `evidence/runtime/HOSTED-POSTDEPLOY-REPEATABILITY-CLIENT-TIMEOUT-2026-10-03.md`
+- `evidence/runtime/HOSTED-READ-RPC-RETRY-OWNERSHIP-PREMERGE-2026-10-03.md`

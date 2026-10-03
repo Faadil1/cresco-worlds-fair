@@ -206,10 +206,10 @@ handover:
 
   exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
   exact_next_action: >-
-    The 3x post-deploy campaign stopped correctly after attempt 2 failed pre-write at ORCA_CONTEXT.
-    The bounded read-retry repair is non-live proven at exact head
-    9eb857bb3c369a0ab412977a976c131afac6899f. Request fresh authorization before opening the PR,
-    because it will trigger the real Devnet validation. Merge/redeploy remain separately protected.
+    PR #16 exact head 9eb857bb3c369a0ab412977a976c131afac6899f passed the authorized real
+    Devnet 7/7 validation with ORCA_CONTEXT completed and receipt progress COMPLETE. Do not merge or
+    redeploy without fresh exact-head authorization. After deployment, repeat the bounded hosted
+    browser reliability campaign before restoring stable self-serve.
 
   prohibited_shortcuts:
     - no_silent_concept_lock
@@ -326,7 +326,7 @@ handover:
       - evidence/runtime/HOSTED-LIVE-RELIABILITY-OBSERVABILITY-MERGE-DEPLOY-2026-10-03.md
 
   orca_context_read_retry_checkpoint:
-    status: PROVEN_PREMERGE_AWAITING_EXPLICIT_LIVE_VALIDATION_AUTHORIZATION
+    status: LIVE_VALIDATED_PREMERGE_AWAITING_EXPLICIT_MERGE_REDEPLOY_AUTHORIZATION
     branch: fix/worlds-fair-orca-context-read-retry-v1
     exact_head: "9eb857bb3c369a0ab412977a976c131afac6899f"
     triggering_repeatability_run: 37137899070
@@ -335,8 +335,16 @@ handover:
     attempt_3: NOT_EXECUTED
     root_test_run: 37138454184
     premerge_gate_run: 37138454256
-    live_devnet_validation: NOT_YET_AUTHORIZED
+    live_devnet_validation: PASS
+    live_validation_run: 37140787012
+    live_validation_job: 111254615300
+    live_validation_artifact: 11280785419
+    live_validation_digest: "sha256:a9b7e7ec909c69c5d0e1b3332888dbdd2bd7bef7dc22ae8a26a1c91538e4626d"
+    starting_nonce: 9
+    ending_nonce: 10
+    orca_context_phase: PASS
     merge_redeploy_authorization: NOT_YET_GRANTED
     evidence:
       - evidence/runtime/HOSTED-POSTDEPLOY-REPEATABILITY-3X-ATTEMPT-2026-10-03.md
       - evidence/runtime/HOSTED-ORCA-CONTEXT-READ-RETRY-PREMERGE-2026-10-03.md
+      - evidence/runtime/HOSTED-ORCA-CONTEXT-READ-RETRY-LIVE-VALIDATION-PASS-2026-10-03.md

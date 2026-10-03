@@ -206,19 +206,20 @@ handover:
 
   exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
   exact_next_action: >-
-    PR #19 exact head 127da0c98f2860f1b285c8c651a8be6c2a0b43fa is open and unmerged.
-    Root test run 37152497599 and Cloudflare Worker CI run 37152497604 passed, but the single authorized
-    World’s Fair live Devnet validation run 37152497520 failed after READY. The run began at Mandate nonce
-    13 and produced no complete receipt artifact. Fresh post-failure runtime reconciliation shows nonce 13,
-    version 14, spentThisPeriod 5000000, input vault 1300000 and output vault 12698674. Because ensureReady
-    funds the input vault to at least 1500000 before READY, the failed run has a state-reconciled partial
-    effect and must not be treated as zero-effects or blindly replayed. The earlier repeatability timeout
-    snapshot at nonce 12 is superseded by delayed evidence showing that POST continued after browser loss.
-    A follow-up source-only repair is proven non-live on fix/worlds-fair-partial-receipt-pyth-retry-v1 at
-    exact head e56f0953b815b207be02d4928f26ca8ddcff4d03 with test run 37152851105 PASS; it persists failure
-    diagnostics/partial receipts/runtime reconciliation and adds bounded retry only for transient Pyth
-    evidence reads. Request fresh exact-head authorization before opening any new product PR or triggering
-    another live 7/7. No merge, redeploy, mainnet, repeatability rerun or PR #19 mutation is authorized.
+    PR #19 exact head 127da0c98f2860f1b285c8c651a8be6c2a0b43fa remains open and unmerged after
+    root test run 37152497599 PASS, Cloudflare Worker CI run 37152497604 PASS and the single authorized
+    World’s Fair live Devnet validation run 37152497520 FAIL. The run began at Mandate nonce 13, produced
+    no complete receipt artifact and left a state-reconciled nonzero partial effect; zero-effects and blind
+    replay are forbidden. The earlier browser-timeout nonce-12 snapshot is superseded by delayed evidence
+    that shared Devnet state advanced before PR #19 began. The canonical replacement repair has now been
+    rebuilt directly from deployed main, without PR #19 ancestry, on branch
+    fix/worlds-fair-retry-observability-v2-clean at exact head
+    65a9fea6cbd0535ea867690a848bc1a50ccbe08d. It is 1 commit ahead / 0 behind main, has no PR,
+    and root test run 37153090829 passed. It preserves retry ownership, adds bounded retry only for
+    transient/stale Pyth evidence reads, and persists diagnostic + partial receipt + runtime before/after
+    on any live failure. Request fresh exact-head authorization before opening this clean replacement PR or
+    triggering another World’s Fair 7/7. No merge, redeploy, mainnet, repeatability rerun or PR #19
+    mutation is authorized.
 
   prohibited_shortcuts:
     - no_silent_concept_lock
@@ -502,10 +503,15 @@ handover:
       - evidence/runtime/HOSTED-READ-RPC-RETRY-OWNERSHIP-LIVE-FAIL-PARTIAL-EFFECT-2026-10-03.md
 
   partial_receipt_pyth_retry_checkpoint:
-    status: PROVEN_NON_LIVE_AWAITING_FRESH_EXACT_HEAD_AUTHORIZATION
-    branch: fix/worlds-fair-partial-receipt-pyth-retry-v1
-    exact_head: "e56f0953b815b207be02d4928f26ca8ddcff4d03"
-    base_head: "127da0c98f2860f1b285c8c651a8be6c2a0b43fa"
+    status: PROVEN_NON_LIVE_CLEAN_REPLACEMENT_AWAITING_FRESH_EXACT_HEAD_AUTHORIZATION
+    branch: fix/worlds-fair-retry-observability-v2-clean
+    exact_head: "65a9fea6cbd0535ea867690a848bc1a50ccbe08d"
+    base_main: "1266756fb6a00318618daefe9db3d875387411b5"
+    ahead_by: 1
+    behind_by: 0
+    stacked_intermediate_branch: fix/worlds-fair-partial-receipt-pyth-retry-v1
+    stacked_intermediate_head: "e56f0953b815b207be02d4928f26ca8ddcff4d03"
+    stacked_intermediate_status: SUPERSEDED_TO_AVOID_PR19_ANCESTRY
     pyth_transient_retry_attempts: 4
     pyth_transient_retry_base_delay_ms: 1000
     pyth_auth_entitlement_retry: false
@@ -513,10 +519,11 @@ handover:
     failure_artifact_persists_partial_receipt: true
     failure_artifact_persists_runtime_before_after: true
     smoke_syntax_check_enabled: true
-    root_test_run: 37152851105
+    root_test_run: 37153090829
     root_test_result: PASS
     pull_request: NOT_OPENED
     live_devnet_validation: NOT_AUTHORIZED
     merge_redeploy_authorization: NOT_GRANTED
+    pr19_mutation_authorized: false
     evidence:
       - evidence/runtime/HOSTED-READ-RPC-RETRY-OWNERSHIP-LIVE-FAIL-PARTIAL-EFFECT-2026-10-03.md

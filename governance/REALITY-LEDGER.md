@@ -137,3 +137,18 @@ Observed production deployment:
 An unrelated legacy `devnet-execution-bridge` workflow auto-triggered from the main-branch merge because `src/http-api.mjs` changed. It preserved a real period refusal, emitted no successful new on-chain execution signature in its logs, and failed closed on `PYTH_MARKET_EVIDENCE_UNAVAILABLE`. This side effect was outside the explicit merge/redeploy authorization and is recorded as a CI governance defect to gate before future protected merges.
 
 Stable hosted self-serve remains PARTIAL / INTERMITTENT until separately authorized post-deploy live repeatability checks succeed.
+
+
+## 2026-10-03 ORCA_CONTEXT read-retry deployment
+
+PR #16 exact head `9eb857bb3c369a0ab412977a976c131afac6899f` was merged as `27300a396d9f3049f19e7aed228acdb2f0bdf9d9`.
+
+Observed production deployment:
+- backend Worker `keys-api-stocklana`: SUCCESS, build `35efb0a3-f66e-4e66-9839-57893ee75be4`;
+- frontend Worker `cresco`: SUCCESS, build `b70afa8d-707a-4665-9a05-e29db714c98f`;
+- post-deploy read-only `/worlds-fair`: HTTP 200;
+- post-deploy read-only World’s Fair runtime: HTTP 200 / READY;
+- no live authority sequence was executed by the read-only smoke;
+- the legacy `devnet-execution-bridge` was not triggered because PR #16 did not touch its monitored paths.
+
+Stable hosted self-serve remains PARTIAL / INTERMITTENT until a fresh bounded post-deploy browser live-repeatability campaign succeeds.

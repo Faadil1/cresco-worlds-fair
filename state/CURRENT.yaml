@@ -51,10 +51,10 @@ phase:
 
 exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
 exact_next_action: >-
-  Complete PR #12 hosted-confirmation/RPC reliability repair and prove its shared-core live smoke.
-  Then obtain explicit authorization before merging that new repair deployment, re-prove hosted API→Solana,
-  and publish the still-missing Vercel /worlds-fair route. Do not claim judge self-serve before the
-  full hosted UI→API→Solana path is observed.
+  Obtain explicit human authorization to merge PR #12 at proven head
+  40abac5acfabe4b682b47a589e177fbe5340a273 and redeploy the existing CRESCO Cloudflare Worker.
+  After publication, re-run hosted API→Solana proof. The Vercel /worlds-fair 404 remains a separate
+  unresolved deployment edge. Do not claim judge self-serve before the full hosted path is observed.
 
 build_authorized: true
 terminal_completeness_allowed: false
@@ -508,5 +508,11 @@ implementation_progress:
     evidence: evidence/runtime/HOSTED-PUBLIC-RUNTIME-FIRST-ATTEMPT-2026-10-02.md
     repair_pull_request: 12
     repair_branch: fix/worlds-fair-hosted-confirmation-v1
-    repair_status: ACTIVE_NOT_AUTHORIZED_FOR_MERGE
+    repair_proven_head: 40abac5acfabe4b682b47a589e177fbe5340a273
+    repair_live_run: 37085360077
+    repair_live_job: 111094409043
+    repair_live_artifact: 11260647857
+    repair_live_artifact_digest: sha256:5f5400848c9ca37edbe433d08de6031e225f358a1ba725d87b330d48d19d01dd
+    repair_cloudflare_bundle_run: 37085360049
+    repair_status: PROVEN_PREMERGE_AWAITING_EXPLICIT_REDEPLOY_AUTHORIZATION
   truth_boundary: "FIRST_LIVE_VERTICAL_SLICE is proven on Solana Devnet. This does not imply mainnet, production custody, institutional trading, audited security, operator demand, WTP, or adoption."

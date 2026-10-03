@@ -51,10 +51,10 @@ phase:
 
 exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
 exact_next_action: >-
-  Hosted browser UI→API→Solana is now proven 7/7 in a fresh GitHub runner/browser environment.
-  Next, preserve this runtime, package the judge-facing story/demo/Q&A around the proven receipt,
-  and pursue an independent human judge/operator trial when available. Do not translate technical
-  self-serve proof into adoption, demand or external-human validation.
+  Repair the observed intermittent hosted live-run UNKNOWN by adding phase-aware diagnostics,
+  partial fail-closed receipts, and stronger non-replaying Solana confirmation reconciliation.
+  Re-prove repeatability with multiple hosted browser runs before restoring stable self-serve claims.
+  Keep independent human operator validation as a separate evidence gap.
 
 build_authorized: true
 terminal_completeness_allowed: false
@@ -194,7 +194,7 @@ product_reality:
   real_user_surface_code: PROVEN_HOSTED_BROWSER
   public_hosted_world_fair_runtime: PROVEN_LIVE_API_TO_SOLANA
   public_hosted_world_fair_frontend: PROVEN_HOSTED_BROWSER_TO_SOLANA
-  judge_operator_self_serve: PROVEN_TECHNICAL_SELF_SERVE_EXTERNAL_HUMAN_NOT_OBSERVED
+  judge_operator_self_serve: PARTIAL_INTERMITTENT_LIVE_RUN
   post_vertical_slice_depth_gap_review: PROVEN_ACTIVE
   post_vertical_slice_depth_gap_review_artifact: product/POST-VERTICAL-SLICE-DEPTH-GAP-REVIEW-2026-10-02.md
 
@@ -202,7 +202,7 @@ evidence_graph:
   file: governance/EVIDENCE-GRAPH.yaml
   status: ACTIVE_BOUNDED
   baseline_claim_graph: PARTIAL
-  world_fair_live_claims: PROVEN_HOSTED_BROWSER_UI_TO_API_TO_SOLANA_7_OF_7
+  world_fair_live_claims: CAPABILITY_PROVEN_RELIABILITY_INTERMITTENT
   rule: "No missing causal edge may be upgraded into LIVE/PROVEN."
 
 reference_intelligence:
@@ -607,3 +607,14 @@ implementation_progress:
     fresh_browser_context_surface: PASS
     external_human_judge: NOT_OBSERVED
     evidence: evidence/runtime/HOSTED-BROWSER-TO-SOLANA-LIVE-PASS-2026-10-03.md
+
+  manual_intermittent_live_run:
+    status: OBSERVED
+    observed_at: 2026-10-03
+    public_frontend: https://cresco.faadil-casecraft.workers.dev
+    runtime_state_before_run: READY
+    observed_nonce: 7
+    outcome: UNKNOWN
+    browser_error: WORLD_FAIR_LIVE_RUN_UNCONFIRMED
+    reliability_effect: DOWNGRADE_TO_PARTIAL
+    evidence: evidence/runtime/HOSTED-MANUAL-INTERMITTENT-UNKNOWN-2026-10-03.md

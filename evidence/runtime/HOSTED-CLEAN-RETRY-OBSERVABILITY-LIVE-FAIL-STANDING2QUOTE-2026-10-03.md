@@ -147,3 +147,42 @@ The read-only `worlds-fair-orca-devnet-discovery` workflow is not an additional 
 - mainnet: NOT AUTHORIZED
 - post-deploy repeatability: NOT AUTHORIZED
 - second automatic live-capable run `37153482170`: MUST BE CANCELLED BEFORE LIVE STEP
+
+
+## Final disposition of automatic `worlds-fair-orca-devnet-proof` run
+
+Run `37153482170` was not cancelled before reaching its live-slice step.
+
+Final result:
+- workflow: `worlds-fair-orca-devnet-proof`
+- run: `37153482170`
+- job: `111291961939`
+- result: **FAIL**
+- program deployment step: **REUSED existing program**
+- runtime commit binding: **PASS**
+- live-slice step: **EXECUTED / FAILED**
+- receipt: none
+
+The failure occurred at `scripts/worlds-fair-orca-v1-proof.cjs:468` while executing the bootstrap SOL→devUSDC swap:
+- payer balance before proof: `0.145429296 SOL`;
+- the script first transferred `0.1 SOL` to a newly generated delegate and performed isolated setup writes;
+- by the bootstrap swap, only `35,717,296` lamports remained;
+- the simulated transaction required `101,488,440` lamports;
+- Solana simulation rejected it with `Transfer: insufficient lamports`.
+
+The failed bootstrap swap itself did not land because transaction simulation failed before send.
+
+Isolation boundary:
+- the proof script creates `delegate = Keypair.generate()`;
+- Charter, Mandate, AssetRule and trade-vault PDAs are derived from that random delegate;
+- therefore the setup writes are isolated from the shared operator-lab accounts used by the hosted runtime;
+- the existing program `7pgPuPZSUUtFcvFtVGmS3piCE1bHY35kjb14vct9v45Z` was reused and not redeployed;
+- the program binary binding remained `084a3f7aad8a5772d773816579f5d2b98542c4b966dbb0dd7c60cb397db21f61`.
+
+Governance classification:
+- this was a second live-capable workflow execution outside the explicit one-live authorization;
+- it is recorded as an **automatic workflow-scope violation**;
+- it is **not** counted as a second canonical operator-lab validation;
+- no rerun is permitted without fresh authorization.
+
+Future replacement PRs must avoid touching `package.json` unless the `worlds-fair-orca-devnet-proof` trigger is intentionally addressed first.

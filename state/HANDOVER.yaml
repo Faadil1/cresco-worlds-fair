@@ -206,10 +206,10 @@ handover:
 
   exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
   exact_next_action: >-
-    Reliability/observability repair is non-live proven at
-    e868b1522c9fa28486777e3805f52a4c5d27093e. Request explicit authorization before opening the PR,
-    because PR creation triggers the real Devnet provider workflow. After that live proof, require a
-    separate authorization before merge/redeploy.
+    PR #15 exact head e868b1522c9fa28486777e3805f52a4c5d27093e passed the authorized real
+    Devnet 7/7 validation and all PR checks. Do not merge or redeploy without a fresh exact-head
+    authorization. After deployment, run multiple hosted browser attempts before restoring a stable
+    self-serve reliability claim.
 
   prohibited_shortcuts:
     - no_silent_concept_lock
@@ -300,12 +300,18 @@ handover:
     evidence: evidence/runtime/HOSTED-MANUAL-INTERMITTENT-UNKNOWN-2026-10-03.md
 
   reliability_observability_repair_checkpoint:
-    status: PROVEN_PREMERGE_AWAITING_EXPLICIT_LIVE_VALIDATION_AUTHORIZATION
+    status: LIVE_VALIDATED_PREMERGE_AWAITING_EXPLICIT_MERGE_REDEPLOY_AUTHORIZATION
     branch: fix/worlds-fair-live-reliability-observability-v1
     exact_head: "e868b1522c9fa28486777e3805f52a4c5d27093e"
     root_test_run: 37126812481
     premerge_gate_run: 37126812495
     web_run: 37126812491
-    live_devnet_validation: NOT_YET_AUTHORIZED
+    live_devnet_validation: PASS
+    live_validation_run: 37127681552
+    live_validation_job: 111216233302
+    live_validation_artifact: 11275770747
+    live_validation_digest: "sha256:2764b817a451142177bb944408bf21c0cbccb32f9668e9aa91592378d2f7e8d0"
+    starting_nonce: 7
+    ending_nonce: 8
     merge_redeploy_authorization: NOT_YET_GRANTED
     evidence: evidence/runtime/HOSTED-LIVE-RELIABILITY-OBSERVABILITY-PREMERGE-2026-10-03.md

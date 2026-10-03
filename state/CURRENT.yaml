@@ -51,9 +51,10 @@ phase:
 
 exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
 exact_next_action: >-
-  Extend/reconnect Vercel connector access so it includes the project/team that owns the standalone
-  frontend project cresco at cresco-lac.vercel.app. Once visible, publish Faadil1/cresco main from
-  root apps/web, verify /worlds-fair, then prove browser UI→public API→Solana and clean-room self-serve.
+  Create/import a new Cloudflare Workers application for the full CRESCO frontend from Faadil1/cresco
+  main with root apps/web and Worker name cresco. Use the committed vinext runtime. Once the exact
+  public Cloudflare origin is observed, extend backend CORS to that origin while preserving the
+  historical Vercel origin, then prove browser UI→public API→Solana and clean-room self-serve.
 
 build_authorized: true
 terminal_completeness_allowed: false
@@ -192,7 +193,7 @@ product_reality:
   shared_product_core: PROVEN_LIVE
   real_user_surface_code: PROVEN_BUILD_NOT_HOSTED
   public_hosted_world_fair_runtime: PROVEN_LIVE_API_TO_SOLANA
-  public_hosted_world_fair_frontend: BLOCKED_EXTERNAL_VERCEL_CONNECTION_VISIBILITY
+  public_hosted_world_fair_frontend: CLOUDFLARE_MIGRATION_PROVEN_PREDEPLOY
   judge_operator_self_serve: BLOCKED_FRONTEND_AND_BROWSER_PATH
   post_vertical_slice_depth_gap_review: PROVEN_ACTIVE
   post_vertical_slice_depth_gap_review_artifact: product/POST-VERTICAL-SLICE-DEPTH-GAP-REVIEW-2026-10-02.md
@@ -452,8 +453,9 @@ implementation_progress:
     closure_verification: PASS
     execution_note: "Authorized CI cleanup completed successfully and was verified by the dedicated GitHub Actions run."
   blocked_or_active:
-    - vercel_connector_access_to_project_cresco
-    - public_hosted_worlds_fair_web_route
+    - create_full_cresco_cloudflare_workers_frontend
+    - observe_exact_new_frontend_origin
+    - extend_backend_cors_to_new_origin
     - hosted_browser_UI_to_API_to_Solana_receipt
     - judge_operator_self_serve
     - fresh_environment_reproducibility
@@ -475,6 +477,26 @@ implementation_progress:
     shared_core_status: PROVEN_LIVE
     real_user_surface_code_status: PROVEN_BUILD_NOT_HOSTED
     next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
+
+  cloudflare_frontend_migration:
+    status: PROVEN_PREDEPLOY
+    product_scope: FULL_CRESCO_NOT_MICROSITE
+    source_repository: Faadil1/cresco
+    migration_pr: 13
+    proven_head: f567c2b5ebcb1ab04ae8bb63e1c06fcd72f92469
+    merge_commit: 6f7b9010d09f15e4b90ed2afbbf8a136397ce4d5
+    frontend_root: apps/web
+    worker_name: cresco
+    compatibility: 100_PERCENT
+    vinext_build: PASS
+    nextjs_regression: PASS
+    webkit: PASS
+    dry_run_packaging: PASS
+    evidence: evidence/runtime/CRESCO-CLOUDFLARE-FRONTEND-MIGRATION-PREDEPLOY-2026-10-03.md
+    legacy_pages_project:
+      name: cresco-visual-lab
+      status: LEGACY_OBSOLETE
+      reason: "It targeted removed apps/visual-lab, not current apps/web."
 
   vercel_frontend_connection:
     status: BLOCKED_BENITA_VERCEL_ACCESS_NOT_TRANSFERRED

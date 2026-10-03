@@ -39,9 +39,9 @@ Truth labels:
 | New World’s Fair on-chain runtime exists | OBSERVED | LIVE | Solana Devnet program `7pgPuPZSUUtFcvFtVGmS3piCE1bHY35kjb14vct9v45Z`; not yet a judge-facing public product surface |
 | Shared World’s Fair product core exists | OBSERVED | LIVE | Reusable server-side provider executed 7/7 canonical consequences live in run `37083019145`; receipt: `evidence/runtime/WORLDS-FAIR-OPERATOR-LAB-LIVE-2026-10-02.md` |
 | Public World’s Fair v0.3 runtime GET exists | OBSERVED | LIVE | Cloudflare Worker deployment from merge `fa26ff0…` returned HTTP 200 with exact Program ID and program SHA; evidence: `HOSTED-PUBLIC-RUNTIME-FIRST-ATTEMPT-2026-10-02.md` |
-| Public World’s Fair v0.3 live POST is reliable | OBSERVED | LIVE/PROVEN | After authorized PR #12 merge `5645e199…` and Cloudflare build `6a6199db…`, hosted POST returned HTTP 200 and all 7 canonical scenarios PASS; evidence: `HOSTED-API-SOLANA-PASS-2026-10-02.md` |
+| Public World’s Fair v0.3 live POST is reliable | OBSERVED | PARTIAL / INTERMITTENT | Multiple hosted runs have passed 7/7, but a later manual browser run ended UNKNOWN after Runtime Ready. Capability is proven; repeatability is not yet proven. Evidence: `HOSTED-BROWSER-TO-SOLANA-LIVE-PASS-2026-10-03.md` and `HOSTED-MANUAL-INTERMITTENT-UNKNOWN-2026-10-03.md`. |
 | World’s Fair web/operator surface is publicly hosted | OBSERVED | LIVE | Full CRESCO frontend is live at `https://cresco.faadil-casecraft.workers.dev`; hosted Chromium proof reached `/worlds-fair` and observed runtime state `Ready`; evidence: `CRESCO-CLOUDFLARE-CORS-AUTH-HOSTED-PASS-2026-10-03.md` |
-| Judge self-serve World’s Fair technical flow exists | OBSERVED | LIVE/PROVEN | Fresh Chromium runner reached public /worlds-fair, clicked the live-run control, observed HTTP PASS, rendered 7/7 live checks and five Explorer links; a second state-empty browser context also reached the public product and live-run control. External-human judge use remains unobserved. |
+| Judge self-serve World’s Fair technical flow exists | OBSERVED | PARTIAL / INTERMITTENT | A fresh Chromium run proved the complete path once, but a later manual browser run ended UNKNOWN. Treat self-serve as technically possible but not yet repeatably reliable. |
 | Runtime/commit binding for World’s Fair build exists | OBSERVED | LIVE/PROVEN | Local rebuild and on-chain program dump are bit-identical: SHA-256 `084a3f7aad8a5772d773816579f5d2b98542c4b966dbb0dd7c60cb397db21f61`, run `37037374212` |
 | System Control Plane v1 reconciled into this active project | OBSERVED | LOCAL | Adopted prospectively on 2026-10-01; not backdated |
 | Lifecycle coverage manifest exists | OBSERVED | LOCAL | `governance/LIFECYCLE-COVERAGE.yaml` |
@@ -112,3 +112,12 @@ Observed in run `37124741369`:
 - a second browser context with no cookies/storage also reached the public product, Runtime Ready state and live-run control.
 
 External-human judge/operator use was **not** observed and must not be inferred from this technical clean-room proof.
+
+
+## 2026-10-03 manual intermittent reliability downgrade
+
+A later manual browser recording reached public `/worlds-fair`, observed Runtime Ready and Mandate nonce 7, then ended with `WORLD_FAIR_LIVE_RUN_UNCONFIRMED` after the user triggered the live sequence.
+
+This is a real negative event. It does not erase the prior 7/7 PASS, but it downgrades repeatable technical self-serve from PROVEN to PARTIAL / INTERMITTENT until the failure is diagnosed and repaired.
+
+See `evidence/runtime/HOSTED-MANUAL-INTERMITTENT-UNKNOWN-2026-10-03.md`.

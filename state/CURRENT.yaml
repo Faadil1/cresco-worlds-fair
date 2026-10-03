@@ -514,5 +514,8 @@ implementation_progress:
     repair_live_artifact: 11260647857
     repair_live_artifact_digest: sha256:5f5400848c9ca37edbe433d08de6031e225f358a1ba725d87b330d48d19d01dd
     repair_cloudflare_bundle_run: 37085360049
-    repair_status: PROVEN_PREMERGE_AWAITING_EXPLICIT_REDEPLOY_AUTHORIZATION
+    repair_status: AUTHORIZED_FOR_EXACT_HEAD_MERGE_AND_CLOUDFLARE_REDEPLOY
+    repair_authorized_at: 2026-10-02
+    repair_authorized_head: 40abac5acfabe4b682b47a589e177fbe5340a273
+    repair_authorized_scope: "Merge PR #12 at this exact head and redeploy the existing CRESCO Cloudflare Worker only for the World’s Fair Devnet runtime repair."
   truth_boundary: "FIRST_LIVE_VERTICAL_SLICE is proven on Solana Devnet. This does not imply mainnet, production custody, institutional trading, audited security, operator demand, WTP, or adoption."

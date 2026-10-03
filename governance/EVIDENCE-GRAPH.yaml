@@ -176,20 +176,50 @@ claims:
       worker_bundle_status: PASS
       cloudflare_ci_run: 37083019089
       source_head: "cedfbb400f00f28fbe4268fde46ab68933d42e3c"
-      public_hosted_deployment_status: MISSING
+      public_hosted_deployment_status: PROVEN_API_ONLY
+      public_merge_commit: "5645e199c93d6c158969e17727f8a87c85c95484"
+      public_cloudflare_build: "6a6199db-e2b2-4ab9-9e63-d03c88a734ec"
+      hosted_api_proof_run: 37084475468
+      hosted_api_proof_attempt: 3
+      hosted_api_proof_job: 111097900800
+      hosted_api_proof_artifact: 11259669023
     concurrency:
       durable_live_run_lease: PROVEN_TESTED
       overlapping_public_run_result: "409 BUSY"
     limitation: >-
-      Shared live product-core execution is proven, but the public hosted Worker and /worlds-fair
-      surface have not yet been observed running this source head end-to-end.
+      Shared live product-core execution and public hosted API→Solana execution are proven.
+      The public /worlds-fair browser surface is still missing, so judge self-serve remains unproven.
+
+  - claim_id: WORLD_FAIR_HOSTED_API_TO_SOLANA
+    statement: "The public CRESCO v0.3 World’s Fair API executes the canonical CRESCO→Orca authority sequence live on Solana Devnet."
+    evidence_class: PRODUCTION_EVIDENCE
+    truth_state: OBSERVED
+    graph_status: COMPLETE
+    runtime_execution:
+      status: LIVE
+      network: "solana-devnet"
+      program_id: "7pgPuPZSUUtFcvFtVGmS3piCE1bHY35kjb14vct9v45Z"
+      program_sha256: "084a3f7aad8a5772d773816579f5d2b98542c4b966dbb0dd7c60cb397db21f61"
+      public_api: "https://keys-api-stocklana.faadil-casecraft.workers.dev"
+      product_merge_commit: "5645e199c93d6c158969e17727f8a87c85c95484"
+      cloudflare_build: "6a6199db-e2b2-4ab9-9e63-d03c88a734ec"
+      workflow_run: 37084475468
+      workflow_attempt: 3
+      workflow_job: 111097900800
+    receipt_or_telemetry:
+      status: PASS
+      artifact_pointer: "evidence/runtime/HOSTED-API-SOLANA-PASS-2026-10-02.md"
+      github_artifact: 11259669023
+      github_artifact_digest: "sha256:b8aaf603ab494fa3b7face4135fd4e1d5d568966c4044073f3f4c615142fd499"
+      canonical_scenarios: 7
+    limitation: "This proves hosted API→Solana, not the still-missing hosted browser route or clean-room judge self-serve."
 
   - claim_id: WORLD_FAIR_HOSTED_JUDGE_SELF_SERVE
     statement: "A judge can open the public World’s Fair surface and trigger the live CRESCO→Orca sequence without code or GitHub Actions."
     evidence_class: PRODUCTION_EVIDENCE
     truth_state: UNKNOWN
     graph_status: MISSING
-    reason: "UI/API source and Worker bundle are proven, but the hosted UI→API→Solana causal path has not yet been observed."
+    reason: "Hosted API→Solana is proven live, but the public /worlds-fair browser route remains missing and the browser UI→API causal path has not yet been observed."
 
   - claim_id: WORLD_FAIR_EXECUTION_BOUND_CAPITAL_AUTHORITY_VALUE
     statement: "Execution-bound delegated capital authority has validated operator value."

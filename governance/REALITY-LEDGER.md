@@ -40,12 +40,12 @@ Truth labels:
 | Shared World’s Fair product core exists | OBSERVED | LIVE | Reusable server-side provider executed 7/7 canonical consequences live in run `37083019145`; receipt: `evidence/runtime/WORLDS-FAIR-OPERATOR-LAB-LIVE-2026-10-02.md` |
 | Public World’s Fair v0.3 runtime GET exists | OBSERVED | LIVE | Cloudflare Worker deployment from merge `fa26ff0…` returned HTTP 200 with exact Program ID and program SHA; evidence: `HOSTED-PUBLIC-RUNTIME-FIRST-ATTEMPT-2026-10-02.md` |
 | Public World’s Fair v0.3 live POST is reliable | OBSERVED | LIVE/PROVEN | After authorized PR #12 merge `5645e199…` and Cloudflare build `6a6199db…`, hosted POST returned HTTP 200 and all 7 canonical scenarios PASS; evidence: `HOSTED-API-SOLANA-PASS-2026-10-02.md` |
-| World’s Fair web/operator surface exists in source | OBSERVED | LOCAL | `/worlds-fair` is implemented and CI-proven, but the expected Vercel URL returned HTTP 404 for 24 consecutive hosted checks |
-| Judge self-serve World’s Fair flow exists | UNKNOWN | PARTIAL | Hosted API→Solana is now proven, but the expected public /worlds-fair browser route is still missing and browser-triggered execution is unproven |
+| World’s Fair web/operator surface is publicly hosted | OBSERVED | LIVE | Full CRESCO frontend is live at `https://cresco.faadil-casecraft.workers.dev`; hosted Chromium proof reached `/worlds-fair` and observed runtime state `Ready`; evidence: `CRESCO-CLOUDFLARE-CORS-AUTH-HOSTED-PASS-2026-10-03.md` |
+| Judge self-serve World’s Fair flow exists | UNKNOWN | PARTIAL | Hosted frontend, exact CORS, real demo login and World’s Fair runtime read are proven; browser-triggered seven-scenario live execution and clean-room external judge proof remain missing |
 | Runtime/commit binding for World’s Fair build exists | OBSERVED | LIVE/PROVEN | Local rebuild and on-chain program dump are bit-identical: SHA-256 `084a3f7aad8a5772d773816579f5d2b98542c4b966dbb0dd7c60cb397db21f61`, run `37037374212` |
 | System Control Plane v1 reconciled into this active project | OBSERVED | LOCAL | Adopted prospectively on 2026-10-01; not backdated |
 | Lifecycle coverage manifest exists | OBSERVED | LOCAL | `governance/LIFECYCLE-COVERAGE.yaml` |
-| Claim→Runtime→Evidence Graph exists | OBSERVED | LIVE/PARTIAL | Live core, bit-identical runtime binding, shared product core and hosted API→Solana are bound to receipts; the remaining material causal edge is hosted browser UI→API→Solana |
+| Claim→Runtime→Evidence Graph exists | OBSERVED | LIVE/PARTIAL | Live core, bit-identical runtime binding, shared product core, hosted API→Solana, full hosted browser surface, exact CORS and login are bound to receipts; the remaining material causal edge is browser-triggered live execution plus clean-room judge proof |
 | Product Exploitation Loop is active now | OBSERVED | LIVE/PROCESS | ACTIVE after the proven first live vertical slice; depth review at `product/POST-VERTICAL-SLICE-DEPTH-GAP-REVIEW-2026-10-02.md` |
 | Adevar pre-audit reference is adopted product scope | OBSERVED | N/A | False; currently CLASSIFIED / REFERENCE_ONLY in central Reference Intelligence inbox |
 

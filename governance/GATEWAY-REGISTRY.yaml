@@ -178,7 +178,7 @@ registry:
     status: ACTIVE
     activates_when: "World’s Fair runtime exists"
     condition: "Public runtime must be reachable and consistent with the claimed build."
-    current_state: "End-to-end browser→API→Solana capability is proven. The reliability/observability repair from PR #15 is now merged and deployed on both current CRESCO Cloudflare Workers, and post-deploy read-only checks show /worlds-fair HTTP 200 and runtime READY. Hosted repeatability remains PARTIAL / INTERMITTENT until multiple separately authorized post-deploy browser live attempts succeed."
+    current_state: "End-to-end browser→API→Solana capability is proven. Post-deploy repeatability exposed an intermittent pre-write ORCA_CONTEXT failure; the targeted bounded-read-retry patch in PR #16 has now passed exact-head non-live gates and one authorized real Devnet 7/7 validation with ORCA_CONTEXT completed. The patch is not yet merged/deployed publicly, so hosted repeatability remains PARTIAL / INTERMITTENT pending separate merge/redeploy authorization and a new bounded browser repeatability campaign."
     evidence:
       - "evidence/runtime/WORLDS-FAIR-OPERATOR-LAB-LIVE-2026-10-02.md"
       - "evidence/runtime/HOSTED-PUBLIC-RUNTIME-FIRST-ATTEMPT-2026-10-02.md"
@@ -192,6 +192,9 @@ registry:
       - "evidence/runtime/HOSTED-LIVE-RELIABILITY-OBSERVABILITY-PREMERGE-2026-10-03.md"
       - "evidence/runtime/HOSTED-LIVE-RELIABILITY-OBSERVABILITY-LIVE-VALIDATION-PASS-2026-10-03.md"
       - "evidence/runtime/HOSTED-LIVE-RELIABILITY-OBSERVABILITY-MERGE-DEPLOY-2026-10-03.md"
+      - "evidence/runtime/HOSTED-POSTDEPLOY-REPEATABILITY-3X-ATTEMPT-2026-10-03.md"
+      - "evidence/runtime/HOSTED-ORCA-CONTEXT-READ-RETRY-PREMERGE-2026-10-03.md"
+      - "evidence/runtime/HOSTED-ORCA-CONTEXT-READ-RETRY-LIVE-VALIDATION-PASS-2026-10-03.md"
 
   - id: PRE_LAUNCH_SHIP
     name: "Universal Pre-Launch / Ship Assurance"

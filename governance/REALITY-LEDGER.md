@@ -38,8 +38,10 @@ Truth labels:
 | Technical Reality Check for locked World’s Fair vertical | OBSERVED | LOCAL | PASS_WITH_BOUNDED_DELTA; no venue integration built yet |
 | New World’s Fair on-chain runtime exists | OBSERVED | LIVE | Solana Devnet program `7pgPuPZSUUtFcvFtVGmS3piCE1bHY35kjb14vct9v45Z`; not yet a judge-facing public product surface |
 | Shared World’s Fair product core exists | OBSERVED | LIVE | Reusable server-side provider executed 7/7 canonical consequences live in run `37083019145`; receipt: `evidence/runtime/WORLDS-FAIR-OPERATOR-LAB-LIVE-2026-10-02.md` |
-| World’s Fair web/operator surface exists in source | OBSERVED | LOCAL | `/worlds-fair` plus v0.3 API adapter are implemented and build-tested; public hosted binding is not yet observed |
-| Judge self-serve World’s Fair flow exists | UNKNOWN | PARTIAL | Product surface and live shared core exist, but hosted UI→API→Solana execution has not yet been proven |
+| Public World’s Fair v0.3 runtime GET exists | OBSERVED | LIVE | Cloudflare Worker deployment from merge `fa26ff0…` returned HTTP 200 with exact Program ID and program SHA; evidence: `HOSTED-PUBLIC-RUNTIME-FIRST-ATTEMPT-2026-10-02.md` |
+| Public World’s Fair v0.3 live POST is reliable | OBSERVED | PARTIAL | First hosted write reached the real runtime but returned HTTP 503 / UNKNOWN because the Solana signature expired by block height; PR #12 is repairing confirmation/RPC reliability |
+| World’s Fair web/operator surface exists in source | OBSERVED | LOCAL | `/worlds-fair` is implemented and CI-proven, but the expected Vercel URL returned HTTP 404 for 24 consecutive hosted checks |
+| Judge self-serve World’s Fair flow exists | UNKNOWN | PARTIAL | Public runtime read exists, but hosted write PASS and hosted frontend are both still missing |
 | Runtime/commit binding for World’s Fair build exists | OBSERVED | LIVE/PROVEN | Local rebuild and on-chain program dump are bit-identical: SHA-256 `084a3f7aad8a5772d773816579f5d2b98542c4b966dbb0dd7c60cb397db21f61`, run `37037374212` |
 | System Control Plane v1 reconciled into this active project | OBSERVED | LOCAL | Adopted prospectively on 2026-10-01; not backdated |
 | Lifecycle coverage manifest exists | OBSERVED | LOCAL | `governance/LIFECYCLE-COVERAGE.yaml` |

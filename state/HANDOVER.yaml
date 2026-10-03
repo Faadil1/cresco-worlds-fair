@@ -206,9 +206,9 @@ handover:
 
   exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
   exact_next_action: >-
-    Treat hosted browser→API→Solana 7/7 as proven technical self-serve. Package STORY→DEMO→Q&A around
-    the captured live receipt and keep independent external-human judge/operator validation as a
-    separate evidence gap; do not claim demand, adoption or external validation without that trial.
+    Repair the manual hosted UNKNOWN observed after an earlier 7/7 PASS. Add phase-aware diagnostics,
+    partial receipts, and safe signature reconciliation; then run multiple hosted browser attempts
+    before restoring a stable technical self-serve claim.
 
   prohibited_shortcuts:
     - no_silent_concept_lock
@@ -289,3 +289,11 @@ handover:
     clean_browser_context: PASS
     external_human_judge: NOT_OBSERVED
     evidence: evidence/runtime/HOSTED-BROWSER-TO-SOLANA-LIVE-PASS-2026-10-03.md
+
+  manual_intermittent_live_run:
+    status: OBSERVED
+    outcome: UNKNOWN
+    error: WORLD_FAIR_LIVE_RUN_UNCONFIRMED
+    observed_nonce: 7
+    effect: HOSTED_SELF_SERVE_PARTIAL__INTERMITTENT_LIVE_RUN
+    evidence: evidence/runtime/HOSTED-MANUAL-INTERMITTENT-UNKNOWN-2026-10-03.md

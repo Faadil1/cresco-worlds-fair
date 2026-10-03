@@ -178,7 +178,7 @@ registry:
     status: ACTIVE
     activates_when: "World’s Fair runtime exists"
     condition: "Public runtime must be reachable and consistent with the claimed build."
-    current_state: "Public CRESCO frontend, exact CORS, demo login, /worlds-fair runtime read, and browser-triggered canonical 7/7 live execution are proven on Cloudflare→Solana Devnet. Fresh-browser technical self-serve is proven; independent external-human judge/operator use is not observed."
+    current_state: "End-to-end browser→API→Solana capability is proven, but a later manual hosted run ended UNKNOWN after Runtime Ready. Stable/repeatable technical self-serve is therefore PARTIAL until the intermittent live-run failure is diagnosed, repaired, and re-proven."
     evidence:
       - "evidence/runtime/WORLDS-FAIR-OPERATOR-LAB-LIVE-2026-10-02.md"
       - "evidence/runtime/HOSTED-PUBLIC-RUNTIME-FIRST-ATTEMPT-2026-10-02.md"
@@ -188,6 +188,7 @@ registry:
       - "evidence/runtime/CRESCO-CLOUDFLARE-FRONTEND-MIGRATION-PREDEPLOY-2026-10-03.md"
       - "evidence/runtime/CRESCO-CLOUDFLARE-CORS-AUTH-HOSTED-PASS-2026-10-03.md"
       - "evidence/runtime/HOSTED-BROWSER-TO-SOLANA-LIVE-PASS-2026-10-03.md"
+      - "evidence/runtime/HOSTED-MANUAL-INTERMITTENT-UNKNOWN-2026-10-03.md"
 
   - id: PRE_LAUNCH_SHIP
     name: "Universal Pre-Launch / Ship Assurance"
@@ -445,7 +446,7 @@ product_depth_subchecks:
   shared_product_core: PROVEN
   reality_ledger: ACTIVE
   observability_receipts: PROVEN_SHARED_CORE
-  judge_operator_self_serve: PROVEN_TECHNICAL_SELF_SERVE_EXTERNAL_HUMAN_NOT_OBSERVED
+  judge_operator_self_serve: PARTIAL_INTERMITTENT_LIVE_RUN
   setup_reproducibility: ACTIVE
   clean_room_external_dependency_failure: ACTIVE
   post_vertical_slice_depth_gap_review: PROVEN

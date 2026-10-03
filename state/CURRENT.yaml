@@ -51,16 +51,14 @@ phase:
 
 exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
 exact_next_action: >-
-  PR #17 at exact head 6af66d051493b4c3d8ce820ee4f615d5723e1ea8 was opened under human authorization.
-  Root tests and Cloudflare Worker dry-run passed, but the protected World’s Fair live run
-  37148741602 failed before scenario receipt creation after runtime READY / nonce 11 on repeated
-  public Devnet RPC 429 responses. The quote patch therefore remains not live-validated by that run.
-  A follow-up strictly read-side preflight/state repair is now proven non-live on
-  fix/worlds-fair-preflight-read-backoff-v1 at exact head
-  494818b67b0e2ab8cdb304c64422e36d89dc67f0 with root test run 37148961794 PASS.
-  Obtain fresh exact-head human authorization before opening a replacement PR because that action
-  will trigger another real World’s Fair Devnet 7/7 validation. Do not merge PR #17 and do not
-  redeploy publicly without a separate authorization.
+  PR #18 at exact head 494818b67b0e2ab8cdb304c64422e36d89dc67f0 passed root test run
+  37149230534, Cloudflare Worker CI run 37149230535 and the protected World’s Fair live Devnet
+  validation run 37149230540. The live receipt is valid 7/7 with Mandate nonce 11 -> 12 and artifact
+  11283376180 / sha256:383773aa09db6d5fe8cd562fc4ef80cb08aac3693181d2b7cdf216f871960f19.
+  The exact-head repair is therefore live-proven on Devnet but not yet merged or publicly deployed.
+  Obtain separate human authorization before merging PR #18 and redeploying the affected CRESCO
+  Cloudflare Workers, then run bounded post-deploy read-only smoke and separately authorized live
+  repeatability evidence. PR #17 remains untouched/superseded.
 
 build_authorized: true
 terminal_completeness_allowed: false
@@ -733,19 +731,35 @@ implementation_progress:
       - evidence/runtime/HOSTED-PRE-RECEIPT-RPC-BOTTLENECK-2026-10-03.md
 
   preflight_state_read_backoff_checkpoint:
-    status: PROVEN_NON_LIVE_AWAITING_EXPLICIT_LIVE_VALIDATION_AUTHORIZATION
+    status: PROVEN_LIVE_DEVNET_AWAITING_MERGE_REDEPLOY_AUTHORIZATION
     source_repository: Faadil1/cresco
     branch: fix/worlds-fair-preflight-read-backoff-v1
     exact_head: 494818b67b0e2ab8cdb304c64422e36d89dc67f0
     base_head: 6af66d051493b4c3d8ce820ee4f615d5723e1ea8
+    base_main: 27300a396d9f3049f19e7aed228acdb2f0bdf9d9
     preserves_quote_read_repair: true
     retry_scope: READ_ONLY
     retry_profile_attempts: 6
     retry_profile_base_delay_ms: 2000
     root_test_run: 37148961794
     root_test_result: PASS
-    pull_request: NOT_OPENED
-    live_devnet_validation: NOT_AUTHORIZED
+    pull_request: 18
+    pr_root_test_run: 37149230534
+    pr_root_test_result: PASS
+    pr_cloudflare_worker_ci_run: 37149230535
+    pr_cloudflare_worker_ci_result: PASS
+    live_devnet_validation: PASS
+    live_validation_run: 37149230540
+    live_validation_job: 111279373905
+    starting_nonce: 11
+    ending_nonce: 12
+    receipt_progress: COMPLETE
+    receipt_artifact: 11283376180
+    receipt_artifact_digest: sha256:383773aa09db6d5fe8cd562fc4ef80cb08aac3693181d2b7cdf216f871960f19
+    canonical_scenarios: PASS_7_OF_7
+    public_rpc_429_observed: true
     merge_redeploy_authorization: NOT_GRANTED
+    public_deployment_state: NOT_DEPLOYED
     evidence:
       - evidence/runtime/HOSTED-PRE-RECEIPT-RPC-BOTTLENECK-2026-10-03.md
+      - evidence/runtime/HOSTED-PREFLIGHT-STATE-READ-BACKOFF-LIVE-VALIDATION-PASS-2026-10-03.md

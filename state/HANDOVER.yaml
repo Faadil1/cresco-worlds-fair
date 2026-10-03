@@ -159,7 +159,13 @@ handover:
     cloudflare_worker: PROVEN_PUBLIC
     cloudflare_version: "ab366ebc-24d5-48c1-94b8-3163bba13293"
     hosted_runtime_get: PROVEN_PASS
-    hosted_runtime_post: FAIL_CLOSED_UNKNOWN_BLOCKHASH_EXPIRED
+    hosted_runtime_post: PROVEN_PASS_AFTER_PR12_REPAIR
+    hosted_api_to_solana: PROVEN_PASS
+    hosted_api_proof_run: 37084475468
+    hosted_api_proof_attempt: 3
+    hosted_api_proof_job: 111097900800
+    hosted_api_proof_artifact: 11259669023
+    hosted_api_evidence: evidence/runtime/HOSTED-API-SOLANA-PASS-2026-10-02.md
     hosted_frontend: BLOCKED_404
     evidence: evidence/runtime/HOSTED-PUBLIC-RUNTIME-FIRST-ATTEMPT-2026-10-02.md
     active_repair_pr: 12
@@ -168,18 +174,20 @@ handover:
     repair_live_run: 37085360077
     repair_live_artifact: 11260647857
     repair_evidence: evidence/runtime/HOSTED-CONFIRMATION-REPAIR-PREMERGE-2026-10-02.md
-    repair_merge_authorization: GRANTED_EXACT_HEAD_ONLY
+    repair_merge_authorization: CONSUMED
     repair_authorized_head: "40abac5acfabe4b682b47a589e177fbe5340a273"
+    repair_merge_commit: "5645e199c93d6c158969e17727f8a87c85c95484"
+    repair_cloudflare_build: "6a6199db-e2b2-4ab9-9e63-d03c88a734ec"
     repair_authorized_scope: "Merge PR #12 and redeploy existing CRESCO Cloudflare Worker for World’s Fair Devnet repair only."
+    repair_hosted_result: PROVEN_PASS
     scope: "CRESCO World’s Fair Worker/API + /worlds-fair frontend only; no mainnet, no new Solana program, no submission."
     prior_cleanup_authorization_reusable: false
 
   exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
   exact_next_action: >-
-    Request explicit human authorization to merge PR #12 at head
-    40abac5acfabe4b682b47a589e177fbe5340a273 and redeploy the existing Cloudflare Worker.
-    Then re-run the hosted API→Solana proof. Separately restore/publish the Vercel /worlds-fair
-    route, which is still HTTP 404, before any judge-self-serve promotion.
+    Diagnose and restore the Vercel /worlds-fair production route, which remains the only material
+    hosted product edge after API→Solana PASS. Then execute the canonical path from the hosted browser
+    surface and complete clean-room judge self-serve proof before promotion.
 
   prohibited_shortcuts:
     - no_silent_concept_lock

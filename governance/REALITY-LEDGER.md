@@ -152,3 +152,24 @@ Observed production deployment:
 - the legacy `devnet-execution-bridge` was not triggered because PR #16 did not touch its monitored paths.
 
 Stable hosted self-serve remains PARTIAL / INTERMITTENT until a fresh bounded post-deploy browser live-repeatability campaign succeeds.
+
+
+## 2026-10-03 post-PR16 quote-stage reliability finding
+
+A separately authorized bounded repeatability campaign was rerun against the deployed PR #16 runtime.
+
+Observed:
+- attempt 1: fresh-browser 7/7 PASS, nonce `10 → 11`, five transaction links, zero browser request failures;
+- attempt 2: HTTP 503 / UNKNOWN at `STANDING_1_QUOTE`;
+- failure class: `TRANSIENT_RPC`;
+- retry policy: `SAFE_RETRY_READ`;
+- confirmed effects: `0`;
+- attempt 3: not executed.
+
+This proves the ORCA_CONTEXT repair moved the failure frontier forward, but public Devnet RPC throttling can still exhaust the quote-stage read retry budget after one full live run.
+
+A source-only repair now increases the read-heavy Orca retry profile to six attempts with a 2-second linear base delay, for a maximum 30-second wait budget before the sixth attempt. Write paths remain non-replayed. This patch is non-live proven only and awaits a separate live-validation authorization.
+
+See:
+- `evidence/runtime/HOSTED-POSTDEPLOY-REPEATABILITY-AFTER-ORCA-RETRY-2026-10-03.md`
+- `evidence/runtime/HOSTED-ORCA-QUOTE-READ-BACKOFF-PREMERGE-2026-10-03.md`

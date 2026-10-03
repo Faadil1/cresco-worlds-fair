@@ -178,9 +178,10 @@ registry:
     status: ACTIVE
     activates_when: "World’s Fair runtime exists"
     condition: "Public runtime must be reachable and consistent with the claimed build."
-    current_state: "On-chain runtime and shared server-side product core are proven; /worlds-fair and the v0.3 Worker API are build-proven but not yet observed on the public hosted runtime."
+    current_state: "Public v0.3 runtime GET is proven on Cloudflare and bound to the expected Program ID/hash. First hosted POST failed closed on blockhash expiry; /worlds-fair remained HTTP 404 for 24 checks. PR #12 reliability repair is active."
     evidence:
       - "evidence/runtime/WORLDS-FAIR-OPERATOR-LAB-LIVE-2026-10-02.md"
+      - "evidence/runtime/HOSTED-PUBLIC-RUNTIME-FIRST-ATTEMPT-2026-10-02.md"
 
   - id: PRE_LAUNCH_SHIP
     name: "Universal Pre-Launch / Ship Assurance"

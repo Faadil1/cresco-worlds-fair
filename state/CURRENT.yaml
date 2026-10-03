@@ -477,7 +477,9 @@ implementation_progress:
     next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
 
   vercel_frontend_connection:
-    status: BLOCKED_EXTERNAL_CONNECTION_VISIBILITY
+    status: BLOCKED_BENITA_VERCEL_ACCESS_NOT_TRANSFERRED
+    historical_owner: Benita2001
+    source_pull_request: 1
     expected_project: cresco
     expected_domain: https://cresco-lac.vercel.app
     root_directory: apps/web
@@ -485,6 +487,9 @@ implementation_progress:
       - team_twDc66jGM0sPvNM4I5Huc0x7
       - team_b8hypzENtczjR7lfxn2y8L6Q
     direct_project_lookup: NOT_FOUND_IN_BOTH_CONNECTED_TEAMS
+    repository_contains_vercel_project_id: false
+    repository_contains_vercel_team_id: false
+    repository_contains_dot_vercel_project_json: false
     evidence: evidence/runtime/VERCEL-FRONTEND-CONNECTION-BLOCK-2026-10-02.md
 
   public_deployment_checkpoint:

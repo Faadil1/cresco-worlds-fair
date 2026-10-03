@@ -150,7 +150,9 @@ handover:
     depth_gap_review: product/POST-VERTICAL-SLICE-DEPTH-GAP-REVIEW-2026-10-02.md
 
   public_deployment_checkpoint:
-    status: AWAITING_EXPLICIT_HUMAN_AUTHORIZATION
+    status: AUTHORIZED_EXECUTION_PENDING
+    authorized_at: 2026-10-02
+    human_authorization: "oui allons y"
     source_head: "cedfbb400f00f28fbe4268fde46ab68933d42e3c"
     pull_request: 11
     scope: "CRESCO World’s Fair Worker/API + /worlds-fair frontend only; no mainnet, no new Solana program, no submission."

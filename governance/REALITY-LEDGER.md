@@ -41,11 +41,11 @@ Truth labels:
 | Public World’s Fair v0.3 runtime GET exists | OBSERVED | LIVE | Cloudflare Worker deployment from merge `fa26ff0…` returned HTTP 200 with exact Program ID and program SHA; evidence: `HOSTED-PUBLIC-RUNTIME-FIRST-ATTEMPT-2026-10-02.md` |
 | Public World’s Fair v0.3 live POST is reliable | OBSERVED | LIVE/PROVEN | After authorized PR #12 merge `5645e199…` and Cloudflare build `6a6199db…`, hosted POST returned HTTP 200 and all 7 canonical scenarios PASS; evidence: `HOSTED-API-SOLANA-PASS-2026-10-02.md` |
 | World’s Fair web/operator surface is publicly hosted | OBSERVED | LIVE | Full CRESCO frontend is live at `https://cresco.faadil-casecraft.workers.dev`; hosted Chromium proof reached `/worlds-fair` and observed runtime state `Ready`; evidence: `CRESCO-CLOUDFLARE-CORS-AUTH-HOSTED-PASS-2026-10-03.md` |
-| Judge self-serve World’s Fair flow exists | UNKNOWN | PARTIAL | Hosted frontend, exact CORS, real demo login and World’s Fair runtime read are proven; browser-triggered seven-scenario live execution and clean-room external judge proof remain missing |
+| Judge self-serve World’s Fair technical flow exists | OBSERVED | LIVE/PROVEN | Fresh Chromium runner reached public /worlds-fair, clicked the live-run control, observed HTTP PASS, rendered 7/7 live checks and five Explorer links; a second state-empty browser context also reached the public product and live-run control. External-human judge use remains unobserved. |
 | Runtime/commit binding for World’s Fair build exists | OBSERVED | LIVE/PROVEN | Local rebuild and on-chain program dump are bit-identical: SHA-256 `084a3f7aad8a5772d773816579f5d2b98542c4b966dbb0dd7c60cb397db21f61`, run `37037374212` |
 | System Control Plane v1 reconciled into this active project | OBSERVED | LOCAL | Adopted prospectively on 2026-10-01; not backdated |
 | Lifecycle coverage manifest exists | OBSERVED | LOCAL | `governance/LIFECYCLE-COVERAGE.yaml` |
-| Claim→Runtime→Evidence Graph exists | OBSERVED | LIVE/PARTIAL | Live core, bit-identical runtime binding, shared product core, hosted API→Solana, full hosted browser surface, exact CORS and login are bound to receipts; the remaining material causal edge is browser-triggered live execution plus clean-room judge proof |
+| Claim→Runtime→Evidence Graph exists | OBSERVED | LIVE/PROVEN_WITH_VALIDATION_GAP | Live core, runtime binding, hosted API→Solana, hosted browser, exact CORS, login and browser-triggered 7/7 execution are bound to receipts. Independent external-human validation remains a separate non-runtime evidence gap. |
 | Product Exploitation Loop is active now | OBSERVED | LIVE/PROCESS | ACTIVE after the proven first live vertical slice; depth review at `product/POST-VERTICAL-SLICE-DEPTH-GAP-REVIEW-2026-10-02.md` |
 | Adevar pre-audit reference is adopted product scope | OBSERVED | N/A | False; currently CLASSIFIED / REFERENCE_ONLY in central Reference Intelligence inbox |
 
@@ -95,3 +95,20 @@ Observed at source head `cedfbb400f00f28fbe4268fde46ab68933d42e3c`:
 - the web surface is implemented and build-tested.
 
 Still **not observed**: public hosted Worker + public `/worlds-fair` + UI-triggered live Solana receipt. Therefore judge self-serve remains UNKNOWN/PARTIAL, not PROVEN.
+
+
+## 2026-10-03 hosted browser 7/7 promotion
+
+Observed in run `37124741369`:
+- public frontend: `https://cresco.faadil-casecraft.workers.dev`;
+- public API: `https://keys-api-stocklana.faadil-casecraft.workers.dev`;
+- fresh Chromium browser opened `/worlds-fair`;
+- runtime state: Ready;
+- browser clicked the live authority control;
+- UI displayed `7/7 live checks proven`;
+- five Solana Explorer transaction links were visible;
+- browser request failures: 0;
+- starting Mandate nonce: 6;
+- a second browser context with no cookies/storage also reached the public product, Runtime Ready state and live-run control.
+
+External-human judge/operator use was **not** observed and must not be inferred from this technical clean-room proof.

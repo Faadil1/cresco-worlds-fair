@@ -178,7 +178,9 @@ registry:
     status: ACTIVE
     activates_when: "World’s Fair runtime exists"
     condition: "Public runtime must be reachable and consistent with the claimed build."
-    current_state: "On-chain Devnet program is reachable; judge-facing public product surface is not yet built."
+    current_state: "On-chain runtime and shared server-side product core are proven; /worlds-fair and the v0.3 Worker API are build-proven but not yet observed on the public hosted runtime."
+    evidence:
+      - "evidence/runtime/WORLDS-FAIR-OPERATOR-LAB-LIVE-2026-10-02.md"
 
   - id: PRE_LAUNCH_SHIP
     name: "Universal Pre-Launch / Ship Assurance"
@@ -409,7 +411,7 @@ registry:
     condition: "Continue coherent depth while marginal product value/differentiation justifies cost, risk and deadline."
     evidence:
       - "product/POST-VERTICAL-SLICE-DEPTH-GAP-REVIEW-2026-10-02.md"
-    current_target: "REAL_USER_SURFACE_AND_SHARED_CORE"
+    current_target: "HOSTED_JUDGE_SELF_SERVE"
 
   - id: PROJECT_STATE_CONTINUITY
     name: "CURRENT / HANDOVER continuity"
@@ -429,14 +431,14 @@ product_depth_subchecks:
   representative_boundary_scenario: PROVEN
   representative_recovery_scenario: PROVEN
   failure_recovery: PROVEN
-  real_user_surface: BLOCKED
+  real_user_surface: PARTIAL_BUILD_PROVEN_NOT_HOSTED
   external_user_operator_evidence: BLOCKED
-  time_to_first_value: BLOCKED
+  time_to_first_value: BLOCKED_HOSTED_PATH_MISSING
   operational_economics_when_material: ACTIVE
-  shared_product_core: PARTIAL
+  shared_product_core: PROVEN
   reality_ledger: ACTIVE
-  observability_receipts: PROVEN
-  judge_operator_self_serve: BLOCKED
+  observability_receipts: PROVEN_SHARED_CORE
+  judge_operator_self_serve: BLOCKED_HOSTED_PROOF
   setup_reproducibility: ACTIVE
   clean_room_external_dependency_failure: ACTIVE
   post_vertical_slice_depth_gap_review: PROVEN

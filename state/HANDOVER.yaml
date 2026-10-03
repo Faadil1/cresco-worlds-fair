@@ -14,7 +14,7 @@ handover:
     Chat memory is routing context only.
 
   lifecycle_status: ACTIVE
-  product_status: FIRST_LIVE_VERTICAL_SLICE_PROVEN_WITH_VALIDATION_GAP
+  product_status: OPERATOR_LAB_SHARED_CORE_PROVEN__HOSTED_SELF_SERVE_PENDING_WITH_VALIDATION_GAP
   build_authorized: true
   terminal_completeness_allowed: false
 
@@ -29,21 +29,22 @@ handover:
     cross_project_learning_decision: NO_CHANGE
 
   last_proven_gate:
-    id: BUILD__FIRST_LIVE_VERTICAL_SLICE
+    id: PRODUCT_EXPLOITATION_LOOP__SHARED_LIVE_PRODUCT_CORE
     status: PROVEN
-    evidence: evidence/runtime/FIRST-LIVE-VERTICAL-SLICE-2026-10-02.md
+    evidence: evidence/runtime/WORLDS-FAIR-OPERATOR-LAB-LIVE-2026-10-02.md
     note: >-
-      Real Solana Devnet CRESCO→Orca execution passed standing, soft-boundary, exact-exception,
-      mutation, replay, hard-boundary, evidence-failure, rollback and stale-authority scenarios.
+      A reusable server-side World’s Fair provider executed the same CRESCO→Orca mechanism live,
+      with stable distinct delegate, 7/7 consequence scenarios, durable overlap refusal and a
+      Cloudflare-buildable API path.
 
   current_gate:
-    id: PRODUCT_EXPLOITATION_LOOP__REAL_USER_SURFACE_AND_SHARED_CORE
+    id: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
     status: ACTIVE
     blockers:
-      - judge_operator_usable_worlds_fair_surface
-      - shared_worlds_fair_api_service_over_same_live_core
-      - stable_demo_environment_without_repeated_program_deploy
-      - runtime_commit_binary_hash_binding_hardening
+      - publish_worlds_fair_worker_from_proven_head
+      - publish_worlds_fair_web_route_from_proven_head
+      - hosted_UI_to_API_to_Solana_receipt
+      - clean_room_judge_self_serve
       - fresh_environment_reproducibility
 
   preserved_validation_gaps:
@@ -69,9 +70,14 @@ handover:
     world_fair_live_vertical_slice: PROVEN
     product_exploitation_loop: ACTIVE
     live_receipt: evidence/runtime/FIRST-LIVE-VERTICAL-SLICE-2026-10-02.md
+    shared_core_receipt: evidence/runtime/WORLDS-FAIR-OPERATOR-LAB-LIVE-2026-10-02.md
+    shared_product_core: PROVEN_LIVE
+    real_user_surface_code: PROVEN_BUILD_NOT_HOSTED
+    public_runtime: MISSING
+    judge_self_serve: MISSING
     depth_gap_review: product/POST-VERTICAL-SLICE-DEPTH-GAP-REVIEW-2026-10-02.md
     highest_safe_action_tier: APPROVAL_GATED_WRITE
-    next_depth_target: REAL_USER_SURFACE_AND_SHARED_CORE
+    next_depth_target: HOSTED_JUDGE_SELF_SERVE
 
   evidence_graph:
     file: governance/EVIDENCE-GRAPH.yaml
@@ -143,10 +149,11 @@ handover:
     status: ACTIVE
     depth_gap_review: product/POST-VERTICAL-SLICE-DEPTH-GAP-REVIEW-2026-10-02.md
 
-  exact_next_gate: PRODUCT_EXPLOITATION_LOOP__REAL_USER_SURFACE_AND_SHARED_CORE
+  exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
   exact_next_action: >-
-    Build a judge/operator-usable World’s Fair surface backed by the same live CRESCO→Orca core,
-    harden runtime/commit binding, and prove fresh-environment/self-serve behavior before demo lock.
+    Deploy the World’s Fair Worker/API and /worlds-fair web surface from source head
+    cedfbb400f00f28fbe4268fde46ab68933d42e3c, then prove the hosted UI/API executes the live
+    CRESCO→Orca sequence and records a self-serve receipt before demo lock.
 
   prohibited_shortcuts:
     - no_silent_concept_lock

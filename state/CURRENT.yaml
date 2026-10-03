@@ -51,9 +51,10 @@ phase:
 
 exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
 exact_next_action: >-
-  Publish the bound World’s Fair Worker/API and /worlds-fair web surface from the proven source head,
-  then execute the canonical live sequence through the hosted UI/API and record a hosted self-serve receipt.
-  Do not claim judge self-serve before that hosted path is observed.
+  Complete PR #12 hosted-confirmation/RPC reliability repair and prove its shared-core live smoke.
+  Then obtain explicit authorization before merging that new repair deployment, re-prove hosted API→Solana,
+  and publish the still-missing Vercel /worlds-fair route. Do not claim judge self-serve before the
+  full hosted UI→API→Solana path is observed.
 
 build_authorized: true
 terminal_completeness_allowed: false
@@ -191,8 +192,9 @@ product_reality:
   external_user_operator_evidence: MISSING_VALIDATION_GAP_PRESERVED
   shared_product_core: PROVEN_LIVE
   real_user_surface_code: PROVEN_BUILD_NOT_HOSTED
-  public_hosted_world_fair_runtime: MISSING_NEXT_P0
-  judge_operator_self_serve: MISSING_HOSTED_PROOF
+  public_hosted_world_fair_runtime: PARTIAL_READ_PROVEN_WRITE_FAILED_CLOSED
+  public_hosted_world_fair_frontend: MISSING_404
+  judge_operator_self_serve: BLOCKED_HOSTED_WRITE_AND_FRONTEND
   post_vertical_slice_depth_gap_review: PROVEN_ACTIVE
   post_vertical_slice_depth_gap_review_artifact: product/POST-VERTICAL-SLICE-DEPTH-GAP-REVIEW-2026-10-02.md
 
@@ -451,8 +453,8 @@ implementation_progress:
     closure_verification: PASS
     execution_note: "Authorized CI cleanup completed successfully and was verified by the dedicated GitHub Actions run."
   blocked_or_active:
-    - public_hosted_worlds_fair_worker
-    - public_hosted_worlds_fair_web_route
+    - hosted_worlds_fair_API_write_reliability_PR12
+    - public_hosted_worlds_fair_web_route_404
     - hosted_UI_to_API_to_Solana_receipt
     - judge_operator_self_serve
     - fresh_environment_reproducibility
@@ -476,13 +478,19 @@ implementation_progress:
     next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
 
   public_deployment_checkpoint:
-    status: AUTHORIZED_EXECUTION_PENDING
+    status: EXECUTED_PARTIAL_PUBLICATION
     authorized_at: 2026-10-02
     human_authorization: "oui allons y"
     source_repository: Faadil1/cresco
-    source_head: cedfbb400f00f28fbe4268fde46ab68933d42e3c
+    authorized_source_head: cedfbb400f00f28fbe4268fde46ab68933d42e3c
     pull_request: 11
-    pull_request_state: DRAFT
+    pull_request_state: MERGED
+    merge_commit: fa26ff06028b57042c850bef4b9467b39e786ea6
+    cloudflare_worker_publication: PROVEN
+    cloudflare_worker_version: ab366ebc-24d5-48c1-94b8-3163bba13293
+    hosted_runtime_get: PROVEN_PASS
+    hosted_runtime_post: FAIL_CLOSED_UNKNOWN_BLOCKHASH_EXPIRED
+    hosted_frontend: BLOCKED_404
     requested_scope:
       - "Promote/merge PR #11 only after human authorization."
       - "Allow the existing CRESCO Cloudflare Worker deployment to publish this World’s Fair API source."
@@ -496,5 +504,9 @@ implementation_progress:
       - paid infrastructure changes
       - operator outreach
     authorization_inherited_from_devnet_cleanup: false
-    execution_status: NOT_YET_EXECUTED
+    execution_status: PARTIAL
+    evidence: evidence/runtime/HOSTED-PUBLIC-RUNTIME-FIRST-ATTEMPT-2026-10-02.md
+    repair_pull_request: 12
+    repair_branch: fix/worlds-fair-hosted-confirmation-v1
+    repair_status: ACTIVE_NOT_AUTHORIZED_FOR_MERGE
   truth_boundary: "FIRST_LIVE_VERTICAL_SLICE is proven on Solana Devnet. This does not imply mainnet, production custody, institutional trading, audited security, operator demand, WTP, or adoption."

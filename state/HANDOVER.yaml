@@ -206,14 +206,13 @@ handover:
 
   exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
   exact_next_action: >-
-    PR #18 at exact head 494818b67b0e2ab8cdb304c64422e36d89dc67f0 is now live-proven on Solana
-    Devnet: root test 37149230534 PASS, Cloudflare Worker CI 37149230535 PASS and protected 7/7 live run
-    37149230540 PASS with nonce 11 -> 12 and receipt artifact 11283376180 /
-    sha256:383773aa09db6d5fe8cd562fc4ef80cb08aac3693181d2b7cdf216f871960f19.
-    The run survived substantial public-RPC 429 throttling. The source repair is not yet merged or publicly
-    deployed. Request separate authorization before merging PR #18 and redeploying the affected CRESCO
-    Cloudflare Workers. After deployment, verify read-only hosted health and obtain separate authorization
-    for any fresh live repeatability campaign. PR #17 remains untouched/superseded.
+    PR #18 exact head 494818b67b0e2ab8cdb304c64422e36d89dc67f0 is merged as
+    1266756fb6a00318618daefe9db3d875387411b5 and deployed successfully to both current Cloudflare
+    Workers. Backend build d53d266e-6e95-4bf0-8b04-1da9fd57dc73 and frontend build
+    69e33e84-bc5d-4c78-bdf6-39bc33e5f93d are green; public runtime is READY on Solana Devnet at nonce 12.
+    No additional live run is authorized. Request fresh explicit authorization before any post-deploy live
+    repeatability campaign. PR #17 was automatically marked merged/closed by GitHub because PR #18 was
+    stacked on its exact head; no separate PR #17 mutation command was issued.
 
   prohibited_shortcuts:
     - no_silent_concept_lock
@@ -361,7 +360,7 @@ handover:
       - evidence/runtime/HOSTED-ORCA-CONTEXT-READ-RETRY-MERGE-DEPLOY-2026-10-03.md
 
   orca_quote_read_backoff_checkpoint:
-    status: LIVE_VALIDATION_FAILED_PRE_RECEIPT__SUPERSEDED_BY_PREFLIGHT_READ_REPAIR
+    status: MERGED_INDIRECTLY_AS_STACKED_HISTORY_VIA_PR18__SUPERSEDED
     branch: fix/worlds-fair-orca-quote-read-backoff-v1
     exact_head: "6af66d051493b4c3d8ce820ee4f615d5723e1ea8"
     pull_request: 17
@@ -382,14 +381,17 @@ handover:
     live_starting_nonce: 11
     receipt_artifact: NOT_CREATED
     confirmed_effect_set: NOT_INDEPENDENTLY_RECONCILED
-    merge_redeploy_authorization: NOT_GRANTED
+    merge_redeploy_authorization: NOT_SEPARATELY_GRANTED__COMMITS_LANDED_VIA_PR18
+    github_pr17_final_state: MERGED_CLOSED_AUTOMATICALLY_AFTER_STACKED_PR18_MERGE
+    separate_pr17_mutation_issued: false
     evidence:
       - evidence/runtime/HOSTED-POSTDEPLOY-REPEATABILITY-AFTER-ORCA-RETRY-2026-10-03.md
       - evidence/runtime/HOSTED-ORCA-QUOTE-READ-BACKOFF-PREMERGE-2026-10-03.md
       - evidence/runtime/HOSTED-PRE-RECEIPT-RPC-BOTTLENECK-2026-10-03.md
+      - evidence/runtime/HOSTED-PREFLIGHT-STATE-READ-BACKOFF-MERGE-DEPLOY-2026-10-03.md
 
   preflight_state_read_backoff_checkpoint:
-    status: PROVEN_LIVE_DEVNET_AWAITING_MERGE_REDEPLOY_AUTHORIZATION
+    status: MERGED_DEPLOYED_AWAITING_POSTDEPLOY_REPEATABILITY_PROOF
     branch: fix/worlds-fair-preflight-read-backoff-v1
     exact_head: "494818b67b0e2ab8cdb304c64422e36d89dc67f0"
     base_head: "6af66d051493b4c3d8ce820ee4f615d5723e1ea8"
@@ -414,8 +416,22 @@ handover:
     receipt_artifact_digest: "sha256:383773aa09db6d5fe8cd562fc4ef80cb08aac3693181d2b7cdf216f871960f19"
     canonical_scenarios: PASS_7_OF_7
     public_rpc_429_observed: true
-    merge_redeploy_authorization: NOT_GRANTED
-    public_deployment_state: NOT_DEPLOYED
+    merge_redeploy_authorization: CONSUMED
+    merge_commit: "1266756fb6a00318618daefe9db3d875387411b5"
+    merge_test_run: 37151328912
+    merge_cloudflare_worker_ci_run: 37151328955
+    backend_cloudflare_build: "d53d266e-6e95-4bf0-8b04-1da9fd57dc73"
+    backend_cloudflare_version: "89081162-c598-421c-a782-713a4c254176"
+    frontend_cloudflare_build: "69e33e84-bc5d-4c78-bdf6-39bc33e5f93d"
+    frontend_cloudflare_version: "85118cba-c28e-4270-9bad-b3d941785564"
+    public_deployment_state: PROVEN_DEPLOYED
+    readonly_frontend_route: SERVED
+    readonly_runtime_status: READY
+    readonly_runtime_network: solana-devnet
+    readonly_runtime_nonce: 12
+    additional_live_devnet_run_authorized: false
+    postdeploy_repeatability: NOT_YET_AUTHORIZED
     evidence:
       - evidence/runtime/HOSTED-PRE-RECEIPT-RPC-BOTTLENECK-2026-10-03.md
       - evidence/runtime/HOSTED-PREFLIGHT-STATE-READ-BACKOFF-LIVE-VALIDATION-PASS-2026-10-03.md
+      - evidence/runtime/HOSTED-PREFLIGHT-STATE-READ-BACKOFF-MERGE-DEPLOY-2026-10-03.md

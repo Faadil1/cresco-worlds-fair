@@ -474,4 +474,24 @@ implementation_progress:
     shared_core_status: PROVEN_LIVE
     real_user_surface_code_status: PROVEN_BUILD_NOT_HOSTED
     next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
+
+  public_deployment_checkpoint:
+    status: AWAITING_EXPLICIT_HUMAN_AUTHORIZATION
+    source_repository: Faadil1/cresco
+    source_head: cedfbb400f00f28fbe4268fde46ab68933d42e3c
+    pull_request: 11
+    pull_request_state: DRAFT
+    requested_scope:
+      - "Promote/merge PR #11 only after human authorization."
+      - "Allow the existing CRESCO Cloudflare Worker deployment to publish this World’s Fair API source."
+      - "Allow the existing CRESCO Vercel frontend to publish /worlds-fair from the same source."
+      - "Immediately run hosted UI/API/Devnet verification and capture evidence."
+    excludes:
+      - mainnet
+      - any new Solana program deployment
+      - any different Program ID
+      - submission
+      - paid infrastructure changes
+      - operator outreach
+    authorization_inherited_from_devnet_cleanup: false
   truth_boundary: "FIRST_LIVE_VERTICAL_SLICE is proven on Solana Devnet. This does not imply mainnet, production custody, institutional trading, audited security, operator demand, WTP, or adoption."

@@ -39,7 +39,7 @@ Truth labels:
 | New World’s Fair on-chain runtime exists | OBSERVED | LIVE | Solana Devnet program `7pgPuPZSUUtFcvFtVGmS3piCE1bHY35kjb14vct9v45Z`; not yet a judge-facing public product surface |
 | Shared World’s Fair product core exists | OBSERVED | LIVE | Reusable server-side provider executed 7/7 canonical consequences live in run `37083019145`; receipt: `evidence/runtime/WORLDS-FAIR-OPERATOR-LAB-LIVE-2026-10-02.md` |
 | Public World’s Fair v0.3 runtime GET exists | OBSERVED | LIVE | Cloudflare Worker deployment from merge `fa26ff0…` returned HTTP 200 with exact Program ID and program SHA; evidence: `HOSTED-PUBLIC-RUNTIME-FIRST-ATTEMPT-2026-10-02.md` |
-| Public World’s Fair v0.3 live POST is reliable | OBSERVED | PARTIAL / INTERMITTENT | Deployed PR #16 runtime remains intermittently affected by public Devnet RPC throttling. PR #18 exact head `494818b…` now passes a full 7/7 live Devnet sequence under substantial 429 throttling, but that repair is not yet merged/deployed. Public hosted reliability therefore remains PARTIAL until post-deploy verification. Evidence: `HOSTED-PREFLIGHT-STATE-READ-BACKOFF-LIVE-VALIDATION-PASS-2026-10-03.md`. |
+| Public World’s Fair v0.3 live POST is reliable | OBSERVED | PARTIAL / INTERMITTENT | PR #18 exact head `494818b…` passed a full 7/7 Devnet sequence under substantial 429 throttling and is now merged/deployed to both current Cloudflare Workers as merge `1266756…`. Public read-only runtime is READY at nonce 12, but post-deploy live repeatability has not yet been re-run. Evidence: `HOSTED-PREFLIGHT-STATE-READ-BACKOFF-LIVE-VALIDATION-PASS-2026-10-03.md` and `HOSTED-PREFLIGHT-STATE-READ-BACKOFF-MERGE-DEPLOY-2026-10-03.md`. |
 | World’s Fair web/operator surface is publicly hosted | OBSERVED | LIVE | Full CRESCO frontend is live at `https://cresco.faadil-casecraft.workers.dev`; hosted Chromium proof reached `/worlds-fair` and observed runtime state `Ready`; evidence: `CRESCO-CLOUDFLARE-CORS-AUTH-HOSTED-PASS-2026-10-03.md` |
 | Judge self-serve World’s Fair technical flow exists | OBSERVED | PARTIAL / INTERMITTENT | A fresh Chromium run proved the complete path once, but a later manual browser run ended UNKNOWN. Treat self-serve as technically possible but not yet repeatably reliable. |
 | Runtime/commit binding for World’s Fair build exists | OBSERVED | LIVE/PROVEN | Local rebuild and on-chain program dump are bit-identical: SHA-256 `084a3f7aad8a5772d773816579f5d2b98542c4b966dbb0dd7c60cb397db21f61`, run `37037374212` |
@@ -201,3 +201,38 @@ Truth boundary:
 - PR #17 remains untouched/superseded.
 
 See `evidence/runtime/HOSTED-PREFLIGHT-STATE-READ-BACKOFF-LIVE-VALIDATION-PASS-2026-10-03.md`.
+
+
+## 2026-10-03 PR #18 merge and public deployment
+
+PR #18 exact head `494818b67b0e2ab8cdb304c64422e36d89dc67f0` was merged to `main` as `1266756fb6a00318618daefe9db3d875387411b5`.
+
+Cloudflare Git integration observed:
+- `keys-api-stocklana`: SUCCESS, build `d53d266e-6e95-4bf0-8b04-1da9fd57dc73`, version `89081162-c598-421c-a782-713a4c254176`;
+- `cresco`: SUCCESS, build `69e33e84-bc5d-4c78-bdf6-39bc33e5f93d`, version `85118cba-c28e-4270-9bad-b3d941785564`;
+- legacy `cresco-visual-lab` Pages check: FAIL / obsolete and not the active frontend runtime.
+
+Merge checks:
+- root test run `37151328912`: PASS;
+- Cloudflare Worker CI run `37151328955`: PASS.
+
+Read-only public verification after deployment:
+- public World’s Fair frontend route served;
+- public World’s Fair runtime status: READY;
+- network: solana-devnet;
+- Program ID: `7pgPuPZSUUtFcvFtVGmS3piCE1bHY35kjb14vct9v45Z`;
+- Mandate nonce: `12`;
+- mainnet truth flag remains false;
+- no new live authority sequence was triggered by this verification.
+
+Branch-topology side effect:
+- PR #18 was stacked on exact PR #17 head `6af66d051493b4c3d8ce820ee4f615d5723e1ea8`;
+- merging PR #18 necessarily landed those PR #17 commits on main;
+- GitHub automatically marked PR #17 merged/closed;
+- no separate PR #17 merge/close mutation command was issued.
+
+Future protected replacement PRs should avoid stacking on an excluded open PR when the authorization requires that earlier PR to remain untouched.
+
+Hosted self-serve reliability remains **PARTIAL / INTERMITTENT** until a separately authorized post-deploy live repeatability campaign succeeds.
+
+See `evidence/runtime/HOSTED-PREFLIGHT-STATE-READ-BACKOFF-MERGE-DEPLOY-2026-10-03.md`.

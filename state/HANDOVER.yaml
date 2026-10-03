@@ -149,6 +149,13 @@ handover:
     status: ACTIVE
     depth_gap_review: product/POST-VERTICAL-SLICE-DEPTH-GAP-REVIEW-2026-10-02.md
 
+  public_deployment_checkpoint:
+    status: AWAITING_EXPLICIT_HUMAN_AUTHORIZATION
+    source_head: "cedfbb400f00f28fbe4268fde46ab68933d42e3c"
+    pull_request: 11
+    scope: "CRESCO World’s Fair Worker/API + /worlds-fair frontend only; no mainnet, no new Solana program, no submission."
+    prior_cleanup_authorization_reusable: false
+
   exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
   exact_next_action: >-
     Deploy the World’s Fair Worker/API and /worlds-fair web surface from source head
@@ -188,7 +195,7 @@ handover:
     status: PROVEN
     verdict: PASS_WITH_BOUNDED_DELTA
     artifact: technical/TECHNICAL-REALITY-CHECK-2026-10-01.md
-    build_authorized: false
+    build_authorized: true
 
 
   backend_engineering_intelligence:

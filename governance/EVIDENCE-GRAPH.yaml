@@ -81,8 +81,8 @@ claims:
       status: LIVE
       network: "solana-devnet"
       program_id: "7pgPuPZSUUtFcvFtVGmS3piCE1bHY35kjb14vct9v45Z"
-      workflow_run: 37027681883
-      workflow_job: 110906920596
+      workflow_run: 37037374212
+      workflow_job: 110938798095
     dependencies:
       - dependency_id: SOLANA_DEVNET
         role: "execution and state"
@@ -102,14 +102,14 @@ claims:
     receipt_or_telemetry:
       status: COMPLETE
       artifact_pointer: "evidence/runtime/FIRST-LIVE-VERTICAL-SLICE-2026-10-02.md"
-      github_artifact_id: 11236741164
-      github_artifact_digest: "sha256:e8297306e3ae68f5f8649d544e3dc257429c90802a2bfebac43cfc979a7d5d34"
+      github_artifact_id: 11240747626
+      github_artifact_digest: "sha256:9981020726439b4271dcb6c584d160ccdfc4c161458d8e191a025a9a17b65350"
       validator: "WORLD_FAIR_ORCA_RECEIPT_VALID=PASS"
     commit:
       status: COMPLETE
       repository: "Faadil1/cresco"
       deployment_source_head: "783ba885addd7926bc0028e56340833d13c973c5"
-      verifier_head: "f42a7c6ebefe8df474bdc33895f6ed62fe4498ff"
+      verifier_head: "e419d514d0367a5f92761ac034b3046e62980e57"
       verifier_merge_sha_in_receipt: "b7365c93e8940237d46c7a6331303dddd06cc2e5"
       source_equivalence: >-
         Compare deployment_source_head..verifier_head changes only the proof harness and workflow;
@@ -146,11 +146,50 @@ claims:
       counters_changed: false
     runtime_execution:
       status: LIVE
-      workflow_run: 37027681883
+      workflow_run: 37037374212
       program_id: "7pgPuPZSUUtFcvFtVGmS3piCE1bHY35kjb14vct9v45Z"
     receipt_or_telemetry:
       status: COMPLETE
       artifact_pointer: "evidence/runtime/FIRST-LIVE-VERTICAL-SLICE-2026-10-02.md"
+
+  - claim_id: WORLD_FAIR_SHARED_PRODUCT_CORE
+    statement: "The reusable World’s Fair server-side product core executes the canonical CRESCO→Orca authority sequence live on Solana Devnet."
+    evidence_class: PRODUCTION_EVIDENCE
+    truth_state: OBSERVED
+    graph_status: COMPLETE
+    runtime_execution:
+      status: LIVE
+      network: "solana-devnet"
+      program_id: "7pgPuPZSUUtFcvFtVGmS3piCE1bHY35kjb14vct9v45Z"
+      provider_delegate: "4VLFryH36ed8Mc7ByBMLwvtrtYMgo2hKmAicDU2oRfj7"
+      mandate: "CPdat8L1kNUZXAHd6smzeK14nRXD9p1kXU4pF6SSMBXG"
+      workflow_run: 37083019145
+      workflow_job: 111087447682
+      source_head: "cedfbb400f00f28fbe4268fde46ab68933d42e3c"
+    receipt_or_telemetry:
+      status: COMPLETE
+      artifact_pointer: "evidence/runtime/WORLDS-FAIR-OPERATOR-LAB-LIVE-2026-10-02.md"
+      github_artifact_id: 11258404544
+      github_artifact_digest: "sha256:81f00eb244dd6afee201ecaf55c3972f734cf0843d3ce183ed91517b8f6815bf"
+      validator: "WORLD_FAIR_OPERATOR_LAB_RECEIPT_VALID=PASS"
+    deployment_build:
+      worker_bundle_status: PASS
+      cloudflare_ci_run: 37083019089
+      source_head: "cedfbb400f00f28fbe4268fde46ab68933d42e3c"
+      public_hosted_deployment_status: MISSING
+    concurrency:
+      durable_live_run_lease: PROVEN_TESTED
+      overlapping_public_run_result: "409 BUSY"
+    limitation: >-
+      Shared live product-core execution is proven, but the public hosted Worker and /worlds-fair
+      surface have not yet been observed running this source head end-to-end.
+
+  - claim_id: WORLD_FAIR_HOSTED_JUDGE_SELF_SERVE
+    statement: "A judge can open the public World’s Fair surface and trigger the live CRESCO→Orca sequence without code or GitHub Actions."
+    evidence_class: PRODUCTION_EVIDENCE
+    truth_state: UNKNOWN
+    graph_status: MISSING
+    reason: "UI/API source and Worker bundle are proven, but the hosted UI→API→Solana causal path has not yet been observed."
 
   - claim_id: WORLD_FAIR_EXECUTION_BOUND_CAPITAL_AUTHORITY_VALUE
     statement: "Execution-bound delegated capital authority has validated operator value."

@@ -51,10 +51,10 @@ phase:
 
 exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
 exact_next_action: >-
-  Repair the observed intermittent hosted live-run UNKNOWN by adding phase-aware diagnostics,
-  partial fail-closed receipts, and stronger non-replaying Solana confirmation reconciliation.
-  Re-prove repeatability with multiple hosted browser runs before restoring stable self-serve claims.
-  Keep independent human operator validation as a separate evidence gap.
+  The reliability/observability repair is proven non-live at exact head
+  e868b1522c9fa28486777e3805f52a4c5d27093e. Obtain explicit human authorization before opening
+  the PR because the pull_request event will execute a real Devnet 7/7 provider run. If that exact-head
+  live validation passes, stop again before merge/public redeploy for a separate authorization.
 
 build_authorized: true
 terminal_completeness_allowed: false
@@ -618,3 +618,18 @@ implementation_progress:
     browser_error: WORLD_FAIR_LIVE_RUN_UNCONFIRMED
     reliability_effect: DOWNGRADE_TO_PARTIAL
     evidence: evidence/runtime/HOSTED-MANUAL-INTERMITTENT-UNKNOWN-2026-10-03.md
+
+  reliability_observability_repair_checkpoint:
+    status: PROVEN_PREMERGE_AWAITING_EXPLICIT_LIVE_VALIDATION_AUTHORIZATION
+    source_repository: Faadil1/cresco
+    branch: fix/worlds-fair-live-reliability-observability-v1
+    exact_head: e868b1522c9fa28486777e3805f52a4c5d27093e
+    base_main: f6c71177155ccd3ebeaebb1aff9897aaf1758aac
+    root_test_run: 37126812481
+    premerge_gate_run: 37126812495
+    web_run: 37126812491
+    backend_worker_dry_run: PASS
+    frontend_worker_dry_run: PASS
+    live_devnet_validation: NOT_YET_AUTHORIZED
+    public_deployment: UNCHANGED
+    evidence: evidence/runtime/HOSTED-LIVE-RELIABILITY-OBSERVABILITY-PREMERGE-2026-10-03.md

@@ -51,11 +51,10 @@ phase:
 
 exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
 exact_next_action: >-
-  PR #16 at exact head 9eb857bb3c369a0ab412977a976c131afac6899f passed the authorized real
-  World’s Fair Devnet 7/7 validation and all PR checks, including successful completion of ORCA_CONTEXT.
-  Stop before merge/public Cloudflare redeploy. Obtain a separate exact-head human authorization for
-  merge/redeploy. After deployment, re-run the bounded hosted-browser repeatability campaign before
-  restoring stable self-serve reliability.
+  PR #16 is merged and the ORCA_CONTEXT read-retry repair is deployed on both current CRESCO
+  Cloudflare Workers. Public /worlds-fair and GET /api/v0.3/worlds-fair/runtime are read-proven
+  after deployment. Stable hosted self-serve remains PARTIAL / INTERMITTENT until the bounded
+  post-deploy browser repeatability campaign is separately authorized and succeeds.
 
 build_authorized: true
 terminal_completeness_allowed: false
@@ -657,7 +656,7 @@ implementation_progress:
       - evidence/runtime/HOSTED-LIVE-RELIABILITY-OBSERVABILITY-MERGE-DEPLOY-2026-10-03.md
 
   orca_context_read_retry_checkpoint:
-    status: LIVE_VALIDATED_PREMERGE_AWAITING_EXPLICIT_MERGE_REDEPLOY_AUTHORIZATION
+    status: MERGED_DEPLOYED_AWAITING_POSTDEPLOY_REPEATABILITY_PROOF
     source_repository: Faadil1/cresco
     branch: fix/worlds-fair-orca-context-read-retry-v1
     exact_head: 9eb857bb3c369a0ab412977a976c131afac6899f
@@ -679,8 +678,18 @@ implementation_progress:
     ending_nonce: 10
     orca_context_phase: PASS
     receipt_progress: COMPLETE
-    merge_redeploy_authorization: NOT_YET_GRANTED
+    merge_redeploy_authorization: CONSUMED
+    merge_commit: 27300a396d9f3049f19e7aed228acdb2f0bdf9d9
+    backend_cloudflare_build: 35efb0a3-f66e-4e66-9839-57893ee75be4
+    frontend_cloudflare_build: b70afa8d-707a-4665-9a05-e29db714c98f
+    readonly_postdeploy_smoke_run: 37141529993
+    readonly_postdeploy_smoke_job: 111256798620
+    readonly_frontend_http: 200
+    readonly_runtime_http: 200
+    readonly_runtime_status: READY
+    additional_live_devnet_run_authorized: false
     evidence:
       - evidence/runtime/HOSTED-POSTDEPLOY-REPEATABILITY-3X-ATTEMPT-2026-10-03.md
       - evidence/runtime/HOSTED-ORCA-CONTEXT-READ-RETRY-PREMERGE-2026-10-03.md
       - evidence/runtime/HOSTED-ORCA-CONTEXT-READ-RETRY-LIVE-VALIDATION-PASS-2026-10-03.md
+      - evidence/runtime/HOSTED-ORCA-CONTEXT-READ-RETRY-MERGE-DEPLOY-2026-10-03.md

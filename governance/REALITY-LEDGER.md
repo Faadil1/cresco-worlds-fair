@@ -39,7 +39,7 @@ Truth labels:
 | New World’s Fair on-chain runtime exists | OBSERVED | LIVE | Solana Devnet program `7pgPuPZSUUtFcvFtVGmS3piCE1bHY35kjb14vct9v45Z`; not yet a judge-facing public product surface |
 | Shared World’s Fair product core exists | OBSERVED | LIVE | Reusable server-side provider executed 7/7 canonical consequences live in run `37083019145`; receipt: `evidence/runtime/WORLDS-FAIR-OPERATOR-LAB-LIVE-2026-10-02.md` |
 | Public World’s Fair v0.3 runtime GET exists | OBSERVED | LIVE | Cloudflare Worker deployment from merge `fa26ff0…` returned HTTP 200 with exact Program ID and program SHA; evidence: `HOSTED-PUBLIC-RUNTIME-FIRST-ATTEMPT-2026-10-02.md` |
-| Public World’s Fair v0.3 live POST is reliable | OBSERVED | PARTIAL / INTERMITTENT | The reliability/observability repair is now deployed publicly and had already passed one exact-head real Devnet 7/7 validation, but hosted repeatability has not yet been re-proven across multiple post-deploy browser attempts. Evidence: `HOSTED-LIVE-RELIABILITY-OBSERVABILITY-LIVE-VALIDATION-PASS-2026-10-03.md` and `HOSTED-LIVE-RELIABILITY-OBSERVABILITY-MERGE-DEPLOY-2026-10-03.md`. |
+| Public World’s Fair v0.3 live POST is reliable | OBSERVED | PARTIAL / INTERMITTENT | Deployed PR #16 runtime remains intermittently affected by public Devnet RPC throttling. PR #18 exact head `494818b…` now passes a full 7/7 live Devnet sequence under substantial 429 throttling, but that repair is not yet merged/deployed. Public hosted reliability therefore remains PARTIAL until post-deploy verification. Evidence: `HOSTED-PREFLIGHT-STATE-READ-BACKOFF-LIVE-VALIDATION-PASS-2026-10-03.md`. |
 | World’s Fair web/operator surface is publicly hosted | OBSERVED | LIVE | Full CRESCO frontend is live at `https://cresco.faadil-casecraft.workers.dev`; hosted Chromium proof reached `/worlds-fair` and observed runtime state `Ready`; evidence: `CRESCO-CLOUDFLARE-CORS-AUTH-HOSTED-PASS-2026-10-03.md` |
 | Judge self-serve World’s Fair technical flow exists | OBSERVED | PARTIAL / INTERMITTENT | A fresh Chromium run proved the complete path once, but a later manual browser run ended UNKNOWN. Treat self-serve as technically possible but not yet repeatably reliable. |
 | Runtime/commit binding for World’s Fair build exists | OBSERVED | LIVE/PROVEN | Local rebuild and on-chain program dump are bit-identical: SHA-256 `084a3f7aad8a5772d773816579f5d2b98542c4b966dbb0dd7c60cb397db21f61`, run `37037374212` |
@@ -173,3 +173,31 @@ A source-only repair now increases the read-heavy Orca retry profile to six atte
 See:
 - `evidence/runtime/HOSTED-POSTDEPLOY-REPEATABILITY-AFTER-ORCA-RETRY-2026-10-03.md`
 - `evidence/runtime/HOSTED-ORCA-QUOTE-READ-BACKOFF-PREMERGE-2026-10-03.md`
+
+
+## 2026-10-03 PR #18 exact-head live reliability validation
+
+PR #18 source head `494818b67b0e2ab8cdb304c64422e36d89dc67f0` was validated live on Solana Devnet before merge.
+
+Observed:
+- root PR test run `37149230534`: PASS;
+- Cloudflare Worker CI run `37149230535`: PASS;
+- World’s Fair live-provider run `37149230540`: PASS;
+- live job `111279373905`;
+- runtime state before execution: READY;
+- starting Mandate nonce: `11`;
+- ending Mandate nonce: `12`;
+- all seven canonical scenarios: PASS;
+- receipt artifact: `11283376180`;
+- artifact digest: `sha256:383773aa09db6d5fe8cd562fc4ef80cb08aac3693181d2b7cdf216f871960f19`.
+
+A substantial burst of public Solana Devnet RPC HTTP 429 responses occurred during the successful run. The bounded read-side retry repair recovered and completed the canonical sequence. This is direct evidence that the new preflight/state + quote read budgets improve resilience under the observed failure mode.
+
+Truth boundary:
+- this is LIVE exact-head Devnet evidence;
+- it is not evidence that the public Cloudflare runtime contains the repair;
+- it is not post-deploy repeatability evidence;
+- public hosted self-serve remains PARTIAL / INTERMITTENT until PR #18 is separately authorized, merged, deployed and re-verified;
+- PR #17 remains untouched/superseded.
+
+See `evidence/runtime/HOSTED-PREFLIGHT-STATE-READ-BACKOFF-LIVE-VALIDATION-PASS-2026-10-03.md`.

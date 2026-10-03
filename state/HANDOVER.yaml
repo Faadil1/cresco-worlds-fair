@@ -206,10 +206,10 @@ handover:
 
   exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
   exact_next_action: >-
-    PR #16 exact head 9eb857bb3c369a0ab412977a976c131afac6899f passed the authorized real
-    Devnet 7/7 validation with ORCA_CONTEXT completed and receipt progress COMPLETE. Do not merge or
-    redeploy without fresh exact-head authorization. After deployment, repeat the bounded hosted
-    browser reliability campaign before restoring stable self-serve.
+    PR #16 is merged and both current CRESCO Cloudflare Workers are deployed with the ORCA_CONTEXT
+    read-retry repair. Post-deploy read-only checks confirm public /worlds-fair HTTP 200 and runtime
+    READY. Do not trigger new live Devnet attempts without fresh authorization. Stable hosted
+    self-serve remains PARTIAL / INTERMITTENT until the bounded repeatability campaign succeeds.
 
   prohibited_shortcuts:
     - no_silent_concept_lock
@@ -326,7 +326,7 @@ handover:
       - evidence/runtime/HOSTED-LIVE-RELIABILITY-OBSERVABILITY-MERGE-DEPLOY-2026-10-03.md
 
   orca_context_read_retry_checkpoint:
-    status: LIVE_VALIDATED_PREMERGE_AWAITING_EXPLICIT_MERGE_REDEPLOY_AUTHORIZATION
+    status: MERGED_DEPLOYED_AWAITING_POSTDEPLOY_REPEATABILITY_PROOF
     branch: fix/worlds-fair-orca-context-read-retry-v1
     exact_head: "9eb857bb3c369a0ab412977a976c131afac6899f"
     triggering_repeatability_run: 37137899070
@@ -343,8 +343,15 @@ handover:
     starting_nonce: 9
     ending_nonce: 10
     orca_context_phase: PASS
-    merge_redeploy_authorization: NOT_YET_GRANTED
+    merge_redeploy_authorization: CONSUMED
+    merge_commit: "27300a396d9f3049f19e7aed228acdb2f0bdf9d9"
+    backend_cloudflare_build: "35efb0a3-f66e-4e66-9839-57893ee75be4"
+    frontend_cloudflare_build: "b70afa8d-707a-4665-9a05-e29db714c98f"
+    readonly_postdeploy_smoke_run: 37141529993
+    readonly_postdeploy_smoke_job: 111256798620
+    additional_live_devnet_run_authorized: false
     evidence:
       - evidence/runtime/HOSTED-POSTDEPLOY-REPEATABILITY-3X-ATTEMPT-2026-10-03.md
       - evidence/runtime/HOSTED-ORCA-CONTEXT-READ-RETRY-PREMERGE-2026-10-03.md
       - evidence/runtime/HOSTED-ORCA-CONTEXT-READ-RETRY-LIVE-VALIDATION-PASS-2026-10-03.md
+      - evidence/runtime/HOSTED-ORCA-CONTEXT-READ-RETRY-MERGE-DEPLOY-2026-10-03.md

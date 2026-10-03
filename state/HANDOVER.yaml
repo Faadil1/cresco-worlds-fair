@@ -206,9 +206,9 @@ handover:
 
   exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
   exact_next_action: >-
-    With a fresh protected authorization, trigger one canonical World’s Fair live authority sequence
-    from the hosted Cloudflare browser UI, capture the browser→API→Solana receipt, then perform a
-    clean-room external judge self-serve verification before promoting PUBLIC_RUNTIME.
+    Treat hosted browser→API→Solana 7/7 as proven technical self-serve. Package STORY→DEMO→Q&A around
+    the captured live receipt and keep independent external-human judge/operator validation as a
+    separate evidence gap; do not claim demand, adoption or external validation without that trial.
 
   prohibited_shortcuts:
     - no_silent_concept_lock
@@ -277,3 +277,15 @@ handover:
     hosted_browser_artifact: 11274134281
     evidence: evidence/runtime/CRESCO-CLOUDFLARE-CORS-AUTH-HOSTED-PASS-2026-10-03.md
     authorization_status: CONSUMED
+
+  browser_live_sequence_checkpoint:
+    status: EXECUTED_PROVEN
+    workflow_run: 37124741369
+    workflow_job: 111207650592
+    artifact: 11274434523
+    artifact_digest: "sha256:ee3b8da1eeeb3a107f0a9e27b4bb5adc72484cd3dae24428cce0b1927b1dafe8"
+    starting_nonce: 6
+    result: PASS_7_OF_7
+    clean_browser_context: PASS
+    external_human_judge: NOT_OBSERVED
+    evidence: evidence/runtime/HOSTED-BROWSER-TO-SOLANA-LIVE-PASS-2026-10-03.md

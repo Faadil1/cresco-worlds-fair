@@ -577,4 +577,7 @@ implementation_progress:
     cloudflare_worker_run: 37123498821
     root_regression_run: 37123497058
     evidence: evidence/runtime/CRESCO-CLOUDFLARE-CORS-AUTH-RECOVERY-PREMERGE-2026-10-03.md
-    merge_redeploy_authorization: NOT_YET_GRANTED
+    merge_redeploy_authorization: GRANTED_EXACT_HEAD_ONLY
+    authorized_at: 2026-10-03
+    authorized_head: 8fcc5300dfcd86b90c27be379d96df2e7af8b879
+    authorized_scope: "Merge PR #14 and redeploy the affected CRESCO Cloudflare Workers only for the new frontend CORS repair and login UX recovery."

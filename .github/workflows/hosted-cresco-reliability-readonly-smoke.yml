@@ -1,4 +1,5 @@
 name: hosted-cresco-reliability-readonly-smoke
+# rerun: PR16 ORCA_CONTEXT deploy verification
 
 on:
   push:

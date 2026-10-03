@@ -142,14 +142,14 @@ capabilities:
 
   - capability: protected_human_action
     owner: human
-    status: SATISFIED
+    status: BLOCKED
     evidence_pointer:
       - "state/CURRENT.yaml"
       - "state/HANDOVER.yaml"
     reconstruction_note: >-
       Prior CI-only Devnet cleanup authorization was satisfied and is not reusable.
-      Fresh explicit human authorization was granted for PR #12 head
-      40abac5acfabe4b682b47a589e177fbe5340a273 to redeploy the existing Cloudflare Worker for the World’s Fair Devnet repair only.
+      The PR #12 exact-head merge/redeploy authorization was consumed successfully. The next material write is
+      restoring/publishing the public Vercel /worlds-fair frontend, which is a separate deployment action and requires fresh authorization.
 
   - capability: post_mortem_and_learning
     owner: existing_owner
@@ -307,5 +307,5 @@ next_handoff:
   to: "PBPD / Product Exploitation owner"
   required_output: "Judge/operator-usable World’s Fair surface on the shared live core, plus self-serve/reproducibility evidence."
 
-protected_human_decision_required: false
+protected_human_decision_required: true
 terminal_transition_allowed: false

@@ -447,3 +447,25 @@ The connected GitHub action set exposes no cancel-workflow mutation. Manual canc
 Until that run is cancelled or otherwise terminates before its live step, no additional live action should be initiated.
 
 See `evidence/runtime/HOSTED-CLEAN-RETRY-OBSERVABILITY-LIVE-FAIL-STANDING2QUOTE-2026-10-03.md`.
+
+
+## 2026-10-03 automatic devnet-proof run final disposition
+
+The automatically triggered `worlds-fair-orca-devnet-proof` run `37153482170` was not cancelled before its live step.
+
+Final observations:
+- result: FAIL;
+- program `7pgPuPZSUUtFcvFtVGmS3piCE1bHY35kjb14vct9v45Z` was reused, not redeployed;
+- runtime binary binding remained PASS at SHA-256 `084a3f7aad8a5772d773816579f5d2b98542c4b966dbb0dd7c60cb397db21f61`;
+- the proof script generated a random delegate and derived isolated Charter/Mandate/AssetRule/vault PDAs from it;
+- isolated setup writes completed before the final failure;
+- the live-slice failed at the bootstrap SOL→devUSDC transaction simulation;
+- payer had `35,717,296` lamports remaining while the simulated transaction required `101,488,440`;
+- the bootstrap swap itself did not land because simulation rejected it before send;
+- no receipt artifact was created.
+
+This run was outside the explicit one-live authorization and is classified as an **automatic workflow-scope violation**. It is not counted as a canonical operator-lab validation.
+
+The shared operator-lab accounts used by the hosted runtime were not the PDAs touched by this proof script because its delegate is randomly generated per run.
+
+Future replacement PRs must avoid `package.json` changes, or must first repair the path-trigger relationship, so opening a PR cannot silently launch this separate live proof workflow.

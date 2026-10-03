@@ -150,13 +150,18 @@ handover:
     depth_gap_review: product/POST-VERTICAL-SLICE-DEPTH-GAP-REVIEW-2026-10-02.md
 
   cloudflare_frontend_migration:
-    status: PROVEN_PREDEPLOY
+    status: PROVEN_HOSTED
     migration_pr: 13
     proven_head: "f567c2b5ebcb1ab04ae8bb63e1c06fcd72f92469"
     merge_commit: "6f7b9010d09f15e4b90ed2afbbf8a136397ce4d5"
     root_directory: apps/web
     worker_name: cresco
-    evidence: evidence/runtime/CRESCO-CLOUDFLARE-FRONTEND-MIGRATION-PREDEPLOY-2026-10-03.md
+    evidence:
+      - evidence/runtime/CRESCO-CLOUDFLARE-FRONTEND-MIGRATION-PREDEPLOY-2026-10-03.md
+      - evidence/runtime/CRESCO-CLOUDFLARE-CORS-AUTH-HOSTED-PASS-2026-10-03.md
+    hosted_origin: https://cresco.faadil-casecraft.workers.dev
+    hosted_browser_smoke_run: 37124397821
+    hosted_browser_smoke_artifact: 11274134281
     legacy_pages_project: "cresco-visual-lab = LEGACY_OBSOLETE because apps/visual-lab was removed"
 
   public_deployment_checkpoint:
@@ -176,7 +181,7 @@ handover:
     hosted_api_proof_job: 111097900800
     hosted_api_proof_artifact: 11259669023
     hosted_api_evidence: evidence/runtime/HOSTED-API-SOLANA-PASS-2026-10-02.md
-    hosted_frontend: CLOUDFLARE_MIGRATION_PROVEN_PREDEPLOY
+    hosted_frontend: PROVEN_HOSTED_BROWSER_RUNTIME_READY
     vercel_historical_owner: Benita2001
     vercel_source_pull_request: 1
     vercel_expected_project: cresco
@@ -201,10 +206,9 @@ handover:
 
   exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
   exact_next_action: >-
-    Create/import the full CRESCO frontend as a Cloudflare Workers application named cresco from
-    Faadil1/cresco main, root apps/web. After the exact workers.dev origin exists, extend backend CORS
-    to that exact origin while preserving cresco-lac.vercel.app, then run browser→API→Solana and
-    clean-room judge self-serve proof.
+    With a fresh protected authorization, trigger one canonical World’s Fair live authority sequence
+    from the hosted Cloudflare browser UI, capture the browser→API→Solana receipt, then perform a
+    clean-room external judge self-serve verification before promoting PUBLIC_RUNTIME.
 
   prohibited_shortcuts:
     - no_silent_concept_lock
@@ -260,3 +264,16 @@ handover:
     scope: "Bounded one-venue World’s Fair vertical only"
     validation_gap_preserved: true
     arbitrary_CPI_forbidden: true
+
+  cors_auth_recovery_checkpoint:
+    status: MERGED_DEPLOYED_AND_HOSTED_PASS
+    pull_request: 14
+    authorized_head: "8fcc5300dfcd86b90c27be379d96df2e7af8b879"
+    merge_commit: "f6c71177155ccd3ebeaebb1aff9897aaf1758aac"
+    backend_cloudflare_build: "819f0895-5058-4159-923a-492957a80b3f"
+    frontend_cloudflare_build: "7491d3f6-74bd-463d-bac6-284c9b142bd7"
+    hosted_browser_run: 37124397821
+    hosted_browser_job: 111206672658
+    hosted_browser_artifact: 11274134281
+    evidence: evidence/runtime/CRESCO-CLOUDFLARE-CORS-AUTH-HOSTED-PASS-2026-10-03.md
+    authorization_status: CONSUMED

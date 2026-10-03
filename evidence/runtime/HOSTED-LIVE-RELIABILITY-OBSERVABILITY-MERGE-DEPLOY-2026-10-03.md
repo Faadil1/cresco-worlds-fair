@@ -64,15 +64,21 @@ The merge/redeploy authorization is consumed.
 
 This authorization did **not** include additional Devnet execution after deployment.
 
-A separate legacy workflow `devnet-execution-bridge` was auto-triggered by the merge because `src/http-api.mjs` changed. At the time this receipt was written:
+A separate legacy workflow `devnet-execution-bridge` was auto-triggered by the merge because `src/http-api.mjs` changed:
 - run: `37128260113`
 - job: `111217931150`
-- status: **IN PROGRESS**
-- current step: `Build client IDL only`
-- `Bootstrap stable demo runtime`: not yet started
-- `Execute real HTTP-to-devnet smoke`: not yet started
+- result: **FAILURE**
+- `Build client IDL only`: PASS
+- `Bootstrap stable demo runtime`: PASS
+- `Execute real HTTP-to-devnet smoke`: FAIL
 
-This run is outside the merge/redeploy authorization if it proceeds into Devnet writes. It should be cancelled before those steps unless a separate human authorization is granted.
+Observed smoke behavior:
+- existing stable demo runtime reported READY;
+- standing-key proof preserved a real period refusal: `DEVNET_STANDING_KEY_PROOF=REAL_PERIOD_REFUSE`;
+- no successful new on-chain execution signature was emitted in the workflow logs;
+- the smoke then failed closed because its tamper expectation encountered `PYTH_MARKET_EVIDENCE_UNAVAILABLE` instead of the expected allow-once tamper refusal.
+
+This workflow was outside the explicit merge/redeploy authorization. The connected GitHub tool did not expose a workflow-cancel action, so it could not be stopped after the auto-trigger was detected. This is a governance/CI side-effect defect and should be gated before a future protected main-branch merge.
 
 ## Truth boundary
 

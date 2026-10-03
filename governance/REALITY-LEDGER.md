@@ -39,7 +39,7 @@ Truth labels:
 | New World’s Fair on-chain runtime exists | OBSERVED | LIVE | Solana Devnet program `7pgPuPZSUUtFcvFtVGmS3piCE1bHY35kjb14vct9v45Z`; not yet a judge-facing public product surface |
 | Shared World’s Fair product core exists | OBSERVED | LIVE | Reusable server-side provider executed 7/7 canonical consequences live in run `37083019145`; receipt: `evidence/runtime/WORLDS-FAIR-OPERATOR-LAB-LIVE-2026-10-02.md` |
 | Public World’s Fair v0.3 runtime GET exists | OBSERVED | LIVE | Cloudflare Worker deployment from merge `fa26ff0…` returned HTTP 200 with exact Program ID and program SHA; evidence: `HOSTED-PUBLIC-RUNTIME-FIRST-ATTEMPT-2026-10-02.md` |
-| Public World’s Fair v0.3 live POST is reliable | OBSERVED | PARTIAL / INTERMITTENT | Multiple hosted runs have passed 7/7, but a later manual browser run ended UNKNOWN after Runtime Ready. Capability is proven; repeatability is not yet proven. Evidence: `HOSTED-BROWSER-TO-SOLANA-LIVE-PASS-2026-10-03.md` and `HOSTED-MANUAL-INTERMITTENT-UNKNOWN-2026-10-03.md`. |
+| Public World’s Fair v0.3 live POST is reliable | OBSERVED | PARTIAL / INTERMITTENT | The reliability/observability repair is now deployed publicly and had already passed one exact-head real Devnet 7/7 validation, but hosted repeatability has not yet been re-proven across multiple post-deploy browser attempts. Evidence: `HOSTED-LIVE-RELIABILITY-OBSERVABILITY-LIVE-VALIDATION-PASS-2026-10-03.md` and `HOSTED-LIVE-RELIABILITY-OBSERVABILITY-MERGE-DEPLOY-2026-10-03.md`. |
 | World’s Fair web/operator surface is publicly hosted | OBSERVED | LIVE | Full CRESCO frontend is live at `https://cresco.faadil-casecraft.workers.dev`; hosted Chromium proof reached `/worlds-fair` and observed runtime state `Ready`; evidence: `CRESCO-CLOUDFLARE-CORS-AUTH-HOSTED-PASS-2026-10-03.md` |
 | Judge self-serve World’s Fair technical flow exists | OBSERVED | PARTIAL / INTERMITTENT | A fresh Chromium run proved the complete path once, but a later manual browser run ended UNKNOWN. Treat self-serve as technically possible but not yet repeatably reliable. |
 | Runtime/commit binding for World’s Fair build exists | OBSERVED | LIVE/PROVEN | Local rebuild and on-chain program dump are bit-identical: SHA-256 `084a3f7aad8a5772d773816579f5d2b98542c4b966dbb0dd7c60cb397db21f61`, run `37037374212` |
@@ -121,3 +121,19 @@ A later manual browser recording reached public `/worlds-fair`, observed Runtime
 This is a real negative event. It does not erase the prior 7/7 PASS, but it downgrades repeatable technical self-serve from PROVEN to PARTIAL / INTERMITTENT until the failure is diagnosed and repaired.
 
 See `evidence/runtime/HOSTED-MANUAL-INTERMITTENT-UNKNOWN-2026-10-03.md`.
+
+
+## 2026-10-03 reliability repair deployment
+
+PR #15 exact head `e868b1522c9fa28486777e3805f52a4c5d27093e` was merged as `0ef9dc9618d9cbdfac1e714b7349993f4292aff9`.
+
+Observed production deployment:
+- backend Worker `keys-api-stocklana`: SUCCESS, build `a3a7d586-8392-417f-a574-744e340ee469`;
+- frontend Worker `cresco`: SUCCESS, build `2b755dc6-b38e-4a75-a5d1-d91ce01104fd`;
+- post-deploy read-only `/worlds-fair`: HTTP 200;
+- post-deploy read-only World’s Fair runtime: HTTP 200 / READY;
+- no World’s Fair live authority sequence was executed by the read-only smoke.
+
+An unrelated legacy `devnet-execution-bridge` workflow auto-triggered from the main-branch merge because `src/http-api.mjs` changed. It preserved a real period refusal, emitted no successful new on-chain execution signature in its logs, and failed closed on `PYTH_MARKET_EVIDENCE_UNAVAILABLE`. This side effect was outside the explicit merge/redeploy authorization and is recorded as a CI governance defect to gate before future protected merges.
+
+Stable hosted self-serve remains PARTIAL / INTERMITTENT until separately authorized post-deploy live repeatability checks succeed.

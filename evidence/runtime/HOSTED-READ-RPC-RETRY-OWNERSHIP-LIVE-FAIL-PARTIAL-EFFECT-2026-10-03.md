@@ -154,3 +154,24 @@ No PR has been opened for this follow-up head and no additional live Devnet run 
 - post-deploy repeatability: NOT AUTHORIZED
 - next candidate repair head: `e56f0953b815b207be02d4928f26ca8ddcff4d03`
 - next live action requires fresh exact-head authorization.
+
+
+## Clean replacement branch to avoid PR ancestry side effects
+
+The first follow-up head `e56f0953b815b207be02d4928f26ca8ddcff4d03` was built on top of PR #19’s exact head.
+
+To avoid repeating the prior PR #17/#18 topology problem, the same effective file contents were reconstructed directly from deployed `main` without PR #19 ancestry.
+
+Canonical clean replacement:
+- repository: `Faadil1/cresco`;
+- branch: `fix/worlds-fair-retry-observability-v2-clean`;
+- exact head: `65a9fea6cbd0535ea867690a848bc1a50ccbe08d`;
+- base main: `1266756fb6a00318618daefe9db3d875387411b5`;
+- compare: 1 commit ahead / 0 behind;
+- no PR exists for this branch;
+- root test run `37153090829`: **PASS**;
+- no live Devnet workflow was triggered by the branch creation/push.
+
+This clean head supersedes `e56f0953…` as the only candidate for a future replacement PR/live validation.
+
+No PR #19 mutation was issued.

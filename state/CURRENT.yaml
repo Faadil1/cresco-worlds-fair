@@ -566,3 +566,15 @@ implementation_progress:
     repair_hosted_result: PROVEN_PASS
     repair_hosted_evidence: evidence/runtime/HOSTED-API-SOLANA-PASS-2026-10-02.md
   truth_boundary: "FIRST_LIVE_VERTICAL_SLICE is proven on Solana Devnet. This does not imply mainnet, production custody, institutional trading, audited security, operator demand, WTP, or adoption."
+  cors_auth_recovery_checkpoint:
+    status: PROVEN_PREMERGE_AWAITING_EXPLICIT_HUMAN_AUTHORIZATION
+    pull_request: 14
+    exact_head: 8fcc5300dfcd86b90c27be379d96df2e7af8b879
+    backend_worker: keys-api-stocklana
+    frontend_origin: https://cresco.faadil-casecraft.workers.dev
+    preserves_legacy_origin: https://cresco-lac.vercel.app
+    web_run: 37123496978
+    cloudflare_worker_run: 37123498821
+    root_regression_run: 37123497058
+    evidence: evidence/runtime/CRESCO-CLOUDFLARE-CORS-AUTH-RECOVERY-PREMERGE-2026-10-03.md
+    merge_redeploy_authorization: NOT_YET_GRANTED

@@ -166,7 +166,9 @@ handover:
     hosted_api_proof_job: 111097900800
     hosted_api_proof_artifact: 11259669023
     hosted_api_evidence: evidence/runtime/HOSTED-API-SOLANA-PASS-2026-10-02.md
-    hosted_frontend: BLOCKED_EXTERNAL_VERCEL_CONNECTION_VISIBILITY
+    hosted_frontend: BLOCKED_BENITA_VERCEL_ACCESS_NOT_TRANSFERRED
+    vercel_historical_owner: Benita2001
+    vercel_source_pull_request: 1
     vercel_expected_project: cresco
     vercel_expected_domain: https://cresco-lac.vercel.app
     vercel_root_directory: apps/web

@@ -51,20 +51,21 @@ phase:
 
 exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
 exact_next_action: >-
-  PR #20 at exact head 65a9fea6cbd0535ea867690a848bc1a50ccbe08d is open and unmerged.
-  Root test run 37153482193 and Cloudflare Worker CI run 37153482173 passed. The single authorized
-  operator-lab World’s Fair live Devnet validation run 37153482247 failed at STANDING_2_QUOTE after
-  STANDING_1_EXECUTE had already been confirmed. Failure artifact 11285206479 /
-  sha256:19cbf99083fb7bd69d830e466d5521855736c5adc14660b3d92793abda27076a preserves
-  diagnostic, partial progress, confirmed effect signature and runtime before/after. Confirmed effect:
-  standingAutonomy.1 signature ttsTwumZDbZGf55mHNpyhhdSshji59jLc5wYnEa1GVY88YJrTf6zke3MpzZ1DWp9esfwEGYjmLaj2dHWGdGhPXo.
-  The run moved spentThisPeriod 5000000 -> 5200000 and input vault 1500000 -> 1300000, so zero-effects
-  and blind replay are forbidden. PR #19 remains untouched. Opening PR #20 also auto-triggered
-  worlds-fair-orca-devnet-proof run 37153482170 because package.json is in that workflow path filter;
-  this second live-capable run is OUTSIDE the one-run authorization and must be cancelled before its
-  pending live-slice step. The available GitHub connector exposes no cancel mutation. Do not merge PR #20,
-  do not redeploy, do not run mainnet, do not rerun repeatability, and do not trigger any additional live
-  validation until the unintended run is resolved and a new source-only quote-read repair is prepared.
+  PR #20 at exact head 65a9fea6cbd0535ea867690a848bc1a50ccbe08d remains open and unmerged.
+  Root test run 37153482193 and Cloudflare Worker CI run 37153482173 passed. The authorized operator-lab
+  live run 37153482247 failed at STANDING_2_QUOTE after a confirmed STANDING_1_EXECUTE; failure artifact
+  11285206479 preserves the exact partial receipt and confirmed signature
+  ttsTwumZDbZGf55mHNpyhhdSshji59jLc5wYnEa1GVY88YJrTf6zke3MpzZ1DWp9esfwEGYjmLaj2dHWGdGhPXo.
+  The automatic worlds-fair-orca-devnet-proof run 37153482170 was not cancelled in time and did reach its
+  live-slice step. It failed at the bootstrap SOL->devUSDC transaction simulation because the payer had
+  35717296 lamports but the transaction required 101488440. That workflow reuses the existing program
+  binary but generates a random delegate and isolated PDAs; it completed several isolated setup writes
+  before the failed bootstrap simulation, but it did not mutate the shared operator-lab Charter/Mandate/
+  vault accounts and did not redeploy the program. This second live was outside the one-live authorization
+  and is recorded as an automatic workflow-scope violation. Do not merge PR #20, do not redeploy, do not
+  run mainnet, do not rerun repeatability, and do not trigger any additional live validation. Prepare the
+  next source-only repair around post-write Orca quote freshness/diagnostics and remove the package.json
+  path-trigger hazard before any replacement PR.
 
 build_authorized: true
 terminal_completeness_allowed: false
@@ -837,9 +838,20 @@ implementation_progress:
     auto_triggered_second_live_capable_workflow: worlds-fair-orca-devnet-proof
     auto_triggered_second_live_capable_run: 37153482170
     auto_triggered_second_live_capable_job: 111291961939
-    auto_trigger_scope_status: OUTSIDE_AUTHORIZATION_MUST_CANCEL_BEFORE_LIVE_STEP
-    auto_trigger_latest_observed_step: INSTALL_ANCHOR_CLI
-    auto_trigger_live_slice_step: PENDING
+    auto_trigger_scope_status: OUTSIDE_AUTHORIZATION_EXECUTED_AND_FAILED
+    auto_trigger_final_result: FAIL
+    auto_trigger_live_slice_step: EXECUTED_FAILED
+    auto_trigger_failure_phase: BOOTSTRAP_SOL_TO_DEVUSDC_SIMULATION
+    auto_trigger_failure_reason: INSUFFICIENT_LAMPORTS
+    auto_trigger_payer_available_lamports: 35717296
+    auto_trigger_required_lamports: 101488440
+    auto_trigger_program_redeploy: false
+    auto_trigger_program_reused: true
+    auto_trigger_program_binding_sha256: 084a3f7aad8a5772d773816579f5d2b98542c4b966dbb0dd7c60cb397db21f61
+    auto_trigger_delegate_scope: RANDOM_ISOLATED
+    auto_trigger_shared_operator_lab_accounts_mutated: false
+    auto_trigger_isolated_setup_writes_before_failure: true
+    auto_trigger_bootstrap_swap_effect: NONE_SIMULATION_REJECTED
     github_connector_cancel_available: false
     merge_redeploy_authorization: NOT_GRANTED
     pr19_mutation_authorized: false

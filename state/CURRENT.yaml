@@ -51,17 +51,19 @@ phase:
 
 exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
 exact_next_action: >-
-  Authorized post-deploy repeatability run 37137899070 attempt 3 stopped on fresh-browser attempt 1
-  after no World’s Fair POST response was observed within 240 seconds. Read-only reconciliation remains
-  READY on Solana Devnet at nonce 12 with tracked period counters and vault balances unchanged; because
-  no response receipt or signature set exists, classify the outcome UNKNOWN_WITH_NO_OBSERVABLE_MUTATION,
-  not absolute zero effects. A source-only retry-ownership repair is proven non-live on
-  fix/worlds-fair-read-rpc-retry-ownership-v1 at exact head
-  127da0c98f2860f1b285c8c651a8be6c2a0b43fa with root test run 37152132080 PASS.
-  A separate harness repair is isolated at exact head b95b7f847e189cc1c5048c7cd3be95a2c06bdc27 and
-  removes automatic live triggering. Obtain fresh exact-head authorization before opening the product PR
-  because it will trigger a real World’s Fair Devnet 7/7 validation. No further live run, merge or
-  redeployment is authorized.
+  PR #19 exact head 127da0c98f2860f1b285c8c651a8be6c2a0b43fa is open and unmerged.
+  Root test run 37152497599 and Cloudflare Worker CI run 37152497604 passed, but the single authorized
+  World’s Fair live Devnet validation run 37152497520 failed after READY. The run began at Mandate nonce
+  13 and produced no complete receipt artifact. Fresh post-failure runtime reconciliation shows nonce 13,
+  version 14, spentThisPeriod 5000000, input vault 1300000 and output vault 12698674. Because ensureReady
+  funds the input vault to at least 1500000 before READY, the failed run has a state-reconciled partial
+  effect and must not be treated as zero-effects or blindly replayed. The earlier repeatability timeout
+  snapshot at nonce 12 is superseded by delayed evidence showing that POST continued after browser loss.
+  A follow-up source-only repair is proven non-live on fix/worlds-fair-partial-receipt-pyth-retry-v1 at
+  exact head e56f0953b815b207be02d4928f26ca8ddcff4d03 with test run 37152851105 PASS; it persists failure
+  diagnostics/partial receipts/runtime reconciliation and adds bounded retry only for transient Pyth
+  evidence reads. Obtain fresh exact-head authorization before opening any new product PR or triggering
+  another live 7/7. No merge, redeploy, mainnet, repeatability rerun or PR #19 mutation is authorized.
 
 build_authorized: true
 terminal_completeness_allowed: false
@@ -738,7 +740,7 @@ implementation_progress:
       - evidence/runtime/HOSTED-POSTDEPLOY-REPEATABILITY-CLIENT-TIMEOUT-2026-10-03.md
 
   read_rpc_retry_ownership_checkpoint:
-    status: PROVEN_NON_LIVE_AWAITING_EXPLICIT_LIVE_VALIDATION_AUTHORIZATION
+    status: LIVE_VALIDATION_FAILED_WITH_STATE_RECONCILED_PARTIAL_EFFECT
     source_repository: Faadil1/cresco
     branch: fix/worlds-fair-read-rpc-retry-ownership-v1
     exact_head: 127da0c98f2860f1b285c8c651a8be6c2a0b43fa
@@ -749,8 +751,29 @@ implementation_progress:
     writes_share_read_connection: false
     root_test_run: 37152132080
     root_test_result: PASS
-    pull_request: NOT_OPENED
-    live_devnet_validation: NOT_AUTHORIZED
+    pull_request: 19
+    pr_state: OPEN_UNMERGED
+    pr_root_test_run: 37152497599
+    pr_root_test_result: PASS
+    pr_cloudflare_worker_ci_run: 37152497604
+    pr_cloudflare_worker_ci_result: PASS
+    live_devnet_validation: FAIL
+    live_validation_run: 37152497520
+    live_validation_job: 111289071719
+    live_starting_nonce: 13
+    live_receipt_artifact: NOT_CREATED
+    exact_failure_phase: UNKNOWN_MISSING_PARTIAL_RECEIPT
+    post_failure_runtime_status: READY
+    post_failure_nonce: 13
+    post_failure_version: 14
+    post_failure_spent_this_period: 5000000
+    post_failure_spent_notional_micro_usd: 4999871
+    post_failure_input_vault: 1300000
+    post_failure_output_vault: 12698674
+    input_vault_ready_floor: 1500000
+    partial_effect_truth: STATE_RECONCILED_NONZERO_EFFECT
+    zero_effect_claim: false
+    blind_replay_allowed: false
     merge_redeploy_authorization: NOT_GRANTED
     harness_branch: fix/postdeploy-repeatability-timeout-classification-v1
     harness_exact_head: b95b7f847e189cc1c5048c7cd3be95a2c06bdc27
@@ -758,6 +781,28 @@ implementation_progress:
     evidence:
       - evidence/runtime/HOSTED-POSTDEPLOY-REPEATABILITY-CLIENT-TIMEOUT-2026-10-03.md
       - evidence/runtime/HOSTED-READ-RPC-RETRY-OWNERSHIP-PREMERGE-2026-10-03.md
+      - evidence/runtime/HOSTED-READ-RPC-RETRY-OWNERSHIP-LIVE-FAIL-PARTIAL-EFFECT-2026-10-03.md
+
+  partial_receipt_pyth_retry_checkpoint:
+    status: PROVEN_NON_LIVE_AWAITING_FRESH_EXACT_HEAD_AUTHORIZATION
+    source_repository: Faadil1/cresco
+    branch: fix/worlds-fair-partial-receipt-pyth-retry-v1
+    exact_head: e56f0953b815b207be02d4928f26ca8ddcff4d03
+    base_head: 127da0c98f2860f1b285c8c651a8be6c2a0b43fa
+    pyth_transient_retry_attempts: 4
+    pyth_transient_retry_base_delay_ms: 1000
+    pyth_auth_entitlement_retry: false
+    failure_artifact_persists_diagnostic: true
+    failure_artifact_persists_partial_receipt: true
+    failure_artifact_persists_runtime_before_after: true
+    smoke_syntax_check_enabled: true
+    root_test_run: 37152851105
+    root_test_result: PASS
+    pull_request: NOT_OPENED
+    live_devnet_validation: NOT_AUTHORIZED
+    merge_redeploy_authorization: NOT_GRANTED
+    evidence:
+      - evidence/runtime/HOSTED-READ-RPC-RETRY-OWNERSHIP-LIVE-FAIL-PARTIAL-EFFECT-2026-10-03.md
 
   preflight_state_read_backoff_checkpoint:
     status: MERGED_DEPLOYED_AWAITING_POSTDEPLOY_REPEATABILITY_PROOF
@@ -811,8 +856,12 @@ implementation_progress:
     repeatability_artifact: 11284247154
     repeatability_artifact_digest: sha256:9441331039e847dd1c6e4036b0ad6434c575b6719ce0a800ad8aa636c542619a
     reconciled_nonce: 12
-    reconciled_state_mutation: NONE_OBSERVED_ON_TRACKED_INVARIANTS
-    effect_truth: UNKNOWN_NO_RESPONSE_RECEIPT
+    reconciled_state_mutation: NONE_OBSERVED_AT_IMMEDIATE_CHECKPOINT
+    effect_truth: SUPERSEDED_BY_DELAYED_STATE_ADVANCEMENT
+    delayed_reconciliation_nonce: 13
+    delayed_reconciliation_version: 14
+    delayed_reconciliation_status: MUTATION_OBSERVED_AFTER_CLIENT_TIMEOUT
+    delayed_completion_truth: INFERRED_HIGH_CONFIDENCE_NOT_RECEIPT_PROVEN
     evidence:
       - evidence/runtime/HOSTED-PRE-RECEIPT-RPC-BOTTLENECK-2026-10-03.md
       - evidence/runtime/HOSTED-PREFLIGHT-STATE-READ-BACKOFF-LIVE-VALIDATION-PASS-2026-10-03.md

@@ -149,6 +149,16 @@ handover:
     status: ACTIVE
     depth_gap_review: product/POST-VERTICAL-SLICE-DEPTH-GAP-REVIEW-2026-10-02.md
 
+  cloudflare_frontend_migration:
+    status: PROVEN_PREDEPLOY
+    migration_pr: 13
+    proven_head: "f567c2b5ebcb1ab04ae8bb63e1c06fcd72f92469"
+    merge_commit: "6f7b9010d09f15e4b90ed2afbbf8a136397ce4d5"
+    root_directory: apps/web
+    worker_name: cresco
+    evidence: evidence/runtime/CRESCO-CLOUDFLARE-FRONTEND-MIGRATION-PREDEPLOY-2026-10-03.md
+    legacy_pages_project: "cresco-visual-lab = LEGACY_OBSOLETE because apps/visual-lab was removed"
+
   public_deployment_checkpoint:
     status: EXECUTED_PARTIAL_PUBLICATION
     authorized_at: 2026-10-02
@@ -166,7 +176,7 @@ handover:
     hosted_api_proof_job: 111097900800
     hosted_api_proof_artifact: 11259669023
     hosted_api_evidence: evidence/runtime/HOSTED-API-SOLANA-PASS-2026-10-02.md
-    hosted_frontend: BLOCKED_BENITA_VERCEL_ACCESS_NOT_TRANSFERRED
+    hosted_frontend: CLOUDFLARE_MIGRATION_PROVEN_PREDEPLOY
     vercel_historical_owner: Benita2001
     vercel_source_pull_request: 1
     vercel_expected_project: cresco
@@ -191,9 +201,10 @@ handover:
 
   exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
   exact_next_action: >-
-    Extend/reconnect Vercel access to the project/team owning standalone project cresco
-    (cresco-lac.vercel.app). Then publish Faadil1/cresco main with root apps/web, verify /worlds-fair,
-    and run browser UI→API→Solana plus clean-room judge self-serve proof.
+    Create/import the full CRESCO frontend as a Cloudflare Workers application named cresco from
+    Faadil1/cresco main, root apps/web. After the exact workers.dev origin exists, extend backend CORS
+    to that exact origin while preserving cresco-lac.vercel.app, then run browser→API→Solana and
+    clean-room judge self-serve proof.
 
   prohibited_shortcuts:
     - no_silent_concept_lock

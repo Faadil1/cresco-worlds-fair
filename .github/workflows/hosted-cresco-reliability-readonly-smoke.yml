@@ -37,9 +37,9 @@ jobs:
           test "$code" = "200"
 
           jq -e '
-            .status=="PASS" and
-            .runtime.programId=="7pgPuPZSUUtFcvFtVGmS3piCE1bHY35kjb14vct9v45Z" and
-            .runtime.network=="solana-devnet"
+            .status=="READY" and
+            .programId=="7pgPuPZSUUtFcvFtVGmS3piCE1bHY35kjb14vct9v45Z" and
+            .network=="solana-devnet"
           ' /tmp/runtime.json >/dev/null
 
           echo "API_RUNTIME_READ=PASS"

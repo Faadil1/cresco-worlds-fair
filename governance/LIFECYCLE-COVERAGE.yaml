@@ -14,10 +14,10 @@ source_of_truth:
   project_repository: "Faadil1/cresco-worlds-fair"
   project_branch: "main"
 
-exact_next_gate: "PRODUCT_EXPLOITATION_LOOP__REAL_USER_SURFACE_AND_SHARED_CORE"
+exact_next_gate: "PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE"
 exact_next_action: >-
-  Build a judge/operator-usable World’s Fair surface backed by the same live CRESCO→Orca core,
-  then prove self-serve, fresh-environment and dependency-failure behavior before demo lock.
+  Publish the build-proven v0.3 World’s Fair Worker/API and /worlds-fair surface from the proven source head,
+  then capture a hosted UI→API→Solana receipt and clean-room judge run before demo lock.
 
 capabilities:
   - capability: faadil_system_router
@@ -154,16 +154,16 @@ capabilities:
     not_applicable_reason: "Project remains active."
 
 missing:
-  - "Judge/operator self-serve World’s Fair product surface."
-  - "Shared World’s Fair API/service layer over the same live core."
+  - "Public hosted World’s Fair Worker/API from the proven source head."
+  - "Public hosted /worlds-fair product surface from the proven source head."
+  - "Hosted UI→API→Solana self-serve receipt."
   - "Fresh-environment reproducibility and stable demo reset strategy."
   - "Direct representative operator evidence remains a preserved validation gap."
   - "CRESCO-specific willingness-to-pay or equivalent pull signal remains a preserved validation gap."
   - "At least two credible target users/operators willing to test remains a preserved validation gap."
 
 triggered_but_unresolved:
-  - "PRODUCT_EXPLOITATION_LOOP__REAL_USER_SURFACE_AND_SHARED_CORE"
-  - "RUNTIME_COMMIT_BINDING binary-hash hardening"
+  - "PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE"
   - "DEMO_ENVIRONMENT / judge self-serve"
   - "ENGINEERING_QUALITY_ASSURANCE re-triggers on material code touch"
   - "Competitive Novelty / Kill monitoring remains active"
@@ -224,14 +224,14 @@ competitive_judge_cycle:
     status: SATISFIED
     note: "Locked as execution-bound delegated capital authority; market desirability remains validation-gap bounded."
   EXECUTION:
-    status: MISSING
-    reason: "Implementation has not begun; architecture/spec is the next gate."
+    status: SATISFIED
+    note: "First live slice and reusable shared product core are both proven on Solana Devnet."
   LIVE_DEPTH:
     status: IN_PROGRESS
     note: "First live vertical slice is proven; depth expansion now targets real-user surface, shared core, self-serve and reproducibility."
   EVIDENCE:
     status: SATISFIED
-    note: "Discovery evidence exists; live-product evidence remains missing and is separately tracked."
+    note: "Live core, runtime binding, shared product core, rollback and bounded refusal receipts exist; hosted public-runtime evidence remains the next causal edge."
   STORY:
     status: NOT_APPLICABLE_WITH_REASON
     reason: "Not at Demo/Submission lock."
@@ -256,23 +256,24 @@ product_reality_packet:
   representative_scenario_depth_status: proven_for_first_slice
   failure_recovery_status: proven_orca_rollback
   external_user_or_operator_evidence_status: missing_validation_gap_preserved
-  time_to_first_value_status: missing
-  time_to_first_value_reason: "No judge/operator self-serve World’s Fair product surface yet."
+  time_to_first_value_status: missing_hosted_measurement
+  time_to_first_value_reason: "Surface code exists, but no hosted judge/operator run has been observed yet."
   operational_economics_status: not_applicable_with_reason
   operational_economics_reason: "No selected paid/core execution loop yet."
-  shared_product_core_status: partial
-  shared_product_core_reason: "On-chain core is shared; the existing web/API surface is still baseline-family oriented and must expose the World’s Fair live path."
+  shared_product_core_status: proven_live
+  shared_product_core_reason: "The reusable server-side World’s Fair provider executed all seven canonical consequences live on Devnet; v0.3 API and Worker bundle tests pass."
   reality_ledger_status: satisfied
   post_vertical_slice_depth_gap_review_status: satisfied_active
   post_vertical_slice_depth_gap_review_reason: "Triggered and recorded after first live slice."
-  observability_receipt_status: satisfied_for_live_slice
-  judge_or_operator_self_serve_status: missing
+  observability_receipt_status: satisfied_for_shared_live_core
+  real_user_surface_status: build_proven_not_hosted
+  judge_or_operator_self_serve_status: missing_hosted_proof
   unresolved_production_gap:
-    - "No judge/operator self-serve World’s Fair product surface"
-    - "No shared World’s Fair API/service layer over the live core"
+    - "Public hosted World’s Fair Worker/API not yet bound to the proven head"
+    - "Public hosted /worlds-fair route not yet bound to the proven head"
+    - "Hosted UI→API→Solana critical path not yet observed"
     - "Fresh-environment reproducibility/reset strategy not yet proven"
     - "Direct operator validation remains missing"
-    - "Bit-level runtime binary hash binding is being hardened"
   claim_overreach:
     - "Do not upgrade Stocklana baseline into World’s Fair LIVE."
     - "Do not describe execution-bound capital authority as validated user value."

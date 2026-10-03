@@ -142,14 +142,14 @@ capabilities:
 
   - capability: protected_human_action
     owner: human
-    status: BLOCKED
+    status: SATISFIED
     evidence_pointer:
       - "state/CURRENT.yaml"
       - "state/HANDOVER.yaml"
     reconstruction_note: >-
       Prior CI-only Devnet cleanup authorization was satisfied and is not reusable.
-      The PR #11 publication authorization was consumed. PR #12 is a newly proven repair head whose
-      merge will redeploy the public Cloudflare Worker, so a fresh explicit human authorization is required.
+      Fresh explicit human authorization was granted for PR #12 head
+      40abac5acfabe4b682b47a589e177fbe5340a273 to redeploy the existing Cloudflare Worker for the World’s Fair Devnet repair only.
 
   - capability: post_mortem_and_learning
     owner: existing_owner
@@ -307,5 +307,5 @@ next_handoff:
   to: "PBPD / Product Exploitation owner"
   required_output: "Judge/operator-usable World’s Fair surface on the shared live core, plus self-serve/reproducibility evidence."
 
-protected_human_decision_required: true
+protected_human_decision_required: false
 terminal_transition_allowed: false

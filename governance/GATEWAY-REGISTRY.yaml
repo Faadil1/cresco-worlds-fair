@@ -178,7 +178,7 @@ registry:
     status: ACTIVE
     activates_when: "World’s Fair runtime exists"
     condition: "Public runtime must be reachable and consistent with the claimed build."
-    current_state: "End-to-end browser→API→Solana capability is proven. A later manual hosted run ended UNKNOWN, so stable self-serve was downgraded. The reliability/observability repair has now passed one exact-head real Devnet 7/7 validation in PR #15, but it is not yet deployed publicly; hosted repeatability therefore remains PARTIAL until separate merge/redeploy authorization and multiple post-deploy browser attempts."
+    current_state: "End-to-end browser→API→Solana capability is proven. The reliability/observability repair from PR #15 is now merged and deployed on both current CRESCO Cloudflare Workers, and post-deploy read-only checks show /worlds-fair HTTP 200 and runtime READY. Hosted repeatability remains PARTIAL / INTERMITTENT until multiple separately authorized post-deploy browser live attempts succeed."
     evidence:
       - "evidence/runtime/WORLDS-FAIR-OPERATOR-LAB-LIVE-2026-10-02.md"
       - "evidence/runtime/HOSTED-PUBLIC-RUNTIME-FIRST-ATTEMPT-2026-10-02.md"
@@ -191,6 +191,7 @@ registry:
       - "evidence/runtime/HOSTED-MANUAL-INTERMITTENT-UNKNOWN-2026-10-03.md"
       - "evidence/runtime/HOSTED-LIVE-RELIABILITY-OBSERVABILITY-PREMERGE-2026-10-03.md"
       - "evidence/runtime/HOSTED-LIVE-RELIABILITY-OBSERVABILITY-LIVE-VALIDATION-PASS-2026-10-03.md"
+      - "evidence/runtime/HOSTED-LIVE-RELIABILITY-OBSERVABILITY-MERGE-DEPLOY-2026-10-03.md"
 
   - id: PRE_LAUNCH_SHIP
     name: "Universal Pre-Launch / Ship Assurance"

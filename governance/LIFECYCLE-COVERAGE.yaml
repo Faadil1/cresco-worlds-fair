@@ -147,9 +147,9 @@ capabilities:
       - "state/CURRENT.yaml"
       - "state/HANDOVER.yaml"
     reconstruction_note: >-
-      Prior CI-only Devnet cleanup authorization was satisfied and is not reusable.
-      The PR #12 exact-head merge/redeploy authorization was consumed successfully. The next material write is
-      restoring/publishing the public Vercel /worlds-fair frontend, which is a separate deployment action and requires fresh authorization.
+      Prior protected actions were separately authorized and consumed. The public Cloudflare frontend,
+      exact CORS, hosted demo login, and one browser-triggered World’s Fair Devnet 7/7 sequence are now proven.
+      Keep this guard active for any future protected runtime write or irreversible action.
 
   - capability: post_mortem_and_learning
     owner: existing_owner
@@ -157,10 +157,7 @@ capabilities:
     not_applicable_reason: "Project remains active."
 
 missing:
-  - "Public hosted World’s Fair Worker/API from the proven source head."
-  - "Public hosted /worlds-fair product surface from the proven source head."
-  - "Hosted UI→API→Solana self-serve receipt."
-  - "Fresh-environment reproducibility and stable demo reset strategy."
+  - "Independent external-human judge/operator trial remains a preserved validation gap."
   - "Direct representative operator evidence remains a preserved validation gap."
   - "CRESCO-specific willingness-to-pay or equivalent pull signal remains a preserved validation gap."
   - "At least two credible target users/operators willing to test remains a preserved validation gap."

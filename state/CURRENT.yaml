@@ -51,10 +51,10 @@ phase:
 
 exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
 exact_next_action: >-
-  The reliability/observability repair is proven non-live at exact head
-  e868b1522c9fa28486777e3805f52a4c5d27093e. Obtain explicit human authorization before opening
-  the PR because the pull_request event will execute a real Devnet 7/7 provider run. If that exact-head
-  live validation passes, stop again before merge/public redeploy for a separate authorization.
+  PR #15 at exact head e868b1522c9fa28486777e3805f52a4c5d27093e passed the authorized live
+  World’s Fair 7/7 Devnet validation and all PR checks. Stop before merge/public Cloudflare redeploy.
+  Obtain a separate exact-head human authorization for merge/redeploy. After deployment, re-prove the
+  hosted browser path across multiple attempts before restoring stable self-serve reliability.
 
 build_authorized: true
 terminal_completeness_allowed: false
@@ -620,7 +620,7 @@ implementation_progress:
     evidence: evidence/runtime/HOSTED-MANUAL-INTERMITTENT-UNKNOWN-2026-10-03.md
 
   reliability_observability_repair_checkpoint:
-    status: PROVEN_PREMERGE_AWAITING_EXPLICIT_LIVE_VALIDATION_AUTHORIZATION
+    status: LIVE_VALIDATED_PREMERGE_AWAITING_EXPLICIT_MERGE_REDEPLOY_AUTHORIZATION
     source_repository: Faadil1/cresco
     branch: fix/worlds-fair-live-reliability-observability-v1
     exact_head: e868b1522c9fa28486777e3805f52a4c5d27093e
@@ -630,6 +630,17 @@ implementation_progress:
     web_run: 37126812491
     backend_worker_dry_run: PASS
     frontend_worker_dry_run: PASS
-    live_devnet_validation: NOT_YET_AUTHORIZED
+    live_devnet_validation: PASS
+    live_validation_run: 37127681552
+    live_validation_job: 111216233302
+    live_validation_artifact: 11275770747
+    live_validation_artifact_digest: sha256:2764b817a451142177bb944408bf21c0cbccb32f9668e9aa91592378d2f7e8d0
+    starting_nonce: 7
+    ending_nonce: 8
+    receipt_schema_version: 2
+    receipt_progress: COMPLETE
+    merge_redeploy_authorization: NOT_YET_GRANTED
     public_deployment: UNCHANGED
-    evidence: evidence/runtime/HOSTED-LIVE-RELIABILITY-OBSERVABILITY-PREMERGE-2026-10-03.md
+    evidence:
+      - evidence/runtime/HOSTED-LIVE-RELIABILITY-OBSERVABILITY-PREMERGE-2026-10-03.md
+      - evidence/runtime/HOSTED-LIVE-RELIABILITY-OBSERVABILITY-LIVE-VALIDATION-PASS-2026-10-03.md

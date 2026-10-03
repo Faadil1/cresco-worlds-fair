@@ -1,7 +1,7 @@
 project: cresco-worlds-fair
 date: 2026-10-02
 status: ACTIVE
-product_status: FIRST_LIVE_VERTICAL_SLICE_PROVEN_WITH_VALIDATION_GAP
+product_status: OPERATOR_LAB_SHARED_CORE_PROVEN__HOSTED_SELF_SERVE_PENDING_WITH_VALIDATION_GAP
 source_of_truth: GITHUB
 
 system_reconciliation:
@@ -49,11 +49,11 @@ phase:
     - DEMO_ENVIRONMENT
     - JUDGE_SELF_SERVE
 
-exact_next_gate: PRODUCT_EXPLOITATION_LOOP__REAL_USER_SURFACE_AND_SHARED_CORE
+exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
 exact_next_action: >-
-  Turn the proven CRESCO→Orca Devnet mechanism into a judge/operator-usable World’s Fair surface backed
-  by the same live authority/execution core, while hardening runtime/commit binding and preserving the
-  unresolved operator-validation gap.
+  Publish the bound World’s Fair Worker/API and /worlds-fair web surface from the proven source head,
+  then execute the canonical live sequence through the hosted UI/API and record a hosted self-serve receipt.
+  Do not claim judge self-serve before that hosted path is observed.
 
 build_authorized: true
 terminal_completeness_allowed: false
@@ -189,7 +189,10 @@ product_reality:
   load_bearing_integration: PROVEN_ORCA_AND_PYTH
   real_consequence: PROVEN_DEVNET_STATE_CHANGE_AND_ROLLBACK
   external_user_operator_evidence: MISSING_VALIDATION_GAP_PRESERVED
-  judge_operator_self_serve: MISSING_NEXT_P0
+  shared_product_core: PROVEN_LIVE
+  real_user_surface_code: PROVEN_BUILD_NOT_HOSTED
+  public_hosted_world_fair_runtime: MISSING_NEXT_P0
+  judge_operator_self_serve: MISSING_HOSTED_PROOF
   post_vertical_slice_depth_gap_review: PROVEN_ACTIVE
   post_vertical_slice_depth_gap_review_artifact: product/POST-VERTICAL-SLICE-DEPTH-GAP-REVIEW-2026-10-02.md
 
@@ -197,7 +200,7 @@ evidence_graph:
   file: governance/EVIDENCE-GRAPH.yaml
   status: ACTIVE_BOUNDED
   baseline_claim_graph: PARTIAL
-  world_fair_live_claims: PROVEN_WITH_RUNTIME_BINDING_HARDENING_ACTIVE
+  world_fair_live_claims: PROVEN_SHARED_CORE_WITH_PUBLIC_HOSTED_EDGE_MISSING
   rule: "No missing causal edge may be upgraded into LIVE/PROVEN."
 
 reference_intelligence:
@@ -344,7 +347,7 @@ implementation_status:
   branch: feature/worlds-fair-orca-v1
   pull_request: 11
   pull_request_status: DRAFT
-  latest_known_source_commit: 9f0aba49f99cd114437a30e48ca5f63b39eb6bff
+  latest_known_source_commit: cedfbb400f00f28fbe4268fde46ab68933d42e3c
   first_live_vertical_slice:
     status: PROVEN
     live_proven: true
@@ -374,12 +377,12 @@ implementation_status:
 
 
 implementation_progress:
-  status: FIRST_LIVE_VERTICAL_SLICE_PROVEN__PRODUCT_EXPLOITATION_ACTIVE
+  status: SHARED_LIVE_PRODUCT_CORE_PROVEN__PUBLIC_RUNTIME_NEXT
   updated_at: 2026-10-02
   code_repository: Faadil1/cresco
   branch: feature/worlds-fair-orca-v1
   pull_request: 11
-  current_head: 9f0aba49f99cd114437a30e48ca5f63b39eb6bff
+  current_head: cedfbb400f00f28fbe4268fde46ab68933d42e3c
   live_proof_verified_head: e419d514d0367a5f92761ac034b3046e62980e57
   proven:
     - rust_program_check_PASS
@@ -399,12 +402,28 @@ implementation_progress:
     - Orca_failure_rollback_PASS
     - stale_authority_REFUSE_PASS
     - runtime_receipt_VALID_PASS
+    - shared_worlds_fair_provider_LIVE_PASS
+    - stable_distinct_delegate_PASS
+    - operator_lab_7_of_7_live_scenarios_PASS
+    - world_fair_HTTP_contract_tests_PASS
+    - durable_live_run_serialization_PASS
+    - Cloudflare_Worker_bundle_PASS
+    - web_typecheck_lint_copylint_tests_build_PASS
   runtime_observed:
     prior_ephemeral_program_deploy: PROVEN_RUNTIME_SOURCE
     current_live_slice: PROVEN
     runtime_program_id: 7pgPuPZSUUtFcvFtVGmS3piCE1bHY35kjb14vct9v45Z
     live_proof_run: 37037374212
     live_proof_artifact: 11240747626
+    shared_product_core: PROVEN
+    shared_core_receipt: evidence/runtime/WORLDS-FAIR-OPERATOR-LAB-LIVE-2026-10-02.md
+    shared_core_run: 37083019145
+    shared_core_job: 111087447682
+    shared_core_artifact: 11258404544
+    shared_core_artifact_digest: sha256:81f00eb244dd6afee201ecaf55c3972f734cf0843d3ce183ed91517b8f6815bf
+    stable_delegate: 4VLFryH36ed8Mc7ByBMLwvtrtYMgo2hKmAicDU2oRfj7
+    stable_mandate: CPdat8L1kNUZXAHd6smzeK14nRXD9p1kXU4pF6SSMBXG
+    cloudflare_bundle_run: 37083019089
   resolved_blocker:
     code: WORLD_FAIR_DEVNET_DEPLOY_BLOCKED_EXTERNAL_FUNDING
     status: RESOLVED
@@ -432,8 +451,9 @@ implementation_progress:
     closure_verification: PASS
     execution_note: "Authorized CI cleanup completed successfully and was verified by the dedicated GitHub Actions run."
   blocked_or_active:
-    - real_user_judge_surface
-    - shared_product_core_api_for_worlds_fair
+    - public_hosted_worlds_fair_worker
+    - public_hosted_worlds_fair_web_route
+    - hosted_UI_to_API_to_Solana_receipt
     - judge_operator_self_serve
     - fresh_environment_reproducibility
     - direct_operator_validation_gap
@@ -451,5 +471,7 @@ implementation_progress:
   product_exploitation:
     status: ACTIVE
     artifact: product/POST-VERTICAL-SLICE-DEPTH-GAP-REVIEW-2026-10-02.md
-    next_gate: PRODUCT_EXPLOITATION_LOOP__REAL_USER_SURFACE_AND_SHARED_CORE
+    shared_core_status: PROVEN_LIVE
+    real_user_surface_code_status: PROVEN_BUILD_NOT_HOSTED
+    next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
   truth_boundary: "FIRST_LIVE_VERTICAL_SLICE is proven on Solana Devnet. This does not imply mainnet, production custody, institutional trading, audited security, operator demand, WTP, or adoption."

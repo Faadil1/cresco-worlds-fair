@@ -41,8 +41,8 @@ handover:
     id: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
     status: ACTIVE
     blockers:
-      - publish_worlds_fair_worker_from_proven_head
-      - publish_worlds_fair_web_route_from_proven_head
+      - repair_hosted_API_blockhash_expiry_and_transient_RPC_reads_PR12
+      - publish_worlds_fair_web_route_from_current_main
       - hosted_UI_to_API_to_Solana_receipt
       - clean_room_judge_self_serve
       - fresh_environment_reproducibility
@@ -150,19 +150,29 @@ handover:
     depth_gap_review: product/POST-VERTICAL-SLICE-DEPTH-GAP-REVIEW-2026-10-02.md
 
   public_deployment_checkpoint:
-    status: AUTHORIZED_EXECUTION_PENDING
+    status: EXECUTED_PARTIAL_PUBLICATION
     authorized_at: 2026-10-02
     human_authorization: "oui allons y"
-    source_head: "cedfbb400f00f28fbe4268fde46ab68933d42e3c"
+    authorized_source_head: "cedfbb400f00f28fbe4268fde46ab68933d42e3c"
     pull_request: 11
+    merge_commit: "fa26ff06028b57042c850bef4b9467b39e786ea6"
+    cloudflare_worker: PROVEN_PUBLIC
+    cloudflare_version: "ab366ebc-24d5-48c1-94b8-3163bba13293"
+    hosted_runtime_get: PROVEN_PASS
+    hosted_runtime_post: FAIL_CLOSED_UNKNOWN_BLOCKHASH_EXPIRED
+    hosted_frontend: BLOCKED_404
+    evidence: evidence/runtime/HOSTED-PUBLIC-RUNTIME-FIRST-ATTEMPT-2026-10-02.md
+    active_repair_pr: 12
+    active_repair_branch: fix/worlds-fair-hosted-confirmation-v1
+    repair_merge_authorization: NOT_YET_GRANTED
     scope: "CRESCO World’s Fair Worker/API + /worlds-fair frontend only; no mainnet, no new Solana program, no submission."
     prior_cleanup_authorization_reusable: false
 
   exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
   exact_next_action: >-
-    Deploy the World’s Fair Worker/API and /worlds-fair web surface from source head
-    cedfbb400f00f28fbe4268fde46ab68933d42e3c, then prove the hosted UI/API executes the live
-    CRESCO→Orca sequence and records a self-serve receipt before demo lock.
+    Finish PR #12 reliability proof without weakening the live gate. If green, request explicit human
+    authorization to merge/redeploy the repair. Then re-run hosted API→Solana proof and separately
+    restore/publish the Vercel /worlds-fair route before any judge-self-serve promotion.
 
   prohibited_shortcuts:
     - no_silent_concept_lock

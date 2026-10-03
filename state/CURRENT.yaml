@@ -51,13 +51,17 @@ phase:
 
 exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
 exact_next_action: >-
-  PR #18 exact head 494818b67b0e2ab8cdb304c64422e36d89dc67f0 is merged as
-  1266756fb6a00318618daefe9db3d875387411b5 and deployed successfully to both current Cloudflare
-  Workers. Backend build d53d266e-6e95-4bf0-8b04-1da9fd57dc73 and frontend build
-  69e33e84-bc5d-4c78-bdf6-39bc33e5f93d are green; public runtime read is READY on Solana Devnet
-  at nonce 12. Do not run another live 7/7 or browser repeatability campaign without fresh explicit
-  authorization. Record that PR #17 was automatically marked merged by GitHub because PR #18 was stacked
-  on its exact head; no separate PR #17 mutation was issued.
+  Authorized post-deploy repeatability run 37137899070 attempt 3 stopped on fresh-browser attempt 1
+  after no World’s Fair POST response was observed within 240 seconds. Read-only reconciliation remains
+  READY on Solana Devnet at nonce 12 with tracked period counters and vault balances unchanged; because
+  no response receipt or signature set exists, classify the outcome UNKNOWN_WITH_NO_OBSERVABLE_MUTATION,
+  not absolute zero effects. A source-only retry-ownership repair is proven non-live on
+  fix/worlds-fair-read-rpc-retry-ownership-v1 at exact head
+  127da0c98f2860f1b285c8c651a8be6c2a0b43fa with root test run 37152132080 PASS.
+  A separate harness repair is isolated at exact head b95b7f847e189cc1c5048c7cd3be95a2c06bdc27 and
+  removes automatic live triggering. Obtain fresh exact-head authorization before opening the product PR
+  because it will trigger a real World’s Fair Devnet 7/7 validation. No further live run, merge or
+  redeployment is authorized.
 
 build_authorized: true
 terminal_completeness_allowed: false
@@ -731,6 +735,29 @@ implementation_progress:
       - evidence/runtime/HOSTED-ORCA-QUOTE-READ-BACKOFF-PREMERGE-2026-10-03.md
       - evidence/runtime/HOSTED-PRE-RECEIPT-RPC-BOTTLENECK-2026-10-03.md
       - evidence/runtime/HOSTED-PREFLIGHT-STATE-READ-BACKOFF-MERGE-DEPLOY-2026-10-03.md
+      - evidence/runtime/HOSTED-POSTDEPLOY-REPEATABILITY-CLIENT-TIMEOUT-2026-10-03.md
+
+  read_rpc_retry_ownership_checkpoint:
+    status: PROVEN_NON_LIVE_AWAITING_EXPLICIT_LIVE_VALIDATION_AUTHORIZATION
+    source_repository: Faadil1/cresco
+    branch: fix/worlds-fair-read-rpc-retry-ownership-v1
+    exact_head: 127da0c98f2860f1b285c8c651a8be6c2a0b43fa
+    base_main: 1266756fb6a00318618daefe9db3d875387411b5
+    safe_read_connection_disable_rate_limit_retry: true
+    explicit_read_retry_attempts: 6
+    explicit_read_retry_base_delay_ms: 2000
+    writes_share_read_connection: false
+    root_test_run: 37152132080
+    root_test_result: PASS
+    pull_request: NOT_OPENED
+    live_devnet_validation: NOT_AUTHORIZED
+    merge_redeploy_authorization: NOT_GRANTED
+    harness_branch: fix/postdeploy-repeatability-timeout-classification-v1
+    harness_exact_head: b95b7f847e189cc1c5048c7cd3be95a2c06bdc27
+    harness_auto_live_trigger_removed: true
+    evidence:
+      - evidence/runtime/HOSTED-POSTDEPLOY-REPEATABILITY-CLIENT-TIMEOUT-2026-10-03.md
+      - evidence/runtime/HOSTED-READ-RPC-RETRY-OWNERSHIP-PREMERGE-2026-10-03.md
 
   preflight_state_read_backoff_checkpoint:
     status: MERGED_DEPLOYED_AWAITING_POSTDEPLOY_REPEATABILITY_PROOF
@@ -774,7 +801,18 @@ implementation_progress:
     readonly_runtime_network: solana-devnet
     readonly_runtime_nonce: 12
     additional_live_devnet_run_authorized: false
-    postdeploy_repeatability: NOT_YET_AUTHORIZED
+    postdeploy_repeatability: FAILED_CLIENT_RESPONSE_TIMEOUT
+    repeatability_run: 37137899070
+    repeatability_run_attempt: 3
+    repeatability_job: 111286432675
+    repeatability_attempt_1: UNKNOWN_CLIENT_TIMEOUT_NO_RESPONSE
+    repeatability_attempt_2: NOT_EXECUTED
+    repeatability_attempt_3: NOT_EXECUTED
+    repeatability_artifact: 11284247154
+    repeatability_artifact_digest: sha256:9441331039e847dd1c6e4036b0ad6434c575b6719ce0a800ad8aa636c542619a
+    reconciled_nonce: 12
+    reconciled_state_mutation: NONE_OBSERVED_ON_TRACKED_INVARIANTS
+    effect_truth: UNKNOWN_NO_RESPONSE_RECEIPT
     evidence:
       - evidence/runtime/HOSTED-PRE-RECEIPT-RPC-BOTTLENECK-2026-10-03.md
       - evidence/runtime/HOSTED-PREFLIGHT-STATE-READ-BACKOFF-LIVE-VALIDATION-PASS-2026-10-03.md

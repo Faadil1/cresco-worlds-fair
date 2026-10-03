@@ -6,12 +6,18 @@ Truth state: **OBSERVED**
 
 ## Expected frontend project
 
-The product repository documents the frontend as:
+Historical Benita handoff and frontend provenance confirm:
 
+- frontend owner / hosting owner: `Benita2001`
+- source PR: `Faadil1/cresco#1` — “feat: build Cresco consumer frontend experience”
 - Vercel project name: `cresco`
 - production URL: `https://cresco-lac.vercel.app`
 - root directory: `apps/web`
 - repository: `Faadil1/cresco`
+- historical handoff: `docs/BENITA-FRONTEND-HANDOFF.md`
+- deployment gate: `docs/CRESCO-BENITA-DEPLOYMENT-GATE.md`
+
+The handoff explicitly assigns Benita ownership of the judge-facing frontend and **final frontend hosting**.
 
 Source:
 - `apps/web/README.md` on product main.
@@ -34,7 +40,7 @@ Observed:
 
 The frontend code is not the current blocker.
 
-The blocker is that the ChatGPT Vercel connector does not currently expose the Vercel project/team that owns `cresco-lac.vercel.app`.
+The blocker is that the frontend was historically hosted from Benita's deployment ownership context, while the currently connected Vercel accounts do not expose that project/team. No Vercel `projectId`, `teamId`, or committed `.vercel/project.json` is present in the repository history inspected, so the hosting account identifier was never transferred into GitHub.
 
 No replacement project was silently created because doing so could:
 - lose the existing production hostname;
@@ -44,9 +50,11 @@ No replacement project was silently created because doing so could:
 
 ## Required next action
 
-Extend/reconnect Vercel access so the connection includes the project/team that owns:
+Recover or reconnect the Vercel account/team used by Benita2001 so access includes:
 - project `cresco`;
 - domain `cresco-lac.vercel.app`.
+
+The preferred path is to restore access to the existing Benita-owned deployment rather than silently creating a replacement project.
 
 Once visible, the intended publication is:
 - repository: `Faadil1/cresco`;

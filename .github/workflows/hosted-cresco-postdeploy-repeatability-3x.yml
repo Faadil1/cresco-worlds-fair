@@ -1,10 +1,6 @@
 name: hosted-cresco-postdeploy-repeatability-3x
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - ".github/workflows/hosted-cresco-postdeploy-repeatability-3x.yml"
   workflow_dispatch:
 
 concurrency:
@@ -83,6 +79,32 @@ jobs:
               );
             };
 
+            const reconcileRuntime = async (page) => {
+              try {
+                const response = await page.request.get(
+                  api + "/api/v0.3/worlds-fair/runtime",
+                  { timeout: 30000 }
+                );
+                const runtime = await response.json();
+                return {
+                  httpStatus: response.status(),
+                  status: runtime?.status ?? null,
+                  nonce: runtime?.mandate?.nonce ?? null,
+                  spentThisPeriod: runtime?.assetRule?.spentThisPeriod ?? null,
+                  spentThisPeriodNotionalMicroUsd:
+                    runtime?.assetRule?.spentThisPeriodNotionalMicroUsd ?? null,
+                  inputVaultAmountBaseUnits:
+                    runtime?.vaults?.inputAmountBaseUnits ?? null,
+                  outputVaultAmountBaseUnits:
+                    runtime?.vaults?.outputAmountBaseUnits ?? null
+                };
+              } catch (error) {
+                return {
+                  error: error instanceof Error ? error.message : String(error)
+                };
+              }
+            };
+
             const browser = await chromium.launch({ headless: true });
 
             try {
@@ -115,6 +137,7 @@ jobs:
                   browserRequestFailures: 0,
                   diagnostic: null,
                   partialReceipt: null,
+                  reconciliation: null,
                   result: "IN_PROGRESS"
                 };
                 summary.attempts.push(attempt);
@@ -140,14 +163,56 @@ jobs:
                   (response) =>
                     response.url() === api + "/api/v0.3/worlds-fair/run" &&
                     response.request().method() === "POST",
-                  { timeout: 240000 }
+                  { timeout: 150000 }
                 );
 
                 await page
                   .getByRole("button", { name: /Run live authority sequence/i })
                   .click();
 
-                const response = await responsePromise;
+                let response = null;
+                try {
+                  response = await responsePromise;
+                } catch (error) {
+                  attempt.browserRequestFailures = failedRequests.length;
+                  attempt.responseStatus = "UNKNOWN";
+                  attempt.result = "CLIENT_TIMEOUT_OR_NO_RESPONSE";
+                  attempt.diagnostic = {
+                    phase: "CLIENT_HTTP_POST",
+                    phaseKind: "WRITE",
+                    failureClass: "UNKNOWN_RUNTIME",
+                    reasonCode: "CLIENT_RESPONSE_TIMEOUT",
+                    retryPolicy: "REQUIRES_STATE_RECONCILIATION",
+                    message:
+                      "The browser did not observe a live API response before the bounded timeout."
+                  };
+                  attempt.reconciliation = await reconcileRuntime(page);
+                  attempt.completedAt = new Date().toISOString();
+                  summary.status = "STOPPED_ON_FIRST_FAILURE";
+                  summary.stoppedEarly = true;
+                  summary.failureAttempt = index;
+
+                  await page.screenshot({
+                    path: path.join(out, `attempt-${index}-99-timeout.png`),
+                    fullPage: true
+                  });
+
+                  writeSummary();
+
+                  console.error(
+                    "POSTDEPLOY_REPEATABILITY_TIMEOUT=" +
+                      JSON.stringify({
+                        attempt: index,
+                        diagnostic: attempt.diagnostic,
+                        reconciliation: attempt.reconciliation,
+                        requestFailures: attempt.browserRequestFailures
+                      })
+                  );
+
+                  await context.close();
+                  throw error;
+                }
+
                 attempt.httpStatus = response.status();
 
                 let body = null;

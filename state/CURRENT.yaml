@@ -51,10 +51,10 @@ phase:
 
 exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
 exact_next_action: >-
-  The Faadil-controlled Cloudflare frontend, exact CORS, hosted demo login, and World’s Fair runtime
-  browser read are now proven. Next, with a fresh protected authorization, trigger one canonical
-  World’s Fair live sequence from the hosted browser UI, capture the browser→API→Solana receipt,
-  then perform a clean-room external judge self-serve check before promoting the gate.
+  Hosted browser UI→API→Solana is now proven 7/7 in a fresh GitHub runner/browser environment.
+  Next, preserve this runtime, package the judge-facing story/demo/Q&A around the proven receipt,
+  and pursue an independent human judge/operator trial when available. Do not translate technical
+  self-serve proof into adoption, demand or external-human validation.
 
 build_authorized: true
 terminal_completeness_allowed: false
@@ -193,8 +193,8 @@ product_reality:
   shared_product_core: PROVEN_LIVE
   real_user_surface_code: PROVEN_HOSTED_BROWSER
   public_hosted_world_fair_runtime: PROVEN_LIVE_API_TO_SOLANA
-  public_hosted_world_fair_frontend: PROVEN_HOSTED_RUNTIME_READY
-  judge_operator_self_serve: PARTIAL_BROWSER_LIVE_SEQUENCE_AND_CLEAN_ROOM_MISSING
+  public_hosted_world_fair_frontend: PROVEN_HOSTED_BROWSER_TO_SOLANA
+  judge_operator_self_serve: PROVEN_TECHNICAL_SELF_SERVE_EXTERNAL_HUMAN_NOT_OBSERVED
   post_vertical_slice_depth_gap_review: PROVEN_ACTIVE
   post_vertical_slice_depth_gap_review_artifact: product/POST-VERTICAL-SLICE-DEPTH-GAP-REVIEW-2026-10-02.md
 
@@ -202,7 +202,7 @@ evidence_graph:
   file: governance/EVIDENCE-GRAPH.yaml
   status: ACTIVE_BOUNDED
   baseline_claim_graph: PARTIAL
-  world_fair_live_claims: PROVEN_HOSTED_API_TO_SOLANA_AND_BROWSER_RUNTIME_READ
+  world_fair_live_claims: PROVEN_HOSTED_BROWSER_UI_TO_API_TO_SOLANA_7_OF_7
   rule: "No missing causal edge may be upgraded into LIVE/PROVEN."
 
 reference_intelligence:
@@ -453,8 +453,7 @@ implementation_progress:
     closure_verification: PASS
     execution_note: "Authorized CI cleanup completed successfully and was verified by the dedicated GitHub Actions run."
   blocked_or_active:
-    - hosted_browser_UI_to_API_to_Solana_receipt
-    - clean_room_judge_self_serve
+    - independent_external_human_judge_or_operator_trial
     - judge_operator_self_serve
     - fresh_environment_reproducibility
     - direct_operator_validation_gap
@@ -590,3 +589,21 @@ implementation_progress:
     authorized_at: 2026-10-03
     authorized_head: 8fcc5300dfcd86b90c27be379d96df2e7af8b879
     authorized_scope: "Merge PR #14 and redeploy the affected CRESCO Cloudflare Workers only for the new frontend CORS repair and login UX recovery."
+
+  browser_live_sequence_checkpoint:
+    status: EXECUTED_PROVEN
+    authorized_at: 2026-10-03
+    human_authorization: "ok allons y"
+    hosted_frontend: https://cresco.faadil-casecraft.workers.dev
+    hosted_api: https://keys-api-stocklana.faadil-casecraft.workers.dev
+    workflow_run: 37124741369
+    workflow_job: 111207650592
+    artifact: 11274434523
+    artifact_digest: sha256:ee3b8da1eeeb3a107f0a9e27b4bb5adc72484cd3dae24428cce0b1927b1dafe8
+    starting_nonce: 6
+    result: PASS_7_OF_7
+    transaction_links_visible: 5
+    browser_request_failures: 0
+    fresh_browser_context_surface: PASS
+    external_human_judge: NOT_OBSERVED
+    evidence: evidence/runtime/HOSTED-BROWSER-TO-SOLANA-LIVE-PASS-2026-10-03.md

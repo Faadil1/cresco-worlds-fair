@@ -51,19 +51,22 @@ phase:
 
 exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
 exact_next_action: >-
-  PR #22 at exact head 90e1431dd1db975497d81e7cf3d223172aa3437a remains open and unmerged.
-  Root test run 37186952848 and Cloudflare Worker CI run 37186952837 passed, while the single authorized
-  live run 37186952836 failed at STANDING_2_QUOTE after confirmed standingAutonomy.1 signature
-  5hhyWuKa5udxxv5rersaoNKsoDa6bSuFZ8zKfLMVQrTbcMYd3fSpp6ypYbpRBxncZdNVUKtfnr3UrYGz48WQMZ86.
-  Artifact 11297430734 / sha256:b415e5976d04ef90040a81c8e8412f653df1f5a9b2f9c72e47b1fd9078035ffe
-  preserves the partial receipt. Fresh-pool reacquisition and IGNORE_CACHE did not make the second quote
-  reliable, so broader speculative retries are not justified. A diagnostic-only clean replacement branch
-  now exists at fix/worlds-fair-quote-cause-diagnostic-v1-clean, exact head
-  ae53370d3231e13f492ab9b2543fcf1a18ad7352, directly from deployed main. Push test run 37187193966
-  passed and no live workflow fired. It persists a redacted structural summary of the underlying quote
-  exception without broadening retry semantics. Obtain fresh exact-head authorization before opening a PR
-  or triggering another live validation. Do not merge, redeploy, use mainnet, run repeatability or mutate
-  PR #19/#20/#21/#22 without fresh authorization.
+  PR #23 at exact head ae53370d3231e13f492ab9b2543fcf1a18ad7352 remains open and unmerged.
+  Root test run 37189936066 and Cloudflare Worker CI run 37189936104 passed. The single authorized
+  live run 37189936070 failed at STANDING_2_QUOTE after confirmed standingAutonomy.1 signature
+  Cr3YzVrN9ppUxUDHcdHCJW211chXFp132PLZsRUmAUR5LraSJ5ytDcqgwZ2fSQgvBStLHV8vKQ98QCrQf75DE2Y.
+  The diagnostic head captured the underlying cause:
+  "Unable to fetch MintInfo for mint - H8UekPGwePSmQ3ttuYGPU1szyFfjZR4N53rymSFwpLPm".
+  Artifact 11298615484 / sha256:a9e0173d2ca730a954336e060f2e6c813d4041843e1ab3e3650d288b4d68aa24
+  preserves the partial receipt and redacted cause. Runtime spentThisPeriod moved 5600000 -> 5800000,
+  so zero-effects and blind replay are forbidden. Source review confirms Orca quote generation requests
+  pool mint info through TokenExtensionUtil/buildTokenExtensionContext. A targeted clean repair now exists
+  on fix/worlds-fair-mintinfo-read-retry-v1-clean at exact head
+  9bb159f89cd02b47e35a79607f12dffd2df679d1, directly from deployed main. It retries only known
+  World’s Fair mint-info read misses within the existing bounded read profile; unknown mints are not promoted.
+  Push test run 37190098564 passed and no live workflow fired. Obtain fresh exact-head authorization before
+  opening a PR or triggering another live validation. Do not merge, redeploy, use mainnet, run repeatability
+  or mutate PR #19/#20/#21/#22/#23 without fresh authorization.
 
 build_authorized: true
 terminal_completeness_allowed: false

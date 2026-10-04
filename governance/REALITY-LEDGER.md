@@ -743,3 +743,60 @@ The repair preserves safe unit ownership for Orca batch reads but converts a nul
 See:
 - `evidence/runtime/HOSTED-ORCA-SAFE-BATCH-READS-PREMERGE-2026-10-04.md`;
 - `evidence/runtime/HOSTED-ORCA-SAFE-MINT-BATCH-NULL-PREMERGE-2026-10-04.md`.
+
+
+## 2026-10-04 PR #28 quote pool-null invariant + targeted retry repair
+
+PR #28 at exact head `16f6374c6fbec1c9c39c0129c40f9f914cbf7a6f` remains open and unmerged.
+
+Observed:
+- root test `37213621783`: PASS;
+- Cloudflare Worker CI `37213621761`: PASS;
+- single authorized operator-lab live `37213621817`: FAIL;
+- additional live workflows: none.
+
+The run completed through:
+- BOOTSTRAP_READY;
+- STATE_LOAD;
+- ORCA_CONTEXT;
+- STANDING_1_MARKET_EVIDENCE;
+- STANDING_1_QUOTE;
+- STANDING_1_EXECUTE;
+- STANDING_1_EFFECT_OBSERVED;
+- STANDING_2_MARKET_EVIDENCE.
+
+Confirmed current-run effect:
+- label `standingAutonomy.1`;
+- signature `3YaqYzrNekRQ2MmbuLCmjg1y7h7uX7y84griPXSuB4qmuQLP7agC4fbAEQc8qMq6PS4Lnb1tq55iSPpZBaAAVSfR`.
+
+It failed at `STANDING_2_QUOTE` with:
+- class `DEPENDENCY_FAILURE`;
+- reason `ORCA_QUOTE_READ_UNAVAILABLE`;
+- underlying `Invariant failed: Whirlpool data not found`.
+
+Runtime delta:
+- spentThisPeriod `6000000 -> 6200000`;
+- spentThisPeriodNotionalMicroUsd `5999838 -> 6199831`;
+- input vault `1500000 -> 1300000`;
+- output vault `13698569 -> 13898548`;
+- nonce unchanged at 13.
+
+Artifact:
+- id `11307118527`;
+- digest `sha256:e8b5014c4eafbdec4ad9f5c1a8a9454e1dfad8260bdd6ff335c1aa986eb68ccc`.
+
+Orca legacy `swapQuoteByInputToken()` refetches Whirlpool data and raises this exact invariant when the fetcher returns null for the known pool. This is a read-side dependency fetch gap.
+
+A targeted clean repair now exists:
+- branch `fix/worlds-fair-orca-quote-pool-null-retry-v1-clean`;
+- exact head `b77b5378c6088c50c2912a4b4254c43b28f549fd`;
+- base deployed main `1266756fb6a00318618daefe9db3d875387411b5`;
+- push test `37213823352`: PASS, 141/141;
+- PR: NOT OPENED;
+- live validation: NOT AUTHORIZED.
+
+The repair adds only `Invariant failed: Whirlpool data not found` to the existing bounded transient read classifier. It preserves all prior safe-read ownership and no-write-retry boundaries.
+
+See:
+- `evidence/runtime/HOSTED-ORCA-SAFE-MINT-BATCH-NULL-PREMERGE-2026-10-04.md`;
+- `evidence/runtime/HOSTED-ORCA-QUOTE-POOL-NULL-RETRY-PREMERGE-2026-10-04.md`.

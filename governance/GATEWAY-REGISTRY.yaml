@@ -178,7 +178,7 @@ registry:
     status: ACTIVE
     activates_when: "World’s Fair runtime exists"
     condition: "Public runtime must be reachable and consistent with the claimed build."
-    current_state: "End-to-end browser→API→Solana capability is proven. PR #29 exact head b77b5378c6088c50c2912a4b4254c43b28f549fd now has one complete 7/7 live Devnet PASS with receipt validation and all canonical scenarios proven after the Orca read-reliability repairs. This is PRE-MERGE exact-head evidence only: PR #29 is not merged, the public hosted runtime is not redeployed with this repair, and post-deploy repeatability remains PARTIAL / INTERMITTENT until separately authorized promotion and validation."
+    current_state: "End-to-end browser→API→Solana capability is proven. PR #29 exact head b77b5378c6088c50c2912a4b4254c43b28f549fd passed one complete receipt-validated 7/7 live Devnet run and is now merged to main via b81133c6e3c57c36f6baedcfcce3cf9b8d46d3e3. Automatic post-merge test and Cloudflare Worker dry-run CI both passed. Public hosted deployment of this merge commit and post-deploy repeatability are not yet proven, so PUBLIC_RUNTIME remains ACTIVE and hosted reliability remains PARTIAL / INTERMITTENT until a separately authorized public promotion validation succeeds."
     evidence:
       - "evidence/runtime/WORLDS-FAIR-OPERATOR-LAB-LIVE-2026-10-02.md"
       - "evidence/runtime/HOSTED-PUBLIC-RUNTIME-FIRST-ATTEMPT-2026-10-02.md"
@@ -199,6 +199,7 @@ registry:
       - "evidence/runtime/HOSTED-POSTDEPLOY-REPEATABILITY-AFTER-ORCA-RETRY-2026-10-03.md"
       - "evidence/runtime/HOSTED-ORCA-QUOTE-READ-BACKOFF-PREMERGE-2026-10-03.md"
       - "evidence/runtime/HOSTED-PR29-EXACT-HEAD-7-OF-7-LIVE-PASS-2026-10-04.md"
+      - "evidence/runtime/HOSTED-PR29-MERGE-MAIN-CI-PASS-2026-10-04.md"
 
   - id: PRE_LAUNCH_SHIP
     name: "Universal Pre-Launch / Ship Assurance"

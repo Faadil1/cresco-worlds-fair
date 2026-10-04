@@ -1,7 +1,7 @@
 project: cresco-worlds-fair
 date: 2026-10-02
 status: ACTIVE
-product_status: MAIN_PROMOTED_FROM_7_OF_7_PROVEN_HEAD__POSTMERGE_CI_PROVEN__PUBLIC_RUNTIME_VALIDATION_PENDING
+product_status: MAIN_PROMOTED_FROM_7_OF_7_PROVEN_HEAD__PUBLIC_DEPLOY_BLOCKED_MISSING_CLOUDFLARE_GITHUB_SECRETS
 source_of_truth: GITHUB
 
 system_reconciliation:
@@ -51,19 +51,18 @@ phase:
 
 exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
 exact_next_action: >-
-  PR #29 has been merged to main. Authorized head b77b5378c6088c50c2912a4b4254c43b28f549fd was promoted
-  by merge commit b81133c6e3c57c36f6baedcfcce3cf9b8d46d3e3 at 2026-10-04T19:51:31Z.
-  Automatic post-merge GitHub workflows were observed only: test run 37229869661 PASS and
-  cloudflare-worker-ci run 37229869664 PASS; the latter performed backend tests and Cloudflare Worker
-  packaging as a dry-run. No GitHub Actions World’s Fair live workflow was observed for the merge commit,
-  and no manual redeploy/live/repeatability action was triggered. The exact PR head already has one complete
-  receipt-validated 7/7 Solana Devnet PASS from run 37214175230 / artifact 11307628144, so main now contains
-  a repair that is live-proven at its exact pre-merge head and post-merge CI-proven. Do not claim that the
-  public hosted runtime has consumed merge commit b81133c6e3c57c36f6baedcfcce3cf9b8d46d3e3: public deployment
-  and post-deploy repeatability remain unproven in this scope. The next protected action is public promotion
-  / deployment validation under fresh explicit authorization. Do not manually redeploy, trigger live or
-  repeatability, use mainnet, or mutate/close PR #19/#20/#21/#22/#23/#24/#25/#26/#27/#28 without fresh
-  authorization.
+  Main remains at b81133c6e3c57c36f6baedcfcce3cf9b8d46d3e3 with the PR #29 repair that has
+  one receipt-validated 7/7 Solana Devnet PASS and green post-merge CI. The authorized temporary branch
+  ops/worlds-fair-public-promotion-2026-10-04 was created from that exact commit; one one-shot deployment
+  workflow was added at ops commit 99e42d71bd060559b7454426ad0fd153825d12b5. Workflow run
+  37233079206 / job 111526689182 stopped at its credential guard because GitHub Actions exposed neither
+  CLOUDFLARE_API_TOKEN nor CLOUDFLARE_ACCOUNT_ID. Checkout, deployment, public runtime read, public 7/7
+  POST and receipt verification were all skipped. Public deployment attempts = 0; public live attempts = 0;
+  reruns = 0; alternative deployment attempts = 0. Canonical blocker:
+  PUBLIC_DEPLOY_BLOCKED_MISSING_CLOUDFLARE_GITHUB_SECRETS. Do not claim the public Worker contains
+  b81133c6e3c57c36f6baedcfcce3cf9b8d46d3e3 until a separately authorized credentialed deployment succeeds.
+  No frontend deploy, mainnet, repeatability or mutation/closure of PR #19/#20/#21/#22/#23/#24/#25/#26/#27/#28
+  is authorized.
 
 build_authorized: true
 terminal_completeness_allowed: false

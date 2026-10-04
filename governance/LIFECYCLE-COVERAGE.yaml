@@ -16,11 +16,11 @@ source_of_truth:
 
 exact_next_gate: "PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE"
 exact_next_action: >-
-  PR #29 is merged to main as b81133c6e3c57c36f6baedcfcce3cf9b8d46d3e3. Automatic post-merge
-  test run 37229869661 and Cloudflare Worker dry-run CI 37229869664 both passed. Preserve
-  PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE as ACTIVE: the merged repair is source-promoted but public
-  hosted deployment and post-deploy repeatability are not proven for this merge commit. Fresh explicit
-  authorization is required before any public redeploy or post-deploy live/repeatability validation.
+  PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE is operationally BLOCKED on Cloudflare deployment credentials.
+  Main b81133c6e3c57c36f6baedcfcce3cf9b8d46d3e3 contains the 7/7-proven repair and post-merge CI is green,
+  but authorized ops run 37233079206 stopped before deployment because CLOUDFLARE_API_TOKEN and
+  CLOUDFLARE_ACCOUNT_ID were unavailable to GitHub Actions. No public runtime read or live POST occurred.
+  Preserve the current public-runtime truth boundary until a separately authorized credentialed deployment succeeds.
 
 capabilities:
   - capability: faadil_system_router
@@ -231,7 +231,7 @@ competitive_judge_cycle:
     note: "First live slice and reusable shared product core are both proven on Solana Devnet."
   LIVE_DEPTH:
     status: IN_PROGRESS
-    note: "PR #29's 7/7-proven repair is now merged to main and post-merge CI is green; LIVE_DEPTH remains IN_PROGRESS until public deployment of the merged repair is verified, post-deploy reliability is re-proven, and external-user/operator evidence gaps are addressed."
+    note: "PR #29's 7/7-proven repair is merged to main and post-merge CI is green. Public deployment is BLOCKED because the authorized one-shot GitHub workflow had no CLOUDFLARE_API_TOKEN or CLOUDFLARE_ACCOUNT_ID; no deploy or public live call occurred. LIVE_DEPTH remains IN_PROGRESS."
   EVIDENCE:
     status: SATISFIED
     note: "Live core, runtime binding, shared product core, rollback and bounded refusal receipts exist; hosted public-runtime evidence remains the next causal edge."

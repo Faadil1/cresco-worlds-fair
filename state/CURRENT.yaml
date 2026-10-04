@@ -51,23 +51,22 @@ phase:
 
 exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
 exact_next_action: >-
-  PR #25 at exact head 1fd7f5fc52d486e5f42d095f7115860b4745ceb5 remains open and unmerged.
-  Root test run 37207143535 and Cloudflare Worker CI run 37207143531 passed. The single authorized live
-  run 37207143575 proved the dynamic devUSDC refill by restoring input vault 1300000 -> 1500000 before
-  runtimeBefore. This is a real bootstrap funding effect; do not describe the run as zero-effect. After
-  bootstrap, the canonical sequence stopped at ORCA_CONTEXT with underlying error:
-  Unable to fetch Whirlpool at address at 63cMwvN8eoaD39os9bKP8brmA7Xtov9VxahnPufWCSdg.
-  spentThisPeriod remained 5800000, output vault remained 13498590, and no standing action executed.
-  Artifact 11304354063 / sha256:2103cb2c265e135235bb694987e8fa213ab92e3f9335df3f579c2e5754957e3b
-  preserves the failure. Orca source confirms this error is thrown when its fetcher returns no pool account.
-  A targeted clean repair now exists at branch fix/worlds-fair-orca-whirlpool-read-retry-v1-clean, exact
-  head 28304f9d74ea7c00518ba74cd815c0afc3e7e639, directly from deployed main. It adds only
-  'Unable to fetch Whirlpool at address at' to the existing bounded transient read classifier while
-  preserving dynamic refill, MintInfo retry, redacted diagnostics, and fail-closed write semantics.
-  Push run 37207328384 passed with 134/134 tests plus demo smoke and no live workflow. Obtain fresh
-  exact-head authorization before opening a PR or triggering another live validation. Do not merge,
-  redeploy, use mainnet, run repeatability or mutate PR #19/#20/#21/#22/#23/#24/#25 without fresh
-  authorization.
+  PR #26 at exact head 28304f9d74ea7c00518ba74cd815c0afc3e7e639 remains open and unmerged.
+  Root test run 37208383889 and Cloudflare Worker CI run 37208383842 passed. The single authorized live
+  run 37208383952 reached WORLD_FAIR_OPERATOR_LAB_RUNTIME=READY and then the Node process terminated on
+  a raw Solana RPC 429 (Connection rate limits exceeded) before a World Fair failure receipt could be
+  persisted; no artifact was uploaded and the exact internal phase is not receipt-proven. Do not overclaim
+  a precise phase or a complete 7/7 result from this run. Investigation of Orca legacy common-sdk shows its
+  getMultipleAccounts() batch helper uses an async Promise executor, allowing errors from
+  getMultipleAccountsInfo() to escape the Promise chain and bypass CRESCO's outer retry. A clean source-only
+  repair now exists at branch fix/worlds-fair-orca-safe-batch-reads-v1-clean, exact head
+  4a5d9bdf556aa53b9ac668d96348e180ef1de59b, directly from deployed main. It preserves Orca's normal
+  fetcher but replaces only quote-critical getMintInfos() and getTickArrays() batch paths with controlled
+  unit reads so 429/null outcomes return into CRESCO's bounded retry ownership. It preserves dynamic refill,
+  Whirlpool retry, MintInfo retry, redacted diagnostics and no-write-retry semantics. Push run 37208646758
+  passed with 137/137 tests plus demo smoke and no live workflow. Obtain fresh exact-head authorization
+  before opening a PR or triggering another live validation. Do not merge, redeploy, use mainnet, run
+  repeatability or mutate PR #19/#20/#21/#22/#23/#24/#25/#26 without fresh authorization.
 
 build_authorized: true
 terminal_completeness_allowed: false

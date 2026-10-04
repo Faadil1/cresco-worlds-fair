@@ -676,3 +676,70 @@ The repair proxies only Orca's quote-critical batch reads into controlled unit r
 See:
 - `evidence/runtime/HOSTED-ORCA-WHIRLPOOL-READ-RETRY-PREMERGE-2026-10-04.md`;
 - `evidence/runtime/HOSTED-ORCA-SAFE-BATCH-READS-PREMERGE-2026-10-04.md`.
+
+
+## 2026-10-04 PR #27 safe batch reads + MintInfo null guard
+
+PR #27 at exact head `4a5d9bdf556aa53b9ac668d96348e180ef1de59b` remains open and unmerged.
+
+Observed:
+- root test `37212796164`: PASS;
+- Cloudflare Worker CI `37212796165`: PASS;
+- single authorized operator-lab live `37212796167`: FAIL;
+- additional live workflows: none.
+
+The process-level raw 429 from PR #26 did not recur. The run produced a normal CRESCO receipt and reached:
+- BOOTSTRAP_READY;
+- STATE_LOAD;
+- ORCA_CONTEXT;
+- STANDING_1_MARKET_EVIDENCE.
+
+It failed at `STANDING_1_QUOTE` with:
+- class `DEPENDENCY_FAILURE`;
+- reason `ORCA_QUOTE_READ_UNAVAILABLE`;
+- underlying `TypeError: Cannot read properties of null (reading 'tlvData')`.
+
+No PR #27 canonical write occurred:
+- confirmedEffects empty;
+- spentThisPeriod `6000000 -> 6000000`;
+- input vault `1500000 -> 1500000`;
+- output vault `13698569 -> 13698569`.
+
+Artifact:
+- id `11306858165`;
+- digest `sha256:b24c35fdebc13a28e657dd193a6b2584dc8bbfbf02175022be9df970e3873eae`.
+
+### Intervening prior state advancement
+
+PR #25 ended at:
+- spentThisPeriod `5800000`;
+- spentThisPeriodNotionalMicroUsd `5799848`;
+- output vault `13498590`.
+
+PR #27 began at:
+- spentThisPeriod `6000000`;
+- spentThisPeriodNotionalMicroUsd `5999838`;
+- output vault `13698569`.
+
+Observed delta:
+- spent `+200000`;
+- notional `+199990`;
+- output `+199979`.
+
+The state advancement is OBSERVED. Attribution to intervening PR #26 live run `37208383952` is INFERRED_HIGH_CONFIDENCE because it was the only known intervening protected live run, but PR #26 produced no receipt. Therefore do not claim its signature, exact phase, or zero-effect.
+
+### Targeted MintInfo null repair
+
+A clean source-only repair now exists:
+- branch `fix/worlds-fair-orca-safe-mint-batch-null-v1-clean`;
+- exact head `16f6374c6fbec1c9c39c0129c40f9f914cbf7a6f`;
+- base deployed main `1266756fb6a00318618daefe9db3d875387411b5`;
+- push test `37212992396`: PASS, 139/139;
+- PR: NOT OPENED;
+- live validation: NOT AUTHORIZED.
+
+The repair preserves safe unit ownership for Orca batch reads but converts a null MintInfo unit result into the SDK-compatible `Unable to fetch MintInfo for mint - <mint>` error. That error is already handled by CRESCO’s bounded read retry. TickArray null semantics remain nullable because Orca explicitly interpolates uninitialized arrays.
+
+See:
+- `evidence/runtime/HOSTED-ORCA-SAFE-BATCH-READS-PREMERGE-2026-10-04.md`;
+- `evidence/runtime/HOSTED-ORCA-SAFE-MINT-BATCH-NULL-PREMERGE-2026-10-04.md`.

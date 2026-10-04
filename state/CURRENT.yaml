@@ -51,22 +51,27 @@ phase:
 
 exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
 exact_next_action: >-
-  PR #26 at exact head 28304f9d74ea7c00518ba74cd815c0afc3e7e639 remains open and unmerged.
-  Root test run 37208383889 and Cloudflare Worker CI run 37208383842 passed. The single authorized live
-  run 37208383952 reached WORLD_FAIR_OPERATOR_LAB_RUNTIME=READY and then the Node process terminated on
-  a raw Solana RPC 429 (Connection rate limits exceeded) before a World Fair failure receipt could be
-  persisted; no artifact was uploaded and the exact internal phase is not receipt-proven. Do not overclaim
-  a precise phase or a complete 7/7 result from this run. Investigation of Orca legacy common-sdk shows its
-  getMultipleAccounts() batch helper uses an async Promise executor, allowing errors from
-  getMultipleAccountsInfo() to escape the Promise chain and bypass CRESCO's outer retry. A clean source-only
-  repair now exists at branch fix/worlds-fair-orca-safe-batch-reads-v1-clean, exact head
-  4a5d9bdf556aa53b9ac668d96348e180ef1de59b, directly from deployed main. It preserves Orca's normal
-  fetcher but replaces only quote-critical getMintInfos() and getTickArrays() batch paths with controlled
-  unit reads so 429/null outcomes return into CRESCO's bounded retry ownership. It preserves dynamic refill,
-  Whirlpool retry, MintInfo retry, redacted diagnostics and no-write-retry semantics. Push run 37208646758
-  passed with 137/137 tests plus demo smoke and no live workflow. Obtain fresh exact-head authorization
-  before opening a PR or triggering another live validation. Do not merge, redeploy, use mainnet, run
-  repeatability or mutate PR #19/#20/#21/#22/#23/#24/#25/#26 without fresh authorization.
+  PR #27 at exact head 4a5d9bdf556aa53b9ac668d96348e180ef1de59b remains open and unmerged.
+  Root test run 37212796164 and Cloudflare Worker CI run 37212796165 passed. The single authorized live
+  run 37212796167 no longer suffered the raw process-level 429 seen in PR #26; it produced a normal
+  CRESCO failure receipt and failed at STANDING_1_QUOTE with underlying TypeError:
+  Cannot read properties of null (reading 'tlvData'). ConfirmedEffects was empty and runtimeBefore/runtimeAfter
+  were identical for this run: spentThisPeriod 6000000, input vault 1500000, output vault 13698569.
+  Artifact 11306858165 / sha256:b24c35fdebc13a28e657dd193a6b2584dc8bbfbf02175022be9df970e3873eae
+  preserves the receipt. Reconcile an intervening state advancement: PR #25 ended at spentThisPeriod 5800000,
+  spentThisPeriodNotionalMicroUsd 5799848 and output vault 13498590, while PR #27 began at 6000000,
+  5999838 and 13698569 respectively. The +200000 spent / +199990 notional / +199979 output advancement
+  is OBSERVED; attribution to PR #26 run 37208383952 is INFERRED_HIGH_CONFIDENCE because that was the only
+  known intervening protected live run, but it is not receipt-proven. Do not claim PR #26 zero-effect,
+  signature, or exact phase. A targeted clean repair now exists at branch
+  fix/worlds-fair-orca-safe-mint-batch-null-v1-clean, exact head
+  16f6374c6fbec1c9c39c0129c40f9f914cbf7a6f, directly from deployed main. It preserves safe unit-read
+  ownership for Orca MintInfo/TickArray batch paths and converts a null MintInfo unit read into the exact
+  SDK-style 'Unable to fetch MintInfo for mint - <mint>' error so the existing bounded CRESCO read retry
+  can own recovery. Nullable TickArray semantics remain unchanged. Push run 37212992396 passed with
+  139/139 tests plus demo smoke and no live workflow. Obtain fresh exact-head authorization before opening
+  a PR or triggering another live validation. Do not merge, redeploy, use mainnet, run repeatability or
+  mutate PR #19/#20/#21/#22/#23/#24/#25/#26/#27 without fresh authorization.
 
 build_authorized: true
 terminal_completeness_allowed: false

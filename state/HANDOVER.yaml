@@ -206,19 +206,19 @@ handover:
 
   exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
   exact_next_action: >-
-    PR #22 at exact head 90e1431dd1db975497d81e7cf3d223172aa3437a is open and unmerged.
-    Root test run 37186952848 and Cloudflare Worker CI run 37186952837 passed. The single authorized
-    operator-lab live run 37186952836 failed at STANDING_2_QUOTE after a confirmed standingAutonomy.1
-    execution. Failure artifact 11297430734 /
-    sha256:b415e5976d04ef90040a81c8e8412f653df1f5a9b2f9c72e47b1fd9078035ffe preserves the partial
-    receipt. Confirmed signature: 5hhyWuKa5udxxv5rersaoNKsoDa6bSuFZ8zKfLMVQrTbcMYd3fSpp6ypYbpRBxncZdNVUKtfnr3UrYGz48WQMZ86.
-    The run moved spentThisPeriod 5400000 -> 5600000 and input vault 1500000 -> 1300000; zero-effects and
-    blind replay are forbidden. PR #22 removed the explicit ORCA_CONTEXT_AFTER_STANDING_1 failure seen in
-    PR #21, but the second Orca quote still failed despite fresh pool reacquisition and IGNORE_CACHE.
-    Orca’s own swapQuoteByInputToken already refetches the pool/tick-array quote inputs, so do not add broader
-    speculative retries. Prepare a source-only diagnostic repair that persists a redacted structural summary
-    of the underlying quote exception. Do not merge, redeploy, use mainnet, run repeatability, mutate
-    PR #19/#20/#21/#22, or trigger another live validation without fresh authorization.
+    PR #22 at exact head 90e1431dd1db975497d81e7cf3d223172aa3437a remains open and unmerged.
+    Root test run 37186952848 and Cloudflare Worker CI run 37186952837 passed, while the single authorized
+    live run 37186952836 failed at STANDING_2_QUOTE after confirmed standingAutonomy.1 signature
+    5hhyWuKa5udxxv5rersaoNKsoDa6bSuFZ8zKfLMVQrTbcMYd3fSpp6ypYbpRBxncZdNVUKtfnr3UrYGz48WQMZ86.
+    Artifact 11297430734 / sha256:b415e5976d04ef90040a81c8e8412f653df1f5a9b2f9c72e47b1fd9078035ffe
+    preserves the partial receipt. Fresh-pool reacquisition and IGNORE_CACHE did not make the second quote
+    reliable, so broader speculative retries are not justified. A diagnostic-only clean replacement branch
+    now exists at fix/worlds-fair-quote-cause-diagnostic-v1-clean, exact head
+    ae53370d3231e13f492ab9b2543fcf1a18ad7352, directly from deployed main. Push test run 37187193966
+    passed and no live workflow fired. It persists a redacted structural summary of the underlying quote
+    exception without broadening retry semantics. Request fresh exact-head authorization before opening a PR
+    or triggering another live validation. Do not merge, redeploy, use mainnet, run repeatability or mutate
+    PR #19/#20/#21/#22 without fresh authorization.
 
   prohibited_shortcuts:
     - no_silent_concept_lock

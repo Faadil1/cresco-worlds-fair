@@ -202,6 +202,16 @@ claims:
       program_sha256: "084a3f7aad8a5772d773816579f5d2b98542c4b966dbb0dd7c60cb397db21f61"
       source_head: "b77b5378c6088c50c2912a4b4254c43b28f549fd"
       pull_request: 29
+      source_promotion:
+        merge_status: MERGED_TO_MAIN
+        merge_commit: "b81133c6e3c57c36f6baedcfcce3cf9b8d46d3e3"
+        merged_at: "2026-10-04T19:51:31Z"
+        postmerge_test_run: 37229869661
+        postmerge_test_result: PASS
+        postmerge_cloudflare_ci_run: 37229869664
+        postmerge_cloudflare_ci_result: PASS
+        public_deploy_of_merge_commit: NOT_PROVEN
+        postdeploy_repeatability: NOT_PROVEN
       workflow_run: 37214175230
       workflow_job: 111471209923
       starting_nonce: 13
@@ -213,7 +223,7 @@ claims:
       github_artifact_digest: "sha256:e2f93357e79d89a40ae864df76b7f7dce81ea837de1b12fab06a689cfb5a65ce"
       artifact_pointer: "evidence/runtime/HOSTED-PR29-EXACT-HEAD-7-OF-7-LIVE-PASS-2026-10-04.md"
       canonical_scenarios: 7
-    limitation: "Exact-head live behavior is proven. PR #29 is unmerged; main/public hosted deployment and post-deploy repeatability are not upgraded by this claim."
+    limitation: "Exact-head live behavior is proven and that repair is now merged to main with post-merge CI PASS. Public hosted deployment of the merge commit and post-deploy repeatability are not upgraded by this claim."
 
   - claim_id: WORLD_FAIR_HOSTED_API_TO_SOLANA
     statement: "The public CRESCO v0.3 World’s Fair API executes the canonical CRESCO→Orca authority sequence live on Solana Devnet."

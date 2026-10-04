@@ -51,17 +51,19 @@ phase:
 
 exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
 exact_next_action: >-
-  Runtime/reliability work has advanced in parallel to PR #21 on branch
-  fix/worlds-fair-post-swap-orca-refresh-v1 at exact head d64e483c5cc662aca15b7293eca054073e38230c,
-  based directly on main 1266756fb6a00318618daefe9db3d875387411b5. Root test run 37185513937 and
-  Cloudflare Worker CI run 37185513963 passed. The single authorized live run 37185513936 failed after a
-  confirmed STANDING_1_EXECUTE/STANDING_1_EFFECT_OBSERVED at ORCA_CONTEXT_AFTER_STANDING_1; confirmed
-  signature 2SWLbjfDTiaDh2QdfqPTMgCVHTM6BDdJGZM7pixxKxvUA4wfMQ77hVz4Pzc86BfC1n39RedAuitau3pNmYd3XhnX,
-  artifact 11296822574, digest sha256:3f277f72160318c5300174fed17571d86a7b683cb969e9c7dcdbe35682b6e15f.
-  PR #21 remains open/unmerged. Do not merge, redeploy, run another live validation, touch PR #19/#20,
-  or use mainnet without fresh explicit authorization. In parallel, continue submission narrative, demo
-  structure, Q&A, business/impact, UX/judge self-serve refinement, evidence audit and external validation
-  under docs/PARALLEL-WORKSTREAM-PLAN-2026-10-04.md. Reconcile again whenever PR #21 head/state changes.
+  PR #21 at exact head d64e483c5cc662aca15b7293eca054073e38230c remains open and unmerged after
+  root test run 37185513937 PASS, Cloudflare Worker CI run 37185513963 PASS and live run 37185513936
+  FAIL at ORCA_CONTEXT_AFTER_STANDING_1 after confirmed standingAutonomy.1 signature
+  2SWLbjfDTiaDh2QdfqPTMgCVHTM6BDdJGZM7pixxKxvUA4wfMQ77hVz4Pzc86BfC1n39RedAuitau3pNmYd3XhnX.
+  A clean replacement repair has now been reconstructed directly from deployed main on branch
+  fix/worlds-fair-fresh-quote-context-v2-clean at exact head
+  90e1431dd1db975497d81e7cf3d223172aa3437a. It is 1 commit ahead / 0 behind, has no PR,
+  and test run 37186819903 passed with 124/124 tests plus demo smoke. The repair removes explicit
+  pool.refreshData() and separate ORCA_CONTEXT_AFTER_* phases, reacquires a fresh Orca pool with
+  IGNORE_CACHE inside every quote, preserves post-write state reconciliation, and keeps the old
+  worlds-fair-orca-devnet-proof workflow manual-only. Obtain fresh exact-head authorization before
+  opening a PR because that will trigger the protected operator-lab Devnet validation. Do not merge,
+  redeploy, use mainnet, run repeatability, or mutate PR #19/#20/#21 without fresh authorization.
 
 build_authorized: true
 terminal_completeness_allowed: false

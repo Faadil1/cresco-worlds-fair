@@ -469,3 +469,44 @@ This run was outside the explicit one-live authorization and is classified as an
 The shared operator-lab accounts used by the hosted runtime were not the PDAs touched by this proof script because its delegate is randomly generated per run.
 
 Future replacement PRs must avoid `package.json` changes, or must first repair the path-trigger relationship, so opening a PR cannot silently launch this separate live proof workflow.
+
+
+## 2026-10-04 PR #22 fresh Orca quote context validation
+
+PR #22 at exact head `90e1431dd1db975497d81e7cf3d223172aa3437a` remained open and unmerged.
+
+Observed:
+- root test `37186952848`: PASS;
+- Cloudflare Worker CI `37186952837`: PASS;
+- single authorized operator-lab live run `37186952836`: FAIL;
+- additional auto live workflows: none.
+
+The live run completed `STANDING_1_EXECUTE` and `STANDING_1_EFFECT_OBSERVED`, then failed at `STANDING_2_QUOTE` with:
+- class: `DEPENDENCY_FAILURE`;
+- reason: `ORCA_QUOTE_READ_UNAVAILABLE`;
+- confirmed signature: `5hhyWuKa5udxxv5rersaoNKsoDa6bSuFZ8zKfLMVQrTbcMYd3fSpp6ypYbpRBxncZdNVUKtfnr3UrYGz48WQMZ86`.
+
+State moved:
+- spentThisPeriod `5400000 -> 5600000`;
+- input vault `1500000 -> 1300000`;
+- output vault `13098632 -> 13298611`.
+
+Failure artifact:
+- id `11297430734`;
+- digest `sha256:b415e5976d04ef90040a81c8e8412f653df1f5a9b2f9c72e47b1fd9078035ffe`.
+
+The failure proves that removing explicit post-write context refreshes and reacquiring a fresh pool per quote did not make the second quote reliable. Do not widen unknown-error retry semantics from this evidence alone.
+
+A diagnostic-only clean branch now exists:
+- branch `fix/worlds-fair-quote-cause-diagnostic-v1-clean`;
+- exact head `ae53370d3231e13f492ab9b2543fcf1a18ad7352`;
+- base deployed main `1266756fb6a00318618daefe9db3d875387411b5`;
+- test run `37187193966`: PASS;
+- PR: NOT OPENED;
+- live validation: NOT AUTHORIZED.
+
+It adds redacted structural evidence for the underlying quote/read exception and does not broaden retry behavior.
+
+See:
+- `evidence/runtime/HOSTED-FRESH-ORCA-QUOTE-CONTEXT-LIVE-FAIL-2026-10-04.md`;
+- `evidence/runtime/HOSTED-ORCA-QUOTE-CAUSE-DIAGNOSTIC-PREMERGE-2026-10-04.md`.

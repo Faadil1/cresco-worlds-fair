@@ -510,3 +510,50 @@ It adds redacted structural evidence for the underlying quote/read exception and
 See:
 - `evidence/runtime/HOSTED-FRESH-ORCA-QUOTE-CONTEXT-LIVE-FAIL-2026-10-04.md`;
 - `evidence/runtime/HOSTED-ORCA-QUOTE-CAUSE-DIAGNOSTIC-PREMERGE-2026-10-04.md`.
+
+
+## 2026-10-04 PR #23 underlying quote cause + MintInfo retry repair
+
+PR #23 at exact head `ae53370d3231e13f492ab9b2543fcf1a18ad7352` remained open and unmerged.
+
+Observed:
+- root test `37189936066`: PASS;
+- Cloudflare Worker CI `37189936104`: PASS;
+- single authorized operator-lab live run `37189936070`: FAIL;
+- additional auto live workflows: none.
+
+The live run failed at `STANDING_2_QUOTE` after a confirmed first swap.
+
+Redacted underlying error:
+`Unable to fetch MintInfo for mint - H8UekPGwePSmQ3ttuYGPU1szyFfjZR4N53rymSFwpLPm`
+
+This mint is the World’s Fair devUSDT output mint.
+
+Orca source confirms this error is raised when its fetcher returns no MintInfo for one of the pool mints. This is therefore classified as a read-side dependency fetch failure, not a semantic policy refusal and not uncertain write confirmation.
+
+Confirmed signature:
+`Cr3YzVrN9ppUxUDHcdHCJW211chXFp132PLZsRUmAUR5LraSJ5ytDcqgwZ2fSQgvBStLHV8vKQ98QCrQf75DE2Y`
+
+State delta:
+- spentThisPeriod `5600000 -> 5800000`;
+- input vault `1500000 -> 1300000`;
+- output vault `13298611 -> 13498590`;
+- mandate nonce unchanged.
+
+Failure artifact:
+- id `11298615484`;
+- digest `sha256:a9e0173d2ca730a954336e060f2e6c813d4041843e1ab3e3650d288b4d68aa24`.
+
+A targeted clean repair now exists:
+- branch `fix/worlds-fair-orca-mintinfo-read-retry-v1-clean`;
+- exact head `a1a25f861c435826c03dd773d6f7fef362f91d0b`;
+- base deployed main `1266756fb6a00318618daefe9db3d875387411b5`;
+- push test run `37203306546`: PASS;
+- PR: NOT OPENED;
+- live validation: NOT AUTHORIZED.
+
+The repair adds only `Unable to fetch MintInfo for mint` to the existing bounded transient read classifier. It does not broaden unknown-error retries and does not retry writes.
+
+See:
+- `evidence/runtime/HOSTED-ORCA-QUOTE-CAUSE-DIAGNOSTIC-PREMERGE-2026-10-04.md`;
+- `evidence/runtime/HOSTED-ORCA-MINTINFO-READ-RETRY-PREMERGE-2026-10-04.md`.

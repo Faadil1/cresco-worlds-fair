@@ -51,23 +51,23 @@ phase:
 
 exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
 exact_next_action: >-
-  PR #23 at exact head ae53370d3231e13f492ab9b2543fcf1a18ad7352 remains open and unmerged.
-  Root test run 37189936066 and Cloudflare Worker CI run 37189936104 passed. The single authorized live
-  run 37189936070 failed at STANDING_2_QUOTE after confirmed standingAutonomy.1 signature
-  Cr3YzVrN9ppUxUDHcdHCJW211chXFp132PLZsRUmAUR5LraSJ5ytDcqgwZ2fSQgvBStLHV8vKQ98QCrQf75DE2Y.
-  The redacted underlying error is exactly: Unable to fetch MintInfo for mint -
-  H8UekPGwePSmQ3ttuYGPU1szyFfjZR4N53rymSFwpLPm (the World’s Fair devUSDT output mint).
-  Artifact 11298615484 / sha256:a9e0173d2ca730a954336e060f2e6c813d4041843e1ab3e3650d288b4d68aa24
-  preserves the diagnostic and partial receipt. Runtime state moved spentThisPeriod 5600000 -> 5800000
-  and input vault 1500000 -> 1300000, so zero-effects and blind replay are forbidden. Orca source confirms
-  this error is raised when its fetcher returns no MintInfo for a pool mint, making it a read-side dependency
-  failure rather than a semantic refusal or uncertain write. A targeted clean repair now exists at branch
-  fix/worlds-fair-orca-mintinfo-read-retry-v1-clean, exact head
-  a1a25f861c435826c03dd773d6f7fef362f91d0b, directly from deployed main. Push run 37203306546 passed
-  and no live workflow fired. The repair adds only this MintInfo fetch gap to the existing bounded transient
-  read retry classification, with no broader unknown-error retry and no write retry. Obtain fresh exact-head
-  authorization before opening a PR or triggering another live validation. Do not merge, redeploy, use
-  mainnet, run repeatability or mutate PR #19/#20/#21/#22/#23 without fresh authorization.
+  PR #24 at exact head a1a25f861c435826c03dd773d6f7fef362f91d0b remains open and unmerged.
+  Root test run 37205911964 and Cloudflare Worker CI run 37205912001 passed. The single authorized live
+  run 37205911937 failed before runtimeBefore/runCanonicalSequence inside ensureInputVaultFunding because
+  the bootstrap attempted a hard-coded 100000000-lamport SOL->devUSDC swap while the guardian had
+  35657296 lamports; simulation required 101488440. Artifact 11304259326 /
+  sha256:df740ab9b33d9ce0e9b38caf8daedef1eb23d3e22b150ef25e3fd364ceddd2ab preserves the failure.
+  Shared runtime remained readable with spentThisPeriod 5800000, input vault 1300000 and output vault
+  13498590. Because the canonical sequence never began, this run neither validates nor invalidates the
+  MintInfo retry. A clean source-only replacement now exists at branch
+  fix/worlds-fair-dynamic-devusdc-refill-v1-clean, exact head
+  1fd7f5fc52d486e5f42d095f7115860b4745ceb5, directly from deployed main. It sizes SOL->devUSDC
+  refill from the exact deficit, a live read-only quote minimum output, a 10% safety margin, the actual
+  guardian SOL balance and a 5000000-lamport reserve; it fails closed before write if available funding is
+  insufficient. Push run 37206189688 passed with 132/132 tests plus demo smoke and no live workflow.
+  Obtain fresh exact-head authorization before opening a PR or triggering another live validation. Do not
+  merge, redeploy, use mainnet, run repeatability or mutate PR #19/#20/#21/#22/#23/#24 without fresh
+  authorization.
 
 build_authorized: true
 terminal_completeness_allowed: false

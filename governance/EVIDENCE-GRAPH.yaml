@@ -190,6 +190,31 @@ claims:
       Shared live product-core execution and public hosted API→Solana execution are proven.
       The public /worlds-fair browser surface is still missing, so judge self-serve remains unproven.
 
+  - claim_id: WORLD_FAIR_PR29_EXACT_HEAD_7_OF_7
+    statement: "PR #29 exact head b77b5378c6088c50c2912a4b4254c43b28f549fd completes all seven canonical World’s Fair scenarios live on Solana Devnet in one receipt-validated run."
+    evidence_class: PRODUCTION_EVIDENCE
+    truth_state: OBSERVED
+    graph_status: COMPLETE
+    runtime_execution:
+      status: LIVE_PREMERGE_EXACT_HEAD
+      network: "solana-devnet"
+      program_id: "7pgPuPZSUUtFcvFtVGmS3piCE1bHY35kjb14vct9v45Z"
+      program_sha256: "084a3f7aad8a5772d773816579f5d2b98542c4b966dbb0dd7c60cb397db21f61"
+      source_head: "b77b5378c6088c50c2912a4b4254c43b28f549fd"
+      pull_request: 29
+      workflow_run: 37214175230
+      workflow_job: 111471209923
+      starting_nonce: 13
+      completed_nonce: 14
+    receipt_or_telemetry:
+      status: PASS
+      validator: "WORLD_FAIR_OPERATOR_LAB_RECEIPT_VALID=PASS"
+      github_artifact: 11307628144
+      github_artifact_digest: "sha256:e2f93357e79d89a40ae864df76b7f7dce81ea837de1b12fab06a689cfb5a65ce"
+      artifact_pointer: "evidence/runtime/HOSTED-PR29-EXACT-HEAD-7-OF-7-LIVE-PASS-2026-10-04.md"
+      canonical_scenarios: 7
+    limitation: "Exact-head live behavior is proven. PR #29 is unmerged; main/public hosted deployment and post-deploy repeatability are not upgraded by this claim."
+
   - claim_id: WORLD_FAIR_HOSTED_API_TO_SOLANA
     statement: "The public CRESCO v0.3 World’s Fair API executes the canonical CRESCO→Orca authority sequence live on Solana Devnet."
     evidence_class: PRODUCTION_EVIDENCE

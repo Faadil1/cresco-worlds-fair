@@ -1,7 +1,7 @@
 project: cresco-worlds-fair
 date: 2026-10-02
 status: ACTIVE
-product_status: OPERATOR_LAB_SHARED_CORE_PROVEN__HOSTED_SELF_SERVE_PENDING_WITH_VALIDATION_GAP
+product_status: PREMERGE_EXACT_HEAD_7_OF_7_PROVEN__PUBLIC_PROMOTION_PENDING_WITH_VALIDATION_GAP
 source_of_truth: GITHUB
 
 system_reconciliation:
@@ -51,26 +51,19 @@ phase:
 
 exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
 exact_next_action: >-
-  PR #28 at exact head 16f6374c6fbec1c9c39c0129c40f9f914cbf7a6f remains open and unmerged.
-  Root test run 37213621783 and Cloudflare Worker CI run 37213621761 passed. The single authorized live
-  run 37213621817 progressed through STANDING_1_EXECUTE and STANDING_1_EFFECT_OBSERVED, confirmed
-  standingAutonomy.1 signature
-  3YaqYzrNekRQ2MmbuLCmjg1y7h7uX7y84griPXSuB4qmuQLP7agC4fbAEQc8qMq6PS4Lnb1tq55iSPpZBaAAVSfR,
-  then failed at STANDING_2_QUOTE with underlying error 'Invariant failed: Whirlpool data not found'.
-  Runtime moved spentThisPeriod 6000000 -> 6200000, spentThisPeriodNotionalMicroUsd 5999838 -> 6199831,
-  input vault 1500000 -> 1300000 and output vault 13698569 -> 13898548; zero-effects is false and blind
-  replay is forbidden. Artifact 11307118527 /
-  sha256:e8b5014c4eafbdec4ad9f5c1a8a9454e1dfad8260bdd6ff335c1aa986eb68ccc preserves the partial receipt.
-  Orca source confirms swapQuoteByInputToken refetches the Whirlpool and throws this exact invariant when the
-  known pool read returns null. A targeted clean repair now exists at branch
-  fix/worlds-fair-orca-quote-pool-null-retry-v1-clean, exact head
-  b77b5378c6088c50c2912a4b4254c43b28f549fd, directly from deployed main. It adds only
-  'Invariant failed: Whirlpool data not found' to the existing bounded transient read classifier while
-  preserving safe Orca unit-read ownership, null-MintInfo handling, Whirlpool/MintInfo retries, dynamic
-  refill, redacted diagnostics and no-write-retry semantics. Push run 37213823352 passed with 141/141 tests
-  plus demo smoke and no live workflow. Obtain fresh exact-head authorization before opening a PR or
-  triggering another live validation. Do not merge, redeploy, use mainnet, run repeatability or mutate
-  PR #19/#20/#21/#22/#23/#24/#25/#26/#27/#28 without fresh authorization.
+  PR #29 at exact head b77b5378c6088c50c2912a4b4254c43b28f549fd remains open and unmerged.
+  Root test run 37214175228 PASS, Cloudflare Worker CI run 37214175272 PASS, and the single authorized
+  operator-lab live run 37214175230 PASS with WORLD_FAIR_OPERATOR_LAB_RECEIPT_VALID=PASS. Artifact
+  11307628144 / sha256:e2f93357e79d89a40ae864df76b7f7dce81ea837de1b12fab06a689cfb5a65ce
+  records all seven canonical scenarios PASS in one Solana Devnet run at the exact PR head. The receipt
+  starts at nonce 13 and completes at nonce 14, with both standing swaps, soft-boundary refusal, exact
+  one-use exception grant/mutation-refusal/execution/replay-refusal, hard-boundary refusal, evidence-failure
+  refusal, rollback invariants and stale-authority refusal all proven. Classification:
+  PREMERGE_EXACT_HEAD_7_OF_7_LIVE_PROVEN. Do not upgrade this to deployed/public reliability: PR #29 is
+  still unmerged, main does not contain the repair, and no public redeploy or post-deploy repeatability
+  validation has been authorized. The next protected action is merge/promotion planning under fresh explicit
+  authorization. Do not merge, redeploy, run post-deploy live/repeatability, use mainnet or mutate/close
+  PR #19/#20/#21/#22/#23/#24/#25/#26/#27/#28/#29 without fresh authorization.
 
 build_authorized: true
 terminal_completeness_allowed: false

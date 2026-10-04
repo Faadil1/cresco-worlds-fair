@@ -206,20 +206,17 @@ handover:
 
   exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
   exact_next_action: >-
-    PR #20 at exact head 65a9fea6cbd0535ea867690a848bc1a50ccbe08d remains open and unmerged.
-    Root test run 37153482193 and Cloudflare Worker CI run 37153482173 passed. The authorized operator-lab
-    live run 37153482247 failed at STANDING_2_QUOTE after a confirmed STANDING_1_EXECUTE; failure artifact
-    11285206479 preserves the exact partial receipt and confirmed signature
-    ttsTwumZDbZGf55mHNpyhhdSshji59jLc5wYnEa1GVY88YJrTf6zke3MpzZ1DWp9esfwEGYjmLaj2dHWGdGhPXo.
-    The automatic worlds-fair-orca-devnet-proof run 37153482170 was not cancelled in time and did reach its
-    live-slice step. It failed at the bootstrap SOL->devUSDC transaction simulation because the payer had
-    35717296 lamports but the transaction required 101488440. That workflow reused the existing program
-    binary, generated a random delegate and isolated PDAs, and completed isolated setup writes before the
-    failed bootstrap simulation. It did not mutate the shared operator-lab Charter/Mandate/vault accounts
-    and did not redeploy the program. Record this as an automatic workflow-scope violation, not as a second
-    canonical validation. Do not merge PR #20, do not redeploy, do not run mainnet, do not rerun
-    repeatability and do not trigger any additional live validation. Prepare the next source-only repair
-    around post-write Orca quote freshness/diagnostics and remove the package.json path-trigger hazard.
+    Runtime/reliability work has advanced in parallel to PR #21 on branch
+    fix/worlds-fair-post-swap-orca-refresh-v1 at exact head d64e483c5cc662aca15b7293eca054073e38230c,
+    based directly on main 1266756fb6a00318618daefe9db3d875387411b5. Root test run 37185513937 and
+    Cloudflare Worker CI run 37185513963 passed. The single authorized live run 37185513936 failed after a
+    confirmed STANDING_1_EXECUTE/STANDING_1_EFFECT_OBSERVED at ORCA_CONTEXT_AFTER_STANDING_1; confirmed
+    signature 2SWLbjfDTiaDh2QdfqPTMgCVHTM6BDdJGZM7pixxKxvUA4wfMQ77hVz4Pzc86BfC1n39RedAuitau3pNmYd3XhnX,
+    artifact 11296822574, digest sha256:3f277f72160318c5300174fed17571d86a7b683cb969e9c7dcdbe35682b6e15f.
+    PR #21 remains open/unmerged. Do not merge, redeploy, run another live validation, touch PR #19/#20,
+    or use mainnet without fresh explicit authorization. In parallel, continue submission narrative, demo
+    structure, Q&A, business/impact, UX/judge self-serve refinement, evidence audit and external validation
+    under docs/PARALLEL-WORKSTREAM-PLAN-2026-10-04.md. Reconcile again whenever PR #21 head/state changes.
 
   prohibited_shortcuts:
     - no_silent_concept_lock

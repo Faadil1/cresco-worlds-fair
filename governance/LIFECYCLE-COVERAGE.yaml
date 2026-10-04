@@ -16,8 +16,11 @@ source_of_truth:
 
 exact_next_gate: "PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE"
 exact_next_action: >-
-  Publish the build-proven v0.3 World’s Fair Worker/API and /worlds-fair surface from the proven source head,
-  then capture a hosted UI→API→Solana receipt and clean-room judge run before demo lock.
+  Treat PR #29 exact head b77b5378c6088c50c2912a4b4254c43b28f549fd as PREMERGE_EXACT_HEAD_7_OF_7_LIVE_PROVEN
+  based on runs 37214175228 PASS, 37214175272 PASS and 37214175230 PASS plus artifact 11307628144.
+  Preserve PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE as ACTIVE because main/public deployment does not yet
+  contain this repair and post-deploy repeatability remains unproven. Fresh explicit authorization is required
+  for merge, redeploy and any post-deploy live/repeatability validation.
 
 capabilities:
   - capability: faadil_system_router
@@ -228,7 +231,7 @@ competitive_judge_cycle:
     note: "First live slice and reusable shared product core are both proven on Solana Devnet."
   LIVE_DEPTH:
     status: IN_PROGRESS
-    note: "First live vertical slice is proven; depth expansion now targets real-user surface, shared core, self-serve and reproducibility."
+    note: "Exact PR #29 head now has one full 7/7 live Devnet PASS; LIVE_DEPTH remains IN_PROGRESS until the repair is merged/deployed, post-deploy reliability is re-proven, and external-user/operator evidence gaps are addressed."
   EVIDENCE:
     status: SATISFIED
     note: "Live core, runtime binding, shared product core, rollback and bounded refusal receipts exist; hosted public-runtime evidence remains the next causal edge."

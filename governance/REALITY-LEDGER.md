@@ -557,3 +557,41 @@ The repair adds only `Unable to fetch MintInfo for mint` to the existing bounded
 See:
 - `evidence/runtime/HOSTED-ORCA-QUOTE-CAUSE-DIAGNOSTIC-PREMERGE-2026-10-04.md`;
 - `evidence/runtime/HOSTED-ORCA-MINTINFO-READ-RETRY-PREMERGE-2026-10-04.md`.
+
+
+## 2026-10-04 PR #24 blocked by bootstrap funding + dynamic refill repair
+
+PR #24 at exact head `a1a25f861c435826c03dd773d6f7fef362f91d0b` remains open and unmerged.
+
+Observed:
+- root test `37205911964`: PASS;
+- Cloudflare Worker CI `37205912001`: PASS;
+- single authorized operator-lab live `37205911937`: FAIL;
+- additional live workflows: none.
+
+The run failed before `runtimeBefore` and before `runCanonicalSequence()`, inside `ensureInputVaultFunding()`.
+
+Simulation log:
+`Transfer: insufficient lamports 35657296, need 101488440`
+
+The bootstrap was still hard-coded to swap `100000000` lamports whenever guardian devUSDC was below the exact vault deficit. At this checkpoint the input vault was `1300000` against a target of `1500000`, so the immediate deficit was only `200000` devUSDC base units.
+
+Failure artifact:
+- id `11304259326`;
+- digest `sha256:df740ab9b33d9ce0e9b38caf8daedef1eb23d3e22b150ef25e3fd364ceddd2ab`.
+
+No CRESCO canonical sequence write occurred. The shared runtime remained readable at spentThisPeriod `5800000`, input vault `1300000`, output vault `13498590`. Therefore PR #24 did not test the MintInfo retry.
+
+A clean dynamic-refill repair now exists:
+- branch `fix/worlds-fair-dynamic-devusdc-refill-v1-clean`;
+- exact head `1fd7f5fc52d486e5f42d095f7115860b4745ceb5`;
+- base deployed main `1266756fb6a00318618daefe9db3d875387411b5`;
+- push test `37206189688`: PASS, 132/132;
+- PR: NOT OPENED;
+- live validation: NOT AUTHORIZED.
+
+The repair uses the exact devUSDC deficit, a live read-only Orca quote’s slippage-adjusted minimum output, a 10% sizing safety margin, actual guardian SOL balance and a 5000000-lamport reserve. It caps spend to available SOL and refuses before write if the deficit cannot be safely covered.
+
+See:
+- `evidence/runtime/HOSTED-ORCA-MINTINFO-RETRY-LIVE-BLOCKED-BY-FUNDING-2026-10-04.md`;
+- `evidence/runtime/HOSTED-DYNAMIC-DEVUSDC-REFILL-PREMERGE-2026-10-04.md`.

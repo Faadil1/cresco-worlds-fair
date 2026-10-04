@@ -210,7 +210,18 @@ claims:
         postmerge_test_result: PASS
         postmerge_cloudflare_ci_run: 37229869664
         postmerge_cloudflare_ci_result: PASS
-        public_deploy_of_merge_commit: NOT_PROVEN
+        public_deploy_of_merge_commit: BLOCKED_MISSING_CLOUDFLARE_GITHUB_SECRETS
+        public_promotion_attempt:
+          ops_branch: "ops/worlds-fair-public-promotion-2026-10-04"
+          ops_commit: "99e42d71bd060559b7454426ad0fd153825d12b5"
+          workflow_run: 37233079206
+          workflow_job: 111526689182
+          result: BLOCKED_BEFORE_DEPLOYMENT
+          cloudflare_api_token_available: false
+          cloudflare_account_id_available: false
+          deployment_attempts: 0
+          public_live_attempts: 0
+          evidence: "evidence/runtime/HOSTED-PUBLIC-PROMOTION-BLOCKED-MISSING-CLOUDFLARE-SECRETS-2026-10-04.md"
         postdeploy_repeatability: NOT_PROVEN
       workflow_run: 37214175230
       workflow_job: 111471209923
@@ -223,7 +234,7 @@ claims:
       github_artifact_digest: "sha256:e2f93357e79d89a40ae864df76b7f7dce81ea837de1b12fab06a689cfb5a65ce"
       artifact_pointer: "evidence/runtime/HOSTED-PR29-EXACT-HEAD-7-OF-7-LIVE-PASS-2026-10-04.md"
       canonical_scenarios: 7
-    limitation: "Exact-head live behavior is proven and that repair is now merged to main with post-merge CI PASS. Public hosted deployment of the merge commit and post-deploy repeatability are not upgraded by this claim."
+    limitation: "Exact-head live behavior is proven and that repair is merged to main with post-merge CI PASS. Public deployment is currently blocked because the authorized GitHub deployment workflow had no Cloudflare API token or account ID; no deploy or public live call occurred. Post-deploy repeatability remains unproven."
 
   - claim_id: WORLD_FAIR_HOSTED_API_TO_SOLANA
     statement: "The public CRESCO v0.3 World’s Fair API executes the canonical CRESCO→Orca authority sequence live on Solana Devnet."

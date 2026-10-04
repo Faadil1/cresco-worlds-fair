@@ -800,3 +800,52 @@ The repair adds only `Invariant failed: Whirlpool data not found` to the existin
 See:
 - `evidence/runtime/HOSTED-ORCA-SAFE-MINT-BATCH-NULL-PREMERGE-2026-10-04.md`;
 - `evidence/runtime/HOSTED-ORCA-QUOTE-POOL-NULL-RETRY-PREMERGE-2026-10-04.md`.
+
+
+## 2026-10-04 PR #29 exact-head 7/7 live PASS
+
+PR #29 at exact head `b77b5378c6088c50c2912a4b4254c43b28f549fd` remains open and unmerged.
+
+Observed:
+- root test `37214175228`: PASS;
+- Cloudflare Worker CI `37214175272`: PASS;
+- single authorized operator-lab live `37214175230`: PASS;
+- receipt verification: PASS;
+- additional live workflows: none.
+
+Artifact:
+- id `11307628144`;
+- digest `sha256:e2f93357e79d89a40ae864df76b7f7dce81ea837de1b12fab06a689cfb5a65ce`.
+
+The receipt is schema v2, status PASS, network Solana Devnet, bound to Program ID
+`7pgPuPZSUUtFcvFtVGmS3piCE1bHY35kjb14vct9v45Z` and program SHA-256
+`084a3f7aad8a5772d773816579f5d2b98542c4b966dbb0dd7c60cb397db21f61`.
+
+All seven canonical scenarios passed in one live run:
+1. standingAutonomy — two live standing swaps;
+2. softBoundary — REFUSE / PythNotionalExceeded;
+3. exactException — exact one-use grant, mutation refusal, live execution, consumed, replay refusal, standing mandate unchanged;
+4. hardBoundary — REFUSE / InvalidOrcaProgram;
+5. evidenceFailure — REFUSE / PythMessageInvalid;
+6. rollback — REFUSE / AmountOutBelowMinimum with allowance unconsumed and counters unchanged;
+7. staleAuthority — nonce transition 13 -> 14 followed by REFUSE / StaleNonce.
+
+Confirmed signatures:
+- standingAutonomy.1: `2DrhXGfBN7wfke6TFYMh3rryMsUrnHad3bDBJJF2Pi57jjzHPxdUgwHpRfKiN5VNuzbHZSTLGpkjvfhqreEwQz64`;
+- standingAutonomy.2: `5EaSJBjteoHoHrKzdsFav1gHuo9mMn4R3YhZHDNFmS1uUUsZB8RfwwtoarKm6W9FCiHZcJBQJ3nLcfkZxZDscfTp`;
+- exactException.grant: `5ee9AngLGBEzKwQ6udLjnDh7xadtyy1vgreJgFnyP6LnoJaP81FT8ZDq24Br4duHY8gWMMzCvvJ55UaDHRSbyQ6c`;
+- exactException.execute: `fNm9RuUdWyazeaR9pj38w4aHQAYGqsnqFXcCEUAkeRcjdcdeHv7RV15832Dtfz89JXBGTvXWdemk7ymsinFcUoY`;
+- rollback.grant: `F7Pd1Q8rqfRG3xFw56LvvYbn1qf3LQskeb6JoKTZeFpvh4WzygTcDBK18s4Y6wssZdvggejdTWGbsKmgwkd3jtc`;
+- staleAuthority.policyTransition: `5ip16267fPUdKAe182UDJfQUyPeMdeKsx5p3sjYLh6seBYua7m4Hf16RvPMnrqgQpDgRRzKP9m5nCFnPCjy2oDzh`.
+
+Canonical classification: **PREMERGE_EXACT_HEAD_7_OF_7_LIVE_PROVEN**.
+
+Truth boundary:
+- exact PR #29 head live behavior: PROVEN;
+- merge to main: NOT DONE;
+- public runtime redeploy with this repair: NOT DONE;
+- post-deploy repeatability: NOT PROVEN;
+- independent external-human validation / WTP / adoption: NOT PROVEN;
+- mainnet readiness: NOT PROVEN.
+
+See `evidence/runtime/HOSTED-PR29-EXACT-HEAD-7-OF-7-LIVE-PASS-2026-10-04.md`.

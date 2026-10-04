@@ -849,3 +849,38 @@ Truth boundary:
 - mainnet readiness: NOT PROVEN.
 
 See `evidence/runtime/HOSTED-PR29-EXACT-HEAD-7-OF-7-LIVE-PASS-2026-10-04.md`.
+
+
+## 2026-10-04 PR #29 merged to main; automatic post-merge CI PASS
+
+PR #29 was merged under explicit authorization.
+
+Source promotion:
+- authorized PR head: `b77b5378c6088c50c2912a4b4254c43b28f549fd`;
+- previous main: `1266756fb6a00318618daefe9db3d875387411b5`;
+- merge commit / main head: `b81133c6e3c57c36f6baedcfcce3cf9b8d46d3e3`;
+- merged_at: `2026-10-04T19:51:31Z`.
+
+Automatically triggered GitHub workflows:
+- `test` run `37229869661`: PASS;
+- `cloudflare-worker-ci` run `37229869664`: PASS;
+- Cloudflare packaging in that workflow was dry-run only;
+- no GitHub Actions World’s Fair live workflow was observed for the merge commit.
+
+No manual redeploy, live run, repeatability campaign or mainnet action was triggered.
+
+Relationship to prior proof:
+- exact PR head live 7/7: PROVEN via run `37214175230`;
+- receipt artifact: `11307628144`;
+- digest: `sha256:e2f93357e79d89a40ae864df76b7f7dce81ea837de1b12fab06a689cfb5a65ce`;
+- main now contains that repair;
+- post-merge source/CI integrity: PROVEN;
+- public hosted deployment of merge commit: NOT PROVEN in this checkpoint;
+- post-deploy live/repeatability: NOT PROVEN.
+
+Canonical classification:
+**MAIN_PROMOTED_FROM_7_OF_7_PROVEN_HEAD__POSTMERGE_CI_PROVEN__PUBLIC_RUNTIME_VALIDATION_PENDING**.
+
+See:
+- `evidence/runtime/HOSTED-PR29-EXACT-HEAD-7-OF-7-LIVE-PASS-2026-10-04.md`;
+- `evidence/runtime/HOSTED-PR29-MERGE-MAIN-CI-PASS-2026-10-04.md`.

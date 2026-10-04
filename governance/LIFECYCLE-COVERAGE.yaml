@@ -16,11 +16,11 @@ source_of_truth:
 
 exact_next_gate: "PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE"
 exact_next_action: >-
-  Treat PR #29 exact head b77b5378c6088c50c2912a4b4254c43b28f549fd as PREMERGE_EXACT_HEAD_7_OF_7_LIVE_PROVEN
-  based on runs 37214175228 PASS, 37214175272 PASS and 37214175230 PASS plus artifact 11307628144.
-  Preserve PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE as ACTIVE because main/public deployment does not yet
-  contain this repair and post-deploy repeatability remains unproven. Fresh explicit authorization is required
-  for merge, redeploy and any post-deploy live/repeatability validation.
+  PR #29 is merged to main as b81133c6e3c57c36f6baedcfcce3cf9b8d46d3e3. Automatic post-merge
+  test run 37229869661 and Cloudflare Worker dry-run CI 37229869664 both passed. Preserve
+  PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE as ACTIVE: the merged repair is source-promoted but public
+  hosted deployment and post-deploy repeatability are not proven for this merge commit. Fresh explicit
+  authorization is required before any public redeploy or post-deploy live/repeatability validation.
 
 capabilities:
   - capability: faadil_system_router
@@ -231,7 +231,7 @@ competitive_judge_cycle:
     note: "First live slice and reusable shared product core are both proven on Solana Devnet."
   LIVE_DEPTH:
     status: IN_PROGRESS
-    note: "Exact PR #29 head now has one full 7/7 live Devnet PASS; LIVE_DEPTH remains IN_PROGRESS until the repair is merged/deployed, post-deploy reliability is re-proven, and external-user/operator evidence gaps are addressed."
+    note: "PR #29's 7/7-proven repair is now merged to main and post-merge CI is green; LIVE_DEPTH remains IN_PROGRESS until public deployment of the merged repair is verified, post-deploy reliability is re-proven, and external-user/operator evidence gaps are addressed."
   EVIDENCE:
     status: SATISFIED
     note: "Live core, runtime binding, shared product core, rollback and bounded refusal receipts exist; hosted public-runtime evidence remains the next causal edge."

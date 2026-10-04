@@ -639,3 +639,40 @@ The repair adds only `Unable to fetch Whirlpool at address at` to the existing b
 See:
 - `evidence/runtime/HOSTED-DYNAMIC-DEVUSDC-REFILL-PREMERGE-2026-10-04.md`;
 - `evidence/runtime/HOSTED-ORCA-WHIRLPOOL-READ-RETRY-PREMERGE-2026-10-04.md`.
+
+
+## 2026-10-04 PR #26 raw 429 escape + safe Orca batch reads
+
+PR #26 at exact head `28304f9d74ea7c00518ba74cd815c0afc3e7e639` remains open and unmerged.
+
+Observed:
+- root test `37208383889`: PASS;
+- Cloudflare Worker CI `37208383842`: PASS;
+- single authorized operator-lab live `37208383952`: FAIL;
+- additional live workflows: none.
+
+The run reached `WORLD_FAIR_OPERATOR_LAB_RUNTIME=READY` with nonce 13 and then the Node process terminated on a raw Solana RPC 429:
+`Connection rate limits exceeded`.
+
+No World Fair failure receipt was persisted and the upload step found no receipt file. Therefore the exact internal phase is not receipt-proven.
+
+Source investigation found an upstream reliability hole in Orca legacy common-sdk:
+`getMultipleAccounts()` creates request chunks with an async Promise executor. A rejection from `connection.getMultipleAccountsInfo()` can escape the Promise awaited by the SDK caller and terminate the process outside CRESCO's outer retry wrapper.
+
+Quote generation uses affected batch paths, notably:
+- `getMintInfos()`;
+- `getTickArrays()`.
+
+A clean source-only repair now exists:
+- branch `fix/worlds-fair-orca-safe-batch-reads-v1-clean`;
+- exact head `4a5d9bdf556aa53b9ac668d96348e180ef1de59b`;
+- base deployed main `1266756fb6a00318618daefe9db3d875387411b5`;
+- push test `37208646758`: PASS, 137/137;
+- PR: NOT OPENED;
+- live validation: NOT AUTHORIZED.
+
+The repair proxies only Orca's quote-critical batch reads into controlled unit reads while preserving the rest of the fetcher and its method bindings. Dynamic refill, Whirlpool retry, MintInfo retry, diagnostics and no-write-retry semantics remain intact.
+
+See:
+- `evidence/runtime/HOSTED-ORCA-WHIRLPOOL-READ-RETRY-PREMERGE-2026-10-04.md`;
+- `evidence/runtime/HOSTED-ORCA-SAFE-BATCH-READS-PREMERGE-2026-10-04.md`.

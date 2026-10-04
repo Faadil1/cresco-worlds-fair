@@ -595,3 +595,47 @@ The repair uses the exact devUSDC deficit, a live read-only Orca quote’s slipp
 See:
 - `evidence/runtime/HOSTED-ORCA-MINTINFO-RETRY-LIVE-BLOCKED-BY-FUNDING-2026-10-04.md`;
 - `evidence/runtime/HOSTED-DYNAMIC-DEVUSDC-REFILL-PREMERGE-2026-10-04.md`.
+
+
+## 2026-10-04 PR #25 dynamic refill proven + Whirlpool read retry repair
+
+PR #25 at exact head `1fd7f5fc52d486e5f42d095f7115860b4745ceb5` remains open and unmerged.
+
+Observed:
+- root test `37207143535`: PASS;
+- Cloudflare Worker CI `37207143531`: PASS;
+- single authorized operator-lab live `37207143575`: FAIL;
+- additional live workflows: none.
+
+The dynamic bootstrap refill succeeded. The input vault moved from the prior `1300000` base units to the target `1500000` before `runtimeBefore`. This is a real bootstrap funding effect.
+
+After bootstrap, the canonical sequence stopped at `ORCA_CONTEXT` with:
+- class `DEPENDENCY_FAILURE`;
+- reason `ORCA_CONTEXT_READ_UNAVAILABLE`;
+- underlying error `Unable to fetch Whirlpool at address at 63cMwvN8eoaD39os9bKP8brmA7Xtov9VxahnPufWCSdg`.
+
+No standing action executed:
+- spentThisPeriod remained `5800000`;
+- output vault remained `13498590`;
+- input vault remained `1500000` after bootstrap;
+- reconciliation error: none.
+
+Failure artifact:
+- id `11304354063`;
+- digest `sha256:2103cb2c265e135235bb694987e8fa213ab92e3f9335df3f579c2e5754957e3b`.
+
+Orca source confirms `WhirlpoolClientImpl.getPool()` raises this message when its fetcher returns no pool account.
+
+A targeted clean repair now exists:
+- branch `fix/worlds-fair-orca-whirlpool-read-retry-v1-clean`;
+- exact head `28304f9d74ea7c00518ba74cd815c0afc3e7e639`;
+- base deployed main `1266756fb6a00318618daefe9db3d875387411b5`;
+- push test `37207328384`: PASS, 134/134;
+- PR: NOT OPENED;
+- live validation: NOT AUTHORIZED.
+
+The repair adds only `Unable to fetch Whirlpool at address at` to the existing bounded transient read classifier. It preserves dynamic refill, MintInfo retry, redacted diagnostics and no-write-retry semantics.
+
+See:
+- `evidence/runtime/HOSTED-DYNAMIC-DEVUSDC-REFILL-PREMERGE-2026-10-04.md`;
+- `evidence/runtime/HOSTED-ORCA-WHIRLPOOL-READ-RETRY-PREMERGE-2026-10-04.md`.

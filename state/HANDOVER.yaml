@@ -206,19 +206,19 @@ handover:
 
   exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
   exact_next_action: >-
-    PR #21 at exact head d64e483c5cc662aca15b7293eca054073e38230c remains open and unmerged after
-    root test run 37185513937 PASS, Cloudflare Worker CI run 37185513963 PASS and live run 37185513936
-    FAIL at ORCA_CONTEXT_AFTER_STANDING_1 after confirmed standingAutonomy.1 signature
-    2SWLbjfDTiaDh2QdfqPTMgCVHTM6BDdJGZM7pixxKxvUA4wfMQ77hVz4Pzc86BfC1n39RedAuitau3pNmYd3XhnX.
-    A clean replacement repair has now been reconstructed directly from deployed main on branch
-    fix/worlds-fair-fresh-quote-context-v2-clean at exact head
-    90e1431dd1db975497d81e7cf3d223172aa3437a. It is 1 commit ahead / 0 behind, has no PR,
-    and test run 37186819903 passed with 124/124 tests plus demo smoke. The repair removes explicit
-    pool.refreshData() and separate ORCA_CONTEXT_AFTER_* phases, reacquires a fresh Orca pool with
-    IGNORE_CACHE inside every quote, preserves post-write state reconciliation, and keeps the old
-    worlds-fair-orca-devnet-proof workflow manual-only. Request fresh exact-head authorization before
-    opening a PR because that will trigger the protected operator-lab Devnet validation. Do not merge,
-    redeploy, use mainnet, run repeatability, or mutate PR #19/#20/#21 without fresh authorization.
+    PR #22 at exact head 90e1431dd1db975497d81e7cf3d223172aa3437a is open and unmerged.
+    Root test run 37186952848 and Cloudflare Worker CI run 37186952837 passed. The single authorized
+    operator-lab live run 37186952836 failed at STANDING_2_QUOTE after a confirmed standingAutonomy.1
+    execution. Failure artifact 11297430734 /
+    sha256:b415e5976d04ef90040a81c8e8412f653df1f5a9b2f9c72e47b1fd9078035ffe preserves the partial
+    receipt. Confirmed signature: 5hhyWuKa5udxxv5rersaoNKsoDa6bSuFZ8zKfLMVQrTbcMYd3fSpp6ypYbpRBxncZdNVUKtfnr3UrYGz48WQMZ86.
+    The run moved spentThisPeriod 5400000 -> 5600000 and input vault 1500000 -> 1300000; zero-effects and
+    blind replay are forbidden. PR #22 removed the explicit ORCA_CONTEXT_AFTER_STANDING_1 failure seen in
+    PR #21, but the second Orca quote still failed despite fresh pool reacquisition and IGNORE_CACHE.
+    Orca’s own swapQuoteByInputToken already refetches the pool/tick-array quote inputs, so do not add broader
+    speculative retries. Prepare a source-only diagnostic repair that persists a redacted structural summary
+    of the underlying quote exception. Do not merge, redeploy, use mainnet, run repeatability, mutate
+    PR #19/#20/#21/#22, or trigger another live validation without fresh authorization.
 
   prohibited_shortcuts:
     - no_silent_concept_lock

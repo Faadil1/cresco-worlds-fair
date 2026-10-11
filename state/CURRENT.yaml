@@ -49,7 +49,7 @@ phase:
     - DEMO_ENVIRONMENT
     - JUDGE_SELF_SERVE
 
-exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
+exact_next_gate: PRODUCT_EXPLOITATION_LOOP
 exact_next_action: >-
   As of 2026-10-11, central canon 0.1.59 at cdb55dbfe41fdfcb2f5e9232517fbb058c8b4c9b
   is the current baseline; implementation main is 4c7b82ff22ae7d4fb2756e68c640548bf1f7965d.

@@ -178,7 +178,7 @@ registry:
     status: BLOCKED
     activates_when: "World’s Fair runtime exists"
     condition: "Public runtime must be reachable and consistent with the claimed build."
-    current_state: "PR #29 exact-head 7/7 is proven and the repair is merged to main with green post-merge CI. Authorized public-promotion run 37233079206 stopped before checkout/deployment because GitHub Actions exposed neither CLOUDFLARE_API_TOKEN nor CLOUDFLARE_ACCOUNT_ID. No deployment or public live call occurred. PUBLIC_RUNTIME is BLOCKED on missing Cloudflare GitHub credentials; the existing hosted Worker must not be claimed to contain merge commit b81133c6e3c57c36f6baedcfcce3cf9b8d46d3e3."
+    current_state: "PR #29 exact-head 7/7 is proven and its product repair is in implementation main 4c7b82ff22ae7d4fb2756e68c640548bf1f7965d (later state-only PR #30 did not alter product code). The authorized public-promotion run 37233079206 stopped before deployment because GitHub Actions exposed neither CLOUDFLARE_API_TOKEN nor CLOUDFLARE_ACCOUNT_ID. No deployment or public live call occurred. PUBLIC_RUNTIME remains BLOCKED for latest-main binding."
     evidence:
       - "evidence/runtime/WORLDS-FAIR-OPERATOR-LAB-LIVE-2026-10-02.md"
       - "evidence/runtime/HOSTED-PUBLIC-RUNTIME-FIRST-ATTEMPT-2026-10-02.md"
@@ -431,7 +431,7 @@ registry:
     condition: "Continue coherent depth while marginal product value/differentiation justifies cost, risk and deadline."
     evidence:
       - "product/POST-VERTICAL-SLICE-DEPTH-GAP-REVIEW-2026-10-02.md"
-    current_target: "HOSTED_JUDGE_SELF_SERVE"
+    current_target: "REAL_OPERATOR_PRINCIPAL_WORKFLOW_V1"
 
   - id: PROJECT_STATE_CONTINUITY
     name: "CURRENT / HANDOVER continuity"
@@ -451,14 +451,14 @@ product_depth_subchecks:
   representative_boundary_scenario: PROVEN
   representative_recovery_scenario: PROVEN
   failure_recovery: PROVEN
-  real_user_surface: PARTIAL_BUILD_PROVEN_NOT_HOSTED
-  external_user_operator_evidence: BLOCKED
-  time_to_first_value: BLOCKED_HOSTED_PATH_MISSING
+  real_user_surface: PARTIAL_HOSTED_OPERATOR_LAB__REAL_MULTI_ROLE_WORKFLOW_NOT_IMPLEMENTED
+  external_user_operator_evidence: BLOCKED_NO_NEW_TARGET_OPERATOR_REPLY_AS_OF_2026_10_11
+  time_to_first_value: UNKNOWN_REPRESENTATIVE_OPERATOR_MEASUREMENT
   operational_economics_when_material: ACTIVE
   shared_product_core: PROVEN
   reality_ledger: ACTIVE
   observability_receipts: PROVEN_SHARED_CORE
-  judge_operator_self_serve: PARTIAL_INTERMITTENT_LIVE_RUN
+  judge_operator_self_serve: PROVEN_HISTORICAL_HOSTED_LAB__LATEST_MAIN_BINDING_BLOCKED
   setup_reproducibility: ACTIVE
   clean_room_external_dependency_failure: ACTIVE
   post_vertical_slice_depth_gap_review: PROVEN

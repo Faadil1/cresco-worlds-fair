@@ -1,16 +1,16 @@
 # CRESCO Product Requirements — Crypto World’s Fair
 
-Version: 1.0-locked-with-validation-gap  
-Status: **CONCEPT LOCKED WITH VALIDATION GAP / LIVING PRD**  
-Date: 2026-10-01
+Version: 1.1-live-depth-with-validation-gap  
+Status: **CONCEPT LOCKED / LIVE DEPTH ACTIVE / VALIDATION GAP PRESERVED / LIVING PRD**  
+Date: 2026-10-11
 
 ## 1. Purpose
 
 This PRD coordinates the World’s Fair evolution of CRESCO.
 
-It is intentionally written **before Concept Lock**. It records what must remain invariant, what is proven by the Stocklana baseline, which company directions remain alive, which claims are still hypotheses, and what evidence is required before implementation expands.
+It originated before Concept Lock and intentionally preserves dated pre-lock research sections as historical evidence. The current product authority is the latest dated state in this document, especially the Concept Lock and subsequent live-depth sections. Earlier statements such as "NO CONCEPT LOCK" describe their historical checkpoint and are not current status.
 
-This document is expected to evolve. Material changes must be explicit and reviewable rather than silently introduced through code.
+This document is expected to evolve. Material changes must be explicit and reviewable rather than silently introduced through code. Latest-dated sections supersede earlier operational status markers without rewriting history.
 
 ## 2. Mission
 
@@ -599,10 +599,14 @@ Only after that:
 9. Public README/submission claims must be strictly weaker than or equal to runtime evidence.
 10. Keep private collaborator notes / exploratory strategy out of the public submission surface when they do not help judges or users.
 
-## 17. Current Decision
+## 17. Historical Pre-Lock Decision Checkpoint — 2026-09-26
+
+At this historical checkpoint:
 
 **NO CONCEPT LOCK.**  
 **NO NEW PRODUCT BUILD YET.**
+
+This status was later superseded by the explicit 2026-10-01 Concept Lock in Section 25.
 
 Next work:
 1. complete semantic teardown against SDP / Squads / Safe / Turnkey / Session.money / Sanction;
@@ -1215,3 +1219,79 @@ Exact next gate:
 **BUILD__FIRST_LIVE_VERTICAL_SLICE**
 
 After the first real end-to-end slice works, Product Reality v1.3 requires the Product Exploitation Loop before terminal polish.
+
+
+## 32. Reality Audit and Product Exploitation Reset — 2026-10-11
+
+A fresh audit was run against central canon
+`0.1.59-adaptive-best-of-system-execution-v1-promoted` at `cdb55dbfe41fdfcb2f5e9232517fbb058c8b4c9b`.
+
+### Current observed product truth
+
+**OBSERVED / LIVE**
+- Solana Devnet authority runtime;
+- load-bearing Orca Whirlpools execution;
+- load-bearing Pyth Lazer evidence where claimed;
+- standing autonomous execution;
+- soft-boundary refusal and Policy Diff semantics;
+- exact one-use exception grant/execution/consumption/replay refusal;
+- hard refusal;
+- missing-evidence refusal;
+- rollback with allowance/counters preserved;
+- stale-authority refusal;
+- one receipt-validated 7/7 live run on the exact PR #29 head;
+- historical public browser self-serve Operator Lab.
+
+**UNKNOWN**
+- whether the current public Worker contains implementation main `4c7b82ff22ae7d4fb2756e68c640548bf1f7965d`;
+- post-deploy repeatability for the merged PR #29 repair;
+- CRESCO-specific target-operator pull/WTP;
+- representative operator time-to-first-value;
+- operational economics at representative usage.
+
+**NOT_IMPLEMENTED as a World Fair product workflow**
+- operator-created constrained trade intent;
+- durable Policy Diff / exception request lifecycle;
+- principal/risk-owner review and explicit approve/refuse flow;
+- World Fair-specific operator/principal identity and permission boundary;
+- durable operator request/approval/execution history.
+
+### P0 operational correction
+
+Implementation PR #31 (`93770f4bca0f6084a85b655a1eecb06ec61ea43c`) makes protected live/write workflows manual-only and adds a regression test against accidental automatic triggers. Its source-only push CI passed 146/146 with zero live runs. It remains unmerged pending review.
+
+### Current primary workstream
+
+**PRODUCT_EXPLOITATION — REAL_OPERATOR_PRINCIPAL_WORKFLOW_V1**
+
+Target causal workflow:
+
+```
+operator trade intent
+→ standing mandate evaluation
+→ ALLOW or Policy Diff
+→ durable exception request
+→ principal / risk-owner REFUSE or exact one-use grant
+→ exact execution or refusal
+→ receipt + history
+→ recovery / stale / replay behavior
+```
+
+The existing `CANONICAL_LIVE` 7-scenario sequence remains a valuable regression and judge view. It must not define the product architecture.
+
+### External validation
+
+Second-wave outreach was sent 2026-10-07 to prior and new trading/treasury/risk contacts. As of 2026-10-11 no new target-operator response is observed. kpk delivery ultimately failed. This preserves the validation gap; silence is neutral, not negative demand evidence.
+
+### Deployment boundary
+
+Public latest-main binding remains blocked because the authorized Cloudflare promotion attempt stopped before deployment when required GitHub secrets were unavailable. Source-side product depth work continues; deployment/live verification remains a protected action.
+
+### Current readiness
+
+- mechanism: PROVEN live on Devnet;
+- product depth: IN_PROGRESS;
+- public latest-main binding: BLOCKED / UNKNOWN;
+- external target-user validation: BLOCKED / UNKNOWN;
+- repeatability claim: NOT PROVEN;
+- submission readiness: NOT READY.

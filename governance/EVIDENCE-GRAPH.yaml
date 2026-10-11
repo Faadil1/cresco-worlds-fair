@@ -1,8 +1,8 @@
 version: "1.1"
 project: "cresco-worlds-fair"
-date: "2026-10-02"
+date: "2026-10-11"
 policy: "Faadil1/faadil-agent-system/EVIDENCE-GRAPH-POLICY.yaml@1.0.0"
-status: "ACTIVE_WORLD_FAIR_LIVE"
+status: "ACTIVE_WORLD_FAIR_LIVE_DEPTH_AUDIT"
 authority: NONE
 
 purpose: >-
@@ -205,6 +205,8 @@ claims:
       source_promotion:
         merge_status: MERGED_TO_MAIN
         merge_commit: "b81133c6e3c57c36f6baedcfcce3cf9b8d46d3e3"
+        implementation_current_main: "4c7b82ff22ae7d4fb2756e68c640548bf1f7965d"
+        postmerge_state_only_pr30: true
         merged_at: "2026-10-04T19:51:31Z"
         postmerge_test_run: 37229869661
         postmerge_test_result: PASS
@@ -274,12 +276,42 @@ claims:
       result: "browser-triggered 7/7 PASS; fresh state-empty browser can reach Ready runtime and live-run control"
     limitation: "This proves technical self-serve capability, not independent external-human usage, demand, WTP or adoption."
 
+  - claim_id: WORLD_FAIR_REAL_OPERATOR_PRINCIPAL_WORKFLOW
+    statement: "A real delegated trading operator can submit a constrained action, receive standing evaluation/Policy Diff, create a durable exception request, and a distinct principal/risk owner can approve or refuse before exact one-use execution."
+    evidence_class: BEHAVIOR_PROOF
+    truth_state: UNKNOWN
+    graph_status: MISSING
+    implementation_status: NOT_IMPLEMENTED
+    reason: >-
+      The current World Fair surface executes a fixed CANONICAL_LIVE seven-scenario sequence using server-held Devnet
+      actors. The underlying authority mechanism is live, but the discrete multi-role request/review lifecycle is not
+      yet productized.
+    required_edges:
+      - operator_identity_or_role
+      - operator_created_trade_intent
+      - standing_evaluation
+      - machine_readable_policy_diff
+      - durable_exception_request
+      - principal_or_risk_owner_identity_or_role
+      - explicit_refuse_or_exact_grant
+      - exact_action_binding
+      - execution_or_refusal
+      - receipt_and_history
+      - stale_replay_and_recovery_behavior
+    implementation_audit:
+      repository: "Faadil1/cresco"
+      audit_pull_request: 31
+      audit_head: "93770f4bca0f6084a85b655a1eecb06ec61ea43c"
+      non_live_ci_run: 38115791152
+      non_live_ci_result: PASS_146_OF_146
+      live_runs_triggered: 0
+
   - claim_id: WORLD_FAIR_EXECUTION_BOUND_CAPITAL_AUTHORITY_VALUE
     statement: "Execution-bound delegated capital authority has validated operator value."
     evidence_class: OUTCOME_PROOF
     truth_state: UNKNOWN
     graph_status: MISSING
-    reason: "The mechanism is live, but direct representative operator/customer validation remains missing."
+    reason: "The mechanism is live, but direct representative target-operator/customer validation remains missing after the 2026-10-07 second outreach wave; no new target-operator response is observed as of 2026-10-11."
 
   - claim_id: WORLD_FAIR_ATOMIC_EXCEPTION_EXECUTION_VALUE
     statement: "Atomic exception consumption + capital execution is materially valuable to target operators."

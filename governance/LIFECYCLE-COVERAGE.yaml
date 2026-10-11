@@ -1,26 +1,25 @@
 version: "1.0"
 project: "cresco-worlds-fair"
-date: "2026-10-02"
+date: "2026-10-11"
 project_type: "HACKATHON_PRODUCT"
 lifecycle_status: "ACTIVE"
-product_state: "FIRST_LIVE_VERTICAL_SLICE_PROVEN_WITH_VALIDATION_GAP"
+product_state: "LIVE_7_OF_7_PROVEN__PRODUCT_EXPLOITATION_ACTIVE__VALIDATION_GAP"
 current_owner: "PBPD / Product Exploitation owner"
 terminal_completeness_allowed: false
 
 source_of_truth:
   central_repository: "Faadil1/faadil-agent-system"
   central_branch: "main"
-  central_current_version: "0.1.48-system-control-plane-v1-active"
+  central_current_version: "0.1.59-adaptive-best-of-system-execution-v1-promoted"
   project_repository: "Faadil1/cresco-worlds-fair"
   project_branch: "main"
 
-exact_next_gate: "PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE"
+exact_next_gate: "PRODUCT_EXPLOITATION__REAL_OPERATOR_PRINCIPAL_WORKFLOW"
 exact_next_action: >-
-  PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE is operationally BLOCKED on Cloudflare deployment credentials.
-  Main b81133c6e3c57c36f6baedcfcce3cf9b8d46d3e3 contains the 7/7-proven repair and post-merge CI is green,
-  but authorized ops run 37233079206 stopped before deployment because CLOUDFLARE_API_TOKEN and
-  CLOUDFLARE_ACCOUNT_ID were unavailable to GitHub Actions. No public runtime read or live POST occurred.
-  Preserve the current public-runtime truth boundary until a separately authorized credentialed deployment succeeds.
+  Preserve historical live evidence at its real class. Review implementation PR #31 (93770f4bca0f6084a85b655a1eecb06ec61ea43c) as the
+  P0 trigger-safety/canonical-reconciliation changeset; its non-live CI passed 146/146 and it remains unmerged.
+  Continue the primary workstream as PRODUCT_EXPLOITATION with REAL_OPERATOR_PRINCIPAL_WORKFLOW_V1. Public deployment
+  of latest main is a separate blocked/protected path because Cloudflare deployment credentials are unavailable.
 
 capabilities:
   - capability: faadil_system_router
@@ -231,7 +230,7 @@ competitive_judge_cycle:
     note: "First live slice and reusable shared product core are both proven on Solana Devnet."
   LIVE_DEPTH:
     status: IN_PROGRESS
-    note: "PR #29's 7/7-proven repair is merged to main and post-merge CI is green. Public deployment is BLOCKED because the authorized one-shot GitHub workflow had no CLOUDFLARE_API_TOKEN or CLOUDFLARE_ACCOUNT_ID; no deploy or public live call occurred. LIVE_DEPTH remains IN_PROGRESS."
+    note: "The 7/7 live mechanism is proven, but the product is still an Operator Lab with a fixed canonical sequence. The missing multi-role operator/principal exception lifecycle is the current material depth gap. Latest-main public deployment remains separately blocked on Cloudflare credentials."
   EVIDENCE:
     status: SATISFIED
     note: "Live core, runtime binding, shared product core, rollback and bounded refusal receipts exist; hosted public-runtime evidence remains the next causal edge."
@@ -258,9 +257,9 @@ product_reality_packet:
   real_consequence_status: proven_devnet_state_and_rollback
   representative_scenario_depth_status: proven_for_first_slice
   failure_recovery_status: proven_orca_rollback
-  external_user_or_operator_evidence_status: missing_validation_gap_preserved
-  time_to_first_value_status: missing_hosted_measurement
-  time_to_first_value_reason: "Surface code exists, but no hosted judge/operator run has been observed yet."
+  external_user_or_operator_evidence_status: missing_after_second_outreach_wave
+  time_to_first_value_status: unknown_representative_operator_measurement
+  time_to_first_value_reason: "Historical hosted judge self-serve is proven, but representative target-operator TTFV is not measured."
   operational_economics_status: not_applicable_with_reason
   operational_economics_reason: "No selected paid/core execution loop yet."
   shared_product_core_status: proven_live
@@ -269,14 +268,16 @@ product_reality_packet:
   post_vertical_slice_depth_gap_review_status: satisfied_active
   post_vertical_slice_depth_gap_review_reason: "Triggered and recorded after first live slice."
   observability_receipt_status: satisfied_for_shared_live_core
-  real_user_surface_status: build_proven_not_hosted
-  judge_or_operator_self_serve_status: missing_hosted_proof
+  real_user_surface_status: hosted_operator_lab_proven__real_multi_role_workflow_not_implemented
+  judge_or_operator_self_serve_status: proven_for_historical_judge_lab__not_real_operator_workflow
   unresolved_production_gap:
-    - "Public hosted World’s Fair Worker/API not yet bound to the proven head"
-    - "Public hosted /worlds-fair route not yet bound to the proven head"
-    - "Hosted UI→API→Solana critical path not yet observed"
-    - "Fresh-environment reproducibility/reset strategy not yet proven"
-    - "Direct operator validation remains missing"
+    - "Current public Worker is not proven bound to implementation main 4c7b82ff22ae7d4fb2756e68c640548bf1f7965d"
+    - "Real operator-created action / Policy Diff / durable exception-request lifecycle is not implemented"
+    - "Principal/risk-owner review and role boundary are not implemented"
+    - "Post-deploy repeatability threshold is not proven for latest main"
+    - "Fresh-environment representative-operator reproducibility remains incomplete"
+    - "Direct target-operator validation and CRESCO-specific WTP remain missing"
+    - "Representative TTFV and operational economics are not measured"
   claim_overreach:
     - "Do not upgrade Stocklana baseline into World’s Fair LIVE."
     - "Do not describe execution-bound capital authority as validated user value."

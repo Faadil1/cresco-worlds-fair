@@ -884,3 +884,47 @@ Canonical classification:
 See:
 - `evidence/runtime/HOSTED-PR29-EXACT-HEAD-7-OF-7-LIVE-PASS-2026-10-04.md`;
 - `evidence/runtime/HOSTED-PR29-MERGE-MAIN-CI-PASS-2026-10-04.md`.
+
+
+## 2026-10-11 Reality audit — Vertical Slice is not Definition of Done
+
+Central canon was refreshed to:
+- version `0.1.59-adaptive-best-of-system-execution-v1-promoted`;
+- main `cdb55dbfe41fdfcb2f5e9232517fbb058c8b4c9b`.
+
+Implementation audit:
+- repository `Faadil1/cresco`;
+- audited main `4c7b82ff22ae7d4fb2756e68c640548bf1f7965d`;
+- P0 audit branch `audit/worlds-fair-reality-p0-2026-10-11`;
+- head `93770f4bca0f6084a85b655a1eecb06ec61ea43c`;
+- PR #31 open/unmerged;
+- push CI `38115791152`: PASS, 146/146;
+- live workflows triggered by the P0 branch/PR: 0.
+
+Observed product truth:
+- the World Fair authority mechanism remains LIVE-proven on Solana Devnet;
+- the exact PR #29 head passed the seven canonical scenarios in one receipt-validated run;
+- historical hosted judge self-serve is real evidence.
+
+Current material gaps:
+- latest implementation main → public Worker binding: UNKNOWN/BLOCKED on missing Cloudflare deployment credentials;
+- real operator-created action → Policy Diff → durable exception request: NOT_IMPLEMENTED;
+- distinct principal/risk-owner review/decision workflow: NOT_IMPLEMENTED;
+- World Fair role/auth boundary: NOT_IMPLEMENTED;
+- post-deploy repeatability for latest main: UNKNOWN;
+- representative target-operator pull/WTP: UNKNOWN;
+- representative TTFV and operational economics: UNKNOWN.
+
+P0 safety finding:
+five external-write/live workflows in `Faadil1/cresco` still had automatic push or PR triggers. PR #31 makes them manual-only and adds a regression guard. This is source-only until merged; no live write is claimed from the repair itself.
+
+External validation:
+- second-wave outreach sent 2026-10-07;
+- no new target-operator response observed by 2026-10-11;
+- kpk rerouted email ultimately failed delivery;
+- silence remains neutral, not negative demand evidence.
+
+Primary workstream:
+**PRODUCT_EXPLOITATION → REAL_OPERATOR_PRINCIPAL_WORKFLOW_V1**.
+
+Public deployment and live validation remain protected actions.

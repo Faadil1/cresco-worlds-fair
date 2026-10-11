@@ -1,0 +1,68 @@
+name: World Fair governance integrity
+
+on:
+  pull_request:
+    paths:
+      - "state/**"
+      - "governance/**"
+      - "product/PRD.md"
+      - ".github/workflows/world-fair-governance-integrity.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  canonical-integrity:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install YAML parser
+        run: python -m pip install --disable-pip-version-check PyYAML==6.0.2
+      - name: Validate parse and material source bindings
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import yaml
+
+          documents = {}
+          for name in [
+              "state/CURRENT.yaml",
+              "state/HANDOVER.yaml",
+              "governance/LIFECYCLE-COVERAGE.yaml",
+              "governance/GATEWAY-REGISTRY.yaml",
+              "governance/EVIDENCE-GRAPH.yaml",
+          ]:
+              documents[name] = yaml.safe_load(Path(name).read_text())
+              assert isinstance(documents[name], dict), name
+
+          current = documents["state/CURRENT.yaml"]
+          handover = documents["state/HANDOVER.yaml"]["handover"]
+          central = current["system_reconciliation"]
+          assert central["central_current_version"] == (
+              "0.1.59-adaptive-best-of-system-execution-v1-promoted"
+          )
+          assert central["central_current_sha"] == (
+              "cdb55dbfe41fdfcb2f5e9232517fbb058c8b4c9b"
+          )
+          assert current["reality_audit_2026_10_11"]["terminal_completeness_allowed"] is False
+          assert handover["reconciliation_2026_10_11"]["terminal_ready"] is False
+          assert (
+              handover["reconciliation_2026_10_11"]["central_sha"]
+              == central["central_current_sha"]
+          )
+          assert current["reality_audit_2026_10_11"]["public_latest_main_binding"] == "UNKNOWN"
+
+          gateways = documents["governance/GATEWAY-REGISTRY.yaml"]
+          assert isinstance(gateways.get("gates"), list), "Gateway registry has no gates"
+          ids = [gate["id"] for gate in gateways["gates"]]
+          assert len(ids) == len(set(ids)), "Duplicate gateway ID"
+          assert "PUBLIC_RUNTIME" in ids, "Public Runtime gateway missing"
+          print("WORLD_FAIR_GOVERNANCE_INTEGRITY=PASS")
+          PY

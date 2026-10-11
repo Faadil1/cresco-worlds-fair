@@ -14,13 +14,17 @@ source_of_truth:
   project_repository: "Faadil1/cresco-worlds-fair"
   project_branch: "main"
 
-exact_next_gate: "PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE"
+exact_next_gate: "PRODUCT_EXPLOITATION_LOOP"
 exact_next_action: >-
-  PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE is operationally BLOCKED on Cloudflare deployment credentials.
-  Main b81133c6e3c57c36f6baedcfcce3cf9b8d46d3e3 contains the 7/7-proven repair and post-merge CI is green,
-  but authorized ops run 37233079206 stopped before deployment because CLOUDFLARE_API_TOKEN and
-  CLOUDFLARE_ACCOUNT_ID were unavailable to GitHub Actions. No public runtime read or live POST occurred.
-  Preserve the current public-runtime truth boundary until a separately authorized credentialed deployment succeeds.
+  Product Exploitation is the primary workstream, because the real multi-role operator-to-principal
+  trade-intent, policy assessment, exception decision, consequence history and safe recovery journey
+  remains NOT_IMPLEMENTED beyond the fixed Devnet CANONICAL_LIVE 7/7. Source-only PR #31 proposes
+  manual-only protected write workflows but needs concurrency preservation review; draft PR #32
+  proposes an UNKNOWN-outcome quarantine with 145/145 tests PASS and Worker dry-run CI PASS, but
+  is not deployed. PUBLIC_RUNTIME remains separately BLOCKED: merge commit
+  b81133c6e3c57c36f6baedcfcce3cf9b8d46d3e3 was not publicly deployed by run 37233079206
+  because Cloudflare GitHub credentials were unavailable. Do not make live/public/terminal claims
+  from source-only changes or from the historical 7/7 receipt.
 
 capabilities:
   - capability: faadil_system_router

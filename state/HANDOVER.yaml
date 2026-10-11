@@ -204,7 +204,7 @@ handover:
     scope: "CRESCO World’s Fair Worker/API + /worlds-fair frontend only; no mainnet, no new Solana program, no submission."
     prior_cleanup_authorization_reusable: false
 
-  exact_next_gate: PUBLIC_RUNTIME__HOSTED_JUDGE_SELF_SERVE
+  exact_next_gate: PRODUCT_EXPLOITATION_LOOP
   exact_next_action: >-
     Restore a truthful 2026-10-11 World Fair handoff against central 0.1.59
     at cdb55dbfe41fdfcb2f5e9232517fbb058c8b4c9b and product main

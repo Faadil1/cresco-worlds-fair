@@ -60,8 +60,8 @@ jobs:
           assert current["reality_audit_2026_10_11"]["public_latest_main_binding"] == "UNKNOWN"
 
           gateways = documents["governance/GATEWAY-REGISTRY.yaml"]
-          assert isinstance(gateways.get("gates"), list), "Gateway registry has no gates"
-          ids = [gate["id"] for gate in gateways["gates"]]
+          assert isinstance(gateways.get("registry"), list), "Gateway registry has no gates"
+          ids = [gate["id"] for gate in gateways["registry"]]
           assert len(ids) == len(set(ids)), "Duplicate gateway ID"
           assert "PUBLIC_RUNTIME" in ids, "Public Runtime gateway missing"
           print("WORLD_FAIR_GOVERNANCE_INTEGRITY=PASS")

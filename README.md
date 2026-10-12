@@ -1,3 +1,14 @@
+# Moved: this work now lives in Faadil1/cresco
+
+On 2026-10-12 all World's Fair material moved into the CRESCO repository:
+https://github.com/Faadil1/cresco/tree/main/docs/worlds-fair
+
+Current state and Devnet evidence: https://github.com/Faadil1/cresco/blob/main/docs/worlds-fair/CURRENT-STATE-2026-10-12.md
+
+This repository is kept as a frozen archive (last material update 2026-10-04). Do not update it; update `cresco` instead.
+
+---
+
 # CRESCO — Crypto World's Fair
 
 CRESCO World’s Fair is the post-Stocklana product-discovery and build repository for the 2026 Crypto World’s Fair.

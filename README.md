@@ -1,5 +1,7 @@
 # CRESCO — Crypto World's Fair
 
+> **Source-code rights:** Original CRESCO material is not offered under an open-source license. See [LICENSE](LICENSE). Third-party licenses and existing permissions remain applicable.
+
 CRESCO World’s Fair is the post-Stocklana product-discovery and build repository for the 2026 Crypto World’s Fair.
 
 > **Core working hypothesis:** CRESCO governs delegated authority when an autonomous action reaches a standing boundary.
